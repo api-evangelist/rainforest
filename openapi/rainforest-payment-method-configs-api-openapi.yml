@@ -1,0 +1,194 @@
+openapi: 3.1.0
+info:
+  title: Authentication ACH Returns Payment Method Configs API
+  version: 1.0.0
+  description: This resource is used for authentication actions
+  contact:
+    name: Rainforest
+    email: support@rainforestpay.com
+    url: https://rainforestpay.com
+servers:
+- url: https://api.sandbox.rainforestpay.com
+  description: Sandbox server
+- url: https://api.rainforestpay.com
+  description: Production server
+security:
+- BearerAuth: []
+tags:
+- name: Payment Method Configs
+  description: Resources for payment method configs functions.
+paths:
+  /v1/payment_method_configs:
+    post:
+      operationId: create_payment_method_config
+      summary: Create payment method config
+      description: Create the configuration to store a payment method. The configuration contains basic information about the payment method such as an idempotency key and optional information such as billing contact and metadata. If the billing contact is provided in the payment method config, then the web component will not prompt for this data. These fields include country and postal code for a CARD payment method and name for an ACH payment method. This allows a payment method to be set up before collecting the sensitive payment method details (i.e the card number) via the web component. The merchant status must be `ACTIVE` to create a payment method config.
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/paths/~1v1~1payment_method_configs/post/responses/200/content/application~1json/schema/properties/data'
+              required:
+              - platform_id
+              - idempotency_key
+            examples:
+              required_fields:
+                value:
+                  platform_id: plt_2DrDypu8n6IX7EVTjAnEd1dkTBa
+                  idempotency_key: e7d57c41-7626-4644-b777-9451ab3ddea9
+              billing_contact:
+                value:
+                  platform_id: plt_2DrDypu8n6IX7EVTjAnEd1dkTBa
+                  idempotency_key: e7d57c41-7626-4644-b777-9451ab3ddea9
+                  billing_contact:
+                    name: Jane Smith
+                    address_line_1: 3423 Piedmont Rd
+                    address_line_2: Suite 123
+                    city: Atlanta
+                    state: GA
+                    postal_code: '30305'
+                    country: US
+                    email: janesmith@example.com
+                    phone: '4041234567'
+              metadata:
+                value:
+                  platform_id: plt_2DrDypu8n6IX7EVTjAnEd1dkTBa
+                  idempotency_key: e7d57c41-7626-4644-b777-9451ab3ddea9
+                  metadata:
+                    key1: value1
+                    key2:
+                      inner_key1: inner_value1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    type: object
+                    properties:
+                      payment_method_config_id:
+                        $ref: '#/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/payment_method_config_id'
+                        readOnly: true
+                      platform_id:
+                        description: "The unique platform identifier. \n\nPrefix is \"plt\" in production and \"sbx_plt\" in sandbox."
+                        type: string
+                        example: plt_2DrDypu8n6IX7EVTjAnEd1dkTBa
+                      billable_merchant_id:
+                        required: true
+                        $ref: '#/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data/properties/billable_merchant_id'
+                      originating_merchant_id:
+                        description: 'The unique merchant identifier for the originating merchant, required for storing PayPal payment methods.
+
+
+                          Prefix is "mid" in production and "sbx_mid" in sandbox.'
+                        type: string
+                        example: mid_2DrDFJPutxE5AIbJSopAnqniEbr
+                      platform:
+                        type: object
+                        properties:
+                          platform_id:
+                            $ref: '#/paths/~1v1~1payment_method_configs/post/requestBody/content/application~1json/schema/properties/platform_id'
+                            readOnly: true
+                          name:
+                            readOnly: true
+                            description: The platform name.
+                            type: string
+                            example: Platform Name
+                      idempotency_key:
+                        $ref: '#/paths/~1v1~1refunds~1%7Brefund_id%7D~1void/post/requestBody/content/application~1json/schema/properties/idempotency_key'
+                      billing_contact:
+                        $ref: '#/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact'
+                      metadata:
+                        $ref: '#/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/method_metadata'
+                      payment_method:
+                        description: 'The minimal representation of the payment method created with the payment method config, if applicable.
+
+
+                          If no payment method has been created with the payment method config, `payment_method` will be `null`.'
+                        nullable: true
+                        readOnly: true
+                        type: object
+                        properties:
+                          payment_method_id:
+                            $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id'
+                      allow_bin_lookup:
+                        $ref: '#/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/allow_bin_lookup'
+                      device_signature_mode:
+                        description: "Determines if a signature should be collected when storing a payment method on a device\n\nOptions:\n  * `NONE` - Signature will not be collected\n  * `ATTEMPT` - Only prompt for a signature on devices that support the signature capability"
+                        $ref: '#/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/device_signature_mode'
+                      created_at:
+                        description: Date and time the payment method config was created at in UTC RFC 3339 format.
+                        type: string
+                        format: date-time
+                        example: '2022-01-01T12:00:00Z'
+                        readOnly: true
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Payment Method Configs
+  /v1/payment_method_configs/{payment_method_config_id}:
+    get:
+      operationId: get_payment_method_config
+      summary: Get payment method config
+      description: Get the configuration for a payment method by the payment method config ID.
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - in: path
+        required: true
+        name: payment_method_config_id
+        schema:
+          type: string
+        description: 'The unique payment method config identifier.
+
+
+          Prefix is "pmc" in production and "sbx_pmc" in sandbox.'
+        examples:
+          production:
+            value: pmc_2YxCnpYpJ3oTL2opXMtiJ0TJQSm
+          sandbox:
+            value: sbx_pmc_2YxCnpYpJ3oTL2opXMtiJ0TJQSm
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1payment_method_configs/post/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Payment Method Configs
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: APIKey

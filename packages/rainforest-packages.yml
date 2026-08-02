@@ -1,0 +1,16 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/rainforestpay
+notes: >-
+  Rainforest is an API-plus-embedded-Components provider; it does not publish general
+  server-side SDKs (Node/Python/etc.). The one first-party client library found is the
+  iOS Tap to Pay SDK distributed via Swift Package Manager. Registry searches for
+  "rainforest" on npm/PyPI surface the unrelated Rainforest QA project, not Rainforest Pay.
+packages:
+- language: swift
+  registry: swift-package-manager
+  name: rainforest-ios-sdk
+  url: https://github.com/rainforestpay/rainforest-ios-sdk
+  install: "Add https://github.com/rainforestpay/rainforest-ios-sdk via Swift Package Manager"
+  description: Rainforest Tap to Phone (Tap to Pay on iPhone) SDK.
+  official: true

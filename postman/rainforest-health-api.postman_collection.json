@@ -1,0 +1,154 @@
+{
+  "info": {
+    "_postman_id": "1cfea9d4-c1a8-4911-9445-f2bc96bf1a97",
+    "name": "Authentication ACH Returns Health API",
+    "description": "This resource is used for authentication actions\n\nContact Support:\n Name: Rainforest\n Email: support@rainforestpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:43:35.000Z",
+    "updatedAt": "2026-07-28T02:43:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1cfea9d4-c1a8-4911-9445-f2bc96bf1a97"
+  },
+  "item": [
+    {
+      "name": "health",
+      "item": [
+        {
+          "name": "Get health",
+          "id": "d9c9a569-900c-4fa3-b726-acbd6a5c7671",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "health"
+              ]
+            },
+            "description": "Get the status of the Rainforest API."
+          },
+          "response": [
+            {
+              "id": "88749221-d9eb-47ba-b3e2-7d4afaf08d60",
+              "name": "OK",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/health",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "health"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-07-28T02:43:35.000Z",
+              "updatedAt": "2026-07-28T02:43:35.000Z",
+              "uid": "35240-88749221-d9eb-47ba-b3e2-7d4afaf08d60"
+            },
+            {
+              "id": "ffb946a9-d8c8-4f6a-ba73-d94185d3321d",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/health",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "health"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-07-28T02:43:35.000Z",
+              "updatedAt": "2026-07-28T02:43:35.000Z",
+              "uid": "35240-ffb946a9-d8c8-4f6a-ba73-d94185d3321d"
+            }
+          ],
+          "createdAt": "2026-07-28T02:43:35.000Z",
+          "updatedAt": "2026-07-28T02:43:35.000Z",
+          "uid": "35240-d9c9a569-900c-4fa3-b726-acbd6a5c7671"
+        }
+      ],
+      "id": "d8810ba3-9e0a-49b3-9e4a-6476883a9380",
+      "createdAt": "2026-07-28T02:43:35.000Z",
+      "updatedAt": "2026-07-28T02:43:35.000Z",
+      "uid": "35240-d8810ba3-9e0a-49b3-9e4a-6476883a9380"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.sandbox.rainforestpay.com"
+    }
+  ]
+}

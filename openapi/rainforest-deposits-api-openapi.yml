@@ -1,0 +1,860 @@
+openapi: 3.1.0
+info:
+  title: Authentication ACH Returns Deposits API
+  version: 1.0.0
+  description: This resource is used for authentication actions
+  contact:
+    name: Rainforest
+    email: support@rainforestpay.com
+    url: https://rainforestpay.com
+servers:
+- url: https://api.sandbox.rainforestpay.com
+  description: Sandbox server
+- url: https://api.rainforestpay.com
+  description: Production server
+security:
+- BearerAuth: []
+tags:
+- name: Deposits
+  description: Resources for deposit functions.
+paths:
+  /v1/deposits:
+    get:
+      operationId: list_deposits
+      summary: List deposits
+      description: Query a list of deposits given a primary filter of platform or merchant id, then additional optional search criteria.
+      parameters:
+      - in: header
+        name: Rainforest-Api-Version
+        schema:
+          type: string
+          default: '2024-10-16'
+          enum:
+          - '2024-10-16'
+          - '2023-12-01'
+      - in: query
+        name: deposit_id
+        schema:
+          type: string
+        description: "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox."
+        examples:
+          production:
+            value: dep_2DrDKk5NIMbpuNGqm109SkpGDHh
+          sandbox:
+            value: sbx_dep_2DrDKk5NIMbpuNGqm109SkpGDHh
+      - in: query
+        name: platform_id
+        schema:
+          type: string
+        description: "The unique platform identifier. \n\nPrefix is \"plt\" in production and \"sbx_plt\" in sandbox."
+        examples:
+          production:
+            value: plt_2DrDRpyAdp5MPUJnrJmoZcMmtfF
+          sandbox:
+            value: plt_2DrDRpyAdp5MPUJnrJmoZcMmtfF
+      - in: query
+        name: merchant_id
+        schema:
+          type: string
+        description: "The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+        examples:
+          production:
+            value: mid_2DrDFJPutxE5AIbJSopAnqniEbr
+          sandbox:
+            value: sbx_mid_2DrDFJPutxE5AIbJSopAnqniEbr
+      - name: status
+        in: query
+        description: "One or more deposit statuses to filter by. Provide parameter multiple times to filter by multiple deposit status types. \n\n`PROCESSING` `SUCCEEDED` `IN_REVIEW` `FAILED`"
+        schema:
+          type: array
+          items:
+            description: The status of the deposit.
+            type: string
+            enum:
+            - FAILED
+            - IN_REVIEW
+            - PROCESSING
+            - SUCCEEDED
+            example: PROCESSING
+      - name: deposit_type
+        in: query
+        description: 'Deposit type to filter by. Provide parameter multiple times to filter by multiple deposit types.
+
+
+          * `BILLING`: deposit for the payment processing fees, applicable only for merchants on gross billing.
+
+          * `FUNDING`: deposit for the payment volume, if the merchant is on net billing, then the FUNDING deposit will be net any payment processing fees.'
+        schema:
+          type: array
+          items:
+            name: deposit_type
+            description: 'The type of deposit.
+
+
+              * `BILLING`: deposit for the payment processing fees, applicable only for merchants on gross billing.
+
+              * `FUNDING`: deposit for the payment volume, if the merchant is on net billing, then the `FUNDING` deposit will be net any payment processing fees.'
+            type: string
+            enum:
+            - BILLING
+            - FUNDING
+            example: FUNDING
+      - in: query
+        name: metadata
+        schema:
+          type: string
+        description: "Filter by metadata stored on the entity by passing a map of key-value pairs to filter on. The `key` should be valid JSONPath to a corresponding metadata key.\n\nFor example, an entity created with the following metadata\n```\n\"account\": {\n  \"id\": \"acct_123\"\n}\n```\ncould have the following metadata filter to find entities with the metadata account id: \n```\n?metadata[$.account.id]=acct_123\n```"
+      - in: query
+        name: created_at.start
+        description: Created on or after in UTC RFC 3339 format.
+        schema:
+          type: string
+          format: date-time
+        example: '2022-01-01T12:00:00Z'
+      - in: query
+        name: created_at.end
+        description: Created on or before in UTC RFC 3339 format.
+        schema:
+          type: string
+          format: date-time
+        example: '2022-01-01T12:00:00Z'
+      - name: sort_by
+        in: query
+        description: Optional value by which to sort the result set. Default sort by is created_at.
+        schema:
+          type: string
+          enum:
+          - amount
+          - created_at
+          - merchant_id
+          - status
+      - in: query
+        name: sort_order
+        description: Order in which to return the sorted results; ascending or descending. Default sort order is descending.
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      - in: query
+        name: limit
+        schema:
+          type: number
+          default: 1000
+          maximum: 1000
+        description: The maximum number of results to return.
+      - in: query
+        name: offset
+        schema:
+          type: number
+          default: 0
+          minimum: 0
+        description: The offset of the first result to return; zero-based.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    description: 'Status of the request.
+
+
+                      If the request status code is 2XX, then the `status` will be `SUCCESS`. If the request status code is 4XX or 5XX, then the `status` will be `ERROR`.'
+                    type: string
+                    enum:
+                    - SUCCESS
+                    - ERROR
+                    example: SUCCESS
+                  data:
+                    allOf:
+                    - type: object
+                      properties:
+                        total_results:
+                          type: integer
+                          description: Total number of results available. This value will be -1 if the query parameter `omit_total_results` is set to true.
+                    - type: object
+                      properties:
+                        results:
+                          description: List of deposits.
+                          type: array
+                          items:
+                            $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    description: List of errors, if applicable.
+                    type: array
+                    items:
+                      type: object
+                      description: Details of the error.
+                      properties:
+                        field:
+                          description: The field in the request that had an error, if applicable.
+                          type: string
+                        code:
+                          description: The code describing the error.
+                          type: string
+                        message:
+                          description: The description of the error related to the field.
+                          type: string
+                    example: null
+        '400':
+          description: Bad request, check for validation errors.
+          content:
+            application/json:
+              schema:
+                description: Default response object.
+                type: object
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    description: Generic data object specified per resource, null if there are request errors.
+                    type: object
+                    example: null
+                    nullable: true
+                    readOnly: true
+                  errors:
+                    $ref: '#/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/errors'
+              example:
+                status: ERROR
+                data: null
+                errors:
+                - field: string
+                  code: RequestBody
+                  message: Invalid request payload
+        '401':
+          description: Authorization missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1deposits/get/responses/400/content/application~1json/schema'
+              example:
+                status: ERROR
+                data: null
+                errors:
+                - field: string
+                  code: AuthUnauthorized
+                  message: Unauthorized
+        '403':
+          description: Authorization insufficient for requested action.
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1deposits/get/responses/400/content/application~1json/schema'
+              example:
+                status: ERROR
+                data: null
+                errors:
+                - field: string
+                  code: AuthForbidden
+                  message: Forbidden
+        5XX:
+          description: Unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1deposits/get/responses/400/content/application~1json/schema'
+              example:
+                status: ERROR
+                data: null
+                errors:
+                - field: string
+                  code: string
+                  message: Internal Server Error
+      tags:
+      - Deposits
+  /v1/deposits/{deposit_id}:
+    get:
+      operationId: get_deposit
+      summary: Get deposit
+      description: Get a deposit's details by the deposit ID.
+      parameters:
+      - $ref: '#/paths/~1v1~1deposits/get/parameters/0'
+      - in: path
+        required: true
+        name: deposit_id
+        schema:
+          type: string
+        description: "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox."
+        examples:
+          production:
+            value: dep_2DrDKk5NIMbpuNGqm109SkpGDHh
+          sandbox:
+            value: sbx_dep_2DrDKk5NIMbpuNGqm109SkpGDHh
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    type: object
+                    properties:
+                      deposit_id:
+                        description: "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox."
+                        type: string
+                        example: dep_2DrDU206kzAhclm1WrZbuwDERRk
+                      platform_id:
+                        $ref: '#/paths/~1v1~1deposit_method_configs/post/requestBody/content/application~1json/schema/properties/platform_id'
+                        nullable: true
+                        description: 'The unique platform identifier. `platform_id` will be set for a platform deposit. Only one of `platform_id` and `merchant_id` will be set.
+
+
+                          Prefix is "plt" in production and "sbx_plt" in sandbox.'
+                      merchant_id:
+                        $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_id'
+                        nullable: true
+                        description: 'The unique merchant identifier. `merchant_id` will be set for a merchant deposit. Only one of `platform_id` and `merchant_id` will be set.
+
+
+                          Prefix is "mid" in production and "sbx_mid" in sandbox.'
+                      status:
+                        $ref: '#/paths/~1v1~1deposits/get/parameters/4/schema/items'
+                      deposit_type:
+                        $ref: '#/paths/~1v1~1deposits/get/parameters/5/schema/items'
+                      billing_type:
+                        description: The merchant billing type.
+                        type: string
+                        enum:
+                        - NET
+                        - GROSS
+                      amount:
+                        description: 'The amount deposited, in minor units.
+
+
+                          For example, 1000 is 10.00 USD.'
+                        type: integer
+                        minimum: 0
+                      currency_code:
+                        description: Three-letter ISO currency code, in uppercase. Currently, only USD is supported.
+                        type: string
+                        example: USD
+                        enum:
+                        - USD
+                        maxLength: 3
+                        minLength: 3
+                      deposit_fee_amount:
+                        type: object
+                        properties:
+                          amount:
+                            description: 'The amount of the deposit fee, in minor units.
+
+
+                              For example, 20 is 0.20 USD.'
+                            type: integer
+                          currency_code:
+                            $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code'
+                      total_payment_billing_fees_amount:
+                        type: object
+                        properties:
+                          amount:
+                            description: 'The total amount of the billing fees for all the deposit activity, in minor units.
+
+
+                              For example, -100 is -1.00 USD.'
+                            type: integer
+                          currency_code:
+                            $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code'
+                      total_split_remainder_amount:
+                        type: object
+                        properties:
+                          amount:
+                            description: 'The total amount of the amount splits for all the deposit activity, in minor units.
+
+
+                              For example, -100 is -1.00 USD.'
+                            type: integer
+                          currency_code:
+                            $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code'
+                      total_fees_amount:
+                        type: object
+                        properties:
+                          amount:
+                            description: 'The total amount of the billing fees and the amount splits for all the deposit activity, in minor units.
+
+
+                              Equal to total_payment_billing_fees_amount + total_split_remainder_amount'
+                            type: integer
+                          currency_code:
+                            $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code'
+                      gross_amount:
+                        type: object
+                        properties:
+                          amount:
+                            description: 'The gross amount of all the deposit activity, in minor units.
+
+
+                              For example, 1000 is 10.00 USD.'
+                            type: integer
+                          currency_code:
+                            $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code'
+                      payment_totals:
+                        description: The total count and amount summaries for each payment type in the deposit. Payment types include `payins`, `refunds`, `chargebacks`, `ach_returns`, `adjustments`, and `deposits`.
+                        type: object
+                        properties:
+                          payins:
+                            type: object
+                            properties:
+                              count:
+                                description: The total count of the payment type deposited.
+                                type: integer
+                              gross_amount:
+                                type: object
+                                properties:
+                                  amount:
+                                    description: 'The gross amount for the payment type deposited, in minor units.
+
+
+                                      For example, 1000 is 10.00 USD.'
+                                    type: integer
+                                  currency_code:
+                                    $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code'
+                              billing_fees_amount:
+                                type: object
+                                properties:
+                                  amount:
+                                    description: 'The total amount of the billing fees for the payment type deposited, in minor units.
+
+
+                                      For example, -20 is -0.20 USD.'
+                                    type: integer
+                                  currency_code:
+                                    $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code'
+                              split_remainder_amount:
+                                type: object
+                                properties:
+                                  amount:
+                                    description: 'The total amount of the amount splits for the billing type deposited, in minor units.
+
+
+                                      For example, -20 is -0.20 USD.'
+                                    type: integer
+                                  currency_code:
+                                    $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code'
+                              net_amount:
+                                type: object
+                                properties:
+                                  amount:
+                                    description: "The total amount for the payment type deposited, in minor units. \n\nEqual to gross_amount - billing_fees_amount - split_remainder_amount"
+                                    type: integer
+                                  currency_code:
+                                    $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code'
+                          refunds:
+                            $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/payment_totals/properties/payins'
+                          chargebacks:
+                            $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/payment_totals/properties/payins'
+                          ach_returns:
+                            $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/payment_totals/properties/payins'
+                          adjustments:
+                            $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/payment_totals/properties/payins'
+                          deposits:
+                            $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/payment_totals/properties/payins'
+                      method_type:
+                        $ref: '#/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/method_type'
+                      ach:
+                        description: ACH deposit method details.
+                        $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/ach'
+                      plaid_ach:
+                        description: ACH deposit method details from Plaid.
+                        $ref: '#/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/plaid_ach'
+                      metadata:
+                        $ref: '#/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/metadata'
+                      created_at:
+                        description: Date and time deposit was created at in UTC RFC 3339 format.
+                        type: string
+                        format: date-time
+                        example: '2022-01-01T12:00:00Z'
+                  errors:
+                    $ref: '#/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1deposits/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1deposits/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1deposits/get/responses/403'
+        '404':
+          description: Resource not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1deposits/get/responses/400/content/application~1json/schema'
+              example:
+                status: ERROR
+                data: null
+                errors:
+                - field: string
+                  code: EntityNotFound
+                  message: Resource not found
+        5XX:
+          $ref: '#/paths/~1v1~1deposits/get/responses/5XX'
+      tags:
+      - Deposits
+  /v1/deposits/{deposit_id}/activity:
+    get:
+      operationId: get_deposit_activity
+      summary: Get deposit activity
+      description: Get the activity within a deposit by the deposit ID.
+      parameters:
+      - $ref: '#/paths/~1v1~1deposits/get/parameters/0'
+      - $ref: '#/paths/~1v1~1deposits/get/parameters/1'
+        in: path
+        required: true
+      - name: payment_type
+        in: query
+        description: "One or more payment types to filter by. Provide parameter multiples times to filter by multiple payment types. \n\n`ACH_RETURN` `CHARGEBACK` `PAYIN` `REFUND`"
+        schema:
+          type: array
+          items:
+            description: The type of payment.
+            type: string
+            enum:
+            - ACH_RETURN
+            - CHARGEBACK
+            - PAYIN
+            - REFUND
+            example: PAYIN
+      - in: query
+        name: memo
+        description: Additional information about the activity, applicable for an adjustment.
+        schema:
+          type: string
+          maxLength: 255
+          minLength: 1
+      - in: query
+        name: billing_contact_name
+        description: Optional billing contact name by which to filter.
+        schema:
+          type: string
+          maxLength: 50
+          minLength: 1
+        examples:
+          partial:
+            value: Doe
+            summary: Match a partial billing contact name value.
+          full:
+            value: John Doe
+            summary: Match a full billing contact name value.
+      - $ref: '#/paths/~1v1~1deposits/get/parameters/6'
+        in: query
+      - name: sort_by
+        in: query
+        description: Optional value by which to sort the result set. Default sort by is created_at.
+        schema:
+          type: string
+          enum:
+          - billing_contact_name
+          - billing_contact_email
+          - created_at
+          - merchant_id
+          - merchant_name
+          - memo
+          - type
+      - $ref: '#/paths/~1v1~1deposits/get/parameters/10'
+        in: query
+      - $ref: '#/paths/~1v1~1deposits/get/parameters/11'
+        in: query
+      - $ref: '#/paths/~1v1~1deposits/get/parameters/12'
+        in: query
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    type: object
+                    properties:
+                      net_amount:
+                        type: object
+                        properties:
+                          amount:
+                            description: 'The net amount of the deposit, in minor units.
+
+
+                              This is the final amount deposited via the recipient''s deposit method.
+
+
+                              The net amount is the gross amount minus the deposit fee.
+
+
+                              For example, 1170 is 11.70 USD.'
+                            type: integer
+                          currency_code:
+                            $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code'
+                      gross_amount:
+                        type: object
+                        properties:
+                          amount:
+                            description: 'The gross amount of the deposit, in minor units.
+
+
+                              For example, 1000 is 10.00 USD.'
+                            type: integer
+                          currency_code:
+                            $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code'
+                      deposit_fee_amount:
+                        type: object
+                        properties:
+                          amount:
+                            description: 'The amount of the deposit fee, in minor units.
+
+
+                              For example, 20 is 0.20 USD.'
+                            type: integer
+                          currency_code:
+                            $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code'
+                      activities:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              description: The unique identifier for the activity.
+                              type: string
+                              example: pyi_2DrDU206kzAhclm1WrZbuwDERRk
+                            type:
+                              description: The type of activity.
+                              type: string
+                              enum:
+                              - ACH_RETURN
+                              - ADJUSTMENT
+                              - CHARGEBACK
+                              - DEPOSIT
+                              - PAYIN
+                              - REFUND
+                            parent_id:
+                              description: The unique identifier for the parent entity, i.e the payin_id if the `id` is a refund_id.
+                              type: string
+                            merchant_id:
+                              $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_id'
+                            payment_method_id:
+                              $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id'
+                            gross_amount:
+                              type: object
+                              properties:
+                                amount:
+                                  description: 'The gross amount of the deposit activity, in minor units.
+
+
+                                    Typically positive for a payin.
+
+
+                                    Typically negative for an ACH return or refund.
+
+
+                                    A chargeback can be positive or negative depending on the chargeback status.
+
+
+                                    For example, 1000 is 10.00 USD.'
+                                  type: integer
+                                currency_code:
+                                  $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code'
+                            billing_fees_amount:
+                              type: object
+                              properties:
+                                amount:
+                                  description: 'The amount of the billing fees for the deposit activity, in minor units.
+
+
+                                    Typically negative when charged fees for an activity.
+
+
+                                    For example, -60 is -0.60 USD.'
+                                  type: integer
+                                currency_code:
+                                  $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code'
+                            split_remainder_amount:
+                              type: object
+                              properties:
+                                amount:
+                                  description: 'The total amount of amount splits, in minor units.
+
+
+                                    This is the sum of the `amount_splits` array elements.
+
+
+                                    For example, 100 is 1.00 USD.'
+                                  type: integer
+                                currency_code:
+                                  $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code'
+                            net_amount:
+                              type: object
+                              properties:
+                                amount:
+                                  description: 'The net amount of the deposit activity, in minor units.
+
+
+                                    This is the net amount due to the merchant for each activity, less any fees and amount splits.
+
+
+                                    For example, 840 is 8.40 USD.'
+                                  type: integer
+                                currency_code:
+                                  $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code'
+                            metadata:
+                              description: Valid JSON key-value object stored on the activity.
+                              type: object
+                            billing_contact:
+                              $ref: '#/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/billing_contact'
+                            memo:
+                              description: Additional information about the activity, applicable for an adjustment.
+                              type: string
+                            merchant:
+                              description: The minimal representation of the merchant.
+                              type: object
+                              properties:
+                                id:
+                                  $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_id'
+                                  readOnly: true
+                                name:
+                                  readOnly: true
+                                  description: The unique identifier for the merchant business name.
+                                  type: string
+                                  example: Merchant
+                                  maxLength: 100
+                                dba_name:
+                                  readOnly: true
+                                  description: The merchant’s public-facing name. This may be the same as the legal name if the merchant does not operate under a different name.
+                                  type: string
+                                  example: Merchant
+                                  maxLength: 100
+                            payment_method:
+                              description: The minimal representation of the payment method.
+                              type: object
+                              properties:
+                                payment_method_id:
+                                  $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id'
+                                method_type:
+                                  $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/method_type'
+                                card:
+                                  $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/card'
+                                ach:
+                                  $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/ach'
+                                apple_pay:
+                                  $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/apple_pay'
+                            created_at:
+                              description: Date and time the deposit activity was created at in UTC RFC 3339 format.
+                              type: string
+                              format: date-time
+                              example: '2022-01-01T12:00:00Z'
+                  errors:
+                    $ref: '#/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1deposits/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1deposits/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1deposits/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1deposits/get/responses/5XX'
+      tags:
+      - Deposits
+  /v1/deposits/{deposit_id}/simulate:
+    post:
+      operationId: simulate_deposit_status
+      summary: Simulate deposit status change
+      description: 'Only available in the Rainforest sandbox environment.
+
+
+        Simulate a deposit status change. The deposit status must be in PROCESSING. The expected webhooks will be sent for the deposit on status change.'
+      parameters:
+      - $ref: '#/paths/~1v1~1deposits/get/parameters/0'
+      - $ref: '#/paths/~1v1~1deposits/get/parameters/1'
+        in: path
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Simulation request for transitioning deposit status.
+              type: object
+              properties:
+                status:
+                  description: 'Status to transition the deposit to.
+
+
+                    In order to perform this transition, the deposit must be in status `PROCESSING`.
+
+
+                    At this time, you may only transition a deposit into a `SUCCEEDED` status.'
+                  type: string
+                  required: true
+                  enum:
+                  - SUCCEEDED
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1deposits/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1deposits/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1deposits/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1deposits/get/responses/5XX'
+      tags:
+      - Deposits
+  /v1/merchants/{merchant_id}/simulate_deposit:
+    post:
+      operationId: simulate_merchant_deposit
+      summary: Simulate merchant deposit creation
+      description: "Only available in the Rainforest sandbox environment.\n\nSimulate processing a deposit on a merchant. Any payins or refunds with the status of `PROCESSING` will be transitioned to the status of `SUCCEEDED`.\n\nThe expected webhooks will be sent for all payins and refunds while the deposit is processing. The `deposit.processing` webhook will be sent when the deposit has been processed and the deposit status is `PROCESSING`.\n\nOn a merchant with a Daily Net billing configuration, a deposit will be processed with an amount that corresponds to the payment activity, less any applicable fees.\n\nOn a merchant with a Daily Gross billing configuration, two deposits will be processed:\n  1. A funding deposit with an amount that corresponds to the gross amount of the payment activity.\n  2. A billing deposit with an amount that corresponds to the applicable billing fees of the payment activity.\n\nOn a merchant with a Monthly Gross billing configuration, only the funding deposit will be processed with an amount that corresponds to the gross amount of the payment activity."
+      parameters:
+      - $ref: '#/paths/~1v1~1deposits/get/parameters/0'
+      - in: path
+        required: true
+        name: merchant_id
+        schema:
+          type: string
+        description: "The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+        examples:
+          production:
+            value: mid_2DrDFJPutxE5AIbJSopAnqniEbr
+          sandbox:
+            value: sbx_mid_2DrDFJPutxE5AIbJSopAnqniEbr
+      responses:
+        '204':
+          description: 'No Content.
+
+
+            The merchant deposit(s) have been processed with a deposit status of `PROCESSING`.'
+        '400':
+          $ref: '#/paths/~1v1~1deposits/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1deposits/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1deposits/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1deposits/get/responses/5XX'
+      tags:
+      - Deposits
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: APIKey

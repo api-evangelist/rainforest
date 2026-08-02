@@ -1,0 +1,69 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.rainforestpay.com/docs/test-accounts-and-cards
+environments:
+  sandbox:
+    api_base: https://api.sandbox.rainforestpay.com
+    portal: https://platform.sandbox.rainforestpay.com
+    api_key_prefix: sbx_apikey_
+  production:
+    api_base: https://api.rainforestpay.com
+    portal: https://platform.rainforestpay.com
+    api_key_prefix: apikey_
+test_cards:
+  approved:
+  - {brand: Visa, number: "4111 1111 1111 1111", cvc: any-3}
+  - {brand: Visa, number: "4242 4242 4242 4242", cvc: any-3}
+  - {brand: Visa (debit), number: "4104 2820 0000 0001", cvc: any-3}
+  - {brand: Mastercard, number: "5555 5555 5555 4444", cvc: any-3}
+  - {brand: Mastercard (2-series), number: "2223 0031 2200 3222", cvc: any-3}
+  - {brand: Mastercard (debit), number: "2301 3500 0000 0001", cvc: any-3}
+  - {brand: Mastercard (prepaid), number: "2226 3500 0000 0003", cvc: any-3}
+  - {brand: American Express, number: "3782 822463 10005", cvc: any-4}
+  - {brand: American Express, number: "3714 496353 98431", cvc: any-4}
+  - {brand: American Express (debit), number: "3400 820000 00007", cvc: any-4}
+  - {brand: Discover, number: "6011 1111 1111 1117", cvc: any-3}
+  - {brand: Discover, number: "6011 0009 9013 9424", cvc: any-3}
+  - {brand: Discover (debit), number: "6011 0500 0000 0009", cvc: any-3}
+  - {brand: Cartes Bancaires/Visa, number: "4000 0025 0000 1001", cvc: any-3}
+  - {brand: Cartes Bancaires/Mastercard, number: "5555 5525 0000 1001", cvc: any-3}
+  - {brand: Visa (healthcare), number: "4240 4000 1111 1113", cvc: any-3}
+  - {brand: Mastercard (healthcare), number: "5100 2700 9992 9991", cvc: any-3}
+  - {brand: Visa (business), number: "4394 3626 2000 0000", cvc: any-3}
+  declined:
+  - {type: Generic, number: "4000 0000 0000 0002", refusal_code: DECLINED}
+  - {type: Insufficient funds, number: "4000 0000 0000 9995", refusal_code: INSUFFICIENT_FUNDS}
+  - {type: Expired card, number: "4000 0000 0000 0069", refusal_code: EXPIRED_CARD}
+  avs_risk:
+  - {type: Address mismatch (AVS N), number: "4000 0000 0000 0010", result: FAILED, refusal_code: INCORRECT_PAYMENT_INFORMATION}
+  - {type: Address zip only (AVS Z), number: "4000 0000 0000 0028", result: PROCESSING}
+  - {type: Address unavailable (AVS U), number: "4000 0000 0000 0044", result: PROCESSING}
+  rule: >-
+    Any card number NOT on an approved list returns a generic DECLINED (status FAILED)
+    in sandbox. Approved cards return PROCESSING.
+device_decline_amounts:
+- {type: Generic, amount: "$40.02", refusal_code: DECLINED}
+- {type: Insufficient funds, amount: "$40.95", refusal_code: INSUFFICIENT_FUNDS}
+test_bank_accounts:
+  note: Any valid routing + account number results in an Approved ACH payment (status PROCESSING).
+  routing_numbers:
+  - {institution: U.S. Bank, routing: "091000022", account: any 4-26 digits}
+  - {institution: Wells Fargo Bank, routing: "091000019", account: any 4-26 digits}
+  - {institution: JPMorgan Chase Bank, routing: "021000021", account: any 4-26 digits}
+  validated_ach:
+    provider: Plaid
+    note: All Plaid accounts approve in sandbox; Plaid's test bank is "First Platypus Bank" (sign in with no username/password).
+simulation_endpoints:
+  note: Sandbox-only endpoints advance resource statuses and fire the corresponding webhooks.
+  operations:
+  - simulate_deposit_status
+  - simulate_merchant_deposit
+  - simulate_merchant_application
+  - simulate_payin_ach_return
+  - simulate_payin_chargeback
+  - simulate_chargeback
+  - simulate_on_device
+partial_authorization:
+  note: >-
+    When allow_partial_authorization=true on create_payin_config, sandbox approves half the
+    requested amount (PROCESSING); when false, it declines with INSUFFICIENT_FUNDS (FAILED).

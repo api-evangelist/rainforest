@@ -1,0 +1,1574 @@
+openapi: 3.1.0
+info:
+  title: Authentication ACH Returns Payins API
+  version: 1.0.0
+  description: This resource is used for authentication actions
+  contact:
+    name: Rainforest
+    email: support@rainforestpay.com
+    url: https://rainforestpay.com
+servers:
+- url: https://api.sandbox.rainforestpay.com
+  description: Sandbox server
+- url: https://api.rainforestpay.com
+  description: Production server
+security:
+- BearerAuth: []
+tags:
+- name: Payins
+  description: Resources for payin functions.
+paths:
+  /v1/payins:
+    get:
+      operationId: list_payins
+      summary: List payins
+      description: Query a list of payins given optional search criteria.
+      parameters:
+      - in: header
+        name: Rainforest-Api-Version
+        schema:
+          type: string
+          default: '2024-10-16'
+          enum:
+          - '2024-10-16'
+          - '2023-12-01'
+      - $ref: '#/paths/~1v1~1device_registrations/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_id'
+        in: query
+      - in: query
+        name: merchant_name
+        description: Optional merchant name by which to filter.
+        schema:
+          type: string
+        examples:
+          partial:
+            value: Merchant
+            summary: Match a partial merchant name value.
+          full:
+            value: Merchant LLC
+            summary: Match a full merchant name value.
+      - in: query
+        name: method_type
+        description: Payment method type to filter by. Provide parameter multiple times to filter by multiple payment method types.
+        schema:
+          description: The type of payment method.
+          type: string
+          enum:
+          - CARD
+          - APPLE_PAY
+          - ACH
+          - PLAID_ACH
+      - in: query
+        name: billing_contact_name
+        description: Optional billing contact name by which to filter.
+        schema:
+          type: string
+          maxLength: 50
+          minLength: 1
+        examples:
+          partial:
+            value: Doe
+            summary: Match a partial billing contact name value.
+          full:
+            value: John Doe
+            summary: Match a full billing contact name value.
+      - name: status
+        in: query
+        description: 'One or more payin statuses to filter by. Provide parameter multiple times to filter by multiple payin status types.
+
+
+          `AUTHORIZED` `CANCELED` `CREATED` `FAILED` `IN_REVIEW` `PRESENTING` `PROCESSING` `RETURNED` `SUCCEEDED`'
+        schema:
+          type: array
+          items:
+            description: The status of the payin.
+            type: string
+            enum:
+            - AUTHORIZED
+            - CANCELED
+            - CREATED
+            - FAILED
+            - IN_REVIEW
+            - PRESENTING
+            - PROCESSING
+            - RETURNED
+            - SUCCEEDED
+            example: PROCESSING
+      - in: query
+        name: source
+        description: 'One or more payin sources to filter by. Provide parameter multiple times to filter by multiple payin sources. '
+        schema:
+          type: array
+          items:
+            description: The source of the payin. Indicates the integration that created the payin.
+            type: string
+            nullable: false
+            enum:
+            - API_DIRECT
+            - API_STORED_PAYMENT_METHOD
+            - COMPONENT
+            - DEVICE
+            - EXTERNAL
+            - IVR
+            - TAP_TO_PHONE
+      - in: query
+        name: metadata
+        schema:
+          type: string
+        description: "Filter by metadata stored on the entity by passing a map of key-value pairs to filter on. The `key` should be valid JSONPath to a corresponding metadata key.\n\nFor example, an entity created with the following metadata\n```\n\"account\": {\n  \"id\": \"acct_123\"\n}\n```\ncould have the following metadata filter to find entities with the metadata account id: \n```\n?metadata[$.account.id]=acct_123\n```"
+      - in: query
+        name: created_at.start
+        description: Created on or after in UTC RFC 3339 format.
+        schema:
+          type: string
+          format: date-time
+        example: '2022-01-01T12:00:00Z'
+      - in: query
+        name: created_at.end
+        description: Created on or before in UTC RFC 3339 format.
+        schema:
+          type: string
+          format: date-time
+        example: '2022-01-01T12:00:00Z'
+      - in: query
+        name: expected_deposit_date.start
+        description: Expected to be deposited on or after in UTC RFC 3339 format.
+        schema:
+          type: string
+          format: date
+        example: '2022-01-01'
+      - in: query
+        name: expected_deposit_date.end
+        description: Expected to be deposited on or before in UTC RFC 3339 format.
+        schema:
+          type: string
+          format: date
+        example: '2022-01-01'
+      - name: sort_by
+        in: query
+        description: Optional value by which to sort the result set. Default sort by is created_at.
+        schema:
+          type: string
+          enum:
+          - amount
+          - billing_contact_name
+          - created_at
+          - expected_deposit_date
+          - merchant_id
+          - method_type
+          - payin_id
+          - status
+      - in: query
+        name: sort_order
+        description: Order in which to return the sorted results; ascending or descending. Default sort order is descending.
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      - in: query
+        name: limit
+        schema:
+          type: number
+          default: 1000
+          maximum: 1000
+        description: The maximum number of results to return.
+      - in: query
+        name: start_key
+        schema:
+          type: string
+        description: A key used to indicate the starting point for the next page of results. This value should be set to the last_key returned by the previous paginated request.
+      - in: query
+        deprecated: true
+        name: offset
+        schema:
+          type: number
+          default: 0
+          minimum: 0
+        description: 'Offset has been deprecated. Utilize start_key and last_key for pagination.
+
+
+          The offset of the first result to return; zero-based.'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    description: 'Status of the request.
+
+
+                      If the request status code is 2XX, then the `status` will be `SUCCESS`. If the request status code is 4XX or 5XX, then the `status` will be `ERROR`.'
+                    type: string
+                    enum:
+                    - SUCCESS
+                    - ERROR
+                    example: SUCCESS
+                  data:
+                    allOf:
+                    - type: object
+                      properties:
+                        total_results:
+                          type: integer
+                          description: Total number of results available. This value will be -1 if the query parameter `omit_total_results` is set to true.
+                    - type: object
+                      properties:
+                        last_key:
+                          name: last_key
+                          schema:
+                            type: string
+                          description: 'Last ID in this result set.
+
+
+                            This value can be be used as `start_key` in subsequent paginated requests to retrieve additional results whose IDs are greater than the `last_key` value.'
+                        results:
+                          description: List of payins.
+                          type: array
+                          items:
+                            $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    description: List of errors, if applicable.
+                    type: array
+                    items:
+                      type: object
+                      description: Details of the error.
+                      properties:
+                        field:
+                          description: The field in the request that had an error, if applicable.
+                          type: string
+                        code:
+                          description: The code describing the error.
+                          type: string
+                        message:
+                          description: The description of the error related to the field.
+                          type: string
+                    example: null
+        '400':
+          description: Bad request, check for validation errors.
+          content:
+            application/json:
+              schema:
+                description: Default response object.
+                type: object
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    description: Generic data object specified per resource, null if there are request errors.
+                    type: object
+                    example: null
+                    nullable: true
+                    readOnly: true
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+              example:
+                status: ERROR
+                data: null
+                errors:
+                - field: string
+                  code: RequestBody
+                  message: Invalid request payload
+        '401':
+          description: Authorization missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1payins/get/responses/400/content/application~1json/schema'
+              example:
+                status: ERROR
+                data: null
+                errors:
+                - field: string
+                  code: AuthUnauthorized
+                  message: Unauthorized
+        '403':
+          description: Authorization insufficient for requested action.
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1payins/get/responses/400/content/application~1json/schema'
+              example:
+                status: ERROR
+                data: null
+                errors:
+                - field: string
+                  code: AuthForbidden
+                  message: Forbidden
+        5XX:
+          description: Unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1payins/get/responses/400/content/application~1json/schema'
+              example:
+                status: ERROR
+                data: null
+                errors:
+                - field: string
+                  code: string
+                  message: Internal Server Error
+      tags:
+      - Payins
+    post:
+      operationId: create_payin
+      summary: Create payin
+      description: 'Create and process a payin with sensitive PCI data using a payin configuration. The merchant status must be `ACTIVE` to create a payin.
+
+
+        This endpoint requires Rainforest approval. Platforms that meet all [requirements](doc:send-sensitive-data-via-api#requirements) and are approved by Rainforest can send the full card and bank account numbers to Rainforest via a server-to-serve direct API integration.'
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payin_config_id:
+                  description: 'The unique payin config identifier. A payin must be configured prior to this request. See "Create a Payin Config" if a payin configuration has not been created yet.
+
+
+                    Prefix is "cfg" in production and "sbx_cfg" in sandbox.'
+                  type: string
+                  example: cfg_2A4d6U0tMyovzTbVT1ktmRzdRaD
+                method_type:
+                  description: The type of payment method.
+                  type: string
+                  enum:
+                  - CARD
+                  - ACH
+                card:
+                  description: Card payment method. Required for method_type CARD.
+                  type: object
+                  properties:
+                    card_number:
+                      description: The card number, formatted with no spaces (e.g 0000000000000000).
+                      type: string
+                      example: '4111111111111111'
+                    exp_month:
+                      description: The card expiration month.
+                      type: integer
+                      example: 12
+                      maximum: 12
+                      minimum: 1
+                    exp_year:
+                      description: The card expiration year, in 4-digits.
+                      type: integer
+                      example: 2027
+                      maximum: 2099
+                      minimum: 2000
+                    cvc:
+                      description: The card CVC, temporarily available for 5 minutes for payment processing.
+                      type: integer
+                      example: '123'
+                ach:
+                  description: ACH payment method details. Required for method_type ACH.
+                  type: object
+                  properties:
+                    account_number:
+                      description: The bank account number.
+                      type: string
+                      example: '12345678'
+                    routing_number:
+                      description: The 9-digit routing number.
+                      type: string
+                      example: 091000019
+                      maxLength: 9
+                      minLength: 9
+                    account_type:
+                      description: The account type. Defaulted to CHECKING if omitted.
+                      type: string
+                      example: CHECKING
+                      enum:
+                      - CHECKING
+                      - SAVINGS
+                    account_holder_type:
+                      description: The account holder type.
+                      type: string
+                      example: PERSONAL
+                      enum:
+                      - PERSONAL
+                      - BUSINESS
+                billing_contact:
+                  $ref: '#/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact'
+                  description: 'Billing contact details. The following billing contact fields are **_required_** for payment processing depending on the payment method type:
+
+                    * Card: `postal_code`
+
+                    * ACH: `name`
+
+
+                    The billing contact fields can also be passed in the payin config.'
+              required:
+              - payin_config_id
+              - method_type
+            examples:
+              card:
+                value:
+                  payin_config_id: cfg_2A4d6U0tMyovzTbVT1ktmRzdRaD
+                  method_type: CARD
+                  card:
+                    card_number: '4111111111111111'
+                    exp_month: 12
+                    exp_year: 2027
+                    cvc: '123'
+                  billing_contact:
+                    name: Jane Smith
+                    address_line_1: 3423 Piedmont Rd
+                    address_line_2: Suite 123
+                    city: Atlanta
+                    state: GA
+                    postal_code: '30305'
+                    country: US
+                    email: janesmith@example.com
+                    phone: '4041234567'
+              ach:
+                value:
+                  payin_config_id: cfg_2A4d6U0tMyovzTbVT1ktmRzdRaD
+                  method_type: ACH
+                  ach:
+                    account_number: '12345678'
+                    routing_number: 091000019
+                    account_type: CHECKING
+                    account_holder_type: PERSONAL
+                  billing_contact:
+                    name: Jane Smith
+                    address_line_1: 3423 Piedmont Rd
+                    address_line_2: Suite 123
+                    city: Atlanta
+                    state: GA
+                    postal_code: '30305'
+                    country: US
+                    email: janesmith@example.com
+                    phone: '4041234567'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    description: The payin details.
+                    type: object
+                    properties:
+                      payin_id:
+                        description: "The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                        type: string
+                        example: pyi_2DrDKk5NIMbpuNGqm109SkpGDHh
+                      payin_config_id:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/threeds_attempt/properties/payin_config_id'
+                        readOnly: true
+                      merchant_id:
+                        $ref: '#/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id'
+                      payment_method_id:
+                        description: "The unique payment method identifier. \n\nPrefix is \"mtd\" in production and \"sbx_mtd\" in sandbox."
+                        type: string
+                        example: mtd_2DrDRpyAdp5MPUJnrJmoZcMmtfF
+                      payment_method_config_id:
+                        $ref: '#/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/payment_method_config_id'
+                        readOnly: true
+                      device_registration_id:
+                        description: 'The unique device registration identifier.
+
+
+                          Prefix is "dvc" in production and "sbx_dvc" in sandbox.'
+                        type: string
+                        example: dvc_2DrDKk5NIMbpuNGqm109SkpGDHh
+                      threeds_attempt_id:
+                        nullable: true
+                        description: "The unique threeds attempt identifier. \n\nPrefix is \"tds\" in production and \"sbx_tds\" in sandbox."
+                        type: string
+                        example: tds_2DrDFJPutxE5AIbJSopAnqniEbr
+                      idempotency_key:
+                        $ref: '#/paths/~1v1~1refunds~1%7Brefund_id%7D~1void/post/requestBody/content/application~1json/schema/properties/idempotency_key'
+                      billing_type:
+                        description: The merchant billing type.
+                        type: string
+                        enum:
+                        - NET
+                        - GROSS
+                      amount:
+                        description: 'The amount of the payin, in minor units.
+
+
+                          For example, 1000 is 10.00 USD.'
+                        type: integer
+                        example: 100
+                      currency_code:
+                        $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code'
+                      is_partially_authorized:
+                        description: Boolean indicating if payin was authorized for a partial amount.
+                        type: boolean
+                      authorized_amount:
+                        description: 'The amount of the payin that was authorized, in minor units.
+
+
+                          For example, 1000 is 10.00 USD.'
+                        type: integer
+                        example: 100
+                        readOnly: true
+                      captured_amount:
+                        description: 'The amount of the payin that was captured, in minor units.
+
+
+                          For example, 1000 is 10.00 USD.'
+                        type: integer
+                        example: 100
+                        readOnly: true
+                      refundable_amount:
+                        description: 'The amount of the payin that can still be refunded, in minor units.
+
+
+                          For example, 1000 is 10.00 USD.'
+                        type: integer
+                        example: 100
+                        readOnly: true
+                      non_refundable_reason_code:
+                        description: Why the payin is nonrefundable. Provided when refundable_amount is 0.
+                        type: string
+                        nullable: true
+                        readOnly: true
+                        enum:
+                        - VOIDED
+                        - FAILED
+                        - FULLY_REFUNDED
+                        - HAS_CHARGEBACKS
+                        - HAS_ACH_RETURN
+                        - IN_ACH_RETURN_WINDOW
+                        - IN_SETTLEMENT_WINDOW
+                      status:
+                        $ref: '#/paths/~1v1~1payins/get/parameters/5/schema/items'
+                      refusal_code:
+                        description: 'The code explaining the reason for the refusal if the payin or refund failed to process.
+
+
+                          This value will be `null` if the payin or refund succeeded.'
+                        type: string
+                        enum:
+                        - null
+                        - AUTHORIZATION_EXPIRED
+                        - DECLINED
+                        - DO_NOT_HONOR
+                        - EXPIRED_CARD
+                        - FRAUDULENT_CARD
+                        - INCORRECT_PAYMENT_INFORMATION
+                        - INSUFFICIENT_FUNDS
+                        - INVALID_CARD_SECURITY_CODE
+                        - INVALID_EXPIRATION_DATE
+                        - INVALID_PIN
+                        - LOST_CARD
+                        - NO_CARD_NUMBER_ON_FILE_WITH_ISSUER
+                        - NO_SUCH_CARD_ISSUER
+                        - OVER_LIMIT
+                        - PROCESSING_ERROR
+                        - RESTRICTED_CARD_TYPE
+                        - RETRY
+                        - RETRY_WITH_THREEDS
+                        - RISK_DECLINE
+                        - STOLEN_CARD
+                        - THREEDS_CHALLENGE_FAILED
+                        - UNEXPECTED_PAYIN_TOKEN
+                        - UNSUPPORTED_CARD_TYPE
+                        readOnly: true
+                      refusal_desc:
+                        description: 'The description explaining the reason for the refusal if the payin or refund failed to process. This will be a human-readable value that may be presented to the end user.
+
+
+                          This value will be `null` if the payin or refund succeeded.'
+                        type: string
+                        enum:
+                        - null
+                        - Authorization expired
+                        - Declined
+                        - Do not honor
+                        - Expired card
+                        - Fraudulent card
+                        - Incorrect payment information
+                        - Insufficient funds
+                        - Invalid card security code
+                        - Invalid expiration date
+                        - Invalid PIN
+                        - Lost card
+                        - No card number on file with issuer
+                        - No such card issuer
+                        - Over limit
+                        - Processing error
+                        - Restricted card type
+                        - Retry
+                        - Retry with 3DS
+                        - Risk decline
+                        - Stolen card
+                        - 3DS challenge failed
+                        - Unexpected payin token
+                        - Unsupported card type
+                        readOnly: true
+                      detailed_refusal_code:
+                        description: 'The detailed refusal code that could be more descriptive than the refusal code. It may take up to 5 minutes for the detailed refusal code to populate after the payment fails.
+
+
+                          This value will be `null` if the payment succeeded.'
+                        type: string
+                        enum:
+                        - null
+                        - AUTHORIZATION_EXPIRED
+                        - DECLINED
+                        - DO_NOT_HONOR
+                        - EXPIRED_CARD
+                        - FRAUDULENT_CARD
+                        - INCORRECT_PAYMENT_INFORMATION
+                        - INSUFFICIENT_FUNDS
+                        - INVALID_CARD_SECURITY_CODE
+                        - INVALID_EXPIRATION_DATE
+                        - INVALID_PIN
+                        - LOST_CARD
+                        - NO_CARD_NUMBER_ON_FILE_WITH_ISSUER
+                        - NO_SUCH_CARD_ISSUER
+                        - OVER_LIMIT
+                        - PROCESSING_ERROR
+                        - RESTRICTED_CARD_TYPE
+                        - RETRY
+                        - RETRY_WITH_THREEDS
+                        - RISK_DECLINE
+                        - STOLEN_CARD
+                        - THREEDS_CHALLENGE_FAILED
+                        - UNEXPECTED_PAYIN_TOKEN
+                        - UNSUPPORTED_CARD_TYPE
+                        readOnly: true
+                      detailed_refusal_desc:
+                        description: 'The description explaining the detailed refusal reason if the payin or refund failed to process. This will be a human-readable value that may be presented to the end user.
+
+
+                          This value will be `null` if the payment succeeded.'
+                        type: string
+                        enum:
+                        - null
+                        - Authorization expired
+                        - Declined
+                        - Do not honor
+                        - Expired card
+                        - Fraudulent card
+                        - Incorrect payment information
+                        - Insufficient funds
+                        - Invalid card security code
+                        - Invalid expiration date
+                        - Invalid PIN
+                        - Lost card
+                        - No card number on file with issuer
+                        - No such card issuer
+                        - Over limit
+                        - Processing error
+                        - Restricted card type
+                        - Retry
+                        - Retry with 3DS
+                        - Risk decline
+                        - Stolen card
+                        - 3DS challenge failed
+                        - Unexpected payin token
+                        - Unsupported card type
+                        readOnly: true
+                      auth_code:
+                        description: The authorization code if the payin was approved.
+                        type: string
+                        example: '12345'
+                      avs_result_code:
+                        description: The address verification service result code.
+                        type: string
+                        example: Y
+                      cvc_result_code:
+                        description: The card verification code result code.
+                        type: string
+                        example: M
+                      amount_splits:
+                        description: 'Represents how the payin amount was allocated to the originating merchant, the platform and one or more other merchants.<br/><br/>
+
+
+                          A `PLATFORM` split defines a platform fee on the payin.<br/><br/>
+
+
+                          A `MERCHANT` split allocates a portion of the payin to the specified merchant.<br/><br/>
+
+
+                          Any remaining amount not specified by the amount splits was allocated to the originating merchant associated with the payin.'
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            amount:
+                              description: 'The amount allocated, in minor units.
+
+
+                                For example, 1000 is 10.00 USD.'
+                              type: integer
+                              example: 3
+                            currency_code:
+                              $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code'
+                            type:
+                              description: 'The type of receiver for this split.<br/><br/>
+
+
+                                `PLATFORM` allocates the split amount to the platform. `MERCHANT` allocates the split amount to the merchant specified by merchant_id.'
+                              type: string
+                              enum:
+                              - PLATFORM
+                              - MERCHANT
+                            merchant_id:
+                              description: 'Required when type is `MERCHANT`.<br/><br/>
+
+
+                                The unique identifier of the merchant receiving this split. The merchant must be fully onboarded and in an ACTIVE status.<br/><br/>
+
+
+                                Must not match the merchant_id of the originating merchant on the payin. Must not be duplicated within the same amount_splits array. Not valid when object type is `PLATFORM`.<br/><br/>
+
+
+                                Prefix: mid in production, sbx_mid in sandbox.'
+                              type: string
+                              example: mid_abc123
+                            platform:
+                              description: The minimal representation of the platform receiving this split. Present when type is `PLATFORM`.
+                              $ref: '#/paths/~1v1~1payment_method_configs/post/requestBody/content/application~1json/schema/properties/platform'
+                            merchant:
+                              description: The minimal representation of the merchant receiving this split. Present when type is `MERCHANT`.
+                              $ref: '#/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/merchant'
+                          required:
+                          - amount
+                          - currency_code
+                          - type
+                        example:
+                        - amount: 3
+                          currency_code: USD
+                          type: PLATFORM
+                      merchant_fees:
+                        description: The amount of the payin billed to the merchant.
+                        type: object
+                        properties:
+                          total_amount:
+                            description: The total amount of fees billed to the merchant.
+                            type: object
+                            properties:
+                              amount:
+                                description: 'The amount, in minor units.
+
+
+                                  For example, 1000 is 10.00 USD.'
+                                type: integer
+                                minimum: 0
+                              currency_code:
+                                $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code'
+                        example:
+                          total_amount:
+                            amount: 2
+                            currency_code: USD
+                      method_type:
+                        description: The type of payment method.
+                        type: string
+                        enum:
+                        - CARD
+                        - APPLE_PAY
+                        - ACH
+                        - PLAID_ACH
+                        - PAYPAL_WALLET
+                        - VENMO
+                        - PAYPAL_PAYLATER
+                      card:
+                        description: Card payment method details.
+                        type: object
+                        properties:
+                          type:
+                            description: Card type.
+                            type: string
+                            enum:
+                            - CREDIT
+                            - DEBIT
+                            - PREPAID
+                          brand:
+                            $ref: '#/paths/~1v1~1bin_lookup/post/responses/200/content/application~1json/schema/properties/data/properties/brand'
+                          brand_desc:
+                            description: Card brand in a friendly language.
+                            type: string
+                            example: Mastercard
+                            enum:
+                            - Visa
+                            - Mastercard
+                            - Discover
+                            - American Express
+                            - Other
+                          last_4:
+                            description: Last 4 digits of the card number.
+                            type: string
+                            example: '4444'
+                          exp_month:
+                            $ref: '#/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/card/properties/exp_month'
+                          exp_year:
+                            $ref: '#/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/card/properties/exp_year'
+                      apple_pay:
+                        description: Apple Pay payment method details.
+                        type: object
+                        properties:
+                          type:
+                            $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/card/properties/type'
+                          brand:
+                            $ref: '#/paths/~1v1~1bin_lookup/post/responses/200/content/application~1json/schema/properties/data/properties/brand'
+                          brand_desc:
+                            $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/card/properties/brand_desc'
+                          description:
+                            description: A human-readable description of the payment method provided by Apple.
+                            type: string
+                            example: Visa 1234
+                      ach:
+                        description: ACH payment method details.
+                        type: object
+                        properties:
+                          account_number_last_4:
+                            description: The last 4 digits of the account number.
+                            type: string
+                            example: '5678'
+                          routing_number:
+                            $ref: '#/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach/properties/routing_number'
+                          bank_name:
+                            description: The bank name.
+                            type: string
+                            example: Wells Fargo Bank
+                          account_type:
+                            $ref: '#/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach/properties/account_type'
+                          account_holder_type:
+                            $ref: '#/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach/properties/account_holder_type'
+                      plaid_ach:
+                        $ref: '#/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data/properties/plaid_ach'
+                        description: ACH payment method details from Plaid.
+                      paypal_wallet:
+                        description: PayPal Wallet payment method. Required for method_type PAYPAL_WALLET.
+                        type: object
+                        properties:
+                          email:
+                            description: The email address of the PayPal user
+                            type: string
+                            example: janesmith@example.com
+                      venmo:
+                        description: Venmo payment method. Required for method_type VENMO.
+                        type: object
+                        properties:
+                          email:
+                            description: The email address of the Venmo user
+                            type: string
+                            example: janesmith@example.com
+                      paypal_paylater:
+                        description: PayPal PayLater payment method. Required for method_type PAYPAL_PAYLATER.
+                        type: object
+                        properties:
+                          email:
+                            description: The email address of the PayPal user
+                            type: string
+                            example: janesmith@example.com
+                      billing_contact:
+                        $ref: '#/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact'
+                      device_data:
+                        description: Device data
+                        type: object
+                        properties:
+                          application_identifier:
+                            description: Identifies the application that the device used on the payin or payment method as described in ISO/IEC 7816-5.
+                            type: string
+                            example: A0000000031010
+                          application_label:
+                            description: The human-readable name associated with the application identifier according to ISO/IEC 7816-5.
+                            type: string
+                            example: VISA CREDIT
+                          application_preferred_name:
+                            description: The human-readable name associated with the application identifier in the cardholder’s local language.
+                            type: string
+                            example: VISA CREDIT
+                          transaction_status_information:
+                            description: A collection of indicators that the device will set to show what processing steps have been performed on the current transaction (e.g. Cardholder Verification, Data Authentication).
+                            type: string
+                            example: E800
+                          application_pan_sequence_number:
+                            description: Identifies and differentiates cards with the same PAN.
+                            type: string
+                            example: 1
+                          entry_type:
+                            description: The entry type used on the device.
+                            type: string
+                            example: TAPPED
+                            enum:
+                            - TAPPED
+                            - SWIPED
+                            - DIPPED
+                            - KEYED
+                            - INVALID
+                            - UNKNOWN
+                          verification_type:
+                            description: 'The verification type for verifying the user processing the payment is the cardholder.
+
+
+                              Types:
+
+                              * `SIGNATURE` - The user provided a signature on the device.
+
+                              * `OFFLINE_PIN` - The user entered their pin on the device and it was verified by the EMV chip card.
+
+                              * `ONLINE_PIN` - The user entered their pin on the device and it was verified by the card issuer.
+
+                              * `OFFLINE_PIN_SIGNATURE` - The user entered their PIN and provided a signature on the device.
+
+                              * `NONE` - The user could not be verified.'
+                            type: string
+                            enum:
+                            - SIGNATURE
+                            - OFFLINE_PIN
+                            - ONLINE_PIN
+                            - OFFLINE_PIN_SIGNATURE
+                            - NONE
+                          signature:
+                            description: A signature image, formatted as a base64 encoded data URI
+                            type: string
+                        readOnly: true
+                      method_metadata:
+                        $ref: '#/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/method_metadata'
+                      metadata:
+                        $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema'
+                      refunds:
+                        type: array
+                        items:
+                          $ref: '#/paths/~1v1~1refunds~1%7Brefund_id%7D/get/responses/200/content/application~1json/schema/properties/data'
+                      has_refunds:
+                        description: Boolean indicating that the payin has one or more refunds created.
+                        type: boolean
+                      chargebacks:
+                        type: array
+                        items:
+                          $ref: '#/paths/~1v1~1chargebacks~1%7Bchargeback_id%7D/get/responses/200/content/application~1json/schema/properties/data'
+                      has_chargebacks:
+                        description: Boolean indicating that the payin has one or more chargebacks created.
+                        type: boolean
+                      ach_return:
+                        $ref: '#/paths/~1v1~1ach_returns~1%7Bach_return_id%7D/get/responses/200/content/application~1json/schema/properties/data'
+                      has_ach_return:
+                        description: Boolean indicating that the payin has an ACH return.
+                        type: boolean
+                      payin_config:
+                        description: Payin config details.
+                        type: object
+                        properties:
+                          payin_config_id:
+                            $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/threeds_attempt/properties/payin_config_id'
+                            readOnly: true
+                          processing_mode:
+                            $ref: '#/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/processing_mode'
+                            readOnly: true
+                          amount:
+                            description: 'The total amount requested for processing, in minor units.
+
+
+                              For example, 1000 is 10.00 USD.'
+                            type: integer
+                            example: 100
+                            minimum: 1
+                            readOnly: true
+                          currency_code:
+                            $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code'
+                            readOnly: true
+                          amount_splits:
+                            $ref: '#/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/amount_splits'
+                            readOnly: true
+                      threeds_attempt:
+                        nullable: true
+                        description: 3DS attempt details.
+                        type: object
+                        properties:
+                          threeds_attempt_id:
+                            description: "The unique threeds attempt identifier. \n\nPrefix is \"tds\" in production and \"sbx_tds\" in sandbox."
+                            type: string
+                            example: tds_2DrDFJPutxE5AIbJSopAnqniEbr
+                          merchant_id:
+                            $ref: '#/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id'
+                          payin_config_id:
+                            description: "The unique payin config identifier. \n\nPrefix is \"cfg\" in production and \"sbx_cfg\" in sandbox."
+                            type: string
+                            example: cfg_2DrDPKzdQypRudLd8DhQKZX27dA
+                          status:
+                            description: The status of the threeds attempt.
+                            type: string
+                            enum:
+                            - CREATED
+                            - FINGERPRINTED
+                            - SUCCEEDED
+                            - CHALLENGED
+                            - FAILED
+                            example: CREATED
+                          failed_reason_code:
+                            description: 'The code explaining the reason for the 3DS request failure.
+
+
+                              This value will be set if the 3DS attempt status is `FAILED`.'
+                            type: string
+                            nullable: true
+                            readOnly: true
+                            enum:
+                            - 3DS_ATTEMPT_TIMED_OUT
+                            - CARD_NOT_ENROLLED
+                            - CHALLENGE_FAILED
+                            - MERCHANT_NOT_BOARDED
+                            - UNEXPECTED_ERROR
+                            - UNSUPPORTED_PAYMENT_DATA
+                          failed_reason_desc:
+                            description: 'The description explaining the reason for the payin''s 3DS request failure. This will be a human-readable value that may be presented to the end user.
+
+
+                              This value will be `null` if the 3DS request succeeded or if not applicable.'
+                            type: string
+                            nullable: true
+                            examples:
+                            - 3DS attempt timed out
+                            - Card not enrolled to 3DS
+                            - Failed 3DS challenge
+                            - Merchant not boarded to 3DS
+                            - Unexpected error
+                            - Unsupported payment data
+                            readOnly: true
+                          created_at:
+                            description: The datetime at which the attempt was initiated, in RFC3339 format
+                            $ref: '#/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at'
+                          updated_at:
+                            description: The datetime at which the attempt was last updated, in RFC3339 format
+                            $ref: '#/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at'
+                          fingerprinted_at:
+                            description: 'The datetime at which the attempt was fingerprinted, in RFC3339 format
+
+
+                              The 3DS fingerprint step may open a hidden IFRAME to the issuing bank, allowing the bank to run proprietary fingerprinting identification.'
+                            $ref: '#/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at'
+                          challenged_at:
+                            description: 'The datetime at which the attempt was challenged, in RFC3339 format
+
+
+                              The 3DS challenge step will display a modal dialog, provided by the issuing bank, for the customer to authenticate to their bank.'
+                            $ref: '#/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at'
+                          succeeded_at:
+                            description: 'The datetime at which the attempt succeeded, in RFC3339 format
+
+
+                              The 3DS attempt succeeded if the customer authenticates to their bank, frictionlessly or through the challenge step.'
+                            $ref: '#/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at'
+                          failed_at:
+                            description: 'The datetime at which the attempt failed, in RFC3339 format
+
+
+                              The 3DS attempt failed for a variety of reasons, such as issuer does not support 3DS or the customer fails to complete the challenge step.'
+                            $ref: '#/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at'
+                      expected_deposit_date:
+                        description: Date the funds are expected to be available in a deposit.
+                        type: string
+                        format: date
+                        example: '2022-01-01'
+                      source:
+                        $ref: '#/paths/~1v1~1payins/get/parameters/6/schema/items'
+                      source_desc:
+                        description: The description of the source of the payin. This will be a human-readable value that may be presented to the end user.
+                        type: string
+                        nullable: false
+                      created_at:
+                        description: Date and time payin was created at in UTC RFC 3339 format.
+                        type: string
+                        format: date-time
+                        example: '2022-01-01T12:00:00Z'
+                      updated_at:
+                        description: Date and time payin was last updated at in UTC RFC 3339 format.
+                        type: string
+                        format: date-time
+                        example: '2022-01-01T12:00:00Z'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Payins
+  /v1/payins/{payin_id}:
+    get:
+      operationId: get_payin
+      summary: Get payin
+      description: Get payin details by the payin ID.
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - in: path
+        required: true
+        name: payin_id
+        schema:
+          type: string
+        description: "The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+        examples:
+          production:
+            value: pyi_2DrDKk5NIMbpuNGqm109SkpGDHh
+          sandbox:
+            value: sbx_pyi_2DrDKk5NIMbpuNGqm109SkpGDHh
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        '404':
+          description: Resource not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1payins/get/responses/400/content/application~1json/schema'
+              example:
+                status: ERROR
+                data: null
+                errors:
+                - field: string
+                  code: EntityNotFound
+                  message: Resource not found
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Payins
+  /v1/payins/{payin_id}/metadata:
+    patch:
+      operationId: update_payin_metadata
+      summary: Update payin metadata
+      description: "The body of the request is the JSON key-value metadata to patch to the payin. Do not use the metadata field to store sensitive or confidential data. \n\nUpdating metadata will merge with the existing metadata stored on the chargeback by the top-level key. If the same top-level key is passed in this request, it will overwrite the value stored on the chargeback. Only keys included in the payload will be updated. To remove a key, set the key's value to null. To remove all metadata pass null for the metadata value.\n\nPayin metadata must be less than 8 KB in size.\n\nPayin metadata can only be updated using an API key. This request should not be made by your frontend and should only be done by backend logic that only the platform can complete."
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/parameters/1'
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: 'Valid JSON key-value object specified by the platform to store additional information. Keys are queryable in list endpoints. Do not use the metadata field to store sensitive or confidential data.
+
+
+                Metadata must be less than 8 KB in size.
+
+                '
+              type: object
+              example:
+                key1: value1
+                key2:
+                  inner_key1: inner_value1
+              minLength: 0
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Payins
+  /v1/payins/{payin_id}/capture:
+    post:
+      operationId: capture_payin
+      summary: Capture payin
+      description: Capture an authorized payin. The payin status must be Authorized to capture.
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/parameters/1'
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  description: The amount to capture, in minor units. Must be less than or equal to the amount authorized. If omitted or set to 0, the full authorized amount will be captured.
+                  type: integer
+                  example: 100
+                  minimum: 1
+                amount_splits:
+                  $ref: '#/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/amount_splits'
+                  description: Update the amount split, which represents how the payin should be split between the originating merchant, the platform, and one or more other merchants. If omitted, the amount split defined on the payin config will be used.
+                metadata:
+                  $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema'
+                  description: Update the metadata. If metadata is already set on the payin_config, both metadata objects will be merged together. If omitted, the metadata defined on the payin_config will be used.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Payins
+  /v1/payins/{payin_id}/void_or_refund:
+    post:
+      operationId: void_or_refund_payin
+      summary: Void or refund payin
+      description: 'Void or refund a payin by the payin ID.
+
+
+        If the payin status is `Processing`, then the full payin amount can be voided. A payin cannot be partially voided. If the payin status is `Succeeded`, then the payin can be fully or partially refunded. See the payin `refundable_amount` and `non_refundable_reason_code` for details on if the payin is eligible for a void or refund.'
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/parameters/1'
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                idempotency_key:
+                  $ref: '#/paths/~1v1~1refunds~1%7Brefund_id%7D~1void/post/requestBody/content/application~1json/schema/properties/idempotency_key'
+                amount:
+                  description: 'The amount to void or refund, in minor units. Must be equal or less than the amount originally processed. If omitted or set to 0, the full amount of the payin will be voided or refunded.
+
+
+                    For example, 1000 is 10.00 USD.'
+                  type: integer
+                  example: 100
+                merchant_billing:
+                  description: 'The billing rate and fee to calculate the merchant''s billing fee for the amount of the refund. If set, then this rate and fee will be used to determine the billing fee for the refund and will override the merchant''s billing profile.
+
+
+                    This is only applicable if the payin results in a refund instead of a void.
+
+
+                    Negative values for the rate and fee can be utilized to return billing fees to the merchant (e.g. to give the fees from the payin back to the merchant upon refund).'
+                  type: object
+                  properties:
+                    rate:
+                      description: 'Rate, in percent mille (1 PCM = 0.001%).
+
+
+                        For example, 3000 is 3%.'
+                      type: integer
+                      minimum: -25000
+                      maximum: 25000
+                      required: true
+                    rate_cap:
+                      description: 'Rate cap, in minor units. Used to cap the rate to a specified amount.
+
+
+                        For example, 1000 is 10.00 USD.
+
+
+                        The following validation must be met:
+
+                        - If the `rate` is greater than 0%, then the `rate_cap` must be greater than $0. For example, to bill a rate of 1% up to $100 set the value to `10000`.
+
+                        - If the `rate` is less than 0%, then the `rate_cap` must be less than $0. For example, to bill a rate of -1% up to -$100 set the value to `-10000`.
+
+                        - If the `rate` is 0%, then the `rate_cap` must be $0.'
+                      type: integer
+                      minimum: -10000000
+                      maximum: 10000000
+                      required: true
+                    fee:
+                      description: "Fee, in minor units. \n\nFor example, 1000 is 10.00 USD.\n\nThe absolute value of the fee can be up to $10, regardless of the amount of the refund. However, if the absolute value of the fee is greater than $10, then the absolute value of the fee cannot be greater than the `amount` field.\n\nValid requests: \n- Fee of $10 on a $5 refund.\n- Fee of -$10 on a $5 refund.\n- Fee of $11 on a $20 refund.\n- Fee of -$11 on a $20 refund.\n\nInvalid requests: \n- Fee of $11 on a $5 refund.\n- Fee of -$11 on a $5 refund."
+                      type: integer
+                      required: true
+                    currency_code:
+                      $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code'
+                      required: true
+                reason:
+                  description: The reason to void or refund this payin.
+                  type: string
+                  enum:
+                  - REQUESTED_BY_CUSTOMER
+                  - DUPLICATE
+                  - FRAUDULENT
+                metadata:
+                  $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema'
+                  description: 'Valid JSON key-value object specified by the platform to store additional information. Keys are queryable in list endpoints. Do not use the metadata field to store sensitive or confidential data.
+
+
+                    This metadata will be merged with the metadata stored on the payin by the top-level key. If the same top-level key is passed in this request, it will overwrite the value stored on the payin. The merged metadata will be saved on the payin metadata field for a VOID and on the refund metadata field for a REFUND.
+
+
+                    Metadata must be less than 8 KB in size.'
+                amount_splits:
+                  description: 'Represents how the refund amount should be allocated between the originating merchant, the platform, and one or more other merchants. This configuration overrides the amount_split_reversal_config defined on the payin config.<br/><br/>
+
+
+                    The sum of all amount splits must be less than or equal to the amount on the refund request.<br/><br/>
+
+
+                    A `PLATFORM` split defines the amount to debit from the platform. A maximum of one `PLATFORM` split is permitted per refund.<br/><br/>
+
+
+                    A `MERCHANT` split defines the amount to debit from the specified merchant. Multiple `MERCHANT` splits are permitted. Each `MERCHANT` split must specify a unique merchant_id.<br/><br/>
+
+
+                    Any remaining amount not specified by the amount splits will be debited from the originating merchant.<br/><br/>
+
+
+                    If no amount splits are provided, then the configuration provided on the payin config amount_split_reversal_config will be respected for full refunds. For partial refunds without amount_splits, the originating merchant will be debited the full partial refund amount and all split receivers retain their allocations.<br/><br/>
+
+
+                    The amount split is defined as a rate and amount.<br/><br/>
+
+
+                    For example, to assess a split of 1% + $5.00, specify 1000 in the rate and 500 in the amount.'
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      rate:
+                        description: 'The amount split defined as a rate, in percent mille (1 PCM = 0.001%).
+
+
+                          For example, 3000 is 3%.'
+                        type: integer
+                        example: 3000
+                        minimum: 0
+                      rate_cap:
+                        description: 'The amount split rate cap, in minor units. Used to cap the rate to a specified amount.
+
+
+                          For example, 1000 is 10.00 USD.'
+                        type: integer
+                        example: 1000
+                        minimum: 0
+                      amount:
+                        description: The amount to debit from this split receiver, in minor units. For example, 1000 is 10.00 USD.
+                        type: integer
+                        example: 100
+                        minimum: 0
+                      currency_code:
+                        description: Three-letter ISO currency code, in uppercase. Currently, only USD is supported.
+                        type: string
+                        example: USD
+                        enum:
+                        - USD
+                        maxLength: 3
+                        minLength: 3
+                      type:
+                        description: 'The type of receiver for this split.<br/><br/>
+
+
+                          `PLATFORM` allocates the split amount to the platform. `MERCHANT` allocates the split amount to the merchant specified by merchant_id.'
+                        type: string
+                        enum:
+                        - PLATFORM
+                        - MERCHANT
+                      merchant_id:
+                        description: 'Required when type is `MERCHANT`.<br/><br/>
+
+
+                          The unique identifier of the merchant to debit from.<br/><br/>
+
+
+                          Not valid when type is `PLATFORM`.'
+                        type: string
+                        example: mid_abc123
+                    required:
+                    - amount
+                    - currency_code
+                    - type
+                payin_billing_fees_reversal_config:
+                  description: Controls whether the billing fees from the original payin are returned to the originating merchant. This configuration overrides the billing_fees_reversal_config defined on the payin config or the merchant's default configuration.
+                  type: object
+                  properties:
+                    on_full_refund:
+                      description: 'Determines whether the billing fees for the original payin are returned to the originating merchant when a refund for the full amount is processed.<br/><br/>
+
+
+                        When `true`, the billing fee is credited back to the merchant and included in the refund''s computed billing fee.'
+                      type: boolean
+              required:
+              - reason
+              - idempotency_key
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        description: Indicates if a void or a refund was attempted. Set to VOID if the payin processing was not completed and a void was attempted. Set to REFUND is the payin processing was completed and a refund was attempted.
+                        type: string
+                        enum:
+                        - VOID
+                        - REFUND
+                      merchant_id:
+                        $ref: '#/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id'
+                      refund_id:
+                        $ref: '#/paths/~1v1~1ach_returns~1%7Bach_return_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/refund_id'
+                        description: 'The unique refund identifier. This field will only be set if the `type` is `REFUND`.
+
+
+                          Prefix is "rfd_" in production and "sbx_rfd_" in sandbox.'
+                      refund_status:
+                        description: The status of the refund. This field will only be set if the `type` is `REFUND`.
+                        type: string
+                        enum:
+                        - PROCESSING
+                        - FAILED
+                        - IN_REVIEW
+                      payin_id:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payin_id'
+                      payin_status:
+                        description: The status of the payin.
+                        type: string
+                        enum:
+                        - CANCELED
+                        - SUCCEEDED
+                      amount:
+                        description: 'The amount voided or refunded, in minor units.
+
+
+                          For example, 1000 is 10.00 USD.'
+                        type: integer
+                        example: 100
+                      currency_code:
+                        $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code'
+                      merchant_billing:
+                        $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/merchant_billing'
+                        description: 'The billing rate and fee used to calculate the merchant''s billing fee for the amount of the refund if set in the refund request. This field is null if the merchant''s billing profile was used to calculate the billing fee.
+
+
+                          This is only applicable if the `type` is `REFUND`.'
+                      amount_splits:
+                        description: 'Represents how the refund amount was allocated between the originating merchant, the platform, and one or more other merchants.<br/><br/>
+
+
+                          A `PLATFORM` split defines the amount debited from the platform.<br/><br/>
+
+
+                          A `MERCHANT` split defines the amount debited from the specified merchant.<br/><br/>
+
+
+                          Any remaining amount not specified by the amount splits was debited from the originating merchant.<br/><br/>
+
+
+                          This is only applicable if the `type` is `REFUND`.'
+                        $ref: '#/paths/~1v1~1refunds~1%7Brefund_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/amount_splits'
+                      payin_billing_fees_reversal_config:
+                        description: 'Controls whether the billing fees from the original payin are returned to the originating merchant. This configuration overrides the `billing_fees_reversal_config` defined on the payin config or the merchant''s default configuration.<br/><br/>
+
+
+                          This is only applicable if the `type` is `REFUND`.'
+                        type: object
+                        properties:
+                          on_full_refund:
+                            description: 'Determines whether the billing fees for the original payin are returned to the originating merchant when a refund for the full amount is processed.<br/><br/>
+
+
+                              When `true`, the billing fee is credited back to the merchant and included in the refund''s computed billing fee.'
+                            type: boolean
+                      reason:
+                        description: The reason to void or refund this payin.
+                        type: string
+                        enum:
+                        - REQUESTED_BY_CUSTOMER
+                        - DUPLICATE
+                        - FRAUDULENT
+                      refusal_code:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/refusal_code'
+                        description: 'The code explaining the reason for the refusal if the refund failed to process. This field will only be set if the `type` is `REFUND`.
+
+
+                          This value will be `null` if the payin was canceled or the refund succeeded.'
+                      refusal_desc:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/refusal_desc'
+                        description: 'The description explaining the reason for the refusal if the refund failed to process. This will be a human-readable value that may be presented to the end user. This field will only be set if the `type` is `REFUND`.
+
+
+                          This value will be `null` if the payin was canceled or the refund succeeded.'
+                      auth_code:
+                        description: The authorization code if the refund was approved. This field will only be set if the `type` is `REFUND`.
+                        type: string
+                        example: '12345'
+                      metadata:
+                        $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema'
+                      source:
+                        nullable: true
+                        description: The source of the refund.
+                        type: string
+                        enum:
+                        - API_DIRECT
+                        - COMPONENT
+                        - EXTERNAL
+                      created_at:
+                        description: Date and time void or refund was created at in UTC RFC 3339 format.
+                        type: string
+                        format: date-time
+                        example: '2022-01-01T12:00:00Z'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/responses/404'
+        '409':
+          $ref: '#/paths/~1v1~1refunds~1%7Brefund_id%7D~1void/post/responses/409'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Payins
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: APIKey

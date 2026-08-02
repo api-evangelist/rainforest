@@ -1,0 +1,393 @@
+openapi: 3.1.0
+info:
+  title: Authentication ACH Returns API Keys API
+  version: 1.0.0
+  description: This resource is used for authentication actions
+  contact:
+    name: Rainforest
+    email: support@rainforestpay.com
+    url: https://rainforestpay.com
+servers:
+- url: https://api.sandbox.rainforestpay.com
+  description: Sandbox server
+- url: https://api.rainforestpay.com
+  description: Production server
+security:
+- BearerAuth: []
+tags:
+- name: API Keys
+  description: Resources for api key functions.
+paths:
+  /v1/api_keys:
+    post:
+      operationId: create_api_key
+      summary: Create API key
+      description: Create an API key.
+      parameters:
+      - $ref: '#/paths/~1v1~1api_keys/get/parameters/0'
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                api_key_id:
+                  readOnly: true
+                  description: "The unique API key identifier. \n\nPrefix is \"api\" in production and \"sbx_api\" in sandbox."
+                  type: string
+                  example: api_2DrDU206kzAhclm1WrZbuwDERRk
+                platform_id:
+                  description: "The unique platform identifier. \n\nPrefix is \"plt\" in production and \"sbx_plt\" in sandbox."
+                  type: string
+                  example: plt_2DrDypu8n6IX7EVTjAnEd1dkTBa
+                masked_api_key:
+                  description: The masked API key that is passed to the API.
+                  type: string
+                  example: apikey_6802b550****30f3afc4
+                  readOnly: true
+                statements:
+                  description: Array of valid statements. See the [API keys guide](doc:api-keys) on how to define statements.
+                  type: array
+                  items:
+                    type: object
+                    required:
+                    - permissions
+                    - constraints
+                    properties:
+                      permissions:
+                        description: Array of valid permissions, defined by a `group` or `resource:action`
+                        type: array
+                        items:
+                          type: string
+                          example: group#all
+                      constraints:
+                        description: Restrictions on actions allowed based on specific context of a resource.
+                        type: object
+                        additionalProperties:
+                          type: object
+                status:
+                  readOnly: true
+                  description: Status of the API key.
+                  type: string
+                  enum:
+                  - ENABLED
+                  - DISABLED
+                  - DELETED
+                  example: ENABLED
+                created_at:
+                  description: Date and time API key was created at in UTC RFC 3339 format.
+                  readOnly: true
+                  type: string
+                  format: date-time
+                  example: '2022-01-01T12:00:00Z'
+                updated_at:
+                  description: Date and time API key was last updated at in UTC RFC 3339 format.
+                  $ref: '#/paths/~1v1~1api_keys/post/requestBody/content/application~1json/schema/properties/created_at'
+                  readOnly: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1api_keys/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    type: object
+                    properties:
+                      api_key_id:
+                        description: "The unique session identifier. \n\nPrefix is \"api\" in production and \"sbx_api\" in sandbox."
+                        type: string
+                        example: api_2DrDU206kzAhclm1WrZbuwDERRk
+                        readOnly: true
+                      platform_id:
+                        $ref: '#/paths/~1v1~1api_keys/post/requestBody/content/application~1json/schema/properties/platform_id'
+                      api_key:
+                        description: The API key to be passed to the API. This is the only time the API key can be accessed.
+                        type: string
+                        example: REDACTED_RAINFOREST_API_KEY
+                        readOnly: true
+                      statements:
+                        description: Array of valid statements. See the [API keys guide](doc:api-keys) on how to define statements.
+                        type: array
+                        items:
+                          type: object
+                        example:
+                        - permissions:
+                          - group#all
+                          constraints:
+                            merchant:
+                              merchant_id: mid_2DrDFJPutxE5AIbJSopAnqniEbr
+                      status:
+                        $ref: '#/paths/~1v1~1api_keys/post/requestBody/content/application~1json/schema/properties/status'
+                        readOnly: true
+                      created_at:
+                        description: Date and time API key was created at in UTC RFC 3339 format.
+                        $ref: '#/paths/~1v1~1api_keys/post/requestBody/content/application~1json/schema/properties/created_at'
+                        readOnly: true
+                      updated_at:
+                        description: Date and time API key was last updated at in UTC RFC 3339 format.
+                        $ref: '#/paths/~1v1~1api_keys/post/requestBody/content/application~1json/schema/properties/created_at'
+                        readOnly: true
+                  errors:
+                    $ref: '#/paths/~1v1~1api_keys/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1api_keys/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1api_keys/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1api_keys/get/responses/403'
+        5XX:
+          $ref: '#/paths/~1v1~1api_keys/get/responses/5XX'
+      tags:
+      - API Keys
+    get:
+      operationId: list_api_keys
+      summary: List API keys
+      description: Query a list of API keys.
+      parameters:
+      - in: header
+        name: Rainforest-Api-Version
+        schema:
+          type: string
+          default: '2024-10-16'
+          enum:
+          - '2024-10-16'
+          - '2023-12-01'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    description: 'Status of the request.
+
+
+                      If the request status code is 2XX, then the `status` will be `SUCCESS`. If the request status code is 4XX or 5XX, then the `status` will be `ERROR`.'
+                    type: string
+                    enum:
+                    - SUCCESS
+                    - ERROR
+                    example: SUCCESS
+                  data:
+                    allOf:
+                    - type: object
+                      properties:
+                        total_results:
+                          type: integer
+                          description: Total number of results available. This value will be -1 if the query parameter `omit_total_results` is set to true.
+                    - type: object
+                      properties:
+                        results:
+                          description: List of API keys.
+                          type: array
+                          items:
+                            $ref: '#/paths/~1v1~1api_keys/post/requestBody/content/application~1json/schema'
+                  errors:
+                    description: List of errors, if applicable.
+                    type: array
+                    items:
+                      type: object
+                      description: Details of the error.
+                      properties:
+                        field:
+                          description: The field in the request that had an error, if applicable.
+                          type: string
+                        code:
+                          description: The code describing the error.
+                          type: string
+                        message:
+                          description: The description of the error related to the field.
+                          type: string
+                    example: null
+        '400':
+          description: Bad request, check for validation errors.
+          content:
+            application/json:
+              schema:
+                description: Default response object.
+                type: object
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1api_keys/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    description: Generic data object specified per resource, null if there are request errors.
+                    type: object
+                    example: null
+                    nullable: true
+                    readOnly: true
+                  errors:
+                    $ref: '#/paths/~1v1~1api_keys/get/responses/200/content/application~1json/schema/properties/errors'
+              example:
+                status: ERROR
+                data: null
+                errors:
+                - field: string
+                  code: RequestBody
+                  message: Invalid request payload
+        '401':
+          description: Authorization missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1api_keys/get/responses/400/content/application~1json/schema'
+              example:
+                status: ERROR
+                data: null
+                errors:
+                - field: string
+                  code: AuthUnauthorized
+                  message: Unauthorized
+        '403':
+          description: Authorization insufficient for requested action.
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1api_keys/get/responses/400/content/application~1json/schema'
+              example:
+                status: ERROR
+                data: null
+                errors:
+                - field: string
+                  code: AuthForbidden
+                  message: Forbidden
+        5XX:
+          description: Unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1api_keys/get/responses/400/content/application~1json/schema'
+              example:
+                status: ERROR
+                data: null
+                errors:
+                - field: string
+                  code: string
+                  message: Internal Server Error
+      tags:
+      - API Keys
+  /v1/api_keys/{api_key_id}:
+    get:
+      operationId: get_api_key
+      summary: Get API key
+      description: Get API key details by the API key ID.
+      parameters:
+      - $ref: '#/paths/~1v1~1api_keys/get/parameters/0'
+      - in: path
+        required: true
+        name: api_key_id
+        schema:
+          type: string
+        description: "The unique API key identifier. \n\nPrefix is \"api\" in production and \"sbx_api\" in sandbox."
+        examples:
+          production:
+            value: api_2DrDU206kzAhclm1WrZbuwDERRk
+          sandbox:
+            value: sbx_api_2DrDU206kzAhclm1WrZbuwDERRk
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1api_keys/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1api_keys/post/requestBody/content/application~1json/schema'
+                  errors:
+                    $ref: '#/paths/~1v1~1api_keys/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1api_keys/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1api_keys/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1api_keys/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1sessions/delete/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1api_keys/get/responses/5XX'
+      tags:
+      - API Keys
+    delete:
+      operationId: delete_api_key
+      summary: Delete API key
+      description: Delete an API key, permanently invalidating it.
+      parameters:
+      - $ref: '#/paths/~1v1~1api_keys/get/parameters/0'
+      - $ref: '#/paths/~1v1~1api_keys~1%7Bapi_key_id%7D/get/parameters/1'
+        in: path
+      responses:
+        '204':
+          description: OK
+        '400':
+          $ref: '#/paths/~1v1~1api_keys/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1api_keys/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1api_keys/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1sessions/delete/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1api_keys/get/responses/5XX'
+      tags:
+      - API Keys
+  /v1/api_keys/{api_key_id}/disable:
+    post:
+      operationId: disable_api_key
+      summary: Disable API key
+      description: Disable an API key.
+      parameters:
+      - $ref: '#/paths/~1v1~1api_keys/get/parameters/0'
+      - $ref: '#/paths/~1v1~1api_keys~1%7Bapi_key_id%7D/get/parameters/1'
+        in: path
+      responses:
+        '204':
+          description: OK
+        '400':
+          $ref: '#/paths/~1v1~1api_keys/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1api_keys/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1api_keys/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1sessions/delete/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1api_keys/get/responses/5XX'
+      tags:
+      - API Keys
+  /v1/api_keys/{api_key_id}/enable:
+    post:
+      operationId: enable_api_key
+      summary: Enable API key
+      description: Enable an API key.
+      parameters:
+      - $ref: '#/paths/~1v1~1api_keys/get/parameters/0'
+      - $ref: '#/paths/~1v1~1api_keys~1%7Bapi_key_id%7D/get/parameters/1'
+        in: path
+      responses:
+        '204':
+          description: OK
+        '400':
+          $ref: '#/paths/~1v1~1api_keys/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1api_keys/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1api_keys/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1sessions/delete/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1api_keys/get/responses/5XX'
+      tags:
+      - API Keys
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: APIKey

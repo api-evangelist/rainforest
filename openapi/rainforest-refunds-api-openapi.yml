@@ -1,0 +1,354 @@
+openapi: 3.1.0
+info:
+  title: Authentication ACH Returns Refunds API
+  version: 1.0.0
+  description: This resource is used for authentication actions
+  contact:
+    name: Rainforest
+    email: support@rainforestpay.com
+    url: https://rainforestpay.com
+servers:
+- url: https://api.sandbox.rainforestpay.com
+  description: Sandbox server
+- url: https://api.rainforestpay.com
+  description: Production server
+security:
+- BearerAuth: []
+tags:
+- name: Refunds
+  description: Resources for refund functions.
+paths:
+  /v1/refunds/{refund_id}:
+    get:
+      operationId: get_refund
+      summary: Get refund
+      description: Get refund details by the refund ID.
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - in: path
+        required: true
+        name: refund_id
+        schema:
+          type: string
+        description: "The unique refund identifier. \n\nPrefix is \"rfd\" in production and \"sbx_rfd\" in sandbox."
+        examples:
+          production:
+            value: rfd_2DrDU206kzAhclm1WrZbuwDERRk
+          sandbox:
+            value: sbx_rfd_2DrDU206kzAhclm1WrZbuwDERRk
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    description: The refund details.
+                    type: object
+                    properties:
+                      refund_id:
+                        description: "The unique refund identifier. \n\nPrefix is \"rfd\" in production and \"sbx_rfd\" in sandbox."
+                        type: string
+                        example: rfd_2DrDU206kzAhclm1WrZbuwDERRk
+                      payin_id:
+                        description: "The unique payin identifier that was voided or refunded. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                        type: string
+                        example: pyi_2DrDKk5NIMbpuNGqm109SkpGDHh
+                      merchant_id:
+                        $ref: '#/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id'
+                      billing_type:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/billing_type'
+                      amount:
+                        description: 'The amount refunded, in minor units.
+
+
+                          For example, 1000 is 10.00 USD.'
+                        type: integer
+                        example: 100
+                      currency_code:
+                        $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code'
+                      merchant_fees:
+                        description: The refund fee billed to the merchant.
+                        type: object
+                        properties:
+                          total_amount:
+                            description: The total amount of fees billed to the merchant.
+                            type: object
+                            properties:
+                              amount:
+                                $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_fees/properties/total_amount/properties/amount'
+                              currency_code:
+                                $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code'
+                        example:
+                          total_amount:
+                            amount: 150
+                            currency_code: USD
+                      reason:
+                        description: The reason a refund was issued.
+                        type: string
+                        example: Requested by customer
+                      status:
+                        description: The status of the refund.
+                        type: string
+                        enum:
+                        - CREATED
+                        - PROCESSING
+                        - SUCCEEDED
+                        - FAILED
+                        - CANCELED
+                        - IN_REVIEW
+                      refusal_code:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/refusal_code'
+                      refusal_desc:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/refusal_desc'
+                      detailed_refusal_code:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/detailed_refusal_code'
+                      detailed_refusal_desc:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/detailed_refusal_desc'
+                      non_voidable_reason_code:
+                        description: Why the refund is nonvoidable.
+                        type: string
+                        nullable: true
+                        readOnly: true
+                        enum:
+                        - VOIDED
+                        - PAST_SETTLEMENT
+                      auth_code:
+                        description: The authorization code if the refund was approved.
+                        type: string
+                        example: '12345'
+                      metadata:
+                        $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema'
+                      amount_splits:
+                        description: 'Represents how the refund amount was allocated between the originating merchant, the platform, and one or more other merchants.<br/><br/>
+
+
+                          A `PLATFORM` split defines the amount debited from the platform.<br/><br/>
+
+
+                          A `MERCHANT` split defines the amount debited from the specified merchant.<br/><br/>
+
+
+                          Any remaining amount not specified by the amount splits was debited from the originating merchant.'
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            amount:
+                              description: 'The amount allocated, in minor units.
+
+
+                                For example, 1000 is 10.00 USD.'
+                              type: integer
+                              example: 3
+                            currency_code:
+                              $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code'
+                            type:
+                              description: 'The type of receiver for this split.<br/><br/>
+
+
+                                `PLATFORM` allocates the split amount to the platform. `MERCHANT` allocates the split amount to the merchant specified by merchant_id.'
+                              type: string
+                              enum:
+                              - PLATFORM
+                              - MERCHANT
+                            merchant_id:
+                              description: 'Required when type is `MERCHANT`.<br/><br/>
+
+
+                                The unique identifier of the merchant debited from.<br/><br/>
+
+
+                                Not valid when type is `PLATFORM`.'
+                              type: string
+                              example: mid_abc123
+                          required:
+                          - amount
+                          - currency_code
+                          - type
+                        example:
+                        - amount: 3
+                          currency_code: USD
+                          type: PLATFORM
+                      payin_billing_fees_reversal_config:
+                        description: Controls whether the billing fees from the original payin are returned to the originating merchant. This configuration overrides the `billing_fees_reversal_config` defined on the payin config or the merchant's default configuration.
+                        type: object
+                        properties:
+                          on_full_refund:
+                            description: 'Determines whether the billing fees for the original payin are returned to the originating merchant when a refund for the full amount is processed.<br/><br/>
+
+
+                              When `true`, the billing fee is credited back to the merchant and included in the refund''s computed billing fee.'
+                            type: boolean
+                      expected_deposit_date:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date'
+                        description: Date the funds are expected to be available in a deposit.
+                      ach_return:
+                        $ref: '#/paths/~1v1~1ach_returns~1%7Bach_return_id%7D/get/responses/200/content/application~1json/schema/properties/data'
+                      has_ach_return:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/has_ach_return'
+                      source:
+                        description: The source of the refund. Indicates the integration that created the refund.
+                        type: string
+                        nullable: false
+                        enum:
+                        - API_DIRECT
+                        - COMPONENT
+                        - EXTERNAL
+                      source_desc:
+                        description: The description of the source of the refund. This will be a human-readable value that may be presented to the end user.
+                        type: string
+                        nullable: false
+                      created_at:
+                        description: Date and time void or refund was created at in UTC RFC 3339 format.
+                        type: string
+                        format: date-time
+                        example: '2022-01-01T12:00:00Z'
+                      updated_at:
+                        description: Date and time refund was last updated at in UTC RFC 3339 format.
+                        type: string
+                        format: date-time
+                        example: '2022-01-01T12:00:00Z'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Refunds
+  /v1/refunds/{refund_id}/metadata:
+    patch:
+      operationId: update_refund_metadata
+      summary: Update refund metadata
+      description: "The body of the request is the JSON key-value metadata to patch to the payin. Do not use the metadata field to store sensitive or confidential data. \n\nUpdating metadata will merge with the existing metadata stored on the refund by the top-level key. If the same top-level key is passed in this request, it will overwrite the value stored on the refund. Only keys included in the payload will be updated. To remove a key, set the key's value to null. To remove all metadata pass null for the metadata value.\n\nRefund metadata must be less than 8 KB in size.\n\nRefund metadata can only be updated using an API key. This request should not be made by your frontend and should only be done by backend logic that only the platform can complete."
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - $ref: '#/paths/~1v1~1refunds~1%7Brefund_id%7D/get/parameters/1'
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1refunds~1%7Brefund_id%7D/get/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Refunds
+  /v1/refunds/{refund_id}/void:
+    post:
+      operationId: void_refund
+      summary: Void refund
+      description: 'Void a refund by the refund ID.
+
+
+        See the refund `non_voidable_reason_code` for details on if the refund is eligible for a void.'
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - $ref: '#/paths/~1v1~1refunds~1%7Brefund_id%7D/get/parameters/1'
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                idempotency_key:
+                  description: A unique identifier provided by the platform. This key will be used to detect subsequent retries of the same request. Subsequent requests with the same key will return the result of the first request, regardless if the first request succeeded or failed. This identifier should be generated by the platform and can be max 255 characters.
+                  type: string
+                  example: e7d57c41-7626-4644-b777-9451ab3ddea9
+                  maxLength: 255
+                  minLength: 1
+                reason:
+                  description: The reason to void this refund.
+                  type: string
+                  enum:
+                  - CORRECTION
+                  - DUPLICATE
+                  - REQUESTED_BY_CUSTOMER
+                metadata:
+                  $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema'
+                  description: 'Valid JSON key-value object specified by the platform to store additional information. Keys are queryable in list endpoints. Do not use the metadata field to store sensitive or confidential data.
+
+
+                    This metadata will be merged with the metadata stored on the refund by the top-level key. If the same top-level key is passed in this request, it will overwrite the value stored on the refund.
+
+
+                    Metadata must be less than 8 KB in size.'
+              required:
+              - reason
+              - idempotency_key
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1refunds~1%7Brefund_id%7D/get/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/responses/404'
+        '409':
+          description: Conflict on the requested resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1payins/get/responses/400/content/application~1json/schema'
+              example:
+                status: ERROR
+                data: null
+                errors:
+                - field: string
+                  code: string
+                  message: Conflict
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Refunds
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: APIKey

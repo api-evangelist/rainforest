@@ -1,0 +1,572 @@
+openapi: 3.1.0
+info:
+  title: Authentication ACH Returns Chargebacks API
+  version: 1.0.0
+  description: This resource is used for authentication actions
+  contact:
+    name: Rainforest
+    email: support@rainforestpay.com
+    url: https://rainforestpay.com
+servers:
+- url: https://api.sandbox.rainforestpay.com
+  description: Sandbox server
+- url: https://api.rainforestpay.com
+  description: Production server
+security:
+- BearerAuth: []
+tags:
+- name: Chargebacks
+  description: Resources for chargeback functions.
+paths:
+  /v1/chargebacks/{chargeback_id}:
+    get:
+      operationId: get_chargeback
+      summary: Get chargeback
+      description: Get chargeback details by the chargeback ID.
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - in: path
+        required: true
+        name: chargeback_id
+        schema:
+          type: string
+        description: "The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+        examples:
+          production:
+            value: chb_2TndahOgm9XTiidLB7csk0IsR9b
+          sandbox:
+            value: sbx_chb_2TndahOgm9XTiidLB7csk0IsR9b
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    type: object
+                    properties:
+                      chargeback_id:
+                        description: "The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                        type: string
+                        example: chb_2TndahOgm9XTiidLB7csk0IsR9b
+                      payin_id:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payin_id'
+                      merchant_id:
+                        $ref: '#/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id'
+                      amount:
+                        description: 'The amount of the chargeback, in minor units.
+
+
+                          For example, 1000 is 10.00 USD.'
+                        type: integer
+                        minimum: 0
+                      currency_code:
+                        $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code'
+                      status:
+                        description: The status of the chargeback.
+                        type: string
+                        enum:
+                        - INQUIRY_ACTION_REQUIRED
+                        - DISPUTE_ACTION_REQUIRED
+                        - INQUIRY_RESPONDED
+                        - CHARGEBACK_PROCESSING
+                        - PRE_ARBITRATION_PROCESSING
+                        - PROVISIONAL_WIN
+                        - WON
+                        - LOST
+                        - ARBITRATION
+                        example: WON
+                      metadata:
+                        $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema'
+                        description: Valid JSON key-value object specified by the platform to store additional information. This will contain metadata from the associated payin.
+                      merchant_fees:
+                        description: The dispute fee billed to the merchant.
+                        type: object
+                        properties:
+                          total_amount:
+                            description: The total amount of fees billed to the merchant.
+                            type: object
+                            properties:
+                              amount:
+                                $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_fees/properties/total_amount/properties/amount'
+                              currency_code:
+                                $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code'
+                        example:
+                          total_amount:
+                            amount: 2500
+                            currency_code: USD
+                      method_type:
+                        description: The type of payment method.
+                        type: string
+                        enum:
+                        - CARD
+                        - APPLE_PAY
+                        - PAYPAL_WALLET
+                        - VENMO
+                        - PAYPAL_PAYLATER
+                      card:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/card'
+                      apple_pay:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/apple_pay'
+                      paypal_wallet:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_wallet'
+                      venmo:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/venmo'
+                      paypal_paylater:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_paylater'
+                      reason_code:
+                        description: The code explaining the dispute reason for the chargeback.
+                        type: string
+                        enum:
+                        - CREDIT_NOT_PROCESSED
+                        - DUPLICATE_TRANSACTION
+                        - FRAUD
+                        - GENERAL
+                        - INCORRECT_AMOUNT
+                        - NOT_RECEIVED
+                        - NOT_ACCEPTABLE
+                        - SUBSCRIPTION_CANCELED
+                        - UNRECOGNIZED
+                        - UNCATEGORIZED
+                        readOnly: true
+                      reason_desc:
+                        description: The description explaining the dispute reason for the chargeback. This will be a human-readable value that may be presented to the end user.
+                        type: string
+                        examples:
+                        - The customer claims they should receive a refund or partial refund because the product was returned, canceled, or not fully fulfilled, but they have not seen the refund be processed.
+                        - The customer claims they were charged multiple times for the same product or service.
+                        - The customer claims they did not authorize or recognize the payment.
+                        - This chargeback was initiated by the cardholder for a reason that does not fit into more specific categories.
+                        - The customer claims they were charged an incorrect amount for the product or service purchased.
+                        - The customer claims they did not receive the product or service they purchased.
+                        - The customer claims the product was defective, damaged, or not accurately described prior to purchasing.
+                        - The customer claims the payment was processed after the subscription was canceled.
+                        - The customer claims they do not recognize the merchant or the payment.
+                        - This chargeback was initiated by the cardholder for a reason that does not fit into more specific categories.
+                        readOnly: true
+                      acquirer_ref:
+                        type: string
+                        description: Acquirer Reference Number (ARN) is the unique identifier to trace the chargeback with the issuing bank.
+                      due_date:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date'
+                        description: Date chargeback times out and will be decisioned as a win or a loss depending on the current status.
+                      chargeback_evidence:
+                        type: array
+                        items:
+                          $ref: '#/paths/~1v1~1chargebacks~1%7Bchargeback_id%7D~1evidence~1%7Bchargeback_evidence_id%7D/patch/responses/200/content/application~1json/schema/properties/data'
+                      validation_errors:
+                        description: List of errors with the chargeback evidence to respond to the chargeback, if applicable.
+                        type: array
+                        items:
+                          type: object
+                          description: Details of the error with the chargeback evidence.
+                          properties:
+                            field:
+                              description: The field in the request that had an error, if applicable.
+                              type: string
+                            code:
+                              description: The code describing the error.
+                              type: string
+                            message:
+                              description: The description of the error related to the field.
+                              type: string
+                      expected_deposit_date:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date'
+                        description: Date the fee of the chargeback is expected to be deducted in a deposit. Funds pulled from the merchant or given to the merchant is dependent on the chargeback status and is not represented by the expected deposit date.
+                      source:
+                        description: The source of the chargeback. Indicates the integration that created the chargeback.
+                        type: string
+                        nullable: false
+                        enum:
+                        - SYSTEM
+                      source_desc:
+                        description: The description of the source of the chargeback. This will be a human-readable value that may be presented to the end user.
+                        type: string
+                        nullable: false
+                      created_at:
+                        description: Date and time chargeback was created at in UTC RFC 3339 format.
+                        $ref: '#/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at'
+                        readOnly: true
+                      updated_at:
+                        description: Date and time chargeback was last updated at in UTC RFC 3339 format.
+                        $ref: '#/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at'
+                        readOnly: true
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Chargebacks
+  /v1/chargebacks/{chargeback_id}/accept:
+    post:
+      operationId: accept_chargeback
+      summary: Accept chargeback
+      description: Accept a chargeback as a loss.
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - $ref: '#/paths/~1v1~1chargebacks~1%7Bchargeback_id%7D/get/parameters/1'
+        in: path
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1chargebacks~1%7Bchargeback_id%7D/get/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Chargebacks
+  /v1/chargebacks/{chargeback_id}/submit:
+    post:
+      operationId: submit_chargeback
+      summary: Submit chargeback
+      description: Respond to a chargeback by providing evidence.
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - $ref: '#/paths/~1v1~1chargebacks~1%7Bchargeback_id%7D/get/parameters/1'
+        in: path
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1chargebacks~1%7Bchargeback_id%7D/get/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          description: Bad request, check for validation errors.
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1chargebacks~1%7Bchargeback_id%7D/get/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Chargebacks
+  /v1/chargebacks/{chargeback_id}/evidence/{chargeback_evidence_id}:
+    patch:
+      operationId: update_chargeback_evidence
+      summary: Update chargeback evidence
+      description: Update a chargeback's evidence. Only fields included in the payload will be updated. Omitted fields will be removed. To remove a field, set the value to `null`.
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - $ref: '#/paths/~1v1~1chargebacks~1%7Bchargeback_id%7D/get/parameters/1'
+        in: path
+      - in: path
+        required: true
+        name: chargeback_evidence_id
+        schema:
+          type: string
+        description: "The unique chargeback evidence identifier. \n\nPrefix is \"cbe\" in production and \"sbx_cbe\" in sandbox."
+        examples:
+          production:
+            value: cbe_2TndahOgm9XTiidLB7csk0IsR9b
+          sandbox:
+            value: sbx_cbe_2TndahOgm9XTiidLB7csk0IsR9b
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              description: null
+              properties:
+                file_upload_ids:
+                  type: array
+                  items:
+                    description: "The unique file upload identifier. \n\nPrefix is \"fiu\" in production and \"sbx_fiu\" in sandbox."
+                    type: string
+                    example: fiu_2DrDU206kzAhclm1WrZbuwDERRk
+                  description: List of file upload IDs for the evidence.
+                response:
+                  type: string
+                  description: Plain text description to provide additional information for the chargeback evidence.
+                  nullable: true
+                description: The text-based response for the evidence.
+            examples:
+              update:
+                value:
+                  file_upload_ids:
+                  - fiu_2A4d6U0tMyovzTbVT1ktmRzdRaD
+                  response: Customer signed proof of delivery document on 9/1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    description: Chargeback evidence details
+                    type: object
+                    properties:
+                      chargeback_evidence_id:
+                        description: 'The unique chargeback evidence identifier.
+
+
+                          Prefix is "cbe" in production and "sbx_cbe" in sandbox.'
+                        type: string
+                        example: cbe_2DrDU206kzAhclm1WrZbuwDERRk
+                      chargeback_id:
+                        $ref: '#/paths/~1v1~1chargebacks~1%7Bchargeback_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/chargeback_id'
+                      is_required:
+                        description: Boolean indicating if evidence is required to dispute the chargeback.
+                        type: boolean
+                      type:
+                        type: string
+                        description: The type of evidence.
+                        enum:
+                        - 3DS_VERIFICATION
+                        - ADDITIONAL_AUTHORIZED_SIGNER
+                        - ADDITIONAL_HOUSEHOLD_SIGNER
+                        - AUTHORIZATION
+                        - CANCELLATION_POLICY
+                        - CVV2_CAPTURE
+                        - DIGITAL_DOWNLOAD
+                        - ITEM_CONDITION
+                        - LEGAL_ATTESTATION
+                        - ORDER_FORM
+                        - OTHER
+                        - OTHER_PAYMENT_METHODS
+                        - PRODUCT_OR_SERVICE_USAGE
+                        - PROOF_OF_DELIVERY_TO_EMPLOYEE
+                        - PROOF_OF_DELIVERY
+                        - REBUTTAL
+                        - RECEIPT
+                        - RECURRING_BILLING_AGREEMENT
+                        - RENTAL_AGREEMENT
+                        - TRANSACTION_HISTORY
+                      type_desc:
+                        type: string
+                        description: The description explaining the type of evidence.
+                      file_upload_mode:
+                        $ref: '#/paths/~1v1~1chargebacks~1%7Bchargeback_id%7D~1evidence~1%7Bchargeback_evidence_id%7D/patch/responses/200/content/application~1json/schema/properties/data/properties/response_mode'
+                        description: The mode for adding files to the evidence. If `REQUIRED`, the `file_upload_ids` must be set to respond to the chargeback.
+                      file_upload_ids:
+                        type: array
+                        description: List of file upload IDs for the evidence.
+                        items:
+                          $ref: '#/paths/~1v1~1chargebacks~1%7Bchargeback_id%7D~1evidence~1%7Bchargeback_evidence_id%7D/patch/requestBody/content/application~1json/schema/properties/file_upload_ids/items'
+                        nullable: true
+                      response_mode:
+                        description: The mode for adding a response to the evidence. If `REQUIRED`, the `response` must be set to respond to the chargeback.
+                        type: string
+                        enum:
+                        - ALLOWED
+                        - NOT_ALLOWED
+                        - REQUIRED
+                      response:
+                        $ref: '#/paths/~1v1~1chargebacks~1%7Bchargeback_id%7D~1evidence~1%7Bchargeback_evidence_id%7D/patch/requestBody/content/application~1json/schema/properties/response'
+                      created_at:
+                        description: Date and time chargeback evidence was created at in UTC RFC 3339 format.
+                        $ref: '#/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at'
+                        readOnly: true
+                      updated_at:
+                        description: Date and time chargeback evidence was last updated at in UTC RFC 3339 format.
+                        $ref: '#/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at'
+                        readOnly: true
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Chargebacks
+  /v1/chargebacks/{chargeback_id}/metadata:
+    patch:
+      operationId: update_chargeback_metadata
+      summary: Update chargeback metadata
+      description: "The body of the request is the JSON key-value metadata to patch to the chargeback. Do not use the metadata field to store sensitive or confidential data. \n\nUpdating metadata will merge with the existing metadata stored on the chargeback by the top-level key. If the same top-level key is passed in this request, it will overwrite the value stored on the chargeback. Only keys included in the payload will be updated. To remove a key, set the key's value to null. To remove all metadata pass null for the metadata value.\n\nChargeback metadata must be less than 8 KB in size.\n\nChargeback metadata can only be updated using an API key. This request should not be made by your frontend and should only be done by backend logic that only the platform can complete."
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - $ref: '#/paths/~1v1~1chargebacks~1%7Bchargeback_id%7D/get/parameters/1'
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1chargebacks~1%7Bchargeback_id%7D/get/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Chargebacks
+  /v1/payins/{payin_id}/simulate_chargeback:
+    post:
+      operationId: simulate_payin_chargeback
+      summary: Simulate a chargeback against a payin
+      description: 'Only available in the Rainforest sandbox environment.
+
+
+        The expected webhooks will be sent as the as the chargeback is created.'
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/parameters/1'
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Simulation request to create a chargeback against a payin.
+              type: object
+              properties:
+                status:
+                  description: Initial status to initiate a chargeback in.
+                  type: string
+                  enum:
+                  - INQUIRY_ACTION_REQUIRED
+                  - DISPUTE_ACTION_REQUIRED
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1chargebacks~1%7Bchargeback_id%7D/get/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Chargebacks
+  /v1/chargebacks/{chargeback_id}/simulate:
+    post:
+      operationId: simulate_chargeback
+      summary: Simulate chargeback status change
+      description: 'Only available in the Rainforest sandbox environment.
+
+
+        Simulate the decision of the chargeback. The expected webhooks will be sent for the chargeback on status change.'
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - $ref: '#/paths/~1v1~1chargebacks~1%7Bchargeback_id%7D/get/parameters/1'
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Simulation request to move an existing chargeback into a new status.
+              type: object
+              properties:
+                status:
+                  description: Status to transition the chargeback to.
+                  type: string
+                  enum:
+                  - DISPUTE_ACTION_REQUIRED
+                  - PROVISIONAL_WIN
+                  - WON
+                  - LOST
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1chargebacks~1%7Bchargeback_id%7D/get/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Chargebacks
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: APIKey

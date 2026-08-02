@@ -1,0 +1,505 @@
+openapi: 3.1.0
+info:
+  title: Authentication ACH Returns Devices API
+  version: 1.0.0
+  description: This resource is used for authentication actions
+  contact:
+    name: Rainforest
+    email: support@rainforestpay.com
+    url: https://rainforestpay.com
+servers:
+- url: https://api.sandbox.rainforestpay.com
+  description: Sandbox server
+- url: https://api.rainforestpay.com
+  description: Production server
+security:
+- BearerAuth: []
+tags:
+- name: Devices
+  description: Resources for device functions.
+paths:
+  /v1/device_registrations:
+    post:
+      operationId: create_device_registration
+      summary: Create device registration
+      description: Create a device registration for payment processing on a specific merchant. When a device is registered, the device receives a new device_registration_id for payment processing. The merchant status must be `ACTIVE` to register a device.
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                merchant_id:
+                  description: "The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                  type: string
+                  example: mid_2DrDFJPutxE5AIbJSopAnqniEbr
+                registration_code:
+                  description: 'The code that appears on an internet-connected device when it is not yet registered or has been deregistered.
+
+
+                    On sandbox, a virtual device can be registered to test the device integration without a physical device. Use the registration code `VIRTUAL_DEVICE` to register a virtual device to any sandbox merchant account.'
+                  type: string
+                device_name:
+                  description: The name that will appear on the device screen when internet-connected.
+                  type: string
+                  maxLength: 20
+                  minLength: 1
+              required:
+              - merchant_id
+              - registration_code
+              - device_name
+            examples:
+              virtual_device:
+                value:
+                  merchant_id: mid_2DrDFJPutxE5AIbJSopAnqniEbr
+                  registration_code: VIRTUAL_DEVICE
+                  device_name: Test Device
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    type: object
+                    properties:
+                      device_registration_id:
+                        name: device_registration_id
+                        schema:
+                          type: string
+                        required: true
+                        description: 'The unique device registration identifier.
+
+
+                          Prefix is "dvc" in production and "sbx_dvc" in sandbox.'
+                        examples:
+                          production:
+                            value: dvc_2DrDKk5NIMbpuNGqm109SkpGDHh
+                          sandbox:
+                            value: sbx_dvc_2DrDKk5NIMbpuNGqm109SkpGDHh
+                      merchant_id:
+                        name: merchant_id
+                        schema:
+                          type: string
+                        description: "The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                        examples:
+                          production:
+                            value: mid_2DrDFJPutxE5AIbJSopAnqniEbr
+                          sandbox:
+                            value: sbx_mid_2DrDFJPutxE5AIbJSopAnqniEbr
+                      make:
+                        description: The make of the device.
+                        type: string
+                      model:
+                        description: The model of the device.
+                        type: string
+                      serial_number:
+                        description: The serial number of the device.
+                        type: string
+                      device_name:
+                        description: The name that will appear on the device screen when internet-connected.
+                        type: string
+                      capabilities:
+                        readOnly: true
+                        description: 'The supported device registration capabilities.
+
+
+                          `SIGNATURE` - supports collecting a digital signature'
+                        type: array
+                        items:
+                          type: string
+                          enum:
+                          - SIGNATURE
+                      created_at:
+                        description: Date and time the device registration was created in UTC RFC 3339 format.
+                        type: string
+                        format: date-time
+                        example: '2022-01-01T12:00:00Z'
+                      deleted_at:
+                        description: Date and time the device registration was deleted in UTC RFC 3339 format.
+                        type: string
+                        format: date-time
+                        example: '2022-01-01T12:00:00Z'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Devices
+    get:
+      operationId: list_device_registrations
+      summary: List device registrations
+      description: Query a list of registered devices given optional search criteria.
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - $ref: '#/paths/~1v1~1device_registrations/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_id'
+        in: query
+      - $ref: '#/paths/~1v1~1payins/get/parameters/8'
+        in: query
+      - $ref: '#/paths/~1v1~1payins/get/parameters/9'
+        in: query
+      - name: sort_by
+        in: query
+        description: Optional value by which to sort the result set. Default sort by is created_at.
+        schema:
+          type: string
+          enum:
+          - created_at
+          - merchant_id
+      - $ref: '#/paths/~1v1~1payins/get/parameters/13'
+        in: query
+      - $ref: '#/paths/~1v1~1payins/get/parameters/14'
+        in: query
+      - in: query
+        name: offset
+        schema:
+          type: number
+          default: 0
+          minimum: 0
+        description: The offset of the first result to return; zero-based.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    allOf:
+                    - $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/data/allOf/0'
+                    - type: object
+                      properties:
+                        results:
+                          description: List of registered devices.
+                          type: array
+                          items:
+                            $ref: '#/paths/~1v1~1device_registrations/post/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Devices
+  /v1/device_registrations/{device_registration_id}:
+    get:
+      operationId: get_device_registration
+      summary: Get device registration
+      description: Get registered device details by the device registration ID.
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - in: path
+        required: true
+        name: device_registration_id
+        schema:
+          type: string
+        description: 'The unique device registration identifier.
+
+
+          Prefix is "dvc" in production and "sbx_dvc" in sandbox.'
+        examples:
+          production:
+            value: dvc_2DrDKk5NIMbpuNGqm109SkpGDHh
+          sandbox:
+            value: sbx_dvc_2DrDKk5NIMbpuNGqm109SkpGDHh
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1device_registrations/post/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Devices
+    delete:
+      operationId: delete_device_registration
+      summary: Delete device registration
+      description: Delete a device registration. The device will be able to be re-registered.
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - $ref: '#/paths/~1v1~1device_registrations~1%7Bdevice_registration_id%7D/get/parameters/1'
+        in: path
+      responses:
+        '204':
+          description: OK
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Devices
+  /v1/device_registrations/{device_registration_id}/payin:
+    post:
+      operationId: create_device_payin
+      summary: Present payin on a registered device
+      description: 'Present a payin for processing on a registered device using a payin configuration. The merchant status must be `ACTIVE` to process a payin.
+
+
+        > 📘 Note
+
+        >
+
+        > A payment method created on a registered device may only be used for payins within the same merchant for which it was collected.'
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - $ref: '#/paths/~1v1~1device_registrations~1%7Bdevice_registration_id%7D/get/parameters/1'
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payin_config_id:
+                  description: 'The unique payin config identifier. A payin must be configured prior to this request. See "Create a Payin Config" if a payin configuration has not been created yet.
+
+
+                    Prefix is "cfg" in production and "sbx_cfg" in sandbox.'
+                  type: string
+                  example: cfg_2A4d6U0tMyovzTbVT1ktmRzdRaD
+              required:
+              - payin_config_id
+            example:
+              payin_config_id: cfg_2A4d6U0tMyovzTbVT1ktmRzdRaD
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/responses/404'
+        '409':
+          $ref: '#/paths/~1v1~1refunds~1%7Brefund_id%7D~1void/post/responses/409'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Devices
+  /v1/device_registrations/{device_registration_id}/payment_method:
+    post:
+      operationId: create_device_payment_method
+      summary: Present payment method on a registered device
+      description: 'Create a payment method on a registered device using a payment method configuration. The merchant status must be `ACTIVE` to create a payment method.
+
+
+        > 📘 Note
+
+        >
+
+        > A payment method created on a registered device may only be used for payins within the same merchant for which it was collected.'
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - $ref: '#/paths/~1v1~1device_registrations~1%7Bdevice_registration_id%7D/get/parameters/1'
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payment_method_config_id:
+                  description: 'The unique payment method config identifier. A payment method must be configured prior to this request. See "Create a payment method config" if a payment method configuration has not been created yet.
+
+
+                    Prefix is "pmc" in production and "sbx_pmc" in sandbox.'
+                  type: string
+                  example: pmc_2S3yd7bLHxEScKeaIHhdusjk35q
+              required:
+              - payment_method_config_id
+            example:
+              payin_config_id: pmc_2S3yd7bLHxEScKeaIHhdusjk35q
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/responses/404'
+        '409':
+          $ref: '#/paths/~1v1~1refunds~1%7Brefund_id%7D~1void/post/responses/409'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Devices
+  /v1/device_registrations/{device_registration_id}/cancel:
+    post:
+      operationId: cancel_device_presented
+      summary: Cancel presented entity on device
+      description: 'Best effort attempt to cancel currently presented payin or payment method on device. This does not guarantee the presented entity can be canceled on the device. If the payin begins processing before it can be canceled, then you will need to void the payin if it processes. A corresponding webhook will trigger if the presented payin or payment method is canceled or processes.
+
+
+        If no payin or payment method is being presented at the time of the request, a `202 Accepted` response will be returned.'
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - $ref: '#/paths/~1v1~1device_registrations~1%7Bdevice_registration_id%7D/get/parameters/1'
+        in: path
+      responses:
+        '202':
+          description: 'Accepted
+
+
+            The device is not currently presenting a payin or payment method, so no cancel action is necessary.'
+        '204':
+          description: No Content
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Devices
+  /v1/device_registrations/{device_registration_id}/simulate:
+    post:
+      operationId: simulate_on_device
+      summary: Simulate device interaction
+      description: 'Only available in the Rainforest sandbox environment.
+
+
+        After presenting a payin or payment method on a virtual device this endpoint is available to move on from the `PRESENTING` status to a desired subsequent status.
+
+
+        The expected webhook will be sent for the payin or payment method on status change.'
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - $ref: '#/paths/~1v1~1device_registrations~1%7Bdevice_registration_id%7D/get/parameters/1'
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Simulation request for device interactions.
+              type: object
+              properties:
+                event:
+                  description: Event to simulate
+                  type: string
+                  enum:
+                  - PRESENTED
+                  - CANCEL
+                card:
+                  description: Name of card to use
+                  type: string
+                  enum:
+                  - VISA_SUCCESS
+                  - VISA_42_SUCCESS
+                  - VISA_DEBIT_SUCCESS
+                  - MC_SUCCESS
+                  - MC_2_SUCCESS
+                  - MC_DEBIT_SUCCESS
+                  - MC_PREPAID_SUCCESS
+                  - AMEX_SUCCESS
+                  - AMEX_2_SUCCESS
+                  - AMEX_DEBIT_SUCCESS
+                  - DISCOVER_SUCCESS
+                  - DISCOVER_2_SUCCESS
+                  - DISCOVER_DEBIT_SUCCESS
+                  - DINERS_SUCCESS
+                  - DINERS_14_SUCCESS
+                  - JCB_SUCCESS
+                  - CUP_SUCCESS
+                  - CB_VISA_SUCCESS
+                  - CB_MC_SUCCESS
+                  - GENERIC_DECLINE
+                  - INSUFFICIENT_FUNDS
+                  - LOST_CARD
+                  - STOLEN_CARD
+                  - EXPIRED_CARD
+                  - INCORRECT_CVC
+                  - PROCESSING_ERROR
+                  - INCORRECT_NUMBER
+      responses:
+        '204':
+          description: OK
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/responses/404'
+        '409':
+          $ref: '#/paths/~1v1~1refunds~1%7Brefund_id%7D~1void/post/responses/409'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Devices
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: APIKey

@@ -1,0 +1,17 @@
+generated: '2026-07-20'
+method: searched
+probe: false
+url: https://www.rainforestpay.com/data-security-compliance
+certifications:
+- PCI DSS Level 1 Service Provider
+security_posture:
+  hosting: AWS
+  encryption: end-to-end; encrypted in transit at all stages; PAN encrypted at rest at row level
+  tokenization: payment tokenization to reduce PAN exposure
+  pci_qsa: independently assessed by a PCI Qualified Security Assessor
+evidence:
+- source: https://www.rainforestpay.com/data-security-compliance
+  keywords: [pci dss, level 1, service provider, encryption, tokenization]
+note: >-
+  The scripted trust-center probe returned no hit (page is JS-rendered), but the
+  Security & Compliance page was verified live (HTTP 200) and names PCI DSS Level 1.

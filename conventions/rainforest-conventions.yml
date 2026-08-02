@@ -1,0 +1,49 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.rainforestpay.com/docs/overview
+authentication:
+  style: HTTP Bearer (API key server-side; short-lived session token for Components)
+  header: "Authorization: Bearer {key}"
+  see: authentication/rainforest-authentication.yml
+idempotency:
+  supported: true
+  mechanism: idempotency_key field on the config object
+  scope: >-
+    Payins and stored payment methods are created against a config (create_payin_config /
+    create_payment_method_config) that carries an idempotency_key; the config makes the
+    subsequent create_payin / create_payment_method create-and-process step safe to retry.
+  see_operations: [create_payin_config, create_payment_method_config]
+pagination:
+  style: offset + cursor hybrid
+  params:
+  - limit
+  - offset
+  - start_key
+  - sort_by
+  - sort_order
+  - omit_total_results
+  notes: >-
+    List endpoints accept limit/offset plus a start_key cursor and sort_by/sort_order.
+    omit_total_results can suppress the total count for faster queries. Range filters use
+    dotted params (e.g. created_at.start / created_at.end).
+metadata:
+  supported: true
+  shape: JSON key-value object, merged by top-level key on PATCH; set a key to null to remove; null clears all
+  limit: less than 8 KB
+  restriction: metadata may only be updated with an API key (never from the frontend); do not store sensitive data
+  see_operations: [update_payin_metadata, update_chargeback_metadata, update_refund_metadata, update_ach_return_metadata]
+versioning:
+  scheme: date-based (e.g. 2024-10-16)
+  header: Rainforest-Api-Version
+  default: platform minimum API version
+  see: lifecycle/rainforest-lifecycle.yml
+error_envelope:
+  format: custom-envelope
+  shape: "{ status: ERROR, data: null, errors: [{ field, code, message }] }"
+  see: errors/rainforest-problem-types.yml
+webhooks:
+  supported: true
+  event_format: "{resource}.{status}"
+  payload_fields: [event_type, data]
+  signature_verification: true
+  see: asyncapi/rainforest-webhooks.yml

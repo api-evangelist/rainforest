@@ -1,0 +1,19 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.rainforestpay.com/docs/api-version-upgrades
+versioning:
+  scheme: date-based
+  current: '2024-10-16'
+  known_versions: ['2024-10-16', '2023-12-01', '2023-01-01']
+  header: Rainforest-Api-Version
+  docs: https://docs.rainforestpay.com/docs/api-version-upgrades
+  notes: >-
+    Each platform has a configured minimum API version; every call implicitly uses it unless
+    a greater Rainforest-Api-Version is set. Integrations are pinned to the version they
+    integrated against and are not impacted until they upgrade their minimum. Webhook
+    payloads follow the platform's minimum API version.
+deprecation:
+  policy: version-pinning (date-based); new versions do not break pinned integrations
+  sunset_header: false
+status_page: https://status.rainforestpay.com/
+changelog: https://docs.rainforestpay.com/changelog

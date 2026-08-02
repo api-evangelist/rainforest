@@ -1,0 +1,149 @@
+openapi: 3.1.0
+info:
+  title: Authentication ACH Returns Sessions API
+  version: 1.0.0
+  description: This resource is used for authentication actions
+  contact:
+    name: Rainforest
+    email: support@rainforestpay.com
+    url: https://rainforestpay.com
+servers:
+- url: https://api.sandbox.rainforestpay.com
+  description: Sandbox server
+- url: https://api.rainforestpay.com
+  description: Production server
+security:
+- BearerAuth: []
+tags:
+- name: Sessions
+  description: Resources for session functions.
+paths:
+  /v1/sessions:
+    post:
+      operationId: create_session
+      summary: Create session
+      description: Create a temporary session to delegate permissions to a third-party.
+      parameters:
+      - $ref: '#/paths/~1v1~1api_keys/get/parameters/0'
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/paths/~1v1~1sessions/post/responses/200/content/application~1json/schema/properties/data'
+              required:
+              - statements
+              - ttl
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1api_keys/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    type: object
+                    properties:
+                      session_id:
+                        description: "The unique session identifier. \n\nPrefix is \"ses\" in production and \"sbx_ses\" in sandbox."
+                        type: string
+                        example: ses_2DrDU206kzAhclm1WrZbuwDERRk
+                        readOnly: true
+                      session_key:
+                        description: The Session Key to be passed to the API
+                        type: string
+                        example: sessionkey_6802b55063023ccef1ad15a0e4cd8d99bd080d3e24f2d5f362d27dc030f3afc4
+                        readOnly: true
+                      statements:
+                        description: Array of valid statements. See the [session guide](doc:component-sessions) on how to define statements.
+                        type: array
+                        items:
+                          type: object
+                          required:
+                          - permissions
+                          - constraints
+                          properties:
+                            permissions:
+                              description: Array of valid permissions, defined by a `group` or `resource:action`
+                              type: array
+                              items:
+                                type: string
+                                example: group#all
+                            constraints:
+                              description: Restrictions on actions allowed based on specific context of a resource.
+                              type: object
+                              additionalProperties:
+                                type: object
+                      ttl:
+                        description: The number of seconds before the session expires.
+                        type: number
+                        maximum: 86400
+                        example: 3600
+                        writeOnly: true
+                      expires_at:
+                        description: The timestamp the session expires.
+                        type: string
+                        example: '2099-01-01T12:00:00Z'
+                        readOnly: true
+                  errors:
+                    $ref: '#/paths/~1v1~1api_keys/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1api_keys/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1api_keys/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1api_keys/get/responses/403'
+        5XX:
+          $ref: '#/paths/~1v1~1api_keys/get/responses/5XX'
+      tags:
+      - Sessions
+    delete:
+      operationId: delete_session
+      summary: Delete session
+      description: Delete a temporary session, permanently invalidating it.
+      parameters:
+      - $ref: '#/paths/~1v1~1api_keys/get/parameters/0'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                session_id:
+                  description: "The unique session identifier. \n\nPrefix is \"ses\" in production and \"sbx_ses\" in sandbox."
+                  type: string
+                  example: ses_2DrDU206kzAhclm1WrZbuwDERRk
+      responses:
+        '204':
+          description: OK
+        '400':
+          $ref: '#/paths/~1v1~1api_keys/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1api_keys/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1api_keys/get/responses/403'
+        '404':
+          description: Resource not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1api_keys/get/responses/400/content/application~1json/schema'
+              example:
+                status: ERROR
+                data: null
+                errors:
+                - field: string
+                  code: EntityNotFound
+                  message: Resource not found
+        5XX:
+          $ref: '#/paths/~1v1~1api_keys/get/responses/5XX'
+      tags:
+      - Sessions
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: APIKey

@@ -1,0 +1,634 @@
+openapi: 3.1.0
+info:
+  title: Authentication ACH Returns Payment Methods API
+  version: 1.0.0
+  description: This resource is used for authentication actions
+  contact:
+    name: Rainforest
+    email: support@rainforestpay.com
+    url: https://rainforestpay.com
+servers:
+- url: https://api.sandbox.rainforestpay.com
+  description: Sandbox server
+- url: https://api.rainforestpay.com
+  description: Production server
+security:
+- BearerAuth: []
+tags:
+- name: Payment Methods
+  description: Resources for payment method functions.
+paths:
+  /v1/payment_methods:
+    get:
+      operationId: list_payment_methods
+      summary: List payment methods
+      description: Query a list of payment methods given optional search criteria.
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - in: query
+        name: billable_merchant_id
+        schema:
+          type: string
+        description: 'The unique merchant identifier for the billable merchant, utilized in processes such as BIN Lookup and Card Account Updater.
+
+
+          Prefix is "mid" in production and "sbx_mid" in sandbox.'
+        examples:
+          production:
+            value: mid_2DrDFJPutxE5AIbJSopAnqniEbr
+          sandbox:
+            value: sbx_mid_2DrDFJPutxE5AIbJSopAnqniEbr
+      - in: query
+        name: fingerprint
+        schema:
+          type: string
+        description: The unique identifier of a payment method across all platform merchants.
+        examples:
+          fingerprint:
+            value: ulox1no8y3ojtbf69hb4io7pysjiy18fz0w0e01c3kt0j4yylqa39ptmah566hky
+      - $ref: '#/paths/~1v1~1payins/get/parameters/3'
+        in: query
+      - name: status
+        in: query
+        description: 'One or more payment method statuses to filter by. Provide parameter multiple times to filter by multiple payin status types.
+
+
+          `ACTIVE` `CANCELED` `CREATED` `DEACTIVATED` `FAILED` `PRESENTING` `REPLACED`'
+        schema:
+          type: array
+          items:
+            description: The status of the payment method.
+            type: string
+            enum:
+            - ACTIVE
+            - CANCELED
+            - CREATED
+            - DEACTIVATED
+            - FAILED
+            - PRESENTING
+            - REPLACED
+            example: ACTIVE
+      - $ref: '#/paths/~1v1~1payins/get/parameters/7'
+        in: query
+      - $ref: '#/paths/~1v1~1payins/get/parameters/8'
+        in: query
+      - $ref: '#/paths/~1v1~1payins/get/parameters/9'
+        in: query
+      - in: query
+        name: updated_at.start
+        description: Last updated on or after in UTC RFC 3339 format.
+        schema:
+          type: string
+          format: date-time
+        example: '2022-01-01T12:00:00Z'
+      - in: query
+        name: updated_at.end
+        description: Last updated on or before in UTC RFC 3339 format.
+        schema:
+          type: string
+          format: date-time
+        example: '2022-01-01T12:00:00Z'
+      - name: replaced_at.start
+        in: query
+        description: Replaced on or after in UTC RFC 3339 format.
+        schema:
+          type: string
+          format: date-time
+          example: '2022-01-01T12:00:00Z'
+      - name: replaced_at.end
+        in: query
+        description: Replaced on or before in UTC RFC 3339 format.
+        schema:
+          type: string
+          format: date-time
+          example: '2022-01-01T12:00:00Z'
+      - name: replacement_disabled.start
+        in: query
+        description: Replacement disabled on or after in UTC RFC 3339 format.
+        schema:
+          type: string
+          format: date-time
+          example: '2022-01-01T12:00:00Z'
+      - name: replacement_disabled.end
+        in: query
+        description: Replacement disabled on or before in UTC RFC 3339 format.
+        schema:
+          type: string
+          format: date-time
+          example: '2022-01-01T12:00:00Z'
+      - name: sort_by
+        in: query
+        description: Optional value by which to sort the result set. Default sort by is created_at.
+        schema:
+          type: string
+          enum:
+          - created_at
+          - status
+      - $ref: '#/paths/~1v1~1payins/get/parameters/13'
+        in: query
+      - $ref: '#/paths/~1v1~1payins/get/parameters/14'
+        in: query
+      - $ref: '#/paths/~1v1~1payins/get/parameters/15'
+        in: query
+      - $ref: '#/paths/~1v1~1payins/get/parameters/16'
+        in: query
+        deprecated: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    allOf:
+                    - type: object
+                      properties:
+                        last_key:
+                          $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/data/allOf/1/properties/last_key'
+                    - type: object
+                      properties:
+                        results:
+                          description: List of payment_methods.
+                          type: array
+                          items:
+                            $ref: '#/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Payment Methods
+    post:
+      operationId: create_payment_method
+      summary: Create payment method
+      description: 'Create a saved payment method.
+
+
+        To duplicate a saved payment method, set the payment_method_id of the payment method to be duplicated. Billing contact and metadata is not persisted from the duplicated payment method and must be defined on the [Payment Method Config](ref:create_payment_method_config) or on the request. Only the stored sensitive payment method details (i.e full card or bank account number) will persist to the duplicated payment method.
+
+
+        If the method_type is set, then this endpoint requires Rainforest approval. Platforms that meet all [requirements](doc:send-sensitive-data-via-api#requirements) and are approved by Rainforest can send the full card and bank account numbers to Rainforest via a server-to-serve direct API integration.'
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payment_method_config_id:
+                  description: 'The unique payment method config identifier. A payment method must be configured prior to this request. See "Create a Payment Method Config" if a payment method configuration has not been created yet.
+
+
+                    Prefix is "pmc" in production and "sbx_pmc" in sandbox.'
+                  type: string
+                  example: pmc_2A4d6U0tMyovzTbVT1ktmRzdRaD
+                  required: true
+                payment_method_id:
+                  $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id'
+                  description: 'The unique payment method identifier of the payment method to duplicate. Required if method_type is not provided.
+
+
+                    The payment method status must be `ACTIVE` or `REPLACED` to be duplicated. If `REPLACED`, Rainforest will automatically duplicate the most up-to-date information using the Active payment method linked to the Replaced payment method.
+
+
+                    This will duplicate the sensitive payment method details (i.e full card or bank account number). Billing contact and metadata must be defined on the [Payment Method Config](ref:create_payment_method_config) or on the request.
+
+
+                    Prefix is "mtd" in production and "sbx_mtd" in sandbox.'
+                method_type:
+                  $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/method_type'
+                  description: The type of payment method. Required if payment_method_id is not provided.
+                card:
+                  $ref: '#/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/card'
+                ach:
+                  $ref: '#/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach'
+                billing_contact:
+                  $ref: '#/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact'
+                  description: 'Billing contact details. The following billing contact fields are **_required_** for payment processing depending on the payment method type:
+
+                    * Card: `postal_code`
+
+                    * ACH: `name`
+
+
+                    The billing contact fields can also be passed when processing a payment using the stored payment method.'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    type: object
+                    properties:
+                      payment_method_id:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id'
+                      payment_method_config_id:
+                        $ref: '#/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/payment_method_config_id'
+                        readOnly: true
+                      device_registration_id:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/device_registration_id'
+                        readOnly: true
+                      billable_merchant_id:
+                        description: "The unique merchant identifier for the billable merchant, utilized in processes such as BIN Lookup and Card Account Updater. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                        type: string
+                        example: mid_2DrDFJPutxE5AIbJSopAnqniEbr
+                      merchant_id:
+                        description: 'The unique merchant identifier that indicates this payment method is restricted to this merchant.
+
+
+                          Prefix is "mid" in production and "sbx_mid" in sandbox.'
+                        type: string
+                        example: mid_2DrDFJPutxE5AIbJSopAnqniEbr
+                      fingerprint:
+                        description: The unique identifier of a payment method across all platform merchants.
+                        type: string
+                        example: 52q5eKHLvCOfRlYiNZL4hltKmXEnTIT8
+                        readOnly: true
+                      method_type:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/method_type'
+                      card:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/card'
+                      apple_pay:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/apple_pay'
+                      ach:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/ach'
+                      plaid_ach:
+                        description: ACH payment method details from Plaid.
+                        type: object
+                        properties:
+                          account_number_last_4:
+                            $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/ach/properties/account_number_last_4'
+                          routing_number:
+                            $ref: '#/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach/properties/routing_number'
+                          bank_name:
+                            $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/ach/properties/bank_name'
+                          account_type:
+                            $ref: '#/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach/properties/account_type'
+                          account_holder_type:
+                            $ref: '#/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach/properties/account_holder_type'
+                      paypal_wallet:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_wallet'
+                      venmo:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/venmo'
+                      paypal_paylater:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_paylater'
+                      status:
+                        $ref: '#/paths/~1v1~1payment_methods/get/parameters/4/schema/items'
+                      is_available:
+                        description: 'Payment method is currently available for use.
+
+
+                          Only payment methods in `ACTIVE` status may be used when [creating a payin from stored payment method](ref:create_payment_method_payin).'
+                        type: boolean
+                      billing_contact:
+                        $ref: '#/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact'
+                      device_data:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/device_data'
+                      metadata:
+                        $ref: '#/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/method_metadata'
+                      created_at:
+                        description: Date and time payment method was created at in UTC RFC 3339 format.
+                        type: string
+                        format: date-time
+                        example: '2022-01-01T12:00:00Z'
+                      updated_at:
+                        description: Date and time payment method was last updated at in UTC RFC 3339 format.
+                        type: string
+                        format: date-time
+                        example: '2022-01-01T12:00:00Z'
+                      replaces_payment_method_id:
+                        description: "The unique identifier for the payment method that was replaced by this payment method. \n\nPrefix is \"mtd\" in production and \"sbx_mtd\" in sandbox.\n\nThis value will be `null` if this payment method does not replace another payment method."
+                        type: string
+                        nullable: true
+                        example: mtd_2DrDRpyAdp5MPUJnrJmoZcMmtfF
+                      replaced_by_payment_method_id:
+                        description: "The unique identifier for the payment method that replaced this payment method. \n\nPrefix is \"mtd\" in production and \"sbx_mtd\" in sandbox.\n\nThis value will be `null` if the payment method has not been replaced."
+                        type: string
+                        nullable: true
+                        example: mtd_2DrDRpyAdp5MPUJnrJmoZcMmtfF
+                      replaced_at:
+                        description: Date and time payment method was replaced in UTC RFC 3339 format.
+                        type: string
+                        format: date-time
+                        example: '2022-01-01T12:00:00Z'
+                      replaced_reason_code:
+                        description: 'The code explaining the reason the payment method was replaced.
+
+
+                          This value will be `null` if the payment method has not been replaced.'
+                        type: string
+                        nullable: true
+                        enum:
+                        - C01
+                        - C02
+                        - C03
+                        - C04
+                        - C05
+                        - C06
+                        - C07
+                        - C08
+                        - C09
+                        - C10
+                        - C11
+                        - C12
+                        readOnly: true
+                      replaced_reason_desc:
+                        description: "The description explaining the reason the payment method was replaced. This will be a human-readable value that may be presented to the end user.\n\n This value will be `null` if the payment method has not been replaced."
+                        type: string
+                        nullable: true
+                        examples:
+                        - null
+                        - Incorrect account number
+                        - Incorrect routing number
+                        - Incorrect routing number and account number
+                        - Incorrect account name
+                        - Incorrect payment code
+                        - Incorrect account number and transit code
+                        - Incorrect routing number, account number and payment code
+                        - Incorrect foreign routing number
+                        - Incorrect individual identification number
+                        - Incorrect company name
+                        - Incorrect company identification
+                        - Incorrect company name and identification
+                        readOnly: true
+                      replacement_disabled_at:
+                        description: 'Date and time replacement was disabled for payment method in UTC RFC 3339 format.
+
+                          Indicating processes such as Card Account Updater (CAU) cannot be run on this payment method.'
+                        type: string
+                        format: date-time
+                        example: '2022-01-01T12:00:00Z'
+                      replacement_disabled_reason_code:
+                        description: "The code explaining the reason replacement was disabled for the payment method. \nSee the [replacement disabled reason codes](doc:replacement-disabled-reason-codes) guide for additional information.\n\nThis value will be `null` if replacement has not been disabled for the payment method."
+                        type: string
+                        nullable: true
+                        enum:
+                        - D01
+                        - D02
+                        - D03
+                        - D04
+                        readOnly: true
+                      replacement_disabled_reason_desc:
+                        description: "The description explaining the reason replacement was disabled for the payment method. This will be a human-readable value that may be presented to the end user.\n\n This value will be `null` if replacement has not been disabled for the payment method."
+                        type: string
+                        nullable: true
+                        examples:
+                        - null
+                        - Cardholder opted out of the account updater service
+                        - Issuer closed the cardholder's account
+                        - Additional information required on the account
+                        - Invalid payment method
+                        readOnly: true
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Payment Methods
+  /v1/payment_methods/{payment_method_id}:
+    get:
+      operationId: get_payment_method
+      summary: Get payment method
+      description: Get payment method details by the payment method ID.
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - in: path
+        required: true
+        name: payment_method_id
+        schema:
+          type: string
+        description: "The unique payment method identifier. \n\nPrefix is \"mtd\" in production and \"sbx_mtd\" in sandbox."
+        examples:
+          production:
+            value: mtd_2DrDRpyAdp5MPUJnrJmoZcMmtfF
+          sandbox:
+            value: mtd_2DrDRpyAdp5MPUJnrJmoZcMmtfF
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Payment Methods
+    patch:
+      operationId: update_payment_method
+      summary: Update payment method
+      description: Update supported fields on a payment method. Only fields included in the payload will be updated. Omitted fields will not be updated.
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - $ref: '#/paths/~1v1~1payment_methods~1%7Bpayment_method_id%7D/get/parameters/1'
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: The fields that can be updated on a payment method.
+              type: object
+              properties:
+                billable_merchant_id:
+                  $ref: '#/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data/properties/billable_merchant_id'
+                  nullable: true
+                billing_contact:
+                  nullable: true
+                  description: Billing contact details. To remove a field, set the value to `null`.
+                  type: object
+                  properties:
+                    name:
+                      description: First and last name.
+                      type: string
+                      example: Jane Smith
+                      nullable: true
+                    address_line_1:
+                      $ref: '#/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/address_line_1'
+                      nullable: true
+                    address_line_2:
+                      $ref: '#/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/address_line_2'
+                      nullable: true
+                    city:
+                      $ref: '#/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/city'
+                      nullable: true
+                    state:
+                      $ref: '#/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/state'
+                      nullable: true
+                    postal_code:
+                      $ref: '#/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/postal_code'
+                      nullable: true
+                    country:
+                      $ref: '#/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/country'
+                      nullable: true
+                    email:
+                      description: Email address.
+                      type: string
+                      example: janesmith@example.com
+                      maxLength: 100
+                      nullable: true
+                    phone:
+                      description: Phone number, including extension.
+                      type: string
+                      example: '+14041234567'
+                      maxLength: 100
+                      nullable: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Payment Methods
+  /v1/payment_methods/{payment_method_id}/payin:
+    post:
+      operationId: create_payment_method_payin
+      summary: Create payin from stored payment method
+      description: Create and process a payin using a payin configuration and a stored payment method. The merchant status must be `ACTIVE` to create a payin.
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - $ref: '#/paths/~1v1~1payment_methods~1%7Bpayment_method_id%7D/get/parameters/1'
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payin_config_id:
+                  description: 'The unique payin config identifier. A payin must be configured prior to this request. See "Create a Payin Config" if a payin configuration has not been created yet.
+
+
+                    Prefix is "cfg" in production and "sbx_cfg" in sandbox.'
+                  type: string
+                  example: cfg_2A4d6U0tMyovzTbVT1ktmRzdRaD
+              required:
+              - payin_config_id
+            example:
+              payin_config_id: cfg_2A4d6U0tMyovzTbVT1ktmRzdRaD
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Payment Methods
+  /v1/payment_methods/{payment_method_id}/deactivate:
+    post:
+      operationId: deactivate_payment_method
+      summary: Deactivate payment method
+      description: Deactivate payment method. Deactivated payment methods cannot be used to process payins. The payment method status must be `ACTIVE` to be deactivated.
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - in: path
+        name: payment_method_id
+        schema:
+          type: string
+        required: true
+        description: "The unique payment method identifier. \n\nPrefix is \"mtd\" in production and \"sbx_mtd\" in sandbox."
+        examples:
+          production:
+            value: mtd_2DrDRpyAdp5MPUJnrJmoZcMmtfF
+          sandbox:
+            value: mtd_2DrDRpyAdp5MPUJnrJmoZcMmtfF
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Payment Methods
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: APIKey

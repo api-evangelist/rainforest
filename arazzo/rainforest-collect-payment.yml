@@ -1,0 +1,51 @@
+arazzo: 1.0.1
+info:
+  title: Rainforest — configure and process a payin
+  version: 1.0.0
+  summary: Create a payin config with an idempotency key, process the payin, and confirm its status.
+sourceDescriptions:
+- name: payments
+  url: ../openapi/rainforest-payments-openapi.yaml
+  type: openapi
+workflows:
+- workflowId: collect-payment
+  summary: Configure a payin and process it server-to-server, then read back the result.
+  inputs:
+    type: object
+    properties:
+      merchant_id: { type: string }
+      amount: { type: integer }
+      currency: { type: string, default: USD }
+      idempotency_key: { type: string }
+  steps:
+  - stepId: createPayinConfig
+    description: Create the payin configuration (carries the idempotency key).
+    operationId: create_payin_config
+    requestBody:
+      payload:
+        merchant_id: $inputs.merchant_id
+        amount: $inputs.amount
+        currency: $inputs.currency
+        idempotency_key: $inputs.idempotency_key
+    outputs:
+      payin_config_id: $response.body#/data/id
+  - stepId: createPayin
+    description: Create and process the payin using the config (requires Rainforest PCI approval for direct API).
+    operationId: create_payin
+    requestBody:
+      payload:
+        payin_config_id: $steps.createPayinConfig.outputs.payin_config_id
+    outputs:
+      payin_id: $response.body#/data/id
+  - stepId: getPayin
+    description: Read back the payin to confirm its status.
+    operationId: get_payin
+    parameters:
+    - name: payin_id
+      in: path
+      value: $steps.createPayin.outputs.payin_id
+    outputs:
+      status: $response.body#/data/status
+  outputs:
+    payin_id: $steps.createPayin.outputs.payin_id
+    status: $steps.getPayin.outputs.status

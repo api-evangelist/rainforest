@@ -1,0 +1,802 @@
+openapi: 3.1.0
+info:
+  title: Authentication ACH Returns Billing Profiles API
+  version: 1.0.0
+  description: This resource is used for authentication actions
+  contact:
+    name: Rainforest
+    email: support@rainforestpay.com
+    url: https://rainforestpay.com
+servers:
+- url: https://api.sandbox.rainforestpay.com
+  description: Sandbox server
+- url: https://api.rainforestpay.com
+  description: Production server
+security:
+- BearerAuth: []
+tags:
+- name: Billing Profiles
+  description: Resources for billing profile functions.
+paths:
+  /v1/billing_profiles:
+    post:
+      operationId: create_billing_profile
+      summary: Create a billing profile
+      description: 'Create a billing profile
+
+
+        The first billing profile created will be assigned as the platform''s default billing profile for new merchants.'
+      parameters:
+      - $ref: '#/paths/~1v1~1merchants/get/parameters/0'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/paths/~1v1~1billing_profiles/post/responses/200/content/application~1json/schema/properties/data'
+              required:
+              - platform_id
+              - name
+              - card_rate_type
+              - card_rate
+              - card_amex_rate_surcharge
+              - card_fee
+              - card_refund_rate
+              - card_refund_fee
+              - card_dispute_fee
+              - card_device_rate
+              - card_device_amex_rate_surcharge
+              - card_device_fee
+              - card_device_refund_rate
+              - card_device_refund_fee
+              - ach_rate
+              - ach_rate_cap
+              - ach_fee
+              - ach_refund_rate
+              - ach_refund_fee
+              - ach_return_fee
+              - ach_dispute_fee
+              - ach_validation_fee
+              - standard_deposit_fee
+              - threeds_attempt_fee
+              - currency_code
+            example:
+              platform_id: plt_2WaOekua4ZUEgUFCxNBsASulZMa
+              name: Billing Profile 1
+              card_rate_type: FLAT_RATE
+              card_rate: 3000
+              card_amex_rate_surcharge: 500
+              card_fee: 20
+              card_refund_rate: 0
+              card_refund_fee: 20
+              card_dispute_fee: 2500
+              card_device_rate: 3000
+              card_device_amex_rate_surcharge: 500
+              card_device_fee: 20
+              card_device_refund_rate: 0
+              card_device_refund_fee: 20
+              ach_rate: 0
+              ach_rate_cap: 0
+              ach_fee: 30
+              ach_balance_check_fee: 30
+              ach_refund_rate: 0
+              ach_refund_fee: 30
+              ach_return_fee: 2500
+              ach_dispute_fee: 2500
+              ach_validation_fee: 0
+              standard_deposit_fee: 20
+              threeds_attempt_fee: 30
+              currency_code: USD
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    type: object
+                    allOf:
+                    - type: object
+                      properties:
+                        billing_profile_id:
+                          $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/billing_profile_id'
+                          readOnly: true
+                        platform_id:
+                          description: "The unique platform identifier. \n\nPrefix is \"plt\" in production and \"sbx_plt\" in sandbox."
+                          type: string
+                          example: plt_2DrDypu8n6IX7EVTjAnEd1dkTBa
+                        name:
+                          description: Name of the billing profile
+                          type: string
+                        card_rate_type:
+                          description: Card rate type
+                          type: string
+                          enum: FLAT_RATE
+                        card_rate:
+                          description: 'Card rate, in per cent mille (1 PCM = 0.001%).
+
+
+                            For example, 3000 is 3%.'
+                          type: integer
+                          maximum: 25000
+                          minimum: 0
+                        card_amex_rate_surcharge:
+                          description: 'Amex card rate surcharge, in per cent mille (1 PCM = 0.001%). This rate will be charged in addition to the card rate.
+
+
+                            If a card is also Business or International, then the higher rate will be charged.
+
+
+                            For example, 3000 is 3%.'
+                          type: integer
+                          maximum: 10000
+                          minimum: 0
+                        card_business_rate_surcharge:
+                          description: 'Business card rate surcharge, in per cent mille (1 PCM = 0.001%). This rate will be charged in addition to the card rate.
+
+
+                            If a card is also Amex or International, then the higher rate will be charged.
+
+
+                            For example, 3000 is 3%.'
+                          type: integer
+                          maximum: 10000
+                          minimum: 0
+                        card_international_rate_surcharge:
+                          description: 'International (non-US) card rate surcharge, in per cent mille (1 PCM = 0.001%). This rate will be charged in addition to the card rate.
+
+
+                            If a card is also Amex or Business, then the higher rate will be charged.
+
+
+                            For example, 3000 is 3%.'
+                          type: integer
+                          maximum: 10000
+                          minimum: 0
+                        card_fee:
+                          description: 'Card fee, in minor units.
+
+
+                            For example, 1000 is 10.00 USD.'
+                          type: integer
+                          maximum: 500
+                          minimum: 0
+                        card_refund_rate:
+                          description: 'Card refund rate, in per cent mille (1 PCM = 0.001%).
+
+
+                            For example, 3000 is 3%.'
+                          type: integer
+                          maximum: 10000
+                          minimum: 0
+                        card_refund_fee:
+                          description: 'Card refund fee, in minor units.
+
+
+                            For example, 1000 is 10.00 USD.'
+                          type: integer
+                          maximum: 500
+                          minimum: 0
+                        card_auth_fee:
+                          description: 'Fee per card authorization, in minor units.
+
+
+                            For example, 1000 is 10.00 USD.'
+                          type: integer
+                          maximum: 1000
+                          minimum: 0
+                        card_auth_void_fee:
+                          description: 'Fee per card authorization void, in minor units.
+
+
+                            For example, 1000 is 10.00 USD.'
+                          type: integer
+                          maximum: 1000
+                          minimum: 0
+                        card_dispute_fee:
+                          description: 'Card dispute fee, in minor units.
+
+
+                            For example, 1000 is 10.00 USD.'
+                          type: integer
+                          maximum: 5000
+                          minimum: 0
+                        card_device_rate:
+                          description: 'Card device rate, in per cent mille (1 PCM = 0.001%).
+
+
+                            For example, 3000 is 3%.'
+                          type: integer
+                          maximum: 10000
+                          minimum: 0
+                        card_device_amex_rate_surcharge:
+                          description: 'Amex card device rate surcharge, in per cent mille (1 PCM = 0.001%). This rate will be charged in addition to the card device rate.
+
+
+                            If a card is also Business or International, then the higher rate will be charged.
+
+
+                            For example, 3000 is 3%.'
+                          type: integer
+                          maximum: 10000
+                          minimum: 0
+                        card_device_business_rate_surcharge:
+                          description: 'Business card device rate surcharge, in per cent mille (1 PCM = 0.001%). This rate will be charged in addition to the card device rate.
+
+
+                            If a card is also Amex or International, then the higher rate will be charged.
+
+
+                            For example, 3000 is 3%.'
+                          type: integer
+                          maximum: 10000
+                          minimum: 0
+                        card_device_international_rate_surcharge:
+                          description: 'International (non-US) card device rate surcharge, in per cent mille (1 PCM = 0.001%). This rate will be charged in addition to the card device rate.
+
+
+                            If a card is also Amex or Business, then the higher rate will be charged.
+
+
+                            For example, 3000 is 3%.'
+                          type: integer
+                          maximum: 10000
+                          minimum: 0
+                        card_device_fee:
+                          description: 'Card device fee, in minor units.
+
+
+                            For example, 1000 is 10.00 USD.'
+                          type: integer
+                          maximum: 500
+                          minimum: 0
+                        card_device_refund_rate:
+                          description: 'Card device refund rate, in per cent mille (1 PCM = 0.001%).
+
+
+                            For example, 3000 is 3%.'
+                          type: integer
+                          maximum: 10000
+                          minimum: 0
+                        card_device_refund_fee:
+                          description: 'Card device refund fee, in minor units.
+
+
+                            For example, 1000 is 10.00 USD.'
+                          type: integer
+                          maximum: 500
+                          minimum: 0
+                        card_device_auth_fee:
+                          description: 'Fee per card device authorization, in minor units.
+
+
+                            For example, 1000 is 10.00 USD.'
+                          type: integer
+                          maximum: 1000
+                          minimum: 0
+                        card_device_auth_void_fee:
+                          description: 'Fee per card device authorization void, in minor units.
+
+
+                            For example, 1000 is 10.00 USD.'
+                          type: integer
+                          maximum: 1000
+                          minimum: 0
+                        ach_rate:
+                          description: 'ACH rate, in per cent mille (1 PCM = 0.001%).
+
+
+                            For example, 3000 is 3%.'
+                          type: integer
+                          maximum: 10000
+                          minimum: 0
+                        ach_rate_cap:
+                          description: 'ACH rate cap, in minor units.
+
+
+                            For example, 1000 is 10.00 USD.'
+                          type: integer
+                          maximum: 10000000
+                          minimum: 0
+                        ach_fee:
+                          description: 'ACH fee, in minor units.
+
+
+                            For example, 1000 is 10.00 USD.'
+                          type: integer
+                          maximum: 10000
+                          minimum: 0
+                        ach_balance_check_fee:
+                          description: 'ACH balance check fee, in minor units.
+
+
+                            For example, 1000 is 10.00 USD.'
+                          type: integer
+                          maximum: 1000
+                          minimum: 0
+                        ach_refund_rate:
+                          description: 'ACH refund rate, in per cent mille (1 PCM = 0.001%).
+
+
+                            For example, 3000 is 3%.'
+                          type: integer
+                          maximum: 10000
+                          minimum: 0
+                        ach_refund_fee:
+                          description: 'ACH refund fee, in minor units.
+
+
+                            For example, 1000 is 10.00 USD.'
+                          type: integer
+                          maximum: 500
+                          minimum: 0
+                        ach_return_fee:
+                          description: 'ACH return fee, in minor units.
+
+
+                            For example, 1000 is 10.00 USD.'
+                          type: integer
+                          maximum: 5000
+                          minimum: 0
+                        ach_dispute_fee:
+                          description: 'ACH dispute fee, in minor units.
+
+
+                            For example, 1000 is 10.00 USD.'
+                          type: integer
+                          maximum: 5000
+                          minimum: 0
+                        ach_validation_fee:
+                          description: 'ACH validation fee, in minor units.
+
+
+                            For example, 1000 is 10.00 USD.'
+                          type: integer
+                          maximum: 500
+                          minimum: 0
+                        accelerated_ach_rate:
+                          description: 'Accelerated ACH rate, in per cent mille (1 PCM = 0.001%).
+
+
+                            For example, 3000 is 3%.'
+                          type: integer
+                          maximum: 10000
+                          minimum: 0
+                        accelerated_ach_rate_cap:
+                          description: 'Accelerated ACH rate cap, in minor units.
+
+
+                            For example, 1000 is 10.00 USD.'
+                          type: integer
+                          maximum: 10000000
+                          minimum: 0
+                        accelerated_ach_fee:
+                          description: 'Accelerated ACH fee, in minor units.
+
+
+                            For example, 1000 is 10.00 USD.'
+                          type: integer
+                          maximum: 10000
+                          minimum: 0
+                        ach_frictionless_validation_fee:
+                          description: 'ACH frictionless validation fee, in minor units.
+
+
+                            For example, 1000 is 10.00 USD.'
+                          type: integer
+                          maximum: 500
+                          minimum: 0
+                        standard_deposit_fee:
+                          description: 'Deposit fee, in minor units.
+
+
+                            For example, 1000 is 10.00 USD.'
+                          type: integer
+                          maximum: 10000
+                          minimum: 0
+                        threeds_attempt_fee:
+                          description: 'Fee per 3DS attempt, in minor units.
+
+
+                            For example, 1000 is 10.00 USD.'
+                          type: integer
+                          maximum: 1000
+                          minimum: 0
+                        card_account_updater_fee:
+                          description: 'Card account update attempt, in minor units.
+
+
+                            For example, 1000 is 10.00 USD.'
+                          type: integer
+                          maximum: 1000
+                          minimum: 0
+                        bin_lookup_fee:
+                          description: 'Fee per BIN lookup, in minor units.
+
+
+                            For example, 1000 is 10.00 USD.'
+                          type: integer
+                          maximum: 1000
+                          minimum: 0
+                        tap_to_phone_fee:
+                          description: 'Fee per Tap to Phone attempt, in minor units.
+
+
+                            For example, 1000 is 10.00 USD.'
+                          type: integer
+                          maximum: 1000
+                          minimum: 0
+                        paypal_wallet_rate:
+                          description: PayPal Wallet rate, in per cent mille (1 PCM = 0.001%).
+                          type: integer
+                          maximum: 100000
+                          minimum: 0
+                        paypal_wallet_fee:
+                          description: PayPal Wallet fee, in minor units.
+                          type: integer
+                          maximum: 1000
+                          minimum: 0
+                        paypal_wallet_refund_rate:
+                          description: PayPal Wallet refund rate, in per cent mille (1 PCM = 0.001%).
+                          type: integer
+                          maximum: 100000
+                          minimum: 0
+                        paypal_wallet_refund_fee:
+                          description: PayPal Wallet refund fee, in minor units.
+                          type: integer
+                          maximum: 1000
+                          minimum: 0
+                        paypal_wallet_dispute_fee:
+                          description: PayPal Wallet dispute fee, in minor units.
+                          type: integer
+                          maximum: 1000
+                          minimum: 0
+                        paypal_wallet_auth_fee:
+                          description: Fee per PayPal Wallet authorization, in minor units.
+                          type: integer
+                          maximum: 1000
+                          minimum: 0
+                        paypal_wallet_auth_void_fee:
+                          description: Fee per PayPal Wallet authorization void, in minor units.
+                          type: integer
+                          maximum: 1000
+                          minimum: 0
+                        venmo_rate:
+                          description: Venmo rate, in per cent mille (1 PCM = 0.001%).
+                          type: integer
+                          maximum: 100000
+                          minimum: 0
+                        venmo_fee:
+                          description: Venmo fee, in minor units.
+                          type: integer
+                          maximum: 1000
+                          minimum: 0
+                        venmo_refund_rate:
+                          description: Venmo refund rate, in per cent mille (1 PCM = 0.001%).
+                          type: integer
+                          maximum: 100000
+                          minimum: 0
+                        venmo_refund_fee:
+                          description: Venmo refund fee, in minor units.
+                          type: integer
+                          maximum: 1000
+                          minimum: 0
+                        venmo_dispute_fee:
+                          description: Venmo dispute fee, in minor units.
+                          type: integer
+                          maximum: 1000
+                          minimum: 0
+                        venmo_auth_fee:
+                          description: Fee per Venmo authorization, in minor units.
+                          type: integer
+                          maximum: 1000
+                          minimum: 0
+                        venmo_auth_void_fee:
+                          description: Fee per Venmo authorization void, in minor units.
+                          type: integer
+                          maximum: 1000
+                          minimum: 0
+                        paypal_paylater_rate:
+                          description: PayPal Pay Later rate, in per cent mille (1 PCM = 0.001%).
+                          type: integer
+                          maximum: 100000
+                          minimum: 0
+                        paypal_paylater_fee:
+                          description: PayPal Pay Later fee, in minor units.
+                          type: integer
+                          maximum: 1000
+                          minimum: 0
+                        paypal_paylater_refund_rate:
+                          description: PayPal Pay Later refund rate, in per cent mille (1 PCM = 0.001%).
+                          type: integer
+                          maximum: 100000
+                          minimum: 0
+                        paypal_paylater_refund_fee:
+                          description: PayPal Pay Later refund fee, in minor units.
+                          type: integer
+                          maximum: 1000
+                          minimum: 0
+                        paypal_paylater_dispute_fee:
+                          description: PayPal Pay Later dispute fee, in minor units.
+                          type: integer
+                          maximum: 1000
+                          minimum: 0
+                        paypal_paylater_auth_fee:
+                          description: Fee per PayPal Pay Later authorization, in minor units.
+                          type: integer
+                          maximum: 1000
+                          minimum: 0
+                        paypal_paylater_auth_void_fee:
+                          description: Fee per PayPal Pay Later authorization void, in minor units.
+                          type: integer
+                          maximum: 1000
+                          minimum: 0
+                        interchange_plus:
+                          description: 'When enabled, Interchange Plus fees (Interchange, Dues, Fees, and Assessments) are passed through to the merchant in addition to the card volume rate.
+
+                            This option is only available for merchants using Monthly Gross billing.'
+                          type: boolean
+                    - type: object
+                      properties:
+                        currency_code:
+                          description: Three-letter ISO currency code, in uppercase. Currently, only USD is supported.
+                          type: string
+                          example: USD
+                          enum:
+                          - USD
+                          maxLength: 3
+                          minLength: 3
+                        num_active_merchants:
+                          description: Number of active merchants with billing profile assigned
+                          type: string
+                          readOnly: true
+                        is_platform_default:
+                          description: Is platform's default billing profile
+                          type: boolean
+                          readOnly: true
+                        created_at:
+                          description: Date and time billing_profile was created at in UTC RFC 3339 format.
+                          readOnly: true
+                          type: string
+                          format: date-time
+                          example: '2022-01-01T12:00:00Z'
+                        deactivated_at:
+                          description: Date and time billing_profile was deactivated at in UTC RFC 3339 format.
+                          $ref: '#/paths/~1v1~1billing_profiles/post/requestBody/content/application~1json/schema/allOf/1/properties/created_at'
+                          nullable: true
+                          readOnly: true
+                  errors:
+                    $ref: '#/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1merchants/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1merchants/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1merchants/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1merchants/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1merchants/get/responses/5XX'
+      tags:
+      - Billing Profiles
+    get:
+      operationId: list_billing_profiles
+      summary: List billing profiles
+      description: Query a list of platform billing profiles.
+      parameters:
+      - $ref: '#/paths/~1v1~1merchants/get/parameters/0'
+      - $ref: '#/paths/~1v1~1merchants/get/parameters/1'
+        in: query
+      - name: name
+        in: query
+        description: Optional billing profile name by which to search billing profiles.
+        schema:
+          type: string
+      - name: status
+        in: query
+        description: 'Billing profile statuses to filter by.
+
+
+          `ACTIVE` `DEACTIVATED`'
+        schema:
+          type: array
+          items:
+            description: Status of the billing profile.
+            type: string
+            enum:
+            - ACTIVE
+            - DEACTIVATED
+      - $ref: '#/paths/~1v1~1merchants/get/parameters/6'
+        in: query
+      - $ref: '#/paths/~1v1~1merchants/get/parameters/7'
+        in: query
+      - name: sort_by
+        in: query
+        description: Optional value by which to sort the result set. Default sort by is created_at.
+        schema:
+          type: string
+          enum:
+          - name
+          - num_active_merchants
+          - created_at
+          - deactivated_at
+      - $ref: '#/paths/~1v1~1merchants/get/parameters/14'
+        in: query
+      - $ref: '#/paths/~1v1~1merchants/get/parameters/15'
+        in: query
+      - $ref: '#/paths/~1v1~1merchants/get/parameters/16'
+        in: query
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    allOf:
+                    - $ref: '#/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/data/allOf/0'
+                    - type: object
+                      properties:
+                        results:
+                          description: List of billing profiles
+                          type: array
+                          items:
+                            $ref: '#/paths/~1v1~1billing_profiles/post/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1merchants/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1merchants/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1merchants/get/responses/403'
+        5XX:
+          $ref: '#/paths/~1v1~1merchants/get/responses/5XX'
+      tags:
+      - Billing Profiles
+  /v1/billing_profiles/{billing_profile_id}:
+    get:
+      operationId: get_billing_profile
+      summary: Get billing profile
+      description: Get billing profile details by the billing profile ID.
+      parameters:
+      - $ref: '#/paths/~1v1~1merchants/get/parameters/0'
+      - in: path
+        required: true
+        name: billing_profile_id
+        schema:
+          type: array
+          items:
+            type: string
+        description: 'The unique billing profile identifiers.
+
+
+          Prefix is "bpf" in production and "sbx_bpf" in sandbox.'
+        examples:
+          production:
+            value: bpf_2WcvaFMMWVHbuHZW4kAFZZfTyQL
+          sandbox:
+            value: sbx_bpf_2WcvaFMMWVHbuHZW4kAFZZfTyQL
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1billing_profiles/post/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1merchants/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1merchants/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1merchants/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1merchants/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1merchants/get/responses/5XX'
+      tags:
+      - Billing Profiles
+  /v1/billing_profiles/{billing_profile_id}/deactivate:
+    post:
+      operationId: deactivate_billing_profile
+      summary: Deactivate a billing profile
+      description: 'Deactivate a billing profile.
+
+
+        A billing profile can be deactivated if it is not assigned to any active merchants, or is not assigned as the platform''s default billing profile.'
+      parameters:
+      - $ref: '#/paths/~1v1~1billing_profiles~1%7Bbilling_profile_id%7D/get/parameters/1'
+        in: path
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1billing_profiles/post/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1merchants/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1merchants/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1merchants/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1merchants/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1merchants/get/responses/5XX'
+      tags:
+      - Billing Profiles
+  /v1/merchants/{merchant_id}/update_billing_profile:
+    post:
+      operationId: update_merchant_billing_profile
+      summary: Update merchant billing profile
+      description: Update the billing profile assigned to a merchant.
+      parameters:
+      - $ref: '#/paths/~1v1~1merchants/get/parameters/0'
+      - $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D/get/parameters/1'
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: The fields that can be updated on a merchant.
+              type: object
+              properties:
+                billing_profile_id:
+                  required: true
+                  description: 'The unique billing profile identifier.
+
+
+                    Prefix is "bpf" in production and "sbx_bpf" in sandbox.'
+                  type: string
+                  example: bpf_2DrDFJPutxE5AIbJSopAnqniEbr
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1merchants/post/requestBody/content/application~1json/schema/allOf/0'
+                  errors:
+                    $ref: '#/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1merchants/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1merchants/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1merchants/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1merchants/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1merchants/get/responses/5XX'
+      tags:
+      - Billing Profiles
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: APIKey

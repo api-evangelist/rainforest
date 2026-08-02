@@ -1,0 +1,127 @@
+openapi: 3.1.0
+info:
+  title: Authentication ACH Returns File Uploads API
+  version: 1.0.0
+  description: This resource is used for authentication actions
+  contact:
+    name: Rainforest
+    email: support@rainforestpay.com
+    url: https://rainforestpay.com
+servers:
+- url: https://api.sandbox.rainforestpay.com
+  description: Sandbox server
+- url: https://api.rainforestpay.com
+  description: Production server
+security:
+- BearerAuth: []
+tags:
+- name: File Uploads
+  description: Resources for file upload functions.
+paths:
+  /v1/file_uploads/{file_upload_id}:
+    get:
+      operationId: get_file_upload
+      summary: Get file upload
+      description: Get file upload by the file upload ID.
+      parameters:
+      - $ref: '#/paths/~1v1~1file_upload_configs/post/parameters/0'
+      - in: path
+        required: true
+        name: file_upload_id
+        schema:
+          type: string
+        description: "The unique file upload identifier. \n\nPrefix is \"fiu\" in production and \"sbx_fiu\" in sandbox."
+        examples:
+          production:
+            value: fiu_2DrDKk5NIMbpuNGqm109SkpGDHh
+          sandbox:
+            value: sbx_fiu_2DrDKk5NIMbpuNGqm109SkpGDHh
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1file_upload_configs/post/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    type: object
+                    properties:
+                      file_upload_id:
+                        description: "The unique file upload identifier. \n\nPrefix is \"fiu\" in production and \"sbx_fiu\" in sandbox."
+                        type: string
+                        example: fiu_2DrDU206kzAhclm1WrZbuwDERRk
+                      file_upload_config_id:
+                        description: "The unique file upload config identifier. \n\nPrefix is \"fic\" in production and \"sbx_fic\" in sandbox."
+                        type: string
+                        example: fic_2DrDU206kzAhclm1WrZbuwDERRk
+                      filename:
+                        description: Name of the file.
+                        type: string
+                        example: file.png
+                      type:
+                        $ref: '#/paths/~1v1~1file_upload_configs/post/requestBody/content/application~1json/schema/properties/type'
+                      status:
+                        description: The status of the file upload.
+                        type: string
+                        enum:
+                        - AVAILABLE
+                        - FAILED
+                      failure_reason_code:
+                        description: 'The reason a file upload failed.
+
+
+                          `INVALID_FILE`: file upload failed because the file is invalid for an unspecified reason
+
+                          `INVALID_FILE_SIZE`: file upload failed because it was too large (max: 25MB)
+
+                          `INVALID_FILE_TYPE`: file upload failed because it was not an allowed type (`image/jpeg`,`image/png`,`image/tiff`,`application/pdf`)
+
+                          `INVALID_FILE_PROTECTED`: file upload failed because it was password-protected
+
+                          `INTERNAL_ERROR`:  file upload failed because an internal error'
+                        type: string
+                        enum:
+                        - INVALID_FILE
+                        - INVALID_FILE_SIZE
+                        - INVALID_FILE_TYPE
+                        - INVALID_FILE_PROTECTED
+                        - INTERNAL_ERROR
+                      created_at:
+                        description: Date and time file upload was created at in UTC RFC 3339 format.
+                        $ref: '#/paths/~1v1~1file_upload_configs/post/requestBody/content/application~1json/schema/properties/created_at'
+                      updated_at:
+                        description: Date and time file upload was last updated at in UTC RFC 3339 format.
+                        $ref: '#/paths/~1v1~1file_upload_configs/post/requestBody/content/application~1json/schema/properties/created_at'
+                  errors:
+                    $ref: '#/paths/~1v1~1file_upload_configs/post/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1file_upload_configs/post/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1file_upload_configs/post/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1file_upload_configs/post/responses/403'
+        '404':
+          description: Resource not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1file_upload_configs/post/responses/400/content/application~1json/schema'
+              example:
+                status: ERROR
+                data: null
+                errors:
+                - field: string
+                  code: EntityNotFound
+                  message: Resource not found
+        5XX:
+          $ref: '#/paths/~1v1~1file_upload_configs/post/responses/5XX'
+      tags:
+      - File Uploads
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: APIKey

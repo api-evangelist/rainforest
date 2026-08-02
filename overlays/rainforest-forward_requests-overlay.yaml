@@ -1,0 +1,13 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Rainforest forward_requests
+  version: 1.0.0
+extends: openapi/rainforest-forward_requests-openapi.yaml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: rainforest
+    x-apievangelist-service: forward_requests
+    x-apievangelist-auth: http-bearer-apikey
+    x-apievangelist-idempotency: idempotency_key on config objects
+    x-apievangelist-error-format: custom-envelope

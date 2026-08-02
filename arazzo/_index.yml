@@ -1,0 +1,11 @@
+generated: '2026-07-20'
+method: derived
+workflows:
+- file: rainforest-collect-payment.yml
+  workflowId: collect-payment
+  title: Rainforest — configure and process a payin
+  summary: Create a payin config with an idempotency key, process the payin, and confirm its status.
+- file: rainforest-onboard-merchant.yml
+  workflowId: onboard-merchant
+  title: Rainforest — onboard a merchant
+  summary: Create a merchant, submit its application, drive a sandbox decision, and confirm ACTIVE.

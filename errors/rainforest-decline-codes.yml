@@ -1,0 +1,25 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.rainforestpay.com/docs/test-accounts-and-cards
+note: >-
+  Card decline / refusal codes surfaced on a payin when a card payment fails. The code
+  appears on the payin as a refusal/decline reason; the payin status becomes FAILED.
+  Values below are documented on Rainforest's sandbox test-card reference.
+envelope_field: refusal_code
+decline_codes:
+- code: DECLINED
+  meaning: Generic decline by the issuer.
+  action: Ask the buyer for a different payment method.
+- code: INSUFFICIENT_FUNDS
+  meaning: The account does not have sufficient funds.
+  action: Ask the buyer to use a different card or retry later.
+- code: EXPIRED_CARD
+  meaning: The card is expired.
+  action: Ask the buyer for a card with a valid expiration date.
+- code: INCORRECT_PAYMENT_INFORMATION
+  meaning: AVS / card verification mismatch (e.g. address mismatch, AVS code N).
+  action: Ask the buyer to re-enter card and billing details.
+notes: >-
+  Any card number not on Rainforest's approved test-card list returns a generic DECLINED
+  in sandbox. AVS "zip only" (code Z) and "unavailable" (code U) still process (PROCESSING),
+  while a full address mismatch (code N) fails with INCORRECT_PAYMENT_INFORMATION.

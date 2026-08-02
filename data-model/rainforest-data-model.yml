@@ -1,0 +1,68 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/rainforest-payments-openapi.yaml, openapi/rainforest-merchants-openapi.yaml, openapi/rainforest-deposits-openapi.yaml
+note: >-
+  Entity-relationship graph derived from the resource paths and id-reference fields across
+  the Rainforest OpenAPI. Ids are prefixed (e.g. merchant_, payin_).
+entities:
+- name: merchant
+  id_prefix: merchant_
+  relationships:
+  - {type: has_many, target: merchant_application, via: merchant_id}
+  - {type: has_many, target: payin, via: merchant_id}
+  - {type: has_many, target: deposit, via: merchant_id}
+  - {type: belongs_to, target: billing_profile, via: billing_profile_id}
+- name: merchant_application
+  id_prefix: merchant_application_
+  relationships:
+  - {type: belongs_to, target: merchant, via: merchant_id}
+- name: billing_profile
+  id_prefix: billing_profile_
+  relationships:
+  - {type: has_many, target: merchant, via: billing_profile_id}
+- name: payin_config
+  id_prefix: payin_config_
+  relationships:
+  - {type: belongs_to, target: merchant, via: merchant_id}
+- name: payin
+  id_prefix: payin_
+  relationships:
+  - {type: belongs_to, target: merchant, via: merchant_id}
+  - {type: belongs_to, target: payin_config, via: payin_config_id}
+  - {type: belongs_to, target: payment_method, via: payment_method_id}
+  - {type: has_many, target: refund, via: payin_id}
+  - {type: has_many, target: chargeback, via: payin_id}
+  - {type: has_many, target: ach_return, via: payin_id}
+- name: payment_method
+  id_prefix: payment_method_
+  relationships:
+  - {type: belongs_to, target: merchant, via: merchant_id}
+  - {type: belongs_to, target: payment_method_config, via: payment_method_config_id}
+- name: refund
+  id_prefix: refund_
+  relationships:
+  - {type: belongs_to, target: payin, via: payin_id}
+- name: chargeback
+  id_prefix: chargeback_
+  relationships:
+  - {type: belongs_to, target: payin, via: payin_id}
+  - {type: has_many, target: chargeback_evidence, via: chargeback_id}
+- name: ach_return
+  id_prefix: ach_return_
+  relationships:
+  - {type: belongs_to, target: payin, via: payin_id}
+- name: deposit
+  id_prefix: deposit_
+  relationships:
+  - {type: belongs_to, target: merchant, via: merchant_id}
+  - {type: belongs_to, target: deposit_method, via: deposit_method_id}
+- name: deposit_method
+  id_prefix: deposit_method_
+- name: device_registration
+  id_prefix: device_registration_
+  relationships:
+  - {type: belongs_to, target: merchant, via: merchant_id}
+- name: api_key
+  id_prefix: apikey_
+- name: payment
+  note: read-only union view over payin, refund, chargeback, and ach_return (list_payments)

@@ -1,0 +1,343 @@
+{
+  "info": {
+    "_postman_id": "ef018642-c64d-4eb1-bf45-17c802062f7c",
+    "name": "Authentication ACH Returns Deposit Method Configs API",
+    "description": "This resource is used for authentication actions\n\nContact Support:\n Name: Rainforest\n Email: support@rainforestpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:43:12.000Z",
+    "updatedAt": "2026-07-28T02:43:13.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ef018642-c64d-4eb1-bf45-17c802062f7c"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "deposit_method_configs",
+          "item": [
+            {
+              "name": "Create deposit method config",
+              "id": "59396a55-74ef-44ea-a8cd-4863d351bf58",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deposit_method_config_id\": \"<string>\",\n  \"platform_id\": \"<string>\",\n  \"idempotency_key\": \"<string>\",\n  \"billing_contact\": {\n    \"value\": \"reference #/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n  },\n  \"allowed_sources\": [\n    \"PARTNER_PLAID\",\n    \"ENCRYPTED_ACH\"\n  ],\n  \"metadata\": {},\n  \"created_at\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/deposit_method_configs",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "deposit_method_configs"
+                  ]
+                },
+                "description": "Create the configuration to store a deposit method. The configuration contains basic information about the deposit method such as an idempotency key and optional information such as billing contact and metadata. If the billing contact is provided in the deposit method config, then the web component will not prompt for this data. These fields include name for an ACH deposit method. This allows a deposit method to be set up before collecting the sensitive deposit method details (i.e the account number) via the web component."
+              },
+              "response": [
+                {
+                  "id": "b9ec842f-e087-4d69-986d-42130149592e",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"deposit_method_config_id\": \"<string>\",\n  \"platform_id\": \"<string>\",\n  \"idempotency_key\": \"<string>\",\n  \"billing_contact\": {\n    \"value\": \"reference #/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n  },\n  \"allowed_sources\": [\n    \"PARTNER_PLAID\",\n    \"ENCRYPTED_ACH\"\n  ],\n  \"metadata\": {},\n  \"created_at\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/deposit_method_configs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "deposit_method_configs"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"deposit_method_config_id\": \"<string>\",\n    \"platform_id\": \"<string>\",\n    \"idempotency_key\": \"<string>\",\n    \"billing_contact\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n    },\n    \"allowed_sources\": [\n      \"PARTNER_PLAID\",\n      \"PARTNER_PLAID\"\n    ],\n    \"metadata\": {},\n    \"created_at\": \"<dateTime>\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:43:13.000Z",
+                  "updatedAt": "2026-07-28T02:43:13.000Z",
+                  "uid": "35240-b9ec842f-e087-4d69-986d-42130149592e"
+                },
+                {
+                  "id": "8832bfc3-9fe2-4a26-8654-ea2cdecaafae",
+                  "name": "400 response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"deposit_method_config_id\": \"<string>\",\n  \"platform_id\": \"<string>\",\n  \"idempotency_key\": \"<string>\",\n  \"billing_contact\": {\n    \"value\": \"reference #/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n  },\n  \"allowed_sources\": [\n    \"PARTNER_PLAID\",\n    \"ENCRYPTED_ACH\"\n  ],\n  \"metadata\": {},\n  \"created_at\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/deposit_method_configs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "deposit_method_configs"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:13.000Z",
+                  "updatedAt": "2026-07-28T02:43:13.000Z",
+                  "uid": "35240-8832bfc3-9fe2-4a26-8654-ea2cdecaafae"
+                },
+                {
+                  "id": "4952f1b6-ded2-46ea-9836-7d8ca1af6be3",
+                  "name": "401 response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"deposit_method_config_id\": \"<string>\",\n  \"platform_id\": \"<string>\",\n  \"idempotency_key\": \"<string>\",\n  \"billing_contact\": {\n    \"value\": \"reference #/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n  },\n  \"allowed_sources\": [\n    \"PARTNER_PLAID\",\n    \"ENCRYPTED_ACH\"\n  ],\n  \"metadata\": {},\n  \"created_at\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/deposit_method_configs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "deposit_method_configs"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:13.000Z",
+                  "updatedAt": "2026-07-28T02:43:13.000Z",
+                  "uid": "35240-4952f1b6-ded2-46ea-9836-7d8ca1af6be3"
+                },
+                {
+                  "id": "441ea730-3575-4fc6-b9c7-43d36da11ac5",
+                  "name": "403 response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"deposit_method_config_id\": \"<string>\",\n  \"platform_id\": \"<string>\",\n  \"idempotency_key\": \"<string>\",\n  \"billing_contact\": {\n    \"value\": \"reference #/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n  },\n  \"allowed_sources\": [\n    \"PARTNER_PLAID\",\n    \"ENCRYPTED_ACH\"\n  ],\n  \"metadata\": {},\n  \"created_at\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/deposit_method_configs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "deposit_method_configs"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:13.000Z",
+                  "updatedAt": "2026-07-28T02:43:13.000Z",
+                  "uid": "35240-441ea730-3575-4fc6-b9c7-43d36da11ac5"
+                },
+                {
+                  "id": "1f5f29a3-88ea-487e-bedc-9c5da1d1cb78",
+                  "name": "5XX response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"deposit_method_config_id\": \"<string>\",\n  \"platform_id\": \"<string>\",\n  \"idempotency_key\": \"<string>\",\n  \"billing_contact\": {\n    \"value\": \"reference #/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n  },\n  \"allowed_sources\": [\n    \"PARTNER_PLAID\",\n    \"ENCRYPTED_ACH\"\n  ],\n  \"metadata\": {},\n  \"created_at\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/deposit_method_configs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "deposit_method_configs"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:13.000Z",
+                  "updatedAt": "2026-07-28T02:43:13.000Z",
+                  "uid": "35240-1f5f29a3-88ea-487e-bedc-9c5da1d1cb78"
+                }
+              ],
+              "createdAt": "2026-07-28T02:43:13.000Z",
+              "updatedAt": "2026-07-28T02:43:13.000Z",
+              "uid": "35240-59396a55-74ef-44ea-a8cd-4863d351bf58"
+            }
+          ],
+          "id": "dcfc8235-6fab-4e76-b06f-48e5d516bf3d",
+          "createdAt": "2026-07-28T02:43:13.000Z",
+          "updatedAt": "2026-07-28T02:43:13.000Z",
+          "uid": "35240-dcfc8235-6fab-4e76-b06f-48e5d516bf3d"
+        }
+      ],
+      "id": "47b91570-2023-4b85-814d-5c3023801041",
+      "createdAt": "2026-07-28T02:43:13.000Z",
+      "updatedAt": "2026-07-28T02:43:13.000Z",
+      "uid": "35240-47b91570-2023-4b85-814d-5c3023801041"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.sandbox.rainforestpay.com"
+    }
+  ]
+}

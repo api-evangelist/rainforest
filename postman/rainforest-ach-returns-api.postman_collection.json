@@ -1,0 +1,1073 @@
+{
+  "info": {
+    "_postman_id": "0951fde5-e7eb-4ba6-8200-a51f33f4b1e6",
+    "name": "Authentication ACH Returns API",
+    "description": "This resource is used for authentication actions\n\nContact Support:\n Name: Rainforest\n Email: support@rainforestpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:42:42.000Z",
+    "updatedAt": "2026-07-28T02:42:42.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0951fde5-e7eb-4ba6-8200-a51f33f4b1e6"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "ach_returns",
+          "item": [
+            {
+              "name": "{ach_return_id}",
+              "item": [
+                {
+                  "name": "metadata",
+                  "item": [
+                    {
+                      "name": "Update ACH return metadata",
+                      "id": "39374312-50ac-4947-9251-87ad5493d7bc",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/ach_returns/:ach_return_id/metadata",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "ach_returns",
+                            ":ach_return_id",
+                            "metadata"
+                          ],
+                          "variable": [
+                            {
+                              "id": "5a8c8aa9-c5b0-4254-b6db-b9a64e0a6afa",
+                              "key": "ach_return_id",
+                              "value": "<string>",
+                              "description": "(Required) The unique ACH return identifier. \n\nPrefix is \"ret\" in production and \"sbx_ret\" in sandbox."
+                            }
+                          ]
+                        },
+                        "description": "The body of the request is the JSON key-value metadata to patch to the ACH return. Do not use the metadata field to store sensitive or confidential data. \n\nUpdating metadata will merge with the existing metadata stored on the ACH return by the top-level key. If the same top-level key is passed in this request, it will overwrite the value stored on the ACH return. Only keys included in the payload will be updated. To remove a key, set the key's value to null. To remove all metadata pass null for the metadata value.\n\nACH return Metadata must be less than 8 KB in size.\n\nACH return metadata can only be updated using an API key. This request should not be made by your frontend and should only be done by backend logic that only the platform can complete."
+                      },
+                      "response": [
+                        {
+                          "id": "dfc618ca-cc0c-4c4d-9107-f7a061009935",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/ach_returns/:ach_return_id/metadata",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "ach_returns",
+                                ":ach_return_id",
+                                "metadata"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "ach_return_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"ach_return_id\": \"<string>\",\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"payin_id\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payin_id not found in the OpenAPI spec\"\n    },\n    \"refund_id\": \"<string>\",\n    \"status\": \"SUCCEEDED\",\n    \"return_code\": \"R41\",\n    \"return_desc\": \"<string>\",\n    \"amount\": \"<integer>\",\n    \"currency_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n    },\n    \"amount_splits\": {\n      \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/amount_splits not found in the OpenAPI spec\"\n    },\n    \"merchant_fees\": {\n      \"total_amount\": {\n        \"amount\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_fees/properties/total_amount/properties/amount not found in the OpenAPI spec\"\n        },\n        \"currency_code\": {\n          \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n        }\n      }\n    },\n    \"metadata\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    \"expected_deposit_date\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date not found in the OpenAPI spec\"\n    },\n    \"source\": \"SYSTEM\",\n    \"source_desc\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-07-28T02:42:43.000Z",
+                          "updatedAt": "2026-07-28T02:42:43.000Z",
+                          "uid": "35240-dfc618ca-cc0c-4c4d-9107-f7a061009935"
+                        },
+                        {
+                          "id": "36eb41ad-337b-433b-8f3f-066ca7d5fc61",
+                          "name": "400 response",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/ach_returns/:ach_return_id/metadata",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "ach_returns",
+                                ":ach_return_id",
+                                "metadata"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "ach_return_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:42:43.000Z",
+                          "updatedAt": "2026-07-28T02:42:43.000Z",
+                          "uid": "35240-36eb41ad-337b-433b-8f3f-066ca7d5fc61"
+                        },
+                        {
+                          "id": "d5dcef3a-805e-429b-9066-fa4ca9c2e7ab",
+                          "name": "401 response",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/ach_returns/:ach_return_id/metadata",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "ach_returns",
+                                ":ach_return_id",
+                                "metadata"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "ach_return_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:42:43.000Z",
+                          "updatedAt": "2026-07-28T02:42:43.000Z",
+                          "uid": "35240-d5dcef3a-805e-429b-9066-fa4ca9c2e7ab"
+                        },
+                        {
+                          "id": "6be1d5c5-8e8f-400c-9b5b-65243cacd325",
+                          "name": "403 response",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/ach_returns/:ach_return_id/metadata",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "ach_returns",
+                                ":ach_return_id",
+                                "metadata"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "ach_return_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:42:43.000Z",
+                          "updatedAt": "2026-07-28T02:42:43.000Z",
+                          "uid": "35240-6be1d5c5-8e8f-400c-9b5b-65243cacd325"
+                        },
+                        {
+                          "id": "8164d9cb-e01a-4b6a-96b6-7e8f45a4b4a9",
+                          "name": "404 response",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/ach_returns/:ach_return_id/metadata",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "ach_returns",
+                                ":ach_return_id",
+                                "metadata"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "ach_return_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:42:43.000Z",
+                          "updatedAt": "2026-07-28T02:42:43.000Z",
+                          "uid": "35240-8164d9cb-e01a-4b6a-96b6-7e8f45a4b4a9"
+                        },
+                        {
+                          "id": "9c5f5476-0d2c-41ce-b82d-7c8dc4631714",
+                          "name": "5XX response",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/ach_returns/:ach_return_id/metadata",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "ach_returns",
+                                ":ach_return_id",
+                                "metadata"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "ach_return_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:42:43.000Z",
+                          "updatedAt": "2026-07-28T02:42:43.000Z",
+                          "uid": "35240-9c5f5476-0d2c-41ce-b82d-7c8dc4631714"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:42:43.000Z",
+                      "updatedAt": "2026-07-28T02:42:43.000Z",
+                      "uid": "35240-39374312-50ac-4947-9251-87ad5493d7bc"
+                    }
+                  ],
+                  "id": "af844dc9-ea9e-4edb-a92d-8a4ba7b40f42",
+                  "createdAt": "2026-07-28T02:42:43.000Z",
+                  "updatedAt": "2026-07-28T02:42:43.000Z",
+                  "uid": "35240-af844dc9-ea9e-4edb-a92d-8a4ba7b40f42"
+                },
+                {
+                  "name": "Get ACH return",
+                  "id": "b3848fe0-2538-4be5-b0b5-9cafb7df5aa0",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/ach_returns/:ach_return_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "ach_returns",
+                        ":ach_return_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "2da86503-e377-4d5a-9093-23d3ebc83dbd",
+                          "key": "ach_return_id",
+                          "value": "<string>",
+                          "description": "(Required) The unique ACH return identifier. \n\nPrefix is \"ret\" in production and \"sbx_ret\" in sandbox."
+                        }
+                      ]
+                    },
+                    "description": "Get ACH return details by the ach return ID."
+                  },
+                  "response": [
+                    {
+                      "id": "86b39a0a-53ca-4666-a20e-0e6e8b6c6ee0",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/ach_returns/:ach_return_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "ach_returns",
+                            ":ach_return_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ach_return_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"ach_return_id\": \"<string>\",\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"payin_id\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payin_id not found in the OpenAPI spec\"\n    },\n    \"refund_id\": \"<string>\",\n    \"status\": \"SUCCEEDED\",\n    \"return_code\": \"R41\",\n    \"return_desc\": \"<string>\",\n    \"amount\": \"<integer>\",\n    \"currency_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n    },\n    \"amount_splits\": {\n      \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/amount_splits not found in the OpenAPI spec\"\n    },\n    \"merchant_fees\": {\n      \"total_amount\": {\n        \"amount\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_fees/properties/total_amount/properties/amount not found in the OpenAPI spec\"\n        },\n        \"currency_code\": {\n          \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n        }\n      }\n    },\n    \"metadata\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    \"expected_deposit_date\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date not found in the OpenAPI spec\"\n    },\n    \"source\": \"SYSTEM\",\n    \"source_desc\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:42:43.000Z",
+                      "updatedAt": "2026-07-28T02:42:43.000Z",
+                      "uid": "35240-86b39a0a-53ca-4666-a20e-0e6e8b6c6ee0"
+                    },
+                    {
+                      "id": "b4f8b082-5042-4761-8d0d-8d0bc2713a74",
+                      "name": "400 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/ach_returns/:ach_return_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "ach_returns",
+                            ":ach_return_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ach_return_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:42:43.000Z",
+                      "updatedAt": "2026-07-28T02:42:43.000Z",
+                      "uid": "35240-b4f8b082-5042-4761-8d0d-8d0bc2713a74"
+                    },
+                    {
+                      "id": "7f2e6521-7133-4ce0-81d2-386294466352",
+                      "name": "401 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/ach_returns/:ach_return_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "ach_returns",
+                            ":ach_return_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ach_return_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:42:43.000Z",
+                      "updatedAt": "2026-07-28T02:42:43.000Z",
+                      "uid": "35240-7f2e6521-7133-4ce0-81d2-386294466352"
+                    },
+                    {
+                      "id": "14dc1691-b122-40bd-92c1-4296201701df",
+                      "name": "403 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/ach_returns/:ach_return_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "ach_returns",
+                            ":ach_return_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ach_return_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:42:43.000Z",
+                      "updatedAt": "2026-07-28T02:42:43.000Z",
+                      "uid": "35240-14dc1691-b122-40bd-92c1-4296201701df"
+                    },
+                    {
+                      "id": "ab94232b-e605-4bae-9cc5-bb5c46f124da",
+                      "name": "404 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/ach_returns/:ach_return_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "ach_returns",
+                            ":ach_return_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ach_return_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:42:43.000Z",
+                      "updatedAt": "2026-07-28T02:42:43.000Z",
+                      "uid": "35240-ab94232b-e605-4bae-9cc5-bb5c46f124da"
+                    },
+                    {
+                      "id": "a0c82e63-9c50-4f4d-9157-bfba415e0162",
+                      "name": "5XX response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/ach_returns/:ach_return_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "ach_returns",
+                            ":ach_return_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ach_return_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:42:43.000Z",
+                      "updatedAt": "2026-07-28T02:42:43.000Z",
+                      "uid": "35240-a0c82e63-9c50-4f4d-9157-bfba415e0162"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:42:43.000Z",
+                  "updatedAt": "2026-07-28T02:42:43.000Z",
+                  "uid": "35240-b3848fe0-2538-4be5-b0b5-9cafb7df5aa0"
+                }
+              ],
+              "id": "8dc19d93-e06d-417c-8d0c-02f0a6961c3b",
+              "createdAt": "2026-07-28T02:42:43.000Z",
+              "updatedAt": "2026-07-28T02:42:43.000Z",
+              "uid": "35240-8dc19d93-e06d-417c-8d0c-02f0a6961c3b"
+            }
+          ],
+          "id": "5abfe836-c696-47fd-a93e-9e9aa6aed70e",
+          "createdAt": "2026-07-28T02:42:43.000Z",
+          "updatedAt": "2026-07-28T02:42:43.000Z",
+          "uid": "35240-5abfe836-c696-47fd-a93e-9e9aa6aed70e"
+        },
+        {
+          "name": "payins",
+          "item": [
+            {
+              "name": "{payin_id}",
+              "item": [
+                {
+                  "name": "simulate_ach_return",
+                  "item": [
+                    {
+                      "name": "Simulate payin ACH return",
+                      "id": "36e1a215-6032-4661-af86-ac8460191420",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/payins/:payin_id/simulate_ach_return",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "payins",
+                            ":payin_id",
+                            "simulate_ach_return"
+                          ],
+                          "variable": [
+                            {
+                              "id": "16c63b2c-8e27-42aa-bb18-8244b81c8fd0",
+                              "key": "payin_id"
+                            }
+                          ]
+                        },
+                        "description": "Only available in the Rainforest sandbox environment.\n\nMay only be called on an ACH payin in `PROCESSING` or `SUCCEEDED` statuses. An ACH return must not have already been created for the payin.\n\nThe expected webhooks will be sent as the payin's status is advanced and when the ACH return is created."
+                      },
+                      "response": [
+                        {
+                          "id": "9503aa86-2862-498a-9be6-2b244e4fefb9",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/payins/:payin_id/simulate_ach_return",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "payins",
+                                ":payin_id",
+                                "simulate_ach_return"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "payin_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-07-28T02:42:43.000Z",
+                          "updatedAt": "2026-07-28T02:42:43.000Z",
+                          "uid": "35240-9503aa86-2862-498a-9be6-2b244e4fefb9"
+                        },
+                        {
+                          "id": "b4db3afb-f858-41e9-92f0-4fe571bf741f",
+                          "name": "400 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/payins/:payin_id/simulate_ach_return",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "payins",
+                                ":payin_id",
+                                "simulate_ach_return"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "payin_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:42:43.000Z",
+                          "updatedAt": "2026-07-28T02:42:43.000Z",
+                          "uid": "35240-b4db3afb-f858-41e9-92f0-4fe571bf741f"
+                        },
+                        {
+                          "id": "198b2b1f-221e-4308-a0b5-fa922812ec5f",
+                          "name": "401 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/payins/:payin_id/simulate_ach_return",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "payins",
+                                ":payin_id",
+                                "simulate_ach_return"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "payin_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:42:43.000Z",
+                          "updatedAt": "2026-07-28T02:42:43.000Z",
+                          "uid": "35240-198b2b1f-221e-4308-a0b5-fa922812ec5f"
+                        },
+                        {
+                          "id": "b3a25b46-0a8d-457c-8385-6976c13e8d5b",
+                          "name": "403 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/payins/:payin_id/simulate_ach_return",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "payins",
+                                ":payin_id",
+                                "simulate_ach_return"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "payin_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:42:43.000Z",
+                          "updatedAt": "2026-07-28T02:42:43.000Z",
+                          "uid": "35240-b3a25b46-0a8d-457c-8385-6976c13e8d5b"
+                        },
+                        {
+                          "id": "cd9f9c6e-db7b-4679-b520-78d88de9146e",
+                          "name": "404 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/payins/:payin_id/simulate_ach_return",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "payins",
+                                ":payin_id",
+                                "simulate_ach_return"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "payin_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:42:43.000Z",
+                          "updatedAt": "2026-07-28T02:42:43.000Z",
+                          "uid": "35240-cd9f9c6e-db7b-4679-b520-78d88de9146e"
+                        },
+                        {
+                          "id": "90dc8e5c-5eef-46af-b93e-938c6c8a90ce",
+                          "name": "5XX response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/payins/:payin_id/simulate_ach_return",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "payins",
+                                ":payin_id",
+                                "simulate_ach_return"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "payin_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:42:43.000Z",
+                          "updatedAt": "2026-07-28T02:42:43.000Z",
+                          "uid": "35240-90dc8e5c-5eef-46af-b93e-938c6c8a90ce"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:42:43.000Z",
+                      "updatedAt": "2026-07-28T02:42:43.000Z",
+                      "uid": "35240-36e1a215-6032-4661-af86-ac8460191420"
+                    }
+                  ],
+                  "id": "b46af7f6-03a3-46cd-a015-ef262d8d973a",
+                  "createdAt": "2026-07-28T02:42:43.000Z",
+                  "updatedAt": "2026-07-28T02:42:43.000Z",
+                  "uid": "35240-b46af7f6-03a3-46cd-a015-ef262d8d973a"
+                }
+              ],
+              "id": "e1c4a8d0-a9da-414c-b500-eec2cee27f71",
+              "createdAt": "2026-07-28T02:42:43.000Z",
+              "updatedAt": "2026-07-28T02:42:43.000Z",
+              "uid": "35240-e1c4a8d0-a9da-414c-b500-eec2cee27f71"
+            }
+          ],
+          "id": "30835b61-7781-4154-a77c-0d26522a4bcd",
+          "createdAt": "2026-07-28T02:42:43.000Z",
+          "updatedAt": "2026-07-28T02:42:43.000Z",
+          "uid": "35240-30835b61-7781-4154-a77c-0d26522a4bcd"
+        }
+      ],
+      "id": "bed07991-88ee-4dc0-9e56-1cd87b5fd338",
+      "createdAt": "2026-07-28T02:42:43.000Z",
+      "updatedAt": "2026-07-28T02:42:43.000Z",
+      "uid": "35240-bed07991-88ee-4dc0-9e56-1cd87b5fd338"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.sandbox.rainforestpay.com"
+    }
+  ]
+}

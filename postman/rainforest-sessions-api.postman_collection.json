@@ -1,0 +1,686 @@
+{
+  "info": {
+    "_postman_id": "743dabc7-bac8-4833-a9ed-b2deba005e2a",
+    "name": "Authentication ACH Returns Sessions API",
+    "description": "This resource is used for authentication actions\n\nContact Support:\n Name: Rainforest\n Email: support@rainforestpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:43:55.000Z",
+    "updatedAt": "2026-07-28T02:43:55.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-743dabc7-bac8-4833-a9ed-b2deba005e2a"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "sessions",
+          "item": [
+            {
+              "name": "Create session",
+              "id": "9fa2ea62-cc40-426b-8ea4-b419ae2e86f6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"session_id\": \"<string>\",\n  \"session_key\": \"<string>\",\n  \"statements\": [\n    {\n      \"permissions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"constraints\": {\n        \"essefc\": {},\n        \"veniam1\": {},\n        \"esse_4c5\": {}\n      }\n    },\n    {\n      \"permissions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"constraints\": {\n        \"Lorem_d4\": {},\n        \"qui_42\": {}\n      }\n    }\n  ],\n  \"ttl\": \"<number>\",\n  \"expires_at\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/sessions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "sessions"
+                  ]
+                },
+                "description": "Create a temporary session to delegate permissions to a third-party."
+              },
+              "response": [
+                {
+                  "id": "a942ccd2-da10-46b3-8ced-7496df4c4096",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"session_id\": \"<string>\",\n  \"session_key\": \"<string>\",\n  \"statements\": [\n    {\n      \"permissions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"constraints\": {\n        \"essefc\": {},\n        \"veniam1\": {},\n        \"esse_4c5\": {}\n      }\n    },\n    {\n      \"permissions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"constraints\": {\n        \"Lorem_d4\": {},\n        \"qui_42\": {}\n      }\n    }\n  ],\n  \"ttl\": \"<number>\",\n  \"expires_at\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/sessions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "sessions"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1api_keys/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"session_id\": \"<string>\",\n    \"session_key\": \"<string>\",\n    \"statements\": [\n      {\n        \"permissions\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"constraints\": {\n          \"aliquip74\": {},\n          \"aliqua6\": {}\n        }\n      },\n      {\n        \"permissions\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"constraints\": {\n          \"labore_56b\": {},\n          \"reprehenderit8\": {}\n        }\n      }\n    ],\n    \"ttl\": \"<number>\",\n    \"expires_at\": \"<string>\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1api_keys/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:43:56.000Z",
+                  "updatedAt": "2026-07-28T02:43:56.000Z",
+                  "uid": "35240-a942ccd2-da10-46b3-8ced-7496df4c4096"
+                },
+                {
+                  "id": "e8e0546a-2093-412a-b2f5-0477db23bc1d",
+                  "name": "400 response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"session_id\": \"<string>\",\n  \"session_key\": \"<string>\",\n  \"statements\": [\n    {\n      \"permissions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"constraints\": {\n        \"essefc\": {},\n        \"veniam1\": {},\n        \"esse_4c5\": {}\n      }\n    },\n    {\n      \"permissions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"constraints\": {\n        \"Lorem_d4\": {},\n        \"qui_42\": {}\n      }\n    }\n  ],\n  \"ttl\": \"<number>\",\n  \"expires_at\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/sessions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "sessions"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:56.000Z",
+                  "updatedAt": "2026-07-28T02:43:56.000Z",
+                  "uid": "35240-e8e0546a-2093-412a-b2f5-0477db23bc1d"
+                },
+                {
+                  "id": "9bce8ffe-aafc-4457-ac0e-ed503f78ce29",
+                  "name": "401 response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"session_id\": \"<string>\",\n  \"session_key\": \"<string>\",\n  \"statements\": [\n    {\n      \"permissions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"constraints\": {\n        \"essefc\": {},\n        \"veniam1\": {},\n        \"esse_4c5\": {}\n      }\n    },\n    {\n      \"permissions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"constraints\": {\n        \"Lorem_d4\": {},\n        \"qui_42\": {}\n      }\n    }\n  ],\n  \"ttl\": \"<number>\",\n  \"expires_at\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/sessions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "sessions"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:56.000Z",
+                  "updatedAt": "2026-07-28T02:43:56.000Z",
+                  "uid": "35240-9bce8ffe-aafc-4457-ac0e-ed503f78ce29"
+                },
+                {
+                  "id": "00a21508-6542-4b8b-9cc6-e4ca42cc3439",
+                  "name": "403 response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"session_id\": \"<string>\",\n  \"session_key\": \"<string>\",\n  \"statements\": [\n    {\n      \"permissions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"constraints\": {\n        \"essefc\": {},\n        \"veniam1\": {},\n        \"esse_4c5\": {}\n      }\n    },\n    {\n      \"permissions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"constraints\": {\n        \"Lorem_d4\": {},\n        \"qui_42\": {}\n      }\n    }\n  ],\n  \"ttl\": \"<number>\",\n  \"expires_at\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/sessions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "sessions"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:56.000Z",
+                  "updatedAt": "2026-07-28T02:43:56.000Z",
+                  "uid": "35240-00a21508-6542-4b8b-9cc6-e4ca42cc3439"
+                },
+                {
+                  "id": "1428fb19-22f7-4784-8860-ac7bdb6e0e19",
+                  "name": "5XX response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"session_id\": \"<string>\",\n  \"session_key\": \"<string>\",\n  \"statements\": [\n    {\n      \"permissions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"constraints\": {\n        \"essefc\": {},\n        \"veniam1\": {},\n        \"esse_4c5\": {}\n      }\n    },\n    {\n      \"permissions\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"constraints\": {\n        \"Lorem_d4\": {},\n        \"qui_42\": {}\n      }\n    }\n  ],\n  \"ttl\": \"<number>\",\n  \"expires_at\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/sessions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "sessions"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:56.000Z",
+                  "updatedAt": "2026-07-28T02:43:56.000Z",
+                  "uid": "35240-1428fb19-22f7-4784-8860-ac7bdb6e0e19"
+                }
+              ],
+              "createdAt": "2026-07-28T02:43:56.000Z",
+              "updatedAt": "2026-07-28T02:43:56.000Z",
+              "uid": "35240-9fa2ea62-cc40-426b-8ea4-b419ae2e86f6"
+            },
+            {
+              "name": "Delete session",
+              "id": "b0f4014f-4e92-418e-a579-850d435740a4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"session_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/sessions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "sessions"
+                  ]
+                },
+                "description": "Delete a temporary session, permanently invalidating it."
+              },
+              "response": [
+                {
+                  "id": "6196269f-ca6b-4f9f-bc21-018d6ab2170b",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"session_id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/sessions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "sessions"
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:56.000Z",
+                  "updatedAt": "2026-07-28T02:43:56.000Z",
+                  "uid": "35240-6196269f-ca6b-4f9f-bc21-018d6ab2170b"
+                },
+                {
+                  "id": "3e84adc2-2854-4690-8101-1b3f8f3a715c",
+                  "name": "400 response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"session_id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/sessions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "sessions"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:56.000Z",
+                  "updatedAt": "2026-07-28T02:43:56.000Z",
+                  "uid": "35240-3e84adc2-2854-4690-8101-1b3f8f3a715c"
+                },
+                {
+                  "id": "0fa4211c-f90a-4bc7-9d4d-31abe5d9ee20",
+                  "name": "401 response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"session_id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/sessions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "sessions"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:56.000Z",
+                  "updatedAt": "2026-07-28T02:43:56.000Z",
+                  "uid": "35240-0fa4211c-f90a-4bc7-9d4d-31abe5d9ee20"
+                },
+                {
+                  "id": "8800086d-685d-4649-911b-4c1f53a5b66e",
+                  "name": "403 response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"session_id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/sessions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "sessions"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:56.000Z",
+                  "updatedAt": "2026-07-28T02:43:56.000Z",
+                  "uid": "35240-8800086d-685d-4649-911b-4c1f53a5b66e"
+                },
+                {
+                  "id": "2ba393e0-37d7-4e45-b7d9-9efda463e7b3",
+                  "name": "Resource not found.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"session_id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/sessions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "sessions"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"value\": \"reference #/paths/~1v1~1api_keys/get/responses/400/content/application~1json/schema not found in the OpenAPI spec\"\n}",
+                  "createdAt": "2026-07-28T02:43:56.000Z",
+                  "updatedAt": "2026-07-28T02:43:56.000Z",
+                  "uid": "35240-2ba393e0-37d7-4e45-b7d9-9efda463e7b3"
+                },
+                {
+                  "id": "8f8534f4-ca1b-42f9-a711-1a37ff86cb34",
+                  "name": "5XX response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"session_id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/sessions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "sessions"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:56.000Z",
+                  "updatedAt": "2026-07-28T02:43:56.000Z",
+                  "uid": "35240-8f8534f4-ca1b-42f9-a711-1a37ff86cb34"
+                }
+              ],
+              "createdAt": "2026-07-28T02:43:56.000Z",
+              "updatedAt": "2026-07-28T02:43:56.000Z",
+              "uid": "35240-b0f4014f-4e92-418e-a579-850d435740a4"
+            }
+          ],
+          "id": "75e686d8-4999-4ffa-b27b-04bab61705f9",
+          "createdAt": "2026-07-28T02:43:56.000Z",
+          "updatedAt": "2026-07-28T02:43:56.000Z",
+          "uid": "35240-75e686d8-4999-4ffa-b27b-04bab61705f9"
+        }
+      ],
+      "id": "601ef31a-9470-4a21-bca0-8009989d0e1d",
+      "createdAt": "2026-07-28T02:43:56.000Z",
+      "updatedAt": "2026-07-28T02:43:56.000Z",
+      "uid": "35240-601ef31a-9470-4a21-bca0-8009989d0e1d"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.sandbox.rainforestpay.com"
+    }
+  ]
+}

@@ -1,0 +1,2696 @@
+{
+  "info": {
+    "_postman_id": "b9370d56-f288-4bfb-82b8-52a68441c694",
+    "name": "Authentication ACH Returns Deposits API",
+    "description": "This resource is used for authentication actions\n\nContact Support:\n Name: Rainforest\n Email: support@rainforestpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:43:22.000Z",
+    "updatedAt": "2026-07-28T02:43:22.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b9370d56-f288-4bfb-82b8-52a68441c694"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "deposits",
+          "item": [
+            {
+              "name": "{deposit_id}",
+              "item": [
+                {
+                  "name": "activity",
+                  "item": [
+                    {
+                      "name": "Get deposit activity",
+                      "id": "e1853a10-1466-4ea4-99d1-22a3a99384e7",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Rainforest-Api-Version",
+                            "value": "2024-10-16"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/deposits/:deposit_id/activity?deposit_id=<string>&payment_type=ACH_RETURN&payment_type=CHARGEBACK&memo=<string>&billing_contact_name=<string>&metadata=<string>&sort_by=merchant_name&sort_order=desc&limit=1000&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "deposits",
+                            ":deposit_id",
+                            "activity"
+                          ],
+                          "query": [
+                            {
+                              "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox.",
+                              "key": "deposit_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "One or more payment types to filter by. Provide parameter multiples times to filter by multiple payment types. \n\n`ACH_RETURN` `CHARGEBACK` `PAYIN` `REFUND`",
+                              "key": "payment_type",
+                              "value": "ACH_RETURN"
+                            },
+                            {
+                              "description": "One or more payment types to filter by. Provide parameter multiples times to filter by multiple payment types. \n\n`ACH_RETURN` `CHARGEBACK` `PAYIN` `REFUND`",
+                              "key": "payment_type",
+                              "value": "CHARGEBACK"
+                            },
+                            {
+                              "description": "Additional information about the activity, applicable for an adjustment.",
+                              "key": "memo",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Optional billing contact name by which to filter.",
+                              "key": "billing_contact_name",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter by metadata stored on the entity by passing a map of key-value pairs to filter on. The `key` should be valid JSONPath to a corresponding metadata key.\n\nFor example, an entity created with the following metadata\n```\n\"account\": {\n  \"id\": \"acct_123\"\n}\n```\ncould have the following metadata filter to find entities with the metadata account id: \n```\n?metadata[$.account.id]=acct_123\n```",
+                              "key": "metadata",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                              "key": "sort_by",
+                              "value": "merchant_name"
+                            },
+                            {
+                              "description": "Order in which to return the sorted results; ascending or descending. Default sort order is descending.",
+                              "key": "sort_order",
+                              "value": "desc"
+                            },
+                            {
+                              "description": "The maximum number of results to return.",
+                              "key": "limit",
+                              "value": "1000"
+                            },
+                            {
+                              "description": "The offset of the first result to return; zero-based.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "e89d6fe5-f8ee-477c-bbd7-c02dbe702640",
+                              "key": "deposit_id"
+                            }
+                          ]
+                        },
+                        "description": "Get the activity within a deposit by the deposit ID."
+                      },
+                      "response": [
+                        {
+                          "id": "2a866b12-5832-4de2-8f76-4e6ad6a73b6e",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Rainforest-Api-Version",
+                                "value": "2024-10-16"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/deposits/:deposit_id/activity?deposit_id=<string>&payment_type=CHARGEBACK&memo=<string>&billing_contact_name=<string>&metadata=<string>&sort_by=merchant_name&sort_order=desc&limit=1000&offset=0",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "deposits",
+                                ":deposit_id",
+                                "activity"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox.",
+                                  "key": "deposit_id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "One or more payment types to filter by. Provide parameter multiples times to filter by multiple payment types. \n\n`ACH_RETURN` `CHARGEBACK` `PAYIN` `REFUND`",
+                                  "key": "payment_type",
+                                  "value": "CHARGEBACK"
+                                },
+                                {
+                                  "description": "Additional information about the activity, applicable for an adjustment.",
+                                  "key": "memo",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Optional billing contact name by which to filter.",
+                                  "key": "billing_contact_name",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter by metadata stored on the entity by passing a map of key-value pairs to filter on. The `key` should be valid JSONPath to a corresponding metadata key.\n\nFor example, an entity created with the following metadata\n```\n\"account\": {\n  \"id\": \"acct_123\"\n}\n```\ncould have the following metadata filter to find entities with the metadata account id: \n```\n?metadata[$.account.id]=acct_123\n```",
+                                  "key": "metadata",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                                  "key": "sort_by",
+                                  "value": "merchant_name"
+                                },
+                                {
+                                  "description": "Order in which to return the sorted results; ascending or descending. Default sort order is descending.",
+                                  "key": "sort_order",
+                                  "value": "desc"
+                                },
+                                {
+                                  "description": "The maximum number of results to return.",
+                                  "key": "limit",
+                                  "value": "1000"
+                                },
+                                {
+                                  "description": "The offset of the first result to return; zero-based.",
+                                  "key": "offset",
+                                  "value": "0"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deposit_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {\n    \"net_amount\": {\n      \"amount\": \"<integer>\",\n      \"currency_code\": \"USD\"\n    },\n    \"gross_amount\": {\n      \"amount\": \"<integer>\",\n      \"currency_code\": \"USD\"\n    },\n    \"deposit_fee_amount\": {\n      \"amount\": \"<integer>\",\n      \"currency_code\": \"USD\"\n    },\n    \"activities\": [\n      {\n        \"id\": \"<string>\",\n        \"type\": \"DEPOSIT\",\n        \"parent_id\": \"<string>\",\n        \"merchant_id\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_id not found in the OpenAPI spec\"\n        },\n        \"payment_method_id\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id not found in the OpenAPI spec\"\n        },\n        \"gross_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"billing_fees_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"split_remainder_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"net_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"metadata\": {},\n        \"billing_contact\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n        },\n        \"memo\": \"<string>\",\n        \"merchant\": {\n          \"id\": {\n            \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_id not found in the OpenAPI spec\"\n          },\n          \"name\": \"<string>\",\n          \"dba_name\": \"<string>\"\n        },\n        \"payment_method\": {\n          \"payment_method_id\": {\n            \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id not found in the OpenAPI spec\"\n          },\n          \"method_type\": {\n            \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/method_type not found in the OpenAPI spec\"\n          },\n          \"card\": {\n            \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/card not found in the OpenAPI spec\"\n          },\n          \"ach\": {\n            \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/ach not found in the OpenAPI spec\"\n          },\n          \"apple_pay\": {\n            \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/apple_pay not found in the OpenAPI spec\"\n          }\n        },\n        \"created_at\": \"<dateTime>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"type\": \"PAYIN\",\n        \"parent_id\": \"<string>\",\n        \"merchant_id\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_id not found in the OpenAPI spec\"\n        },\n        \"payment_method_id\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id not found in the OpenAPI spec\"\n        },\n        \"gross_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"billing_fees_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"split_remainder_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"net_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"metadata\": {},\n        \"billing_contact\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n        },\n        \"memo\": \"<string>\",\n        \"merchant\": {\n          \"id\": {\n            \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_id not found in the OpenAPI spec\"\n          },\n          \"name\": \"<string>\",\n          \"dba_name\": \"<string>\"\n        },\n        \"payment_method\": {\n          \"payment_method_id\": {\n            \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id not found in the OpenAPI spec\"\n          },\n          \"method_type\": {\n            \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/method_type not found in the OpenAPI spec\"\n          },\n          \"card\": {\n            \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/card not found in the OpenAPI spec\"\n          },\n          \"ach\": {\n            \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/ach not found in the OpenAPI spec\"\n          },\n          \"apple_pay\": {\n            \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/apple_pay not found in the OpenAPI spec\"\n          }\n        },\n        \"created_at\": \"<dateTime>\"\n      }\n    ]\n  },\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:43:22.000Z",
+                          "updatedAt": "2026-07-28T02:43:22.000Z",
+                          "uid": "35240-2a866b12-5832-4de2-8f76-4e6ad6a73b6e"
+                        },
+                        {
+                          "id": "d410dad7-c33d-4764-b72c-a35d3da8ffb2",
+                          "name": "Bad request, check for validation errors.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Rainforest-Api-Version",
+                                "value": "2024-10-16"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/deposits/:deposit_id/activity?deposit_id=<string>&payment_type=CHARGEBACK&memo=<string>&billing_contact_name=<string>&metadata=<string>&sort_by=merchant_name&sort_order=desc&limit=1000&offset=0",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "deposits",
+                                ":deposit_id",
+                                "activity"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox.",
+                                  "key": "deposit_id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "One or more payment types to filter by. Provide parameter multiples times to filter by multiple payment types. \n\n`ACH_RETURN` `CHARGEBACK` `PAYIN` `REFUND`",
+                                  "key": "payment_type",
+                                  "value": "CHARGEBACK"
+                                },
+                                {
+                                  "description": "Additional information about the activity, applicable for an adjustment.",
+                                  "key": "memo",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Optional billing contact name by which to filter.",
+                                  "key": "billing_contact_name",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter by metadata stored on the entity by passing a map of key-value pairs to filter on. The `key` should be valid JSONPath to a corresponding metadata key.\n\nFor example, an entity created with the following metadata\n```\n\"account\": {\n  \"id\": \"acct_123\"\n}\n```\ncould have the following metadata filter to find entities with the metadata account id: \n```\n?metadata[$.account.id]=acct_123\n```",
+                                  "key": "metadata",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                                  "key": "sort_by",
+                                  "value": "merchant_name"
+                                },
+                                {
+                                  "description": "Order in which to return the sorted results; ascending or descending. Default sort order is descending.",
+                                  "key": "sort_order",
+                                  "value": "desc"
+                                },
+                                {
+                                  "description": "The maximum number of results to return.",
+                                  "key": "limit",
+                                  "value": "1000"
+                                },
+                                {
+                                  "description": "The offset of the first result to return; zero-based.",
+                                  "key": "offset",
+                                  "value": "0"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deposit_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {},\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:43:22.000Z",
+                          "updatedAt": "2026-07-28T02:43:22.000Z",
+                          "uid": "35240-d410dad7-c33d-4764-b72c-a35d3da8ffb2"
+                        },
+                        {
+                          "id": "b7a076db-f6f3-434f-90d0-1bb04b8df198",
+                          "name": "Authorization missing or invalid.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Rainforest-Api-Version",
+                                "value": "2024-10-16"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/deposits/:deposit_id/activity?deposit_id=<string>&payment_type=CHARGEBACK&memo=<string>&billing_contact_name=<string>&metadata=<string>&sort_by=merchant_name&sort_order=desc&limit=1000&offset=0",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "deposits",
+                                ":deposit_id",
+                                "activity"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox.",
+                                  "key": "deposit_id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "One or more payment types to filter by. Provide parameter multiples times to filter by multiple payment types. \n\n`ACH_RETURN` `CHARGEBACK` `PAYIN` `REFUND`",
+                                  "key": "payment_type",
+                                  "value": "CHARGEBACK"
+                                },
+                                {
+                                  "description": "Additional information about the activity, applicable for an adjustment.",
+                                  "key": "memo",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Optional billing contact name by which to filter.",
+                                  "key": "billing_contact_name",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter by metadata stored on the entity by passing a map of key-value pairs to filter on. The `key` should be valid JSONPath to a corresponding metadata key.\n\nFor example, an entity created with the following metadata\n```\n\"account\": {\n  \"id\": \"acct_123\"\n}\n```\ncould have the following metadata filter to find entities with the metadata account id: \n```\n?metadata[$.account.id]=acct_123\n```",
+                                  "key": "metadata",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                                  "key": "sort_by",
+                                  "value": "merchant_name"
+                                },
+                                {
+                                  "description": "Order in which to return the sorted results; ascending or descending. Default sort order is descending.",
+                                  "key": "sort_order",
+                                  "value": "desc"
+                                },
+                                {
+                                  "description": "The maximum number of results to return.",
+                                  "key": "limit",
+                                  "value": "1000"
+                                },
+                                {
+                                  "description": "The offset of the first result to return; zero-based.",
+                                  "key": "offset",
+                                  "value": "0"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deposit_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {},\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:43:22.000Z",
+                          "updatedAt": "2026-07-28T02:43:22.000Z",
+                          "uid": "35240-b7a076db-f6f3-434f-90d0-1bb04b8df198"
+                        },
+                        {
+                          "id": "b8078efd-543e-4fa6-8aeb-74b247a5d7ca",
+                          "name": "Authorization insufficient for requested action.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Rainforest-Api-Version",
+                                "value": "2024-10-16"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/deposits/:deposit_id/activity?deposit_id=<string>&payment_type=CHARGEBACK&memo=<string>&billing_contact_name=<string>&metadata=<string>&sort_by=merchant_name&sort_order=desc&limit=1000&offset=0",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "deposits",
+                                ":deposit_id",
+                                "activity"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox.",
+                                  "key": "deposit_id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "One or more payment types to filter by. Provide parameter multiples times to filter by multiple payment types. \n\n`ACH_RETURN` `CHARGEBACK` `PAYIN` `REFUND`",
+                                  "key": "payment_type",
+                                  "value": "CHARGEBACK"
+                                },
+                                {
+                                  "description": "Additional information about the activity, applicable for an adjustment.",
+                                  "key": "memo",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Optional billing contact name by which to filter.",
+                                  "key": "billing_contact_name",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter by metadata stored on the entity by passing a map of key-value pairs to filter on. The `key` should be valid JSONPath to a corresponding metadata key.\n\nFor example, an entity created with the following metadata\n```\n\"account\": {\n  \"id\": \"acct_123\"\n}\n```\ncould have the following metadata filter to find entities with the metadata account id: \n```\n?metadata[$.account.id]=acct_123\n```",
+                                  "key": "metadata",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                                  "key": "sort_by",
+                                  "value": "merchant_name"
+                                },
+                                {
+                                  "description": "Order in which to return the sorted results; ascending or descending. Default sort order is descending.",
+                                  "key": "sort_order",
+                                  "value": "desc"
+                                },
+                                {
+                                  "description": "The maximum number of results to return.",
+                                  "key": "limit",
+                                  "value": "1000"
+                                },
+                                {
+                                  "description": "The offset of the first result to return; zero-based.",
+                                  "key": "offset",
+                                  "value": "0"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deposit_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {},\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:43:22.000Z",
+                          "updatedAt": "2026-07-28T02:43:22.000Z",
+                          "uid": "35240-b8078efd-543e-4fa6-8aeb-74b247a5d7ca"
+                        },
+                        {
+                          "id": "e680a37e-feee-4a73-93a7-8a190051bfc9",
+                          "name": "Resource not found.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Rainforest-Api-Version",
+                                "value": "2024-10-16"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/deposits/:deposit_id/activity?deposit_id=<string>&payment_type=CHARGEBACK&memo=<string>&billing_contact_name=<string>&metadata=<string>&sort_by=merchant_name&sort_order=desc&limit=1000&offset=0",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "deposits",
+                                ":deposit_id",
+                                "activity"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox.",
+                                  "key": "deposit_id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "One or more payment types to filter by. Provide parameter multiples times to filter by multiple payment types. \n\n`ACH_RETURN` `CHARGEBACK` `PAYIN` `REFUND`",
+                                  "key": "payment_type",
+                                  "value": "CHARGEBACK"
+                                },
+                                {
+                                  "description": "Additional information about the activity, applicable for an adjustment.",
+                                  "key": "memo",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Optional billing contact name by which to filter.",
+                                  "key": "billing_contact_name",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter by metadata stored on the entity by passing a map of key-value pairs to filter on. The `key` should be valid JSONPath to a corresponding metadata key.\n\nFor example, an entity created with the following metadata\n```\n\"account\": {\n  \"id\": \"acct_123\"\n}\n```\ncould have the following metadata filter to find entities with the metadata account id: \n```\n?metadata[$.account.id]=acct_123\n```",
+                                  "key": "metadata",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                                  "key": "sort_by",
+                                  "value": "merchant_name"
+                                },
+                                {
+                                  "description": "Order in which to return the sorted results; ascending or descending. Default sort order is descending.",
+                                  "key": "sort_order",
+                                  "value": "desc"
+                                },
+                                {
+                                  "description": "The maximum number of results to return.",
+                                  "key": "limit",
+                                  "value": "1000"
+                                },
+                                {
+                                  "description": "The offset of the first result to return; zero-based.",
+                                  "key": "offset",
+                                  "value": "0"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deposit_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {},\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:43:22.000Z",
+                          "updatedAt": "2026-07-28T02:43:22.000Z",
+                          "uid": "35240-e680a37e-feee-4a73-93a7-8a190051bfc9"
+                        },
+                        {
+                          "id": "56a5c97a-a348-4dab-9c48-a18e2c40ee36",
+                          "name": "Unexpected error.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Rainforest-Api-Version",
+                                "value": "2024-10-16"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/deposits/:deposit_id/activity?deposit_id=<string>&payment_type=CHARGEBACK&memo=<string>&billing_contact_name=<string>&metadata=<string>&sort_by=merchant_name&sort_order=desc&limit=1000&offset=0",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "deposits",
+                                ":deposit_id",
+                                "activity"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox.",
+                                  "key": "deposit_id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "One or more payment types to filter by. Provide parameter multiples times to filter by multiple payment types. \n\n`ACH_RETURN` `CHARGEBACK` `PAYIN` `REFUND`",
+                                  "key": "payment_type",
+                                  "value": "CHARGEBACK"
+                                },
+                                {
+                                  "description": "Additional information about the activity, applicable for an adjustment.",
+                                  "key": "memo",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Optional billing contact name by which to filter.",
+                                  "key": "billing_contact_name",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter by metadata stored on the entity by passing a map of key-value pairs to filter on. The `key` should be valid JSONPath to a corresponding metadata key.\n\nFor example, an entity created with the following metadata\n```\n\"account\": {\n  \"id\": \"acct_123\"\n}\n```\ncould have the following metadata filter to find entities with the metadata account id: \n```\n?metadata[$.account.id]=acct_123\n```",
+                                  "key": "metadata",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                                  "key": "sort_by",
+                                  "value": "merchant_name"
+                                },
+                                {
+                                  "description": "Order in which to return the sorted results; ascending or descending. Default sort order is descending.",
+                                  "key": "sort_order",
+                                  "value": "desc"
+                                },
+                                {
+                                  "description": "The maximum number of results to return.",
+                                  "key": "limit",
+                                  "value": "1000"
+                                },
+                                {
+                                  "description": "The offset of the first result to return; zero-based.",
+                                  "key": "offset",
+                                  "value": "0"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deposit_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {},\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:43:22.000Z",
+                          "updatedAt": "2026-07-28T02:43:22.000Z",
+                          "uid": "35240-56a5c97a-a348-4dab-9c48-a18e2c40ee36"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:43:22.000Z",
+                      "updatedAt": "2026-07-28T02:43:22.000Z",
+                      "uid": "35240-e1853a10-1466-4ea4-99d1-22a3a99384e7"
+                    }
+                  ],
+                  "id": "e1c83b0a-eebe-445e-b036-33a478e2a27c",
+                  "createdAt": "2026-07-28T02:43:22.000Z",
+                  "updatedAt": "2026-07-28T02:43:22.000Z",
+                  "uid": "35240-e1c83b0a-eebe-445e-b036-33a478e2a27c"
+                },
+                {
+                  "name": "simulate",
+                  "item": [
+                    {
+                      "name": "Simulate deposit status change",
+                      "id": "d6c1dede-bf35-433c-aef1-aeba15041784",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Rainforest-Api-Version",
+                            "value": "2024-10-16"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"status\": \"SUCCEEDED\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/deposits/:deposit_id/simulate?deposit_id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "deposits",
+                            ":deposit_id",
+                            "simulate"
+                          ],
+                          "query": [
+                            {
+                              "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox.",
+                              "key": "deposit_id",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "aebc16c7-12cc-4b36-b1bf-9e997019cc7a",
+                              "key": "deposit_id"
+                            }
+                          ]
+                        },
+                        "description": "Only available in the Rainforest sandbox environment.\n\nSimulate a deposit status change. The deposit status must be in PROCESSING. The expected webhooks will be sent for the deposit on status change."
+                      },
+                      "response": [
+                        {
+                          "id": "d7485c00-9b29-44a7-9a11-c15f5a5a4db5",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Rainforest-Api-Version",
+                                "value": "2024-10-16"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"status\": \"SUCCEEDED\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/deposits/:deposit_id/simulate?deposit_id=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "deposits",
+                                ":deposit_id",
+                                "simulate"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox.",
+                                  "key": "deposit_id",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deposit_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {\n    \"deposit_id\": \"<string>\",\n    \"platform_id\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_method_configs/post/requestBody/content/application~1json/schema/properties/platform_id not found in the OpenAPI spec\"\n    },\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"status\": \"FAILED\",\n    \"deposit_type\": \"BILLING\",\n    \"billing_type\": \"GROSS\",\n    \"amount\": \"<integer>\",\n    \"currency_code\": \"USD\",\n    \"deposit_fee_amount\": {\n      \"amount\": \"<integer>\",\n      \"currency_code\": \"USD\"\n    },\n    \"total_payment_billing_fees_amount\": {\n      \"amount\": \"<integer>\",\n      \"currency_code\": \"USD\"\n    },\n    \"total_split_remainder_amount\": {\n      \"amount\": \"<integer>\",\n      \"currency_code\": \"USD\"\n    },\n    \"total_fees_amount\": {\n      \"amount\": \"<integer>\",\n      \"currency_code\": \"USD\"\n    },\n    \"gross_amount\": {\n      \"amount\": \"<integer>\",\n      \"currency_code\": \"USD\"\n    },\n    \"payment_totals\": {\n      \"payins\": {\n        \"count\": \"<integer>\",\n        \"gross_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"billing_fees_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"split_remainder_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"net_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        }\n      },\n      \"refunds\": {\n        \"count\": \"<integer>\",\n        \"gross_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"billing_fees_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"split_remainder_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"net_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        }\n      },\n      \"chargebacks\": {\n        \"count\": \"<integer>\",\n        \"gross_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"billing_fees_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"split_remainder_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"net_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        }\n      },\n      \"ach_returns\": {\n        \"count\": \"<integer>\",\n        \"gross_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"billing_fees_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"split_remainder_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"net_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        }\n      },\n      \"adjustments\": {\n        \"count\": \"<integer>\",\n        \"gross_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"billing_fees_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"split_remainder_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"net_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        }\n      },\n      \"deposits\": {\n        \"count\": \"<integer>\",\n        \"gross_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"billing_fees_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"split_remainder_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"net_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        }\n      }\n    },\n    \"method_type\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/method_type not found in the OpenAPI spec\"\n    },\n    \"ach\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/ach not found in the OpenAPI spec\"\n    },\n    \"plaid_ach\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/plaid_ach not found in the OpenAPI spec\"\n    },\n    \"metadata\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/metadata not found in the OpenAPI spec\"\n    },\n    \"created_at\": \"<dateTime>\"\n  },\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:43:22.000Z",
+                          "updatedAt": "2026-07-28T02:43:22.000Z",
+                          "uid": "35240-d7485c00-9b29-44a7-9a11-c15f5a5a4db5"
+                        },
+                        {
+                          "id": "35c46373-924a-4568-8d42-2ad52aa100ca",
+                          "name": "Bad request, check for validation errors.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Rainforest-Api-Version",
+                                "value": "2024-10-16"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"status\": \"SUCCEEDED\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/deposits/:deposit_id/simulate?deposit_id=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "deposits",
+                                ":deposit_id",
+                                "simulate"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox.",
+                                  "key": "deposit_id",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deposit_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {},\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:43:22.000Z",
+                          "updatedAt": "2026-07-28T02:43:22.000Z",
+                          "uid": "35240-35c46373-924a-4568-8d42-2ad52aa100ca"
+                        },
+                        {
+                          "id": "430675ff-2cbd-470c-bec0-b9ef2ce1c762",
+                          "name": "Authorization missing or invalid.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Rainforest-Api-Version",
+                                "value": "2024-10-16"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"status\": \"SUCCEEDED\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/deposits/:deposit_id/simulate?deposit_id=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "deposits",
+                                ":deposit_id",
+                                "simulate"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox.",
+                                  "key": "deposit_id",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deposit_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {},\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:43:22.000Z",
+                          "updatedAt": "2026-07-28T02:43:22.000Z",
+                          "uid": "35240-430675ff-2cbd-470c-bec0-b9ef2ce1c762"
+                        },
+                        {
+                          "id": "c722099d-54fb-42ad-a1a6-6789159c7f27",
+                          "name": "Authorization insufficient for requested action.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Rainforest-Api-Version",
+                                "value": "2024-10-16"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"status\": \"SUCCEEDED\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/deposits/:deposit_id/simulate?deposit_id=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "deposits",
+                                ":deposit_id",
+                                "simulate"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox.",
+                                  "key": "deposit_id",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deposit_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {},\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:43:22.000Z",
+                          "updatedAt": "2026-07-28T02:43:22.000Z",
+                          "uid": "35240-c722099d-54fb-42ad-a1a6-6789159c7f27"
+                        },
+                        {
+                          "id": "3568795d-736f-48d7-a811-11b322ed7f3b",
+                          "name": "Resource not found.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Rainforest-Api-Version",
+                                "value": "2024-10-16"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"status\": \"SUCCEEDED\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/deposits/:deposit_id/simulate?deposit_id=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "deposits",
+                                ":deposit_id",
+                                "simulate"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox.",
+                                  "key": "deposit_id",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deposit_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {},\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:43:22.000Z",
+                          "updatedAt": "2026-07-28T02:43:22.000Z",
+                          "uid": "35240-3568795d-736f-48d7-a811-11b322ed7f3b"
+                        },
+                        {
+                          "id": "6ca5529d-a6bd-4348-b6af-2298377e3eb2",
+                          "name": "Unexpected error.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Rainforest-Api-Version",
+                                "value": "2024-10-16"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"status\": \"SUCCEEDED\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/deposits/:deposit_id/simulate?deposit_id=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "deposits",
+                                ":deposit_id",
+                                "simulate"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox.",
+                                  "key": "deposit_id",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deposit_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {},\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:43:22.000Z",
+                          "updatedAt": "2026-07-28T02:43:22.000Z",
+                          "uid": "35240-6ca5529d-a6bd-4348-b6af-2298377e3eb2"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:43:22.000Z",
+                      "updatedAt": "2026-07-28T02:43:22.000Z",
+                      "uid": "35240-d6c1dede-bf35-433c-aef1-aeba15041784"
+                    }
+                  ],
+                  "id": "7b9df1ac-2bc3-4d6a-aeff-f32baacc55bb",
+                  "createdAt": "2026-07-28T02:43:22.000Z",
+                  "updatedAt": "2026-07-28T02:43:22.000Z",
+                  "uid": "35240-7b9df1ac-2bc3-4d6a-aeff-f32baacc55bb"
+                },
+                {
+                  "name": "Get deposit",
+                  "id": "821e0041-e83b-4ef6-a8ea-90c67372eea8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Rainforest-Api-Version",
+                        "value": "2024-10-16"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/deposits/:deposit_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "deposits",
+                        ":deposit_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "e88ffac0-dfe6-4040-b4eb-2514b1c83a8b",
+                          "key": "deposit_id",
+                          "value": "<string>",
+                          "description": "(Required) The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox."
+                        }
+                      ]
+                    },
+                    "description": "Get a deposit's details by the deposit ID."
+                  },
+                  "response": [
+                    {
+                      "id": "72bd22b6-1377-40cf-8cd2-ea7d85632d01",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Rainforest-Api-Version",
+                            "value": "2024-10-16"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/deposits/:deposit_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "deposits",
+                            ":deposit_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "deposit_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {\n    \"deposit_id\": \"<string>\",\n    \"platform_id\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_method_configs/post/requestBody/content/application~1json/schema/properties/platform_id not found in the OpenAPI spec\"\n    },\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"status\": \"FAILED\",\n    \"deposit_type\": \"BILLING\",\n    \"billing_type\": \"GROSS\",\n    \"amount\": \"<integer>\",\n    \"currency_code\": \"USD\",\n    \"deposit_fee_amount\": {\n      \"amount\": \"<integer>\",\n      \"currency_code\": \"USD\"\n    },\n    \"total_payment_billing_fees_amount\": {\n      \"amount\": \"<integer>\",\n      \"currency_code\": \"USD\"\n    },\n    \"total_split_remainder_amount\": {\n      \"amount\": \"<integer>\",\n      \"currency_code\": \"USD\"\n    },\n    \"total_fees_amount\": {\n      \"amount\": \"<integer>\",\n      \"currency_code\": \"USD\"\n    },\n    \"gross_amount\": {\n      \"amount\": \"<integer>\",\n      \"currency_code\": \"USD\"\n    },\n    \"payment_totals\": {\n      \"payins\": {\n        \"count\": \"<integer>\",\n        \"gross_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"billing_fees_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"split_remainder_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"net_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        }\n      },\n      \"refunds\": {\n        \"count\": \"<integer>\",\n        \"gross_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"billing_fees_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"split_remainder_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"net_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        }\n      },\n      \"chargebacks\": {\n        \"count\": \"<integer>\",\n        \"gross_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"billing_fees_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"split_remainder_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"net_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        }\n      },\n      \"ach_returns\": {\n        \"count\": \"<integer>\",\n        \"gross_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"billing_fees_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"split_remainder_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"net_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        }\n      },\n      \"adjustments\": {\n        \"count\": \"<integer>\",\n        \"gross_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"billing_fees_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"split_remainder_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"net_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        }\n      },\n      \"deposits\": {\n        \"count\": \"<integer>\",\n        \"gross_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"billing_fees_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"split_remainder_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"net_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        }\n      }\n    },\n    \"method_type\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/method_type not found in the OpenAPI spec\"\n    },\n    \"ach\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/ach not found in the OpenAPI spec\"\n    },\n    \"plaid_ach\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/plaid_ach not found in the OpenAPI spec\"\n    },\n    \"metadata\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/metadata not found in the OpenAPI spec\"\n    },\n    \"created_at\": \"<dateTime>\"\n  },\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:43:22.000Z",
+                      "updatedAt": "2026-07-28T02:43:22.000Z",
+                      "uid": "35240-72bd22b6-1377-40cf-8cd2-ea7d85632d01"
+                    },
+                    {
+                      "id": "33359907-b4ea-466c-905b-b16bc726a0db",
+                      "name": "Bad request, check for validation errors.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Rainforest-Api-Version",
+                            "value": "2024-10-16"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/deposits/:deposit_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "deposits",
+                            ":deposit_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "deposit_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {},\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:43:22.000Z",
+                      "updatedAt": "2026-07-28T02:43:22.000Z",
+                      "uid": "35240-33359907-b4ea-466c-905b-b16bc726a0db"
+                    },
+                    {
+                      "id": "391024f6-5b05-4cef-bc3d-2d5510e4be23",
+                      "name": "Authorization missing or invalid.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Rainforest-Api-Version",
+                            "value": "2024-10-16"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/deposits/:deposit_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "deposits",
+                            ":deposit_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "deposit_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {},\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:43:22.000Z",
+                      "updatedAt": "2026-07-28T02:43:22.000Z",
+                      "uid": "35240-391024f6-5b05-4cef-bc3d-2d5510e4be23"
+                    },
+                    {
+                      "id": "f403cdd4-bd6e-4b46-a469-0ef43bb24154",
+                      "name": "Authorization insufficient for requested action.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Rainforest-Api-Version",
+                            "value": "2024-10-16"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/deposits/:deposit_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "deposits",
+                            ":deposit_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "deposit_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {},\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:43:22.000Z",
+                      "updatedAt": "2026-07-28T02:43:22.000Z",
+                      "uid": "35240-f403cdd4-bd6e-4b46-a469-0ef43bb24154"
+                    },
+                    {
+                      "id": "d90fd339-e5c2-49e0-8822-0d7c2b6f7d4f",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Rainforest-Api-Version",
+                            "value": "2024-10-16"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/deposits/:deposit_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "deposits",
+                            ":deposit_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "deposit_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {},\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:43:22.000Z",
+                      "updatedAt": "2026-07-28T02:43:22.000Z",
+                      "uid": "35240-d90fd339-e5c2-49e0-8822-0d7c2b6f7d4f"
+                    },
+                    {
+                      "id": "e4d35bf8-4dac-497e-b02c-689e77879c2e",
+                      "name": "Unexpected error.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Rainforest-Api-Version",
+                            "value": "2024-10-16"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/deposits/:deposit_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "deposits",
+                            ":deposit_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "deposit_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {},\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:43:22.000Z",
+                      "updatedAt": "2026-07-28T02:43:22.000Z",
+                      "uid": "35240-e4d35bf8-4dac-497e-b02c-689e77879c2e"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:43:22.000Z",
+                  "updatedAt": "2026-07-28T02:43:22.000Z",
+                  "uid": "35240-821e0041-e83b-4ef6-a8ea-90c67372eea8"
+                }
+              ],
+              "id": "480f35f5-9e2a-48d7-948f-a14da849a9ca",
+              "createdAt": "2026-07-28T02:43:22.000Z",
+              "updatedAt": "2026-07-28T02:43:22.000Z",
+              "uid": "35240-480f35f5-9e2a-48d7-948f-a14da849a9ca"
+            },
+            {
+              "name": "List deposits",
+              "id": "528ae8db-c562-4edc-bdce-7e54322fdaf7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/deposits?deposit_id=<string>&platform_id=<string>&merchant_id=<string>&status=SUCCEEDED&status=IN_REVIEW&deposit_type=BILLING&deposit_type=FUNDING&metadata=<string>&created_at.start=<dateTime>&created_at.end=<dateTime>&sort_by=status&sort_order=desc&limit=1000&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "deposits"
+                  ],
+                  "query": [
+                    {
+                      "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox.",
+                      "key": "deposit_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The unique platform identifier. \n\nPrefix is \"plt\" in production and \"sbx_plt\" in sandbox.",
+                      "key": "platform_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox.",
+                      "key": "merchant_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "One or more deposit statuses to filter by. Provide parameter multiple times to filter by multiple deposit status types. \n\n`PROCESSING` `SUCCEEDED` `IN_REVIEW` `FAILED`",
+                      "key": "status",
+                      "value": "SUCCEEDED"
+                    },
+                    {
+                      "description": "One or more deposit statuses to filter by. Provide parameter multiple times to filter by multiple deposit status types. \n\n`PROCESSING` `SUCCEEDED` `IN_REVIEW` `FAILED`",
+                      "key": "status",
+                      "value": "IN_REVIEW"
+                    },
+                    {
+                      "description": "Deposit type to filter by. Provide parameter multiple times to filter by multiple deposit types.\n\n* `BILLING`: deposit for the payment processing fees, applicable only for merchants on gross billing.\n* `FUNDING`: deposit for the payment volume, if the merchant is on net billing, then the FUNDING deposit will be net any payment processing fees.",
+                      "key": "deposit_type",
+                      "value": "BILLING"
+                    },
+                    {
+                      "description": "Deposit type to filter by. Provide parameter multiple times to filter by multiple deposit types.\n\n* `BILLING`: deposit for the payment processing fees, applicable only for merchants on gross billing.\n* `FUNDING`: deposit for the payment volume, if the merchant is on net billing, then the FUNDING deposit will be net any payment processing fees.",
+                      "key": "deposit_type",
+                      "value": "FUNDING"
+                    },
+                    {
+                      "description": "Filter by metadata stored on the entity by passing a map of key-value pairs to filter on. The `key` should be valid JSONPath to a corresponding metadata key.\n\nFor example, an entity created with the following metadata\n```\n\"account\": {\n  \"id\": \"acct_123\"\n}\n```\ncould have the following metadata filter to find entities with the metadata account id: \n```\n?metadata[$.account.id]=acct_123\n```",
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Created on or after in UTC RFC 3339 format.",
+                      "key": "created_at.start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Created on or before in UTC RFC 3339 format.",
+                      "key": "created_at.end",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                      "key": "sort_by",
+                      "value": "status"
+                    },
+                    {
+                      "description": "Order in which to return the sorted results; ascending or descending. Default sort order is descending.",
+                      "key": "sort_order",
+                      "value": "desc"
+                    },
+                    {
+                      "description": "The maximum number of results to return.",
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "The offset of the first result to return; zero-based.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                },
+                "description": "Query a list of deposits given a primary filter of platform or merchant id, then additional optional search criteria."
+              },
+              "response": [
+                {
+                  "id": "da542601-860a-46b4-b0ad-38d6fb4d820b",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Rainforest-Api-Version",
+                        "value": "2024-10-16"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/deposits?deposit_id=<string>&platform_id=<string>&merchant_id=<string>&status=IN_REVIEW&deposit_type=FUNDING&metadata=<string>&created_at.start=<dateTime>&created_at.end=<dateTime>&sort_by=status&sort_order=desc&limit=1000&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "deposits"
+                      ],
+                      "query": [
+                        {
+                          "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox.",
+                          "key": "deposit_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The unique platform identifier. \n\nPrefix is \"plt\" in production and \"sbx_plt\" in sandbox.",
+                          "key": "platform_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox.",
+                          "key": "merchant_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "One or more deposit statuses to filter by. Provide parameter multiple times to filter by multiple deposit status types. \n\n`PROCESSING` `SUCCEEDED` `IN_REVIEW` `FAILED`",
+                          "key": "status",
+                          "value": "IN_REVIEW"
+                        },
+                        {
+                          "description": "Deposit type to filter by. Provide parameter multiple times to filter by multiple deposit types.\n\n* `BILLING`: deposit for the payment processing fees, applicable only for merchants on gross billing.\n* `FUNDING`: deposit for the payment volume, if the merchant is on net billing, then the FUNDING deposit will be net any payment processing fees.",
+                          "key": "deposit_type",
+                          "value": "FUNDING"
+                        },
+                        {
+                          "description": "Filter by metadata stored on the entity by passing a map of key-value pairs to filter on. The `key` should be valid JSONPath to a corresponding metadata key.\n\nFor example, an entity created with the following metadata\n```\n\"account\": {\n  \"id\": \"acct_123\"\n}\n```\ncould have the following metadata filter to find entities with the metadata account id: \n```\n?metadata[$.account.id]=acct_123\n```",
+                          "key": "metadata",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Created on or after in UTC RFC 3339 format.",
+                          "key": "created_at.start",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Created on or before in UTC RFC 3339 format.",
+                          "key": "created_at.end",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                          "key": "sort_by",
+                          "value": "status"
+                        },
+                        {
+                          "description": "Order in which to return the sorted results; ascending or descending. Default sort order is descending.",
+                          "key": "sort_order",
+                          "value": "desc"
+                        },
+                        {
+                          "description": "The maximum number of results to return.",
+                          "key": "limit",
+                          "value": "1000"
+                        },
+                        {
+                          "description": "The offset of the first result to return; zero-based.",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"ERROR\",\n  \"data\": {\n    \"total_results\": \"<integer>\",\n    \"results\": [\n      {\n        \"deposit_id\": \"<string>\",\n        \"platform_id\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_method_configs/post/requestBody/content/application~1json/schema/properties/platform_id not found in the OpenAPI spec\"\n        },\n        \"merchant_id\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_id not found in the OpenAPI spec\"\n        },\n        \"status\": \"FAILED\",\n        \"deposit_type\": \"BILLING\",\n        \"billing_type\": \"GROSS\",\n        \"amount\": \"<integer>\",\n        \"currency_code\": \"USD\",\n        \"deposit_fee_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"total_payment_billing_fees_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"total_split_remainder_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"total_fees_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"gross_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"payment_totals\": {\n          \"payins\": {\n            \"count\": \"<integer>\",\n            \"gross_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"billing_fees_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"split_remainder_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"net_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            }\n          },\n          \"refunds\": {\n            \"count\": \"<integer>\",\n            \"gross_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"billing_fees_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"split_remainder_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"net_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            }\n          },\n          \"chargebacks\": {\n            \"count\": \"<integer>\",\n            \"gross_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"billing_fees_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"split_remainder_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"net_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            }\n          },\n          \"ach_returns\": {\n            \"count\": \"<integer>\",\n            \"gross_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"billing_fees_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"split_remainder_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"net_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            }\n          },\n          \"adjustments\": {\n            \"count\": \"<integer>\",\n            \"gross_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"billing_fees_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"split_remainder_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"net_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            }\n          },\n          \"deposits\": {\n            \"count\": \"<integer>\",\n            \"gross_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"billing_fees_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"split_remainder_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"net_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            }\n          }\n        },\n        \"method_type\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/method_type not found in the OpenAPI spec\"\n        },\n        \"ach\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/ach not found in the OpenAPI spec\"\n        },\n        \"plaid_ach\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/plaid_ach not found in the OpenAPI spec\"\n        },\n        \"metadata\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/metadata not found in the OpenAPI spec\"\n        },\n        \"created_at\": \"<dateTime>\"\n      },\n      {\n        \"deposit_id\": \"<string>\",\n        \"platform_id\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_method_configs/post/requestBody/content/application~1json/schema/properties/platform_id not found in the OpenAPI spec\"\n        },\n        \"merchant_id\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_id not found in the OpenAPI spec\"\n        },\n        \"status\": \"PROCESSING\",\n        \"deposit_type\": \"BILLING\",\n        \"billing_type\": \"GROSS\",\n        \"amount\": \"<integer>\",\n        \"currency_code\": \"USD\",\n        \"deposit_fee_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"total_payment_billing_fees_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"total_split_remainder_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"total_fees_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"gross_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": \"USD\"\n        },\n        \"payment_totals\": {\n          \"payins\": {\n            \"count\": \"<integer>\",\n            \"gross_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"billing_fees_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"split_remainder_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"net_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            }\n          },\n          \"refunds\": {\n            \"count\": \"<integer>\",\n            \"gross_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"billing_fees_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"split_remainder_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"net_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            }\n          },\n          \"chargebacks\": {\n            \"count\": \"<integer>\",\n            \"gross_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"billing_fees_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"split_remainder_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"net_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            }\n          },\n          \"ach_returns\": {\n            \"count\": \"<integer>\",\n            \"gross_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"billing_fees_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"split_remainder_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"net_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            }\n          },\n          \"adjustments\": {\n            \"count\": \"<integer>\",\n            \"gross_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"billing_fees_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"split_remainder_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"net_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            }\n          },\n          \"deposits\": {\n            \"count\": \"<integer>\",\n            \"gross_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"billing_fees_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"split_remainder_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            },\n            \"net_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": \"USD\"\n            }\n          }\n        },\n        \"method_type\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/method_type not found in the OpenAPI spec\"\n        },\n        \"ach\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/ach not found in the OpenAPI spec\"\n        },\n        \"plaid_ach\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/plaid_ach not found in the OpenAPI spec\"\n        },\n        \"metadata\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/metadata not found in the OpenAPI spec\"\n        },\n        \"created_at\": \"<dateTime>\"\n      }\n    ]\n  },\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:43:22.000Z",
+                  "updatedAt": "2026-07-28T02:43:22.000Z",
+                  "uid": "35240-da542601-860a-46b4-b0ad-38d6fb4d820b"
+                },
+                {
+                  "id": "f83575c0-f0b5-4a72-bfa3-ca74f9440b82",
+                  "name": "Bad request, check for validation errors.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Rainforest-Api-Version",
+                        "value": "2024-10-16"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/deposits?deposit_id=<string>&platform_id=<string>&merchant_id=<string>&status=IN_REVIEW&deposit_type=FUNDING&metadata=<string>&created_at.start=<dateTime>&created_at.end=<dateTime>&sort_by=status&sort_order=desc&limit=1000&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "deposits"
+                      ],
+                      "query": [
+                        {
+                          "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox.",
+                          "key": "deposit_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The unique platform identifier. \n\nPrefix is \"plt\" in production and \"sbx_plt\" in sandbox.",
+                          "key": "platform_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox.",
+                          "key": "merchant_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "One or more deposit statuses to filter by. Provide parameter multiple times to filter by multiple deposit status types. \n\n`PROCESSING` `SUCCEEDED` `IN_REVIEW` `FAILED`",
+                          "key": "status",
+                          "value": "IN_REVIEW"
+                        },
+                        {
+                          "description": "Deposit type to filter by. Provide parameter multiple times to filter by multiple deposit types.\n\n* `BILLING`: deposit for the payment processing fees, applicable only for merchants on gross billing.\n* `FUNDING`: deposit for the payment volume, if the merchant is on net billing, then the FUNDING deposit will be net any payment processing fees.",
+                          "key": "deposit_type",
+                          "value": "FUNDING"
+                        },
+                        {
+                          "description": "Filter by metadata stored on the entity by passing a map of key-value pairs to filter on. The `key` should be valid JSONPath to a corresponding metadata key.\n\nFor example, an entity created with the following metadata\n```\n\"account\": {\n  \"id\": \"acct_123\"\n}\n```\ncould have the following metadata filter to find entities with the metadata account id: \n```\n?metadata[$.account.id]=acct_123\n```",
+                          "key": "metadata",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Created on or after in UTC RFC 3339 format.",
+                          "key": "created_at.start",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Created on or before in UTC RFC 3339 format.",
+                          "key": "created_at.end",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                          "key": "sort_by",
+                          "value": "status"
+                        },
+                        {
+                          "description": "Order in which to return the sorted results; ascending or descending. Default sort order is descending.",
+                          "key": "sort_order",
+                          "value": "desc"
+                        },
+                        {
+                          "description": "The maximum number of results to return.",
+                          "key": "limit",
+                          "value": "1000"
+                        },
+                        {
+                          "description": "The offset of the first result to return; zero-based.",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {},\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:43:22.000Z",
+                  "updatedAt": "2026-07-28T02:43:22.000Z",
+                  "uid": "35240-f83575c0-f0b5-4a72-bfa3-ca74f9440b82"
+                },
+                {
+                  "id": "f0cb829b-56e4-4f52-a62e-1f6215e85100",
+                  "name": "Authorization missing or invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Rainforest-Api-Version",
+                        "value": "2024-10-16"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/deposits?deposit_id=<string>&platform_id=<string>&merchant_id=<string>&status=IN_REVIEW&deposit_type=FUNDING&metadata=<string>&created_at.start=<dateTime>&created_at.end=<dateTime>&sort_by=status&sort_order=desc&limit=1000&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "deposits"
+                      ],
+                      "query": [
+                        {
+                          "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox.",
+                          "key": "deposit_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The unique platform identifier. \n\nPrefix is \"plt\" in production and \"sbx_plt\" in sandbox.",
+                          "key": "platform_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox.",
+                          "key": "merchant_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "One or more deposit statuses to filter by. Provide parameter multiple times to filter by multiple deposit status types. \n\n`PROCESSING` `SUCCEEDED` `IN_REVIEW` `FAILED`",
+                          "key": "status",
+                          "value": "IN_REVIEW"
+                        },
+                        {
+                          "description": "Deposit type to filter by. Provide parameter multiple times to filter by multiple deposit types.\n\n* `BILLING`: deposit for the payment processing fees, applicable only for merchants on gross billing.\n* `FUNDING`: deposit for the payment volume, if the merchant is on net billing, then the FUNDING deposit will be net any payment processing fees.",
+                          "key": "deposit_type",
+                          "value": "FUNDING"
+                        },
+                        {
+                          "description": "Filter by metadata stored on the entity by passing a map of key-value pairs to filter on. The `key` should be valid JSONPath to a corresponding metadata key.\n\nFor example, an entity created with the following metadata\n```\n\"account\": {\n  \"id\": \"acct_123\"\n}\n```\ncould have the following metadata filter to find entities with the metadata account id: \n```\n?metadata[$.account.id]=acct_123\n```",
+                          "key": "metadata",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Created on or after in UTC RFC 3339 format.",
+                          "key": "created_at.start",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Created on or before in UTC RFC 3339 format.",
+                          "key": "created_at.end",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                          "key": "sort_by",
+                          "value": "status"
+                        },
+                        {
+                          "description": "Order in which to return the sorted results; ascending or descending. Default sort order is descending.",
+                          "key": "sort_order",
+                          "value": "desc"
+                        },
+                        {
+                          "description": "The maximum number of results to return.",
+                          "key": "limit",
+                          "value": "1000"
+                        },
+                        {
+                          "description": "The offset of the first result to return; zero-based.",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {},\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:43:22.000Z",
+                  "updatedAt": "2026-07-28T02:43:22.000Z",
+                  "uid": "35240-f0cb829b-56e4-4f52-a62e-1f6215e85100"
+                },
+                {
+                  "id": "7702a913-6957-43c6-b730-985ddadf3271",
+                  "name": "Authorization insufficient for requested action.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Rainforest-Api-Version",
+                        "value": "2024-10-16"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/deposits?deposit_id=<string>&platform_id=<string>&merchant_id=<string>&status=IN_REVIEW&deposit_type=FUNDING&metadata=<string>&created_at.start=<dateTime>&created_at.end=<dateTime>&sort_by=status&sort_order=desc&limit=1000&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "deposits"
+                      ],
+                      "query": [
+                        {
+                          "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox.",
+                          "key": "deposit_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The unique platform identifier. \n\nPrefix is \"plt\" in production and \"sbx_plt\" in sandbox.",
+                          "key": "platform_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox.",
+                          "key": "merchant_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "One or more deposit statuses to filter by. Provide parameter multiple times to filter by multiple deposit status types. \n\n`PROCESSING` `SUCCEEDED` `IN_REVIEW` `FAILED`",
+                          "key": "status",
+                          "value": "IN_REVIEW"
+                        },
+                        {
+                          "description": "Deposit type to filter by. Provide parameter multiple times to filter by multiple deposit types.\n\n* `BILLING`: deposit for the payment processing fees, applicable only for merchants on gross billing.\n* `FUNDING`: deposit for the payment volume, if the merchant is on net billing, then the FUNDING deposit will be net any payment processing fees.",
+                          "key": "deposit_type",
+                          "value": "FUNDING"
+                        },
+                        {
+                          "description": "Filter by metadata stored on the entity by passing a map of key-value pairs to filter on. The `key` should be valid JSONPath to a corresponding metadata key.\n\nFor example, an entity created with the following metadata\n```\n\"account\": {\n  \"id\": \"acct_123\"\n}\n```\ncould have the following metadata filter to find entities with the metadata account id: \n```\n?metadata[$.account.id]=acct_123\n```",
+                          "key": "metadata",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Created on or after in UTC RFC 3339 format.",
+                          "key": "created_at.start",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Created on or before in UTC RFC 3339 format.",
+                          "key": "created_at.end",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                          "key": "sort_by",
+                          "value": "status"
+                        },
+                        {
+                          "description": "Order in which to return the sorted results; ascending or descending. Default sort order is descending.",
+                          "key": "sort_order",
+                          "value": "desc"
+                        },
+                        {
+                          "description": "The maximum number of results to return.",
+                          "key": "limit",
+                          "value": "1000"
+                        },
+                        {
+                          "description": "The offset of the first result to return; zero-based.",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {},\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:43:22.000Z",
+                  "updatedAt": "2026-07-28T02:43:22.000Z",
+                  "uid": "35240-7702a913-6957-43c6-b730-985ddadf3271"
+                },
+                {
+                  "id": "1818da20-cf64-4fc1-ab66-a349735862f3",
+                  "name": "Unexpected error.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Rainforest-Api-Version",
+                        "value": "2024-10-16"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/deposits?deposit_id=<string>&platform_id=<string>&merchant_id=<string>&status=IN_REVIEW&deposit_type=FUNDING&metadata=<string>&created_at.start=<dateTime>&created_at.end=<dateTime>&sort_by=status&sort_order=desc&limit=1000&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "deposits"
+                      ],
+                      "query": [
+                        {
+                          "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox.",
+                          "key": "deposit_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The unique platform identifier. \n\nPrefix is \"plt\" in production and \"sbx_plt\" in sandbox.",
+                          "key": "platform_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox.",
+                          "key": "merchant_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "One or more deposit statuses to filter by. Provide parameter multiple times to filter by multiple deposit status types. \n\n`PROCESSING` `SUCCEEDED` `IN_REVIEW` `FAILED`",
+                          "key": "status",
+                          "value": "IN_REVIEW"
+                        },
+                        {
+                          "description": "Deposit type to filter by. Provide parameter multiple times to filter by multiple deposit types.\n\n* `BILLING`: deposit for the payment processing fees, applicable only for merchants on gross billing.\n* `FUNDING`: deposit for the payment volume, if the merchant is on net billing, then the FUNDING deposit will be net any payment processing fees.",
+                          "key": "deposit_type",
+                          "value": "FUNDING"
+                        },
+                        {
+                          "description": "Filter by metadata stored on the entity by passing a map of key-value pairs to filter on. The `key` should be valid JSONPath to a corresponding metadata key.\n\nFor example, an entity created with the following metadata\n```\n\"account\": {\n  \"id\": \"acct_123\"\n}\n```\ncould have the following metadata filter to find entities with the metadata account id: \n```\n?metadata[$.account.id]=acct_123\n```",
+                          "key": "metadata",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Created on or after in UTC RFC 3339 format.",
+                          "key": "created_at.start",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Created on or before in UTC RFC 3339 format.",
+                          "key": "created_at.end",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                          "key": "sort_by",
+                          "value": "status"
+                        },
+                        {
+                          "description": "Order in which to return the sorted results; ascending or descending. Default sort order is descending.",
+                          "key": "sort_order",
+                          "value": "desc"
+                        },
+                        {
+                          "description": "The maximum number of results to return.",
+                          "key": "limit",
+                          "value": "1000"
+                        },
+                        {
+                          "description": "The offset of the first result to return; zero-based.",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {},\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:43:22.000Z",
+                  "updatedAt": "2026-07-28T02:43:22.000Z",
+                  "uid": "35240-1818da20-cf64-4fc1-ab66-a349735862f3"
+                }
+              ],
+              "createdAt": "2026-07-28T02:43:22.000Z",
+              "updatedAt": "2026-07-28T02:43:22.000Z",
+              "uid": "35240-528ae8db-c562-4edc-bdce-7e54322fdaf7"
+            }
+          ],
+          "id": "e9761b41-6cfa-450b-976e-b33779c2f89f",
+          "createdAt": "2026-07-28T02:43:22.000Z",
+          "updatedAt": "2026-07-28T02:43:22.000Z",
+          "uid": "35240-e9761b41-6cfa-450b-976e-b33779c2f89f"
+        },
+        {
+          "name": "merchants",
+          "item": [
+            {
+              "name": "{merchant_id}",
+              "item": [
+                {
+                  "name": "simulate_deposit",
+                  "item": [
+                    {
+                      "name": "Simulate merchant deposit creation",
+                      "id": "1172d2de-e4c6-4140-862e-08b7dc050aaa",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Rainforest-Api-Version",
+                            "value": "2024-10-16"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/merchants/:merchant_id/simulate_deposit",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "merchants",
+                            ":merchant_id",
+                            "simulate_deposit"
+                          ],
+                          "variable": [
+                            {
+                              "id": "ed414235-4416-4235-b0dd-1ddcbcb55bb1",
+                              "key": "merchant_id",
+                              "value": "<string>",
+                              "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                            }
+                          ]
+                        },
+                        "description": "Only available in the Rainforest sandbox environment.\n\nSimulate processing a deposit on a merchant. Any payins or refunds with the status of `PROCESSING` will be transitioned to the status of `SUCCEEDED`.\n\nThe expected webhooks will be sent for all payins and refunds while the deposit is processing. The `deposit.processing` webhook will be sent when the deposit has been processed and the deposit status is `PROCESSING`.\n\nOn a merchant with a Daily Net billing configuration, a deposit will be processed with an amount that corresponds to the payment activity, less any applicable fees.\n\nOn a merchant with a Daily Gross billing configuration, two deposits will be processed:\n  1. A funding deposit with an amount that corresponds to the gross amount of the payment activity.\n  2. A billing deposit with an amount that corresponds to the applicable billing fees of the payment activity.\n\nOn a merchant with a Monthly Gross billing configuration, only the funding deposit will be processed with an amount that corresponds to the gross amount of the payment activity."
+                      },
+                      "response": [
+                        {
+                          "id": "bf3b5827-1500-4ab3-a5b0-cdf22b0ae03e",
+                          "name": "No Content.\n\nThe merchant deposit(s) have been processed with a deposit status of `PROCESSING`.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Rainforest-Api-Version",
+                                "value": "2024-10-16"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/merchants/:merchant_id/simulate_deposit",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "merchants",
+                                ":merchant_id",
+                                "simulate_deposit"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "merchant_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:22.000Z",
+                          "updatedAt": "2026-07-28T02:43:22.000Z",
+                          "uid": "35240-bf3b5827-1500-4ab3-a5b0-cdf22b0ae03e"
+                        },
+                        {
+                          "id": "d68676cd-745f-4bf7-a2e6-f80e97e90fad",
+                          "name": "Bad request, check for validation errors.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Rainforest-Api-Version",
+                                "value": "2024-10-16"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/merchants/:merchant_id/simulate_deposit",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "merchants",
+                                ":merchant_id",
+                                "simulate_deposit"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "merchant_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {},\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:43:22.000Z",
+                          "updatedAt": "2026-07-28T02:43:22.000Z",
+                          "uid": "35240-d68676cd-745f-4bf7-a2e6-f80e97e90fad"
+                        },
+                        {
+                          "id": "48e823af-f933-4d66-8d78-13c491f5c353",
+                          "name": "Authorization missing or invalid.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Rainforest-Api-Version",
+                                "value": "2024-10-16"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/merchants/:merchant_id/simulate_deposit",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "merchants",
+                                ":merchant_id",
+                                "simulate_deposit"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "merchant_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {},\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:43:22.000Z",
+                          "updatedAt": "2026-07-28T02:43:22.000Z",
+                          "uid": "35240-48e823af-f933-4d66-8d78-13c491f5c353"
+                        },
+                        {
+                          "id": "cc2dd7c5-497b-40a1-8306-e0bca1d7ba05",
+                          "name": "Authorization insufficient for requested action.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Rainforest-Api-Version",
+                                "value": "2024-10-16"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/merchants/:merchant_id/simulate_deposit",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "merchants",
+                                ":merchant_id",
+                                "simulate_deposit"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "merchant_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {},\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:43:22.000Z",
+                          "updatedAt": "2026-07-28T02:43:22.000Z",
+                          "uid": "35240-cc2dd7c5-497b-40a1-8306-e0bca1d7ba05"
+                        },
+                        {
+                          "id": "0e2b2fd3-6618-4c13-808a-08e57f6e23f5",
+                          "name": "Resource not found.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Rainforest-Api-Version",
+                                "value": "2024-10-16"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/merchants/:merchant_id/simulate_deposit",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "merchants",
+                                ":merchant_id",
+                                "simulate_deposit"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "merchant_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {},\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:43:22.000Z",
+                          "updatedAt": "2026-07-28T02:43:22.000Z",
+                          "uid": "35240-0e2b2fd3-6618-4c13-808a-08e57f6e23f5"
+                        },
+                        {
+                          "id": "5464b8e7-1f44-401e-9f4a-7b584e6da92c",
+                          "name": "Unexpected error.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Rainforest-Api-Version",
+                                "value": "2024-10-16"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/merchants/:merchant_id/simulate_deposit",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "merchants",
+                                ":merchant_id",
+                                "simulate_deposit"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "merchant_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {},\n  \"errors\": [\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"code\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T02:43:22.000Z",
+                          "updatedAt": "2026-07-28T02:43:22.000Z",
+                          "uid": "35240-5464b8e7-1f44-401e-9f4a-7b584e6da92c"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:43:22.000Z",
+                      "updatedAt": "2026-07-28T02:43:22.000Z",
+                      "uid": "35240-1172d2de-e4c6-4140-862e-08b7dc050aaa"
+                    }
+                  ],
+                  "id": "c9d22d73-ee34-47b5-8e88-eddf465f02d4",
+                  "createdAt": "2026-07-28T02:43:22.000Z",
+                  "updatedAt": "2026-07-28T02:43:22.000Z",
+                  "uid": "35240-c9d22d73-ee34-47b5-8e88-eddf465f02d4"
+                }
+              ],
+              "id": "69d45836-ff47-4710-b33c-15ecf8a351f2",
+              "createdAt": "2026-07-28T02:43:22.000Z",
+              "updatedAt": "2026-07-28T02:43:22.000Z",
+              "uid": "35240-69d45836-ff47-4710-b33c-15ecf8a351f2"
+            }
+          ],
+          "id": "a2e08433-e31e-4ff3-ba0f-a4c9c7ff3379",
+          "createdAt": "2026-07-28T02:43:22.000Z",
+          "updatedAt": "2026-07-28T02:43:22.000Z",
+          "uid": "35240-a2e08433-e31e-4ff3-ba0f-a4c9c7ff3379"
+        }
+      ],
+      "id": "37d6c4dc-d513-48bb-889b-8fc504696d0a",
+      "createdAt": "2026-07-28T02:43:22.000Z",
+      "updatedAt": "2026-07-28T02:43:22.000Z",
+      "uid": "35240-37d6c4dc-d513-48bb-889b-8fc504696d0a"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.sandbox.rainforestpay.com"
+    }
+  ]
+}

@@ -1,0 +1,356 @@
+{
+  "info": {
+    "_postman_id": "e2b33872-5bdc-4481-aab1-816798a14261",
+    "name": "Authentication ACH Returns File Uploads API",
+    "description": "This resource is used for authentication actions\n\nContact Support:\n Name: Rainforest\n Email: support@rainforestpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:43:31.000Z",
+    "updatedAt": "2026-07-28T02:43:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e2b33872-5bdc-4481-aab1-816798a14261"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "file_uploads",
+          "item": [
+            {
+              "name": "{file_upload_id}",
+              "item": [
+                {
+                  "name": "Get file upload",
+                  "id": "7eee1a3d-801b-4ab7-b0de-172126dd3633",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/file_uploads/:file_upload_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "file_uploads",
+                        ":file_upload_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "7e4618db-7db2-44c2-aa5e-66af6916c90a",
+                          "key": "file_upload_id",
+                          "value": "<string>",
+                          "description": "(Required) The unique file upload identifier. \n\nPrefix is \"fiu\" in production and \"sbx_fiu\" in sandbox."
+                        }
+                      ]
+                    },
+                    "description": "Get file upload by the file upload ID."
+                  },
+                  "response": [
+                    {
+                      "id": "8a87123e-3eeb-4020-a2eb-b682489a8f9b",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/file_uploads/:file_upload_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "file_uploads",
+                            ":file_upload_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "file_upload_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1file_upload_configs/post/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"file_upload_id\": \"<string>\",\n    \"file_upload_config_id\": \"<string>\",\n    \"filename\": \"<string>\",\n    \"type\": {\n      \"value\": \"reference #/paths/~1v1~1file_upload_configs/post/requestBody/content/application~1json/schema/properties/type not found in the OpenAPI spec\"\n    },\n    \"status\": \"AVAILABLE\",\n    \"failure_reason_code\": \"INVALID_FILE_TYPE\",\n    \"created_at\": {\n      \"value\": \"reference #/paths/~1v1~1file_upload_configs/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n    },\n    \"updated_at\": {\n      \"value\": \"reference #/paths/~1v1~1file_upload_configs/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n    }\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1file_upload_configs/post/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:43:32.000Z",
+                      "updatedAt": "2026-07-28T02:43:32.000Z",
+                      "uid": "35240-8a87123e-3eeb-4020-a2eb-b682489a8f9b"
+                    },
+                    {
+                      "id": "03605166-d454-4a7a-b5e0-1fab733645ae",
+                      "name": "400 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/file_uploads/:file_upload_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "file_uploads",
+                            ":file_upload_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "file_upload_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:32.000Z",
+                      "updatedAt": "2026-07-28T02:43:32.000Z",
+                      "uid": "35240-03605166-d454-4a7a-b5e0-1fab733645ae"
+                    },
+                    {
+                      "id": "5522c64d-0faf-4b66-9631-19600a224bcb",
+                      "name": "401 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/file_uploads/:file_upload_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "file_uploads",
+                            ":file_upload_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "file_upload_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:32.000Z",
+                      "updatedAt": "2026-07-28T02:43:32.000Z",
+                      "uid": "35240-5522c64d-0faf-4b66-9631-19600a224bcb"
+                    },
+                    {
+                      "id": "21c04450-ad30-48a0-8d29-f7e582928835",
+                      "name": "403 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/file_uploads/:file_upload_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "file_uploads",
+                            ":file_upload_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "file_upload_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:32.000Z",
+                      "updatedAt": "2026-07-28T02:43:32.000Z",
+                      "uid": "35240-21c04450-ad30-48a0-8d29-f7e582928835"
+                    },
+                    {
+                      "id": "5c9147b9-9f8d-42b7-af15-a5c65016869c",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/file_uploads/:file_upload_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "file_uploads",
+                            ":file_upload_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "file_upload_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": \"reference #/paths/~1v1~1file_upload_configs/post/responses/400/content/application~1json/schema not found in the OpenAPI spec\"\n}",
+                      "createdAt": "2026-07-28T02:43:32.000Z",
+                      "updatedAt": "2026-07-28T02:43:32.000Z",
+                      "uid": "35240-5c9147b9-9f8d-42b7-af15-a5c65016869c"
+                    },
+                    {
+                      "id": "d5c2a90a-a84a-43f1-8770-36c0c17c0749",
+                      "name": "5XX response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/file_uploads/:file_upload_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "file_uploads",
+                            ":file_upload_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "file_upload_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:32.000Z",
+                      "updatedAt": "2026-07-28T02:43:32.000Z",
+                      "uid": "35240-d5c2a90a-a84a-43f1-8770-36c0c17c0749"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:43:32.000Z",
+                  "updatedAt": "2026-07-28T02:43:32.000Z",
+                  "uid": "35240-7eee1a3d-801b-4ab7-b0de-172126dd3633"
+                }
+              ],
+              "id": "df639643-221a-4848-ac06-34642e1fffec",
+              "createdAt": "2026-07-28T02:43:32.000Z",
+              "updatedAt": "2026-07-28T02:43:32.000Z",
+              "uid": "35240-df639643-221a-4848-ac06-34642e1fffec"
+            }
+          ],
+          "id": "1f6536a0-63e3-4bd5-9ec5-8be29664c0c6",
+          "createdAt": "2026-07-28T02:43:32.000Z",
+          "updatedAt": "2026-07-28T02:43:32.000Z",
+          "uid": "35240-1f6536a0-63e3-4bd5-9ec5-8be29664c0c6"
+        }
+      ],
+      "id": "1e99514e-50b0-4fdd-a859-37fbd8083dd9",
+      "createdAt": "2026-07-28T02:43:32.000Z",
+      "updatedAt": "2026-07-28T02:43:32.000Z",
+      "uid": "35240-1e99514e-50b0-4fdd-a859-37fbd8083dd9"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.sandbox.rainforestpay.com"
+    }
+  ]
+}

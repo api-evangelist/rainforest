@@ -1,0 +1,242 @@
+# Rainforest Docs Documentation
+
+> Documentation for Rainforest Docs
+
+## Guides
+- [Rainforest overview](https://docs.rainforestpay.com/docs/overview.md): Make money move with robust payment flows
+- [Working with components](https://docs.rainforestpay.com/docs/working-with-components.md): Embed Rainforest components into your platform
+- [JavaScript bundle](https://docs.rainforestpay.com/docs/javascript-bundle.md): Include the payment or merchant Javascript bundle to embed Rainforest components
+- [Component studio](https://docs.rainforestpay.com/docs/component-studio.md): Configure and design the Rainforest components for your platform integration
+- [Troubleshooting](https://docs.rainforestpay.com/docs/troubleshooting.md): Common troubleshooting scenarios when integrating with Rainforest
+- [Component sessions](https://docs.rainforestpay.com/docs/component-sessions.md): Make money move with robust payment flows
+- [API keys](https://docs.rainforestpay.com/docs/api-keys.md): Create API keys to grant permissions to the Rainforest API
+- [Understanding onboarding](https://docs.rainforestpay.com/docs/understanding-onboarding.md): Understanding merchant onboarding in the Rainforest ecosystem
+- [Merchant onboarding requirements](https://docs.rainforestpay.com/docs/merchant-onboarding-requirements.md): Merchant onboarding requirements by organization type
+- [Beneficial owner requirements](https://docs.rainforestpay.com/docs/beneficial-owner-requirements.md): Beneficial owner requirements when onboarding merchants
+- [Additional verification for merchant onboarding](https://docs.rainforestpay.com/docs/additional-verification-for-merchant-onboarding.md): Merchant onboarding flow to collect additional information to verify and approve the merchant
+- [Merchant category codes](https://docs.rainforestpay.com/docs/merchant-category-codes.md): List of acceptable Merchant Category Codes (MCC) for merchant onboarding
+- [Prohibited merchant types](https://docs.rainforestpay.com/docs/prohibited-merchant-types.md): Types of merchants that are prohibited to transaction on Rainforest
+- [Real-time underwriting verifications](https://docs.rainforestpay.com/docs/real-time-underwriting-verifications.md): Expedite approvals by verifying merchant information during application entry.
+- [Onboarding integration options](https://docs.rainforestpay.com/docs/onboarding-methods.md): Integration options to onboard your merchants with Rainforest
+- [Onboarding merchants via Component](https://docs.rainforestpay.com/docs/onboarding-merchants-via-component.md): Onboarding merchants with the Rainforest Merchant Onboarding Component
+- [Onboarding merchants via Portal](https://docs.rainforestpay.com/docs/onboarding-merchants-via-portal.md): Using the Rainforest Platform Portal to onboard a merchant manually
+- [Onboarding merchants via API](https://docs.rainforestpay.com/docs/onboarding-merchants-via-api.md): Integrate with Rainforest's merchant onboarding endpoints to send merchant onboarding data via API
+- [Validated ACH in merchant onboarding](https://docs.rainforestpay.com/docs/validated-ach-in-merchant-onboarding.md): Speed up onboarding by validating the merchant's bank account with Plaid
+- [Enable validated ACH in merchant onboarding](https://docs.rainforestpay.com/docs/enable-validated-ach-in-merchant-onboarding.md): Enable validated ACH, using the third party partner Plaid, in merchant onboarding
+- [Merchant billing profiles](https://docs.rainforestpay.com/docs/merchant-billing-profiles.md): Billing profiles to bill a merchant for payment activity
+- [Payins](https://docs.rainforestpay.com/docs/payins-overview.md): Payins in the Rainforest ecosystem
+- [Understanding payins](https://docs.rainforestpay.com/docs/understanding-payins.md): Understanding payins in the Rainforest ecosystem
+- [Online payin integration options](https://docs.rainforestpay.com/docs/online-payin-intergration-options.md): Integration options to process payins with Rainforest
+- [Process payins via Component](https://docs.rainforestpay.com/docs/process-payins-via-component.md): Embed the Payment Component in your platform to process payments
+- [Process payins via API](https://docs.rainforestpay.com/docs/process-payins-via-api.md): Integrate with Rainforest's PCI endpoints to send card and bank account data via API to process payments
+- [Customizing the payment component](https://docs.rainforestpay.com/docs/customizing-the-payment-component.md): Customizing the Payment Component for enhanced capabilities
+- [Hide the submit button](https://docs.rainforestpay.com/docs/hide-the-submit-button.md): Control how and when the Payment Component is submitted
+- [Update the payment configuration](https://docs.rainforestpay.com/docs/update-the-payment-configuration.md): Control the configuration of the Payment Component, such as payin amount, after it is rendered
+- [Display a receipt](https://docs.rainforestpay.com/docs/display-a-receipt.md): Display a receipt the user with the Rainforest Receipt Component
+- [Cancel or refund a payin](https://docs.rainforestpay.com/docs/cancel-or-refund-a-payin.md): How to cancel or refund a payin via API or Reporting Components
+- [Process payins from stored payment methods](https://docs.rainforestpay.com/docs/process-payins-from-stored-payment-methods.md): Process payins from stored payment methods for recurring payments or subscriptions
+- [AVS and CVC codes](https://docs.rainforestpay.com/docs/avs-and-cvc-codes.md): AVS and CVC codes and descriptions
+- [Payment refusal codes](https://docs.rainforestpay.com/docs/payment-refusal-codes.md): Refusal reasons when a payment fails to process
+- [Payment methods](https://docs.rainforestpay.com/docs/payment-methods-overview.md): Payment methods in the Rainforest ecosystem
+- [Understanding payment methods](https://docs.rainforestpay.com/docs/understanding-payment-methods.md): Understanding payment methods in the Rainforest ecosystem
+- [Payment method integration options](https://docs.rainforestpay.com/docs/payment-method-integration-options.md): Integration options to store payment methods with Rainforest
+- [Store payment methods via Component](https://docs.rainforestpay.com/docs/store-payment-methods-via-component.md): Embed the Payment Component to store payment methods
+- [Store payment methods via API](https://docs.rainforestpay.com/docs/store-payment-methods-via-api.md): Integrate with Rainforest's PCI endpoints to send card and bank account data via API to store payment methods
+- [Replaced payment methods](https://docs.rainforestpay.com/docs/replaced-payment-methods.md): Payment methods are replaced with a new payment method that is linked to the original payment method
+- [Replaced reason codes](https://docs.rainforestpay.com/docs/replaced-reason-codes.md): Replace reasons for when outdated or incorrect payment methods are replaced with a new payment method
+- [Duplicate payment methods](https://docs.rainforestpay.com/docs/duplicate-payment-methods.md): Ability to duplicate a payment method in the Rainforest ecosystem
+- [Migrate payment methods to Rainforest](https://docs.rainforestpay.com/docs/migrate-payment-methods-to-rainforest.md): Migrate previously-stored payment methods from other processors to Rainforest
+- [Migration PGP key](https://docs.rainforestpay.com/docs/migration-pgp-key.md): Rainforest's PGP key to receive encrypted PCI-sensitive data
+- [SFTP for migrating payment methods](https://docs.rainforestpay.com/docs/sftp-for-migrating-payment-methods.md): Migrate payment methods to Rainforest via the Rainforest SFTP server
+- [Export payment methods](https://docs.rainforestpay.com/docs/export-payment-methods.md): Securely export sensitive payment method data
+- [ACH returns](https://docs.rainforestpay.com/docs/ach-returns-overview.md): ACH returns in the Rainforest ecosystem
+- [Understanding ACH returns](https://docs.rainforestpay.com/docs/understanding-ach-returns.md): Understand ACH returns in the Rainforest ecosystem
+- [Notification of ACH returns](https://docs.rainforestpay.com/docs/notification-of-ach-returns.md): Receive notifications for ACH returns
+- [ACH return codes](https://docs.rainforestpay.com/docs/ach-return-codes.md): Return reasons for when payins are returned and ACH returns are processed
+- [Chargebacks](https://docs.rainforestpay.com/docs/chargebacks-overview.md): Rainforest chargebacks
+- [Understanding chargebacks](https://docs.rainforestpay.com/docs/understanding-chargebacks.md): Understand Chargebacks in the Rainforest ecosystem
+- [Chargeback integration options](https://docs.rainforestpay.com/docs/chargeback-integration-options.md): Integration options to manage chargebacks with Rainforest
+- [Dispute chargebacks via Component](https://docs.rainforestpay.com/docs/dispute-chargebacks-via-component.md): Embed the Chargeback Report Component in your platform to dispute chargebacks
+- [Dispute chargebacks via Portal](https://docs.rainforestpay.com/docs/dispute-chargebacks-via-portal.md): Disputing a chargeback with evidence in the Platform Portal
+- [Chargeback dispute reasons](https://docs.rainforestpay.com/docs/chargeback-dispute-reasons.md): Chargeback dispute reasons when an CARD payin is disputed by the customer
+- [Advanced chargeback phases](https://docs.rainforestpay.com/docs/advanced-chargeback-phases.md): Advanced phases for the life cycle of a chargeback
+- [Devices](https://docs.rainforestpay.com/docs/devices-overview.md): Process payments with devices in the Rainforest ecosystem
+- [Configure devices](https://docs.rainforestpay.com/docs/configure-devices.md): Process payments using terminal devices
+- [Process payins via device](https://docs.rainforestpay.com/docs/process-payins-via-device.md): Process payins using a device
+- [Store payment methods via device](https://docs.rainforestpay.com/docs/store-payment-methods-via-device.md): Using a device to store a payment method
+- [Signature collection via device](https://docs.rainforestpay.com/docs/signature-collection-via-device.md): Collect a user's signature on a terminal device
+- [Additional functionality](https://docs.rainforestpay.com/docs/additional-functionality.md): Additional functionality with Rainforest payments
+- [3D Secure (3DS)](https://docs.rainforestpay.com/docs/3d-secure.md): Reduce online payment fraud by authenticating cardholders with 3D Secure (3DS)
+- [Enable 3D Secure for card payments](https://docs.rainforestpay.com/docs/enable-3d-secure-for-card-payments.md): Reduce online payment fraud by authenticating cardholders with 3D Secure (3DS)
+- [Enable 3D Secure for stored payment methods](https://docs.rainforestpay.com/docs/enable-3d-secure-for-stored-payment-methods.md): Integrate 3D Secure (3DS) when processing payins on stored payment methods
+- [Amount splits](https://docs.rainforestpay.com/docs/amount-splits.md): Add amount splits to payins to apply an additional platform fee
+- [Enable amount splits](https://docs.rainforestpay.com/docs/enable-amount-splits.md): Integrate amount splits to apply an additional platform fee
+- [Apple Pay](https://docs.rainforestpay.com/docs/apple-pay.md): Easily accept online payments using Apple Pay
+- [Enable Apple Pay](https://docs.rainforestpay.com/docs/enable-apple-pay.md): Integrate Apple Pay in the Rainforest Payment Component
+- [Authorization and capture](https://docs.rainforestpay.com/docs/authorization-and-capture.md): Authorize and capture a payin in a two-step process with Rainforest
+- [Enable authorization and capture](https://docs.rainforestpay.com/docs/enable-authorization-and-capture.md): Integrate the authorize and capture two-step payment flow when processing payins with Rainforest
+- [Card account updater](https://docs.rainforestpay.com/docs/card-account-updater.md): Update outdated information on stored payment methods with card account updater (CAU)
+- [Enable card account updater](https://docs.rainforestpay.com/docs/enable-card-account-updater.md): Enable card account updater (CAU) to keep stored payment methods up-to-date
+- [Dynamic payment billing fees](https://docs.rainforestpay.com/docs/dynamic-payment-billing-fees.md): Configure the billing fees per payment request to enable dynamic billing models on your merchants
+- [Enable dynamic payment billing fees](https://docs.rainforestpay.com/docs/enable-dynamic-payment-billing-fees.md): Integrate dynamic billing fees per payment request
+- [Gross billing](https://docs.rainforestpay.com/docs/gross-billing.md): Configure merchants with a gross billing model to control how payments and their fees are deposited
+- [IVR payments](https://docs.rainforestpay.com/docs/ivr-payments.md): Process payments through an Interactive Voice Response (IVR) system
+- [Enable IVR payments](https://docs.rainforestpay.com/docs/enable-ivr-payments.md): Integrate processing payments through an Interactive Voice Response (IVR) system
+- [Level 2/3 processing](https://docs.rainforestpay.com/docs/level-23-processing.md): Send Level 2/3 data on payins
+- [Visa Commercial Enhanced Data Program (CEDP) requirements](https://docs.rainforestpay.com/docs/visa-commercial-enhanced-data-program-cedp-requirements.md): 2025/2026 transition guide explaining CEDP and changes to Level 2/3 processing
+- [Partial authorization](https://docs.rainforestpay.com/docs/partial-authorization.md): Allow a payment to be authorized and processed for an amount less than requested
+- [PayPal](https://docs.rainforestpay.com/docs/paypal.md): Eaily accept online payments using PayPal, Venmo and PayPal Pay Later
+- [Enable PayPal](https://docs.rainforestpay.com/docs/enable-paypal.md): Enable PayPal, Venmo and PayPal Pay Later
+- [Process payins from deposit methods](https://docs.rainforestpay.com/docs/process-payins-from-deposit-methods.md): Process payins from stored deposit methods for payments on a merchant's deposit method
+- [Surcharging with BIN lookup](https://docs.rainforestpay.com/docs/surcharging-with-bin-lookup.md): Utilize BIN lookup to enable surcharging in your payment flows
+- [Enable surcharging with BIN lookup](https://docs.rainforestpay.com/docs/enable-surcharging-with-bin-lookup.md): Integrate BIN lookup into the Rainforest Payment Component to compliantly surcharge
+- [Tap to Phone SDK](https://docs.rainforestpay.com/docs/tap-to-phone-sdk.md): Process contactless payments on your platform's mobile application
+- [Enable Tap to Phone iOS SDK](https://docs.rainforestpay.com/docs/enable-tap-to-phone-ios-sdk.md): Enable Tap to Phone payments on your platform's iOS application
+- [Validated ACH](https://docs.rainforestpay.com/docs/validated-ach.md): Validate ACH payment methods in real-time when processing payments
+- [Enable validated ACH](https://docs.rainforestpay.com/docs/enable-validated-ach.md): Integrate validated ACH payment flow in the Rainforest Payment Component
+- [Enable balance-checked validated ACH](https://docs.rainforestpay.com/docs/enable-balance-checked-validated-ach.md): Verify real-time bank account balances when processing payins with validated ACH payment methods
+- [Accelerated ACH](https://docs.rainforestpay.com/docs/accelerated-ach.md): Accelerate cash flow with T+1 deposit timing for ACH payments
+- [Understanding deposits](https://docs.rainforestpay.com/docs/understanding-deposits.md): Understanding deposits in the Rainforest ecosystem
+- [Deposit timing for payments](https://docs.rainforestpay.com/docs/deposit-timing-for-payments.md): Deposit timing explanation for payments on various payment method types
+- [Resolving ACH returns on merchant deposits](https://docs.rainforestpay.com/docs/resolving-ach-returns-on-merchant-deposits.md): How to resolve ACH returns on your merchants deposits
+- [Payment report component](https://docs.rainforestpay.com/docs/payment-report-component.md): Embed the Rainforest payment report component
+- [Deposit report component](https://docs.rainforestpay.com/docs/deposit-report-component.md): Embed the Rainforest deposit report component
+- [Payin details component](https://docs.rainforestpay.com/docs/payin-details-component.md): Embed the Rainforest payment details component
+- [Refund details component](https://docs.rainforestpay.com/docs/refund-details-component.md): Embed the Rainforest Refund Details Component
+- [Chargeback details component](https://docs.rainforestpay.com/docs/chargeback-details-component.md): Embed the Rainforest Chargeback Details Component
+- [File uploads](https://docs.rainforestpay.com/docs/file-uploads.md): Upload files to Rainforest for processes such as merchant onboarding and disputing chargebacks
+- [Forward API](https://docs.rainforestpay.com/docs/forward-api.md): Programmatically share your merchant and payment method data with trusted third-parties
+- [Forward a payment method](https://docs.rainforestpay.com/docs/forward-a-payment-method.md): Forward payment method details to a verified 3rd party
+- [Webhooks](https://docs.rainforestpay.com/docs/webhooks-and-notifications.md): Configure Rainforest to send webhook notifications for any payment, merchant, or deposit events
+- [ACH return webhooks](https://docs.rainforestpay.com/docs/ach-return-webhooks.md): Subscribe to ACH return webhooks for updated on status changes
+- [Chargeback webhooks](https://docs.rainforestpay.com/docs/chargeback-webhooks.md): Subscribe to chargeback webhooks for updates on status changes
+- [Deposit webhooks](https://docs.rainforestpay.com/docs/deposit-webhooks.md): Subscribe to deposit webhooks for updates on status changes
+- [Merchant webhooks](https://docs.rainforestpay.com/docs/merchant-webhooks.md): Subscribe to merchant and merchant application webhooks for updates on status changes
+- [Merchant application webhooks](https://docs.rainforestpay.com/docs/merchant-application-webhooks.md): Subscribe to merchant application webhooks for updated on status changes
+- [Payin webhooks](https://docs.rainforestpay.com/docs/payin-webhooks.md): Subscribe to payin webhooks for updates on status changes
+- [Payment method webhooks](https://docs.rainforestpay.com/docs/payment-method-webhooks.md): Subscribe to payment method webhooks for updates on status changes
+- [Refund webhooks](https://docs.rainforestpay.com/docs/refund-webhooks.md): Subscribe to refund webhooks for updates on status changes
+- [Polling events](https://docs.rainforestpay.com/docs/polling-events.md): Configure a polling endpoint to stream events on resource updates
+- [No-code webhook integration](https://docs.rainforestpay.com/docs/no-code-webhook-integration.md): Setup webhook notifications with a no-code Zapier integration
+- [On-premises webhook integration](https://docs.rainforestpay.com/docs/on-premises-webhook-integration.md): Webhook integration patterns for platforms with on-premises software
+- [Platform portal](https://docs.rainforestpay.com/docs/platform-portal.md): Understanding the Rainforest Platform Portal to manage your integration with Rainforest
+- [Send sensitive data via API](https://docs.rainforestpay.com/docs/send-sensitive-data-via-api.md): Ability to send full card and bank account numbers via API
+- [PCI security guide](https://docs.rainforestpay.com/docs/pci-security-guide.md): Rainforest's PCI security guide for payment processing
+- [Platform PCI compliance guidance](https://docs.rainforestpay.com/docs/platform-pci-compliance-guidance.md): Understand PCI compliance requirements for the platform
+- [Merchant PCI compliance guidance](https://docs.rainforestpay.com/docs/merchant-pci-compliance-guidance.md): Understand PCI compliance requirements for the platform's merchants
+- [Going live](https://docs.rainforestpay.com/docs/going-live.md): Taking your Rainforest integration live
+- [MVP best practices](https://docs.rainforestpay.com/docs/mvp-best-practices.md): Minimum viable product (MVP) best practices for your integration with Rainforest
+- [Requesting production access](https://docs.rainforestpay.com/docs/requesting-production-access.md): How to request production access at Rainforest
+- [Terms of services requirements](https://docs.rainforestpay.com/docs/terms-of-services-requirements.md): Update your terms of services to include Rainforest processing terms
+- [Session permissions review](https://docs.rainforestpay.com/docs/session-permissions-review.md): Complete a session permissions review for production access
+- [Moving to production](https://docs.rainforestpay.com/docs/moving-to-production.md): Promote your Rainforest integration from sandbox to production
+- [Testing in production](https://docs.rainforestpay.com/docs/testing-in-production.md): Create a test account in Rainforest's production environment
+- [Configure default billing profile](https://docs.rainforestpay.com/docs/configure-default-billing-profile.md): Configure the default billing profile for your merchants
+- [Configure residuals account](https://docs.rainforestpay.com/docs/configure-residuals-deposit.md)
+- [Enhancing functionality](https://docs.rainforestpay.com/docs/enhancing-functionality.md): Post MVP functionality to add to your integration with Rainforest
+- [Change policy](https://docs.rainforestpay.com/docs/change-policy.md): Rainforest's change policy for the API, Rainforest Components, and the Platform Portal
+- [API version upgrades](https://docs.rainforestpay.com/docs/api-version-upgrades.md): How to upgrade the Rainforest API version in your integration
+- [2024-10-16](https://docs.rainforestpay.com/docs/api-version-2024-10-16.md): How to upgrade to the Rainforest API version 2024-10-16
+- [2023-12-01](https://docs.rainforestpay.com/docs/api-version-2023-12-01.md): How to upgrade to the Rainforest API version 2023-12-01
+- [2023-01-01](https://docs.rainforestpay.com/docs/2023-01-01.md): The Rainforest API version 2023-01-01
+- [Glossary](https://docs.rainforestpay.com/docs/glossary.md): Explanations of payment specific terminology in the Rainforest ecosystem
+- [Merchant 1099-K](https://docs.rainforestpay.com/docs/merchant-1099-k-faq.md): How Rainforest handles yearly 1099-K filings for merchants.
+- [Rainforest holiday schedule](https://docs.rainforestpay.com/docs/rainforest-holiday-schedule.md): Holiday schedule observed by the Rainforest team.
+- [Test accounts and cards](https://docs.rainforestpay.com/docs/test-accounts-and-cards.md): List of accounts and cards to be used for testing in the Rainforest Sandbox environment
+
+## API Reference
+- [Authentication](https://docs.rainforestpay.com/reference/authentication.md)
+- [Create API key](https://docs.rainforestpay.com/reference/create_api_key.md): Create an API key.
+- [List API keys](https://docs.rainforestpay.com/reference/list_api_keys.md): Query a list of API keys.
+- [Get API key](https://docs.rainforestpay.com/reference/get_api_key.md): Get API key details by the API key ID.
+- [Delete API key](https://docs.rainforestpay.com/reference/delete_api_key.md): Delete an API key, permanently invalidating it.
+- [Disable API key](https://docs.rainforestpay.com/reference/disable_api_key.md): Disable an API key.
+- [Enable API key](https://docs.rainforestpay.com/reference/enable_api_key.md): Enable an API key.
+- [Create session](https://docs.rainforestpay.com/reference/create_session.md): Create a temporary session to delegate permissions to a third-party.
+- [Delete session](https://docs.rainforestpay.com/reference/delete_session.md): Delete a temporary session, permanently invalidating it.
+- [Get ACH return](https://docs.rainforestpay.com/reference/get_ach_return.md): Get ACH return details by the ach return ID.
+- [Simulate payin ACH return](https://docs.rainforestpay.com/reference/simulate_payin_ach_return.md): Only available in the Rainforest sandbox environment.  May only be called on an ACH payin in `PROCESSING` or `SUCCEEDED` statuses. An ACH return must not have already been created for the payin.  The expected webhooks will be sent as the payin's status is advanced and when the ACH return is created.
+- [Update ACH return metadata](https://docs.rainforestpay.com/reference/update_ach_return_metadata.md): The body of the request is the JSON key-value metadata to patch to the ACH return. Do not use the metadata field to store sensitive or confidential data.   Updating metadata will merge with the existing metadata stored on the ACH return by the top-level key. If the same top-level key is passed in this request, it will overwrite the value stored on the ACH return. Only keys included in the payload will be updated. To remove a key, set the key's value to null. To remove all metadata pass null for the metadata value.  ACH return Metadata must be less than 8 KB in size.  ACH return metadata can only be updated using an API key. This request should not be made by your frontend and should only be done by backend logic that only the platform can complete.
+- [Create BIN lookup](https://docs.rainforestpay.com/reference/create_bin_lookup.md): Retrieve information from the card's BIN, such as the card brand, card type, country, and other details.  This endpoint requires Rainforest approval. Platforms that meet all [requirements](doc:send-sensitive-data-via-api#requirements) and are approved by Rainforest can send the full card numbers to Rainforest via a server-to-serve direct API integration.
+- [Get chargeback](https://docs.rainforestpay.com/reference/get_chargeback.md): Get chargeback details by the chargeback ID.
+- [Accept chargeback](https://docs.rainforestpay.com/reference/accept_chargeback.md): Accept a chargeback as a loss.
+- [Submit chargeback](https://docs.rainforestpay.com/reference/submit_chargeback.md): Respond to a chargeback by providing evidence.
+- [Update chargeback evidence](https://docs.rainforestpay.com/reference/update_chargeback_evidence.md): Update a chargeback's evidence. Only fields included in the payload will be updated. Omitted fields will be removed. To remove a field, set the value to `null`.
+- [Simulate a chargeback against a payin](https://docs.rainforestpay.com/reference/simulate_payin_chargeback.md): Only available in the Rainforest sandbox environment.  The expected webhooks will be sent as the as the chargeback is created.
+- [Simulate chargeback status change](https://docs.rainforestpay.com/reference/simulate_chargeback.md): Only available in the Rainforest sandbox environment.  Simulate the decision of the chargeback. The expected webhooks will be sent for the chargeback on status change.
+- [Update chargeback metadata](https://docs.rainforestpay.com/reference/update_chargeback_metadata.md): The body of the request is the JSON key-value metadata to patch to the chargeback. Do not use the metadata field to store sensitive or confidential data.   Updating metadata will merge with the existing metadata stored on the chargeback by the top-level key. If the same top-level key is passed in this request, it will overwrite the value stored on the chargeback. Only keys included in the payload will be updated. To remove a key, set the key's value to null. To remove all metadata pass null for the metadata value.  Chargeback metadata must be less than 8 KB in size.  Chargeback metadata can only be updated using an API key. This request should not be made by your frontend and should only be done by backend logic that only the platform can complete.
+- [Create device registration](https://docs.rainforestpay.com/reference/create_device_registration.md): Create a device registration for payment processing on a specific merchant. When a device is registered, the device receives a new device_registration_id for payment processing. The merchant status must be `ACTIVE` to register a device.
+- [List device registrations](https://docs.rainforestpay.com/reference/list_device_registrations.md): Query a list of registered devices given optional search criteria.
+- [Get device registration](https://docs.rainforestpay.com/reference/get_device_registration.md): Get registered device details by the device registration ID.
+- [Delete device registration](https://docs.rainforestpay.com/reference/delete_device_registration.md): Delete a device registration. The device will be able to be re-registered.
+- [Present payin on a registered device](https://docs.rainforestpay.com/reference/create_device_payin.md): Present a payin for processing on a registered device using a payin configuration. The merchant status must be `ACTIVE` to process a payin.  > 📘 Note > > A payment method created on a registered device may only be used for payins within the same merchant for which it was collected.
+- [Present payment method on a registered device](https://docs.rainforestpay.com/reference/create_device_payment_method.md): Create a payment method on a registered device using a payment method configuration. The merchant status must be `ACTIVE` to create a payment method.  > 📘 Note > > A payment method created on a registered device may only be used for payins within the same merchant for which it was collected.
+- [Cancel presented entity on device](https://docs.rainforestpay.com/reference/cancel_device_presented.md): Best effort attempt to cancel currently presented payin or payment method on device. This does not guarantee the presented entity can be canceled on the device. If the payin begins processing before it can be canceled, then you will need to void the payin if it processes. A corresponding webhook will trigger if the presented payin or payment method is canceled or processes.  If no payin or payment method is being presented at the time of the request, a `202 Accepted` response will be returned.
+- [Simulate device interaction](https://docs.rainforestpay.com/reference/simulate_on_device.md): Only available in the Rainforest sandbox environment.  After presenting a payin or payment method on a virtual device this endpoint is available to move on from the `PRESENTING` status to a desired subsequent status.  The expected webhook will be sent for the payin or payment method on status change.
+- [Create payin config](https://docs.rainforestpay.com/reference/create_payin_config.md): Create the configuration for a payin request. The configuration contains basic information about the payin such as the merchant, idempotency key, payin amount, currency, and optional information such as billing contact, level 2 and 3, and metadata. If the billing contact is provided in the payin config, then the web component will not prompt for this data. These fields include country and postal code for a CARD payment method and name for an ACH payment method. This allows a payin to be set up before collecting the sensitive payin details (i.e the card number) via the web component. The merchant status must be `ACTIVE` to create a payin config.
+- [Get payin config](https://docs.rainforestpay.com/reference/get_payin_config.md): Get the configuration for a payin by the payin config ID.
+- [List payins](https://docs.rainforestpay.com/reference/list_payins.md): Query a list of payins given optional search criteria.
+- [Create payin](https://docs.rainforestpay.com/reference/create_payin.md): Create and process a payin with sensitive PCI data using a payin configuration. The merchant status must be `ACTIVE` to create a payin.  This endpoint requires Rainforest approval. Platforms that meet all [requirements](doc:send-sensitive-data-via-api#requirements) and are approved by Rainforest can send the full card and bank account numbers to Rainforest via a server-to-serve direct API integration.
+- [Get payin](https://docs.rainforestpay.com/reference/get_payin.md): Get payin details by the payin ID.
+- [Capture payin](https://docs.rainforestpay.com/reference/capture_payin.md): Capture an authorized payin. The payin status must be Authorized to capture.
+- [Void or refund payin](https://docs.rainforestpay.com/reference/void_or_refund_payin.md): Void or refund a payin by the payin ID.  If the payin status is `Processing`, then the full payin amount can be voided. A payin cannot be partially voided. If the payin status is `Succeeded`, then the payin can be fully or partially refunded. See the payin `refundable_amount` and `non_refundable_reason_code` for details on if the payin is eligible for a void or refund.
+- [Update payin metadata](https://docs.rainforestpay.com/reference/update_payin_metadata.md): The body of the request is the JSON key-value metadata to patch to the payin. Do not use the metadata field to store sensitive or confidential data.   Updating metadata will merge with the existing metadata stored on the chargeback by the top-level key. If the same top-level key is passed in this request, it will overwrite the value stored on the chargeback. Only keys included in the payload will be updated. To remove a key, set the key's value to null. To remove all metadata pass null for the metadata value.  Payin metadata must be less than 8 KB in size.  Payin metadata can only be updated using an API key. This request should not be made by your frontend and should only be done by backend logic that only the platform can complete.
+- [List payment method domains](https://docs.rainforestpay.com/reference/list_payment_method_domains.md): List payment method domains
+- [Create payment method domain](https://docs.rainforestpay.com/reference/create_payment_method_domain.md): Create payment method domain to verify your domain for payment processing with Apple Pay.  A platform can have up to 99 domains.  If your integration requires a domain per merchant, then register the domain by providing a merchant_id in the request. Each merchant can have up to 99 domains.
+- [Get payment method domain](https://docs.rainforestpay.com/reference/get_payment_method_domain.md): Get payment method domain
+- [Delete payment method domain](https://docs.rainforestpay.com/reference/delete_payment_method_domain.md): Delete payment method domain
+- [Verify payment method domain](https://docs.rainforestpay.com/reference/verify_payment_method_domain.md): Verify payment method domain
+- [Create payment method config](https://docs.rainforestpay.com/reference/create_payment_method_config.md): Create the configuration to store a payment method. The configuration contains basic information about the payment method such as an idempotency key and optional information such as billing contact and metadata. If the billing contact is provided in the payment method config, then the web component will not prompt for this data. These fields include country and postal code for a CARD payment method and name for an ACH payment method. This allows a payment method to be set up before collecting the sensitive payment method details (i.e the card number) via the web component. The merchant status must be `ACTIVE` to create a payment method config.
+- [Get payment method config](https://docs.rainforestpay.com/reference/get_payment_method_config.md): Get the configuration for a payment method by the payment method config ID.
+- [List payment methods](https://docs.rainforestpay.com/reference/list_payment_methods.md): Query a list of payment methods given optional search criteria.
+- [Create payment method](https://docs.rainforestpay.com/reference/create_payment_method.md): Create a saved payment method.  To duplicate a saved payment method, set the payment_method_id of the payment method to be duplicated. Billing contact and metadata is not persisted from the duplicated payment method and must be defined on the [Payment Method Config](ref:create_payment_method_config) or on the request. Only the stored sensitive payment method details (i.e full card or bank account number) will persist to the duplicated payment method.  If the method_type is set, then this endpoint requires Rainforest approval. Platforms that meet all [requirements](doc:send-sensitive-data-via-api#requirements) and are approved by Rainforest can send the full card and bank account numbers to Rainforest via a server-to-serve direct API integration.
+- [Get payment method](https://docs.rainforestpay.com/reference/get_payment_method.md): Get payment method details by the payment method ID.
+- [Update payment method](https://docs.rainforestpay.com/reference/update_payment_method.md): Update supported fields on a payment method. Only fields included in the payload will be updated. Omitted fields will not be updated.
+- [Create payin from stored payment method](https://docs.rainforestpay.com/reference/create_payment_method_payin.md): Create and process a payin using a payin configuration and a stored payment method. The merchant status must be `ACTIVE` to create a payin.
+- [Deactivate payment method](https://docs.rainforestpay.com/reference/deactivate_payment_method.md): Deactivate payment method. Deactivated payment methods cannot be used to process payins. The payment method status must be `ACTIVE` to be deactivated.
+- [List payments](https://docs.rainforestpay.com/reference/list_payments.md): Query a list of payments, which includes payins, refunds, chargebacks, and ACH returns, given optional search criteria.
+- [Get refund](https://docs.rainforestpay.com/reference/get_refund.md): Get refund details by the refund ID.
+- [Void refund](https://docs.rainforestpay.com/reference/void_refund.md): Void a refund by the refund ID.  See the refund `non_voidable_reason_code` for details on if the refund is eligible for a void.
+- [Update refund metadata](https://docs.rainforestpay.com/reference/update_refund_metadata.md): The body of the request is the JSON key-value metadata to patch to the payin. Do not use the metadata field to store sensitive or confidential data.   Updating metadata will merge with the existing metadata stored on the refund by the top-level key. If the same top-level key is passed in this request, it will overwrite the value stored on the refund. Only keys included in the payload will be updated. To remove a key, set the key's value to null. To remove all metadata pass null for the metadata value.  Refund metadata must be less than 8 KB in size.  Refund metadata can only be updated using an API key. This request should not be made by your frontend and should only be done by backend logic that only the platform can complete.
+- [Create deposit method config](https://docs.rainforestpay.com/reference/create_deposit_method_config.md): Create the configuration to store a deposit method. The configuration contains basic information about the deposit method such as an idempotency key and optional information such as billing contact and metadata. If the billing contact is provided in the deposit method config, then the web component will not prompt for this data. These fields include name for an ACH deposit method. This allows a deposit method to be set up before collecting the sensitive deposit method details (i.e the account number) via the web component.
+- [Get deposit method](https://docs.rainforestpay.com/reference/get_deposit_method.md): Get deposit method details by the deposit method ID.
+- [Create deposit method](https://docs.rainforestpay.com/reference/create_deposit_method.md): Create a deposit method. A deposit method is assigned to a merchant and is where the merchant's funds for their payment activity will be deposited to.  This endpoint requires Rainforest approval. Platforms that meet all [requirements](doc:send-sensitive-data-via-api#requirements) and are approved by Rainforest can send the full bank account numbers to Rainforest via a direct API integration.
+- [Create payin from deposit method](https://docs.rainforestpay.com/reference/create_deposit_method_payin.md): Create and process a payin using a payin configuration and a deposit method. The merchant status must be ACTIVE to create a payin.  The deposit method details (i.e bank account number and billing contact) will be duplicated to a payment method and a payin will process against the newly created payment method. Metadata, method metadata, and new billing contact details can be defined on the [Payin Config](ref:create_payin_config).  This endpoint requires Rainforest approval.
+- [List deposits](https://docs.rainforestpay.com/reference/list_deposits.md): Query a list of deposits given a primary filter of platform or merchant id, then additional optional search criteria.
+- [Get deposit](https://docs.rainforestpay.com/reference/get_deposit.md): Get a deposit's details by the deposit ID.
+- [Get deposit activity](https://docs.rainforestpay.com/reference/get_deposit_activity.md): Get the activity within a deposit by the deposit ID.
+- [Simulate deposit status change](https://docs.rainforestpay.com/reference/simulate_deposit_status.md): Only available in the Rainforest sandbox environment.  Simulate a deposit status change. The deposit status must be in PROCESSING. The expected webhooks will be sent for the deposit on status change.
+- [Simulate merchant deposit creation](https://docs.rainforestpay.com/reference/simulate_merchant_deposit.md): Only available in the Rainforest sandbox environment.  Simulate processing a deposit on a merchant. Any payins or refunds with the status of `PROCESSING` will be transitioned to the status of `SUCCEEDED`.  The expected webhooks will be sent for all payins and refunds while the deposit is processing. The `deposit.processing` webhook will be sent when the deposit has been processed and the deposit status is `PROCESSING`.  On a merchant with a Daily Net billing configuration, a deposit will be processed with an amount that corresponds to the payment activity, less any applicable fees.  On a merchant with a Daily Gross billing configuration, two deposits will be processed:   1. A funding deposit with an amount that corresponds to the gross amount of the payment activity.   2. A billing deposit with an amount that corresponds to the applicable billing fees of the payment activity.  On a merchant with a Monthly Gross billing configuration, only the funding deposit will be processed with an amount that corresponds to the gross amount of the payment activity.
+- [Create a billing profile](https://docs.rainforestpay.com/reference/create_billing_profile.md): Create a billing profile  The first billing profile created will be assigned as the platform's default billing profile for new merchants.
+- [List billing profiles](https://docs.rainforestpay.com/reference/list_billing_profiles.md): Query a list of platform billing profiles.
+- [Get billing profile](https://docs.rainforestpay.com/reference/get_billing_profile.md): Get billing profile details by the billing profile ID.
+- [Deactivate a billing profile](https://docs.rainforestpay.com/reference/deactivate_billing_profile.md): Deactivate a billing profile.  A billing profile can be deactivated if it is not assigned to any active merchants, or is not assigned as the platform's default billing profile.
+- [List merchant applications](https://docs.rainforestpay.com/reference/list_merchant_applications.md): Query a list of a merchant's applications with optional search criteria.  Note that the `data` object is structured to reserve future support for pagination.  However, pagination of merchant applications is not supported at this time.
+- [Get merchant application](https://docs.rainforestpay.com/reference/get_merchant_application.md): Get merchant application details by the merchant application ID.
+- [Update merchant application](https://docs.rainforestpay.com/reference/update_merchant_application.md): Update a merchant application. Only fields included in the payload will be updated. Omitted fields will not be updated. To remove a field, set the value to `null`.
+- [Submit merchant application](https://docs.rainforestpay.com/reference/submit_merchant_application.md): Submit a merchant application for approval.
+- [Simulate merchant application status change](https://docs.rainforestpay.com/reference/simulate_merchant_application.md): Only available in the Rainforest sandbox environment.  Once the merchant application is submitted, in sandbox Rainforest does not decision the merchant for risk review. This endpoint can be utilized to simulate the decisioning. The merchant application must be in the status `PROCESSING`.  The expected webhooks will be sent for both the merchant and merchant application on the status change of the merchant application.
+- [Verify merchant application](https://docs.rainforestpay.com/reference/verify_merchant_application.md): Run [real-time underwriting verifications](doc:real-time-underwriting-verifications#direct-api-integration) on a merchant application.
+- [Create merchant](https://docs.rainforestpay.com/reference/create_merchant.md): Create a merchant with an initial merchant application.
+- [List merchants](https://docs.rainforestpay.com/reference/list_merchants.md): Query a list of merchants given optional search criteria.
+- [Get merchant](https://docs.rainforestpay.com/reference/get_merchant.md): Get merchant details by the merchant ID.
+- [Update merchant](https://docs.rainforestpay.com/reference/update_merchant.md): Update supported fields on a merchant. Only fields included in the payload will be updated. Omitted fields will not be updated. Merchant status must be `ACTIVE`.
+- [Cancel merchant](https://docs.rainforestpay.com/reference/cancel_merchant.md): Cancel a pending merchant. Merchant status must be `PENDING`.
+- [Update merchant billing profile](https://docs.rainforestpay.com/reference/update_merchant_billing_profile.md): Update the billing profile assigned to a merchant.
+- [Create file upload config](https://docs.rainforestpay.com/reference/create_file_upload_config.md): Create the configuration for a file upload request. The configuration contains basic information about the file such as the merchant, idempotency key, and the type of file. Type is the requirement the file is intended to satisfy.
+- [Get file upload config](https://docs.rainforestpay.com/reference/get_file_upload_config.md): Get the configuration for a file upload by the file upload config ID.
+- [Get file upload](https://docs.rainforestpay.com/reference/get_file_upload.md): Get file upload by the file upload ID.
+- [Forward payment method](https://docs.rainforestpay.com/reference/forward_payment_method.md): Forward payment method details to an approved 3rd party. This endpoint requires Rainforest approval.
+- [Get health](https://docs.rainforestpay.com/reference/get_health.md): Get the status of the Rainforest API.
+- [Postman](https://docs.rainforestpay.com/reference/postman.md): Import the Rainforest API Postman Collection to start integrating today
+- [OpenAPI](https://docs.rainforestpay.com/reference/openapi.md): Import the Rainforest API OpenAPI Spec
+
+## Pages
+- [API and component changelog](https://docs.rainforestpay.com/api-and-component-changelog.md)
+
+## Changelog
+- [Update payment metadata](https://docs.rainforestpay.com/changelog/update-payment-metadata.md)
+- [Simulate sandbox deposits in Portal](https://docs.rainforestpay.com/changelog/simulate-sandbox-deposits-in-portal.md)
+- [Payment detail component improvements](https://docs.rainforestpay.com/changelog/payment-detail-component-improvements.md)
+- [Reporting timezone alignment and controls](https://docs.rainforestpay.com/changelog/reporting-timezone-alignment-and-controls.md)
+- [Accelerated ACH payments](https://docs.rainforestpay.com/changelog/accelerated-ach-payments.md)

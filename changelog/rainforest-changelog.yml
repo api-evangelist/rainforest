@@ -1,0 +1,23 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.rainforestpay.com/changelog
+scheme: dated-entries
+categories: [Added, Improved, Fixed]
+current_api_version: '2024-10-16'
+entries:
+- date: '2026-07-09'
+  category: Added
+  title: Update payment metadata
+- date: '2026-07-08'
+  category: Added
+  title: Simulate sandbox deposits in Portal
+- date: '2026-07-06'
+  category: Improved
+  title: Payment detail component improvements
+- date: '2026-06-18'
+  category: Improved
+  title: Reporting timezone alignment and controls
+- date: '2026-06-02'
+  category: Added
+  title: Accelerated ACH payments
+note: Recent window only; the live changelog is the source of truth.

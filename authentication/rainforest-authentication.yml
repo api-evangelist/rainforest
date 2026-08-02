@@ -1,0 +1,45 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/rainforest-authentication-openapi.yaml, openapi/rainforest-payments-openapi.yaml
+docs: https://docs.rainforestpay.com/docs/authentication
+summary:
+  types:
+  - http
+  api_key_in:
+  - header
+  notes: >-
+    Rainforest uses API keys presented as HTTP Bearer tokens. Server-to-server calls
+    authenticate with a secret API key; embedded web/merchant Components authenticate
+    with a short-lived session token minted by POST /v1/sessions and scoped to a
+    specific config (payin, payment method, merchant onboarding, or reporting).
+schemes:
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: APIKey
+  description: >-
+    Provide the API key in the Authorization header with the `Bearer` prefix:
+    `Authorization: Bearer {api_key}`.
+  sources:
+  - openapi/rainforest-authentication-openapi.yaml
+  - openapi/rainforest-deposits-openapi.yaml
+  - openapi/rainforest-file_uploads-openapi.yaml
+  - openapi/rainforest-forward_requests-openapi.yaml
+  - openapi/rainforest-health-openapi.yaml
+  - openapi/rainforest-merchants-openapi.yaml
+  - openapi/rainforest-payments-openapi.yaml
+key_types:
+- kind: api_key
+  usage: server-to-server
+  prefix_production: apikey_
+  prefix_sandbox: sbx_apikey_
+  managed_via: POST /v1/api_keys (create_api_key); can be disabled/enabled/deleted
+  docs: https://docs.rainforestpay.com/docs/authentication
+- kind: session_token
+  usage: embedded Components (frontend)
+  managed_via: POST /v1/sessions (create_session), DELETE /v1/sessions (delete_session)
+  scope: bound to a single config id (payin_config, payment_method_config, merchant_application, or report)
+  notes: Short-lived, safe to expose to the browser; never expose an API key to the frontend.
+version_header:
+  name: Rainforest-Api-Version
+  scheme: date-based (e.g. 2024-10-16); requests default to the platform minimum API version

@@ -1,0 +1,31 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.rainforestpay.com/docs/working-with-components
+note: >-
+  Rainforest ships embeddable, PCI-scope-reducing UI Components loaded via a JavaScript
+  bundle and configured in "Component Studio". Distinct from server-side SDKs. Each
+  Component is initialized with a short-lived session token from POST /v1/sessions.
+loaders:
+- name: Payment JavaScript bundle
+  purpose: Embeds payment / payment-method / reporting components
+  docs: https://docs.rainforestpay.com/docs/javascript-bundle
+- name: Merchant JavaScript bundle
+  purpose: Embeds merchant onboarding / application components
+  docs: https://docs.rainforestpay.com/docs/javascript-bundle
+component_families:
+- family: Payments
+  components:
+  - Payment component (collect card / ACH and process a payin)
+  - Store payment method component
+- family: Onboarding
+  components:
+  - Merchant application / onboarding component
+- family: Reporting
+  components:
+  - Payment report component
+  - Payment detail component
+  - Refund details component
+  - Chargeback report component
+  - Chargeback details component
+tooling:
+  component_studio: https://docs.rainforestpay.com/docs/component-studio

@@ -1,0 +1,681 @@
+openapi: 3.1.0
+info:
+  title: Authentication ACH Returns Payin Configs API
+  version: 1.0.0
+  description: This resource is used for authentication actions
+  contact:
+    name: Rainforest
+    email: support@rainforestpay.com
+    url: https://rainforestpay.com
+servers:
+- url: https://api.sandbox.rainforestpay.com
+  description: Sandbox server
+- url: https://api.rainforestpay.com
+  description: Production server
+security:
+- BearerAuth: []
+tags:
+- name: Payin Configs
+  description: Resources for payin configs functions.
+paths:
+  /v1/payin_configs:
+    post:
+      operationId: create_payin_config
+      summary: Create payin config
+      description: Create the configuration for a payin request. The configuration contains basic information about the payin such as the merchant, idempotency key, payin amount, currency, and optional information such as billing contact, level 2 and 3, and metadata. If the billing contact is provided in the payin config, then the web component will not prompt for this data. These fields include country and postal code for a CARD payment method and name for an ACH payment method. This allows a payin to be set up before collecting the sensitive payin details (i.e the card number) via the web component. The merchant status must be `ACTIVE` to create a payin config.
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/paths/~1v1~1payin_configs/post/responses/200/content/application~1json/schema/properties/data'
+              required:
+              - merchant_id
+              - amount
+              - currency_code
+              - idempotency_key
+            examples:
+              required_fields:
+                value:
+                  merchant_id: mid_2DrDFJPutxE5AIbJSopAnqniEbr
+                  idempotency_key: e7d57c41-7626-4644-b777-9451ab3ddea9
+                  amount: 100
+                  currency_code: USD
+              amount_splits_and_metadata:
+                value:
+                  merchant_id: mid_2DrDFJPutxE5AIbJSopAnqniEbr
+                  idempotency_key: e7d57c41-7626-4644-b777-9451ab3ddea9
+                  amount: 100
+                  currency_code: USD
+                  amount_splits:
+                  - amount: 3
+                    currency_code: USD
+                    type: PLATFORM
+                  metadata:
+                    key1: value1
+                    key2:
+                      inner_key1: inner_value1
+              billing_contact:
+                value:
+                  merchant_id: mid_2DrDFJPutxE5AIbJSopAnqniEbr
+                  idempotency_key: e7d57c41-7626-4644-b777-9451ab3ddea9
+                  amount: 100
+                  currency_code: USD
+                  billing_contact:
+                    name: Jane Smith
+                    address_line_1: 3423 Piedmont Rd
+                    address_line_2: Suite 123
+                    city: Atlanta
+                    state: GA
+                    postal_code: '30305'
+                    country: US
+                    email: janesmith@example.com
+                    phone: '4041234567'
+              level_2_data:
+                value:
+                  merchant_id: mid_2DrDFJPutxE5AIbJSopAnqniEbr
+                  idempotency_key: e7d57c41-7626-4644-b777-9451ab3ddea9
+                  amount: 100
+                  currency_code: USD
+                  level_2_3:
+                    tax_amount: 100
+                    shipping_amount: 100
+                    order_number: order_123
+              level_3_data:
+                value:
+                  merchant_id: mid_2DrDFJPutxE5AIbJSopAnqniEbr
+                  idempotency_key: e7d57c41-7626-4644-b777-9451ab3ddea9
+                  amount: 100
+                  currency_code: USD
+                  level_2_3:
+                    tax_amount: 100
+                    shipping_amount: 100
+                    order_number: order_123
+                    shipping_country: US
+                    shipping_postal_code: '30305'
+                    shipping_from_postal_code: '30305'
+                    commodity_code: commodity_code
+                    line_items:
+                    - product_code: product code
+                      description: product description
+                      unit_amount: 100
+                      unit_of_measure: EACH
+                      quantity: 1
+                      total_amount: 100
+                      tax_amount: 100
+                      tax_rate: 1000
+                      discount_amount: 100
+                      discount_rate: 1000
+              all_fields:
+                value:
+                  merchant_id: mid_2DrDFJPutxE5AIbJSopAnqniEbr
+                  idempotency_key: e7d57c41-7626-4644-b777-9451ab3ddea9
+                  amount: 100
+                  currency_code: USD
+                  amount_splits:
+                  - amount: 3
+                    currency_code: USD
+                    type: PLATFORM
+                  level_2_3:
+                    tax_amount: 100
+                    shipping_amount: 100
+                    order_number: order_123
+                    shipping_country: US
+                    shipping_postal_code: '30305'
+                    shipping_from_postal_code: '30305'
+                    commodity_code: commodity_code
+                    line_items:
+                    - product_code: product code
+                      description: product description
+                      unit_amount: 100
+                      unit_of_measure: EACH
+                      quantity: 1
+                      total_amount: 100
+                      tax_amount: 100
+                      tax_rate: 1000
+                      discount_amount: 100
+                      discount_rate: 1000
+                  metadata:
+                    key1: value1
+                    key2:
+                      inner_key1: inner_value1
+                  method_metadata:
+                    key1: value1
+                    key2:
+                      inner_key1: inner_value1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    type: object
+                    properties:
+                      payin_config_id:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/threeds_attempt/properties/payin_config_id'
+                        readOnly: true
+                      payment_method_config_id:
+                        readOnly: true
+                        description: "The unique payment method config identifier. \n\nPrefix is \"pmc\" in production and \"sbx_pmc\" in sandbox."
+                        type: string
+                        example: pmc_2DrDPKzdQypRudLd8DhQKZX27dA
+                      merchant_id:
+                        $ref: '#/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id'
+                      merchant:
+                        type: object
+                        properties:
+                          id:
+                            $ref: '#/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id'
+                            readOnly: true
+                          name:
+                            readOnly: true
+                            description: The unique identifier for the merchant business name.
+                            type: string
+                            example: Merchant
+                            maxLength: 100
+                          dba_name:
+                            readOnly: true
+                            description: The merchant’s public-facing name. This may be the same as the legal name if the merchant does not operate under a different name.
+                            type: string
+                            example: Merchant
+                            maxLength: 100
+                      idempotency_key:
+                        $ref: '#/paths/~1v1~1refunds~1%7Brefund_id%7D~1void/post/requestBody/content/application~1json/schema/properties/idempotency_key'
+                      amount:
+                        description: 'The total amount allowed to process, in minor units.
+
+
+                          For example, 1000 is 10.00 USD.'
+                        type: integer
+                        example: 100
+                        minimum: 1
+                      currency_code:
+                        $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code'
+                      amount_splits:
+                        description: 'Represents how the payin should be allocated between the originating merchant, the platform, and one or more other merchants.<br/><br/>
+
+
+                          A `PLATFORM` split defines a platform fee on the payin. A maximum of one `PLATFORM` split is permitted per payin.<br/><br/>
+
+
+                          A `MERCHANT` split allocates a portion of the payin to the specified merchant. Multiple `MERCHANT` splits are permitted. Each `MERCHANT` split must specify a unique merchant_id.<br/><br/>
+
+
+                          Any remaining amount not specified by the amount splits will be allocated to the originating merchant associated with the payin.<br/><br/>
+
+
+                          If no amount splits are provided, the total amount will be allocated to the originating merchant.<br/><br/>
+
+
+                          The amount split is defined as a rate and amount. The split is calculated based on the authorized amount of the payin.<br/><br/>
+
+
+                          For example, to assess a platform fee of 1% + $5.00, specify 1000 in the rate and 500 in the amount. Be careful to account for any processing fees that will be netted before computing amount splits.'
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            rate:
+                              description: 'The amount split defined as a rate, in percent mille (1 PCM = 0.001%). The amount split will be calculated on the authorized amount of the payin.
+
+
+                                For example, 3000 is 3%.'
+                              type: integer
+                              example: 3000
+                              minimum: 0
+                            rate_cap:
+                              description: "The amount split rate cap, in minor units. Used to cap the rate to a specified amount.\n\nFor example, 1000 is 10.00 USD.\n\nThe following validation must be met:\n  If the rate is greater than 0%, then the rate_cap must be greater than $0. For example, to bill a rate of 1% up to $100 set the value to 10000.\n  If the rate is 0%, then the rate_cap must be $0."
+                              type: integer
+                              example: 1000
+                              minimum: 0
+                            amount:
+                              description: 'The amount split, in minor units.
+
+
+                                For example, 1000 is 10.00 USD.'
+                              type: integer
+                              example: 3
+                              minimum: 0
+                            currency_code:
+                              $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code'
+                            type:
+                              description: 'The type of receiver for this split.<br/><br/>
+
+
+                                `PLATFORM` allocates the split amount to the platform. `MERCHANT` allocates the split amount to the merchant specified by merchant_id.'
+                              type: string
+                              enum:
+                              - PLATFORM
+                              - MERCHANT
+                            merchant_id:
+                              description: 'Required when type is `MERCHANT`.<br/><br/>
+
+
+                                The unique identifier of the merchant receiving this split. The merchant status must be ACTIVE.<br/><br/>
+
+
+                                The following constraints must be met:
+
+
+                                - Cannot match the merchant_id of the originating merchant on the payin.
+
+                                - Cannot be duplicated within the same amount_splits array.
+
+                                - Not valid when type is `PLATFORM`.<br/><br/>
+
+
+                                Prefix is mid in production and sbx_mid in sandbox.'
+                              type: string
+                              example: mid_abc123
+                            amount_split_reversal_config:
+                              description: Controls whether this amount split is reversed on a refund for the full amount or an ACH return. When not provided, both attributes default to false.
+                              type: object
+                              properties:
+                                on_full_refund:
+                                  description: 'Determines whether this amount split is reversed when a refund for the full amount is processed on this payin.<br/><br/>
+
+
+                                    When `true`, the receiver''s allocation is pulled back on the refund. When `false`, the receiver retains their allocation and the originating merchant absorbs this amount of the refund.<br/><br/>
+
+
+                                    This configuration only applies to full refunds. For partial refunds, amount_splits on the refund request can be provided to specify the reversal amounts.'
+                                  type: boolean
+                                  default: false
+                                on_ach_return:
+                                  description: 'Determines whether this amount split is reversed when an ACH return is processed on this payin.<br/><br/>
+
+
+                                    When `true`, the receiver''s allocation is pulled back on the ACH return. When `false`, the receiver retains their allocation and the originating merchant absorbs this amount of the ACH return.'
+                                  type: boolean
+                                  default: false
+                          required:
+                          - amount
+                          - currency_code
+                          - type
+                        example:
+                        - amount: 3
+                          currency_code: USD
+                          type: PLATFORM
+                        maxItems: 26
+                        minItems: 0
+                      billing_fees_reversal_config:
+                        description: Controls whether the billing fees for this payin are returned to the originating merchant on a refund for the full amount or an ACH return. When not provided, both attributes default to the merchant's configuration.
+                        type: object
+                        properties:
+                          on_full_refund:
+                            description: 'Determines whether the billing fees for this payin are returned to the merchant when a refund for the full amount is processed.<br/><br/>
+
+
+                              When `true`, the billing fee is credited back to the merchant and included in the refund''s computed billing fee.<br/><br/>
+
+
+                              This field can also be defined on the refund request and will take precedence over the configuration defined on this payin config.'
+                            type: boolean
+                            default: false
+                          on_ach_return:
+                            description: 'Determines whether the billing fees for this payin are returned to the merchant when an ACH return is processed.<br/><br/>
+
+
+                              When `true`, the billing fee is credited back to the merchant and included in the ACH return''s computed billing fee.'
+                            type: boolean
+                            default: false
+                      merchant_billing:
+                        description: The billing rate and fee to calculate the merchant's billing fee on the authorized amount of the payin. If set, then this rate and fee will be used to determine the billing fee for the payin and will override the merchant's billing profile.
+                        type: object
+                        properties:
+                          rate:
+                            description: 'Rate, in percent mille (1 PCM = 0.001%).
+
+
+                              For example, 3000 is 3%.'
+                            type: integer
+                            required: true
+                            minimum: 0
+                            maximum: 25000
+                          rate_cap:
+                            description: 'Rate cap, in minor units. Used to cap the rate to a specified amount.
+
+
+                              For example, 1000 is 10.00 USD.
+
+
+                              The following validation must be met:
+
+                              - If the `rate` is greater than 0%, then the `rate_cap` must be greater than $0. For example, to bill a rate of 1% up to $100 set the value to `10000`.
+
+                              - If the `rate` is 0%, then the `rate_cap` must be $0.'
+                            type: integer
+                            required: true
+                            minimum: 0
+                            maximum: 10000000
+                          fee:
+                            description: "Fee, in minor units. \n\nFor example, 1000 is 10.00 USD.\n\nThe fee can be up to $10, regardless of the amount of the payin. However, if the fee is greater than $10, then the fee cannot be greater than the `amount` field.\n\nValid requests: \n- Fee of $10 on a $5 payin. \n- Fee of $11 on a $20 payin.\n\nInvalid requests: \n- Fee of $11 on a $5 payin."
+                            type: integer
+                            required: true
+                            minimum: 0
+                          currency_code:
+                            $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code'
+                            required: true
+                      allow_bin_lookup:
+                        description: Boolean indicating if BIN data is returned when a user is inputting the card number into the Payment Component.
+                        type: boolean
+                        default: false
+                      allow_partial_authorization:
+                        description: Boolean indicating if partial amount can be authorized on a card payment, if supported by the issuing bank.
+                        type: boolean
+                      billing_contact:
+                        description: Billing contact details.
+                        type: object
+                        properties:
+                          name:
+                            description: First and last name.
+                            type: string
+                            example: Jane Smith
+                            maxLength: 100
+                          address_line_1:
+                            description: First line of street address.
+                            type: string
+                            example: 123 Example Street
+                            maxLength: 100
+                          address_line_2:
+                            description: Second line of street address, if required.
+                            type: string
+                            example: Suite 123
+                            maxLength: 100
+                          city:
+                            description: City for address.
+                            type: string
+                            example: Atlanta
+                            maxLength: 100
+                          state:
+                            description: State, province, or region for address.
+                            type: string
+                            example: GA
+                            maxLength: 100
+                          postal_code:
+                            description: Postal code or ZIP code for address.
+                            type: string
+                            example: '30305'
+                            maxLength: 15
+                          country:
+                            description: "2-digit country code. \nFind country codes here: https://www.iso.org/obp"
+                            type: string
+                            example: US
+                            maxLength: 2
+                            minLength: 2
+                          email:
+                            description: Email address.
+                            type: string
+                            example: janesmith@example.com
+                            maxLength: 100
+                          phone:
+                            description: Phone number, including extension.
+                            type: string
+                            example: '+14041234567'
+                            maxLength: 100
+                      shipping_address:
+                        type: object
+                        properties:
+                          name:
+                            description: Recipient's first and last name.
+                            type: string
+                            example: Jane Smith
+                            maxLength: 100
+                          address_line_1:
+                            $ref: '#/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/address_line_1'
+                          address_line_2:
+                            $ref: '#/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/address_line_2'
+                          city:
+                            $ref: '#/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/city'
+                          state:
+                            $ref: '#/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/state'
+                          postal_code:
+                            $ref: '#/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/postal_code'
+                          country:
+                            $ref: '#/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/country'
+                      risk_data:
+                        description: Platform payment data that provides additional context to the risk review of the payin.
+                        type: object
+                        properties:
+                          external_ref:
+                            description: Platform identifier for the payin, such as an invoice ID or order ID.
+                            type: string
+                            maxLength: 100
+                            minLength: 1
+                          end_user_ref:
+                            description: Platform identifier for the end user processing the payin with the merchant, such as an account ID.
+                            type: string
+                            maxLength: 100
+                            minLength: 1
+                      level_2_3:
+                        description: Level 2 and Level 3 data is submitted with a business or commercial card to provide additional benefit to the cardholder through enhanced payin information, and benefits the merchant with lower interchange rates.
+                        type: object
+                        properties:
+                          tax_amount:
+                            description: 'The sales tax included in the total payin amount associated with the item(s) being purchased, in minor units.
+
+
+                              For example, 1000 is 10.00 USD.'
+                            type: integer
+                          shipping_amount:
+                            description: 'The freight or shipping amount included in the total payin amount, in minor units.
+
+
+                              For example, 1000 is 10.00 USD.'
+                            type: integer
+                          order_number:
+                            description: The purchase order number.
+                            type: string
+                          shipping_country:
+                            description: "The 2-digit country code for the delivery address of the item(s) being purchased. \n\nFind country codes here: https://www.iso.org/obp"
+                            type: string
+                            example: US
+                            maxLength: 2
+                            minLength: 2
+                          shipping_postal_code:
+                            description: Postal code or ZIP code for the delivery address of the item(s) being purchased. This field can be identical to the `shipping_from_postal_code` if the customer is present and takes immediate possession of the item(s).
+                            type: string
+                            example: '30305'
+                          shipping_from_postal_code:
+                            description: Postal code or ZIP code of the address the item(s) being purchased are shipped from.
+                            type: string
+                            example: '30305'
+                          commodity_code:
+                            description: The commodity code of the item(s) being purchased.
+                            type: string
+                          line_items:
+                            description: The details on the item(s) being purchased.
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                product_code:
+                                  description: The merchant defined product code of the item being purchased.
+                                  type: string
+                                commodity_code:
+                                  description: The commodity code of the item being purchased.
+                                  type: string
+                                description:
+                                  description: The description of the item being purchased.
+                                  type: string
+                                unit_amount:
+                                  description: 'The amount of the item being purchased, in minor units. Defaults to 0.
+
+
+                                    For example, 1000 is 10.00 USD.'
+                                  type: integer
+                                  default: 0
+                                unit_of_measure:
+                                  description: A unit of measure as used in international trade, such as each, gallons, feet, etc. Defaults to EACH.
+                                  type: string
+                                  default: EACH
+                                quantity:
+                                  description: The quantity of the item.
+                                  type: integer
+                                total_amount:
+                                  description: 'The total amount of the item being purchased, in minor units. Defaults to (unit_amount x quantity) - discount_amount, rounded to the nearest penny.
+
+
+                                    For example, 1000 is 10.00 USD.'
+                                  type: integer
+                                tax_amount:
+                                  description: 'The sales tax on the item being purchased, in minor units. Defaults to 0.
+
+
+                                    For example, 1000 is 10.00 USD.'
+                                  type: integer
+                                  default: 0
+                                tax_rate:
+                                  description: 'The percentage representing the value-added tax applied, in per cent mille. Defaults to 0.
+
+
+                                    For example, 1000 is 1%.'
+                                  type: integer
+                                  default: 0
+                                  maximum: 100000
+                                discount_amount:
+                                  description: 'The discount on the item being purchased, in minor units. Defaults to 0.
+
+
+                                    For example, 1000 is 10.00 USD.'
+                                  type: integer
+                                  default: 0
+                                discount_rate:
+                                  description: "The percentage representing the discount applied, in per cent mille. Defaults to 0. \n\nFor example 1000 is 1%."
+                                  type: integer
+                                  default: 0
+                                  maximum: 100000
+                      metadata:
+                        $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema'
+                      method_metadata:
+                        description: 'Valid JSON key-value object specified by the platform to store additional information on the payment method. Keys are queryable in list endpoints. Do not use the metadata field to store sensitive or confidential data.
+
+
+                          Metadata must be less than 8 KB in size.
+
+                          '
+                        type: object
+                        example:
+                          key1: value1
+                          key2:
+                            inner_key1: inner_value1
+                        minLength: 0
+                      processing_mode:
+                        description: "Determines how to process the payin when [creating the payin](ref:create_payin) via the Payment Component or the API.\n\nOptions:\n  * `AUTHORIZE` - Only authorize the payin, separating the authorization and capture of funds. Authorize will place a hold on the funds and the payin must be [captured](ref:capture_payin) in a separate request.\n  * `AUTHORIZE_AND_CAPTURE` - Authorize and capture the payin in a single request (default)."
+                        type: string
+                        default: AUTHORIZE_AND_CAPTURE
+                        enum:
+                        - AUTHORIZE
+                        - AUTHORIZE_AND_CAPTURE
+                      threeds_mode:
+                        description: 'Determines how 3D Secure authentication should be run on this payment to verify that the customer initiating the payment is actually the cardholder.
+
+
+                          3D Secure is only available on credit card payments via the Rainforest payment component. This mode is ignored if the payment is made by ACH, or when charging a stored payment method.
+
+
+                          Options:
+
+                          * `NONE` - 3D Secure will not be run (default).
+
+                          * `ATTEMPT`-  The payment component will attempt to run 3D Secure. If 3D Secure is not available or fails, the payment will process without 3D Secure verification.'
+                        type: string
+                        default: NONE
+                        enum:
+                        - NONE
+                        - ATTEMPT
+                      device_signature_mode:
+                        description: "Determines if a signature should be collected when processing a payment on a device\n\nOptions:\n  * `NONE` - Signature will not be collected\n  * `ATTEMPT` - Only prompt for a signature on devices that support the signature capability"
+                        type: string
+                        default: NONE
+                        enum:
+                        - NONE
+                        - ATTEMPT
+                      ach_balance_check_mode:
+                        description: "ACH Balance Check is in beta: please contact your Customer Success contact for more information.\nDetermines if the balance of the account will be checked when processing a Validated ACH payin. If the balance does not cover the amount of the payin, the payin will fail with the refusal reason of insufficient funds.\n\nOptions:\n  * `NONE` - Account balance will not be checked\n  * `ATTEMPT` - Attempt to check the account balance is sufficient to process the payin"
+                        type: string
+                        default: NONE
+                        enum:
+                        - NONE
+                        - ATTEMPT
+                      payin:
+                        description: 'The minimal representation of the payin successfully processed with the payin config, if applicable.
+
+
+                          If no payin has been successfully processed with the payin config, `payin` will be `null`.'
+                        nullable: true
+                        readOnly: true
+                        type: object
+                        properties:
+                          payin_id:
+                            $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payin_id'
+                            readOnly: true
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Payin Configs
+  /v1/payin_configs/{payin_config_id}:
+    get:
+      operationId: get_payin_config
+      summary: Get payin config
+      description: Get the configuration for a payin by the payin config ID.
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - in: path
+        required: true
+        name: payin_config_id
+        schema:
+          type: string
+        description: 'The unique payin config identifier.
+
+
+          Prefix is "cfg" in production and "sbx_cfg" in sandbox.'
+        examples:
+          production:
+            value: cfg_2DrDPKzdQypRudLd8DhQKZX27dA
+          sandbox:
+            value: sbx_cfg_2DrDPKzdQypRudLd8DhQKZX27dA
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1payin_configs/post/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Payin Configs
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: APIKey

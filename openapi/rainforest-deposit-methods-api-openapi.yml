@@ -1,0 +1,1735 @@
+openapi: 3.1.0
+info:
+  title: Authentication ACH Returns Deposit Methods API
+  version: 1.0.0
+  description: This resource is used for authentication actions
+  contact:
+    name: Rainforest
+    email: support@rainforestpay.com
+    url: https://rainforestpay.com
+servers:
+- url: https://api.sandbox.rainforestpay.com
+  description: Sandbox server
+- url: https://api.rainforestpay.com
+  description: Production server
+security:
+- BearerAuth: []
+tags:
+- name: Deposit Methods
+  description: Resources for deposit method functions.
+paths:
+  /v1/deposit_methods/{deposit_method_id}:
+    get:
+      operationId: get_deposit_method
+      summary: Get deposit method
+      description: Get deposit method details by the deposit method ID.
+      parameters:
+      - $ref: '#/paths/~1v1~1deposits/get/parameters/0'
+      - in: path
+        required: true
+        name: deposit_method_id
+        schema:
+          type: string
+        description: "The unique deposit method identifier. \n\nPrefix is \"dmt\" in production and \"sbx_dmt\" in sandbox."
+        examples:
+          production:
+            value: dmt_2DrDRpyAdp5MPUJnrJmoZcMmtfF
+          sandbox:
+            value: sbx_dmt_2DrDRpyAdp5MPUJnrJmoZcMmtfF
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1deposits/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1deposits/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1deposits/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1deposits/get/responses/5XX'
+      tags:
+      - Deposit Methods
+  /v1/deposit_methods/{deposit_method_id}/payin:
+    post:
+      operationId: create_deposit_method_payin
+      summary: Create payin from deposit method
+      description: 'Create and process a payin using a payin configuration and a deposit method. The merchant status must be ACTIVE to create a payin.
+
+
+        The deposit method details (i.e bank account number and billing contact) will be duplicated to a payment method and a payin will process against the newly created payment method. Metadata, method metadata, and new billing contact details can be defined on the [Payin Config](ref:create_payin_config).
+
+
+        This endpoint requires Rainforest approval.'
+      parameters:
+      - in: header
+        name: Rainforest-Api-Version
+        schema:
+          type: string
+          default: '2024-10-16'
+          enum:
+          - '2024-10-16'
+      - $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D/get/parameters/1'
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payin_config_id:
+                  description: 'The unique payin config identifier. A payin must be configured prior to this request. See "Create a Payin Config" if a payin configuration has not been created yet.
+
+
+                    Prefix is "cfg" in production and "sbx_cfg" in sandbox.'
+                  type: string
+                  example: cfg_2A4d6U0tMyovzTbVT1ktmRzdRaD
+              required:
+              - payin_config_id
+            example:
+              payin_config_id: cfg_2A4d6U0tMyovzTbVT1ktmRzdRaD
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    description: The payin details.
+                    type: object
+                    properties:
+                      payin_id:
+                        description: "The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                        type: string
+                        example: pyi_2DrDKk5NIMbpuNGqm109SkpGDHh
+                      payin_config_id:
+                        $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/threeds_attempt/properties/payin_config_id'
+                        readOnly: true
+                      merchant_id:
+                        description: "The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                        type: string
+                        example: mid_2DrDFJPutxE5AIbJSopAnqniEbr
+                      payment_method_id:
+                        description: "The unique payment method identifier. \n\nPrefix is \"mtd\" in production and \"sbx_mtd\" in sandbox."
+                        type: string
+                        example: mtd_2DrDRpyAdp5MPUJnrJmoZcMmtfF
+                      payment_method_config_id:
+                        readOnly: true
+                        description: "The unique payment method config identifier. \n\nPrefix is \"pmc\" in production and \"sbx_pmc\" in sandbox."
+                        type: string
+                        example: pmc_2DrDPKzdQypRudLd8DhQKZX27dA
+                      device_registration_id:
+                        description: 'The unique device registration identifier.
+
+
+                          Prefix is "dvc" in production and "sbx_dvc" in sandbox.'
+                        type: string
+                        example: dvc_2DrDKk5NIMbpuNGqm109SkpGDHh
+                      threeds_attempt_id:
+                        nullable: true
+                        description: "The unique threeds attempt identifier. \n\nPrefix is \"tds\" in production and \"sbx_tds\" in sandbox."
+                        type: string
+                        example: tds_2DrDFJPutxE5AIbJSopAnqniEbr
+                      idempotency_key:
+                        $ref: '#/paths/~1v1~1deposit_method_configs/post/requestBody/content/application~1json/schema/properties/idempotency_key'
+                      billing_type:
+                        $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/billing_type'
+                      amount:
+                        description: 'The amount of the payin, in minor units.
+
+
+                          For example, 1000 is 10.00 USD.'
+                        type: integer
+                        example: 100
+                      currency_code:
+                        $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code'
+                      is_partially_authorized:
+                        description: Boolean indicating if payin was authorized for a partial amount.
+                        type: boolean
+                      authorized_amount:
+                        description: 'The amount of the payin that was authorized, in minor units.
+
+
+                          For example, 1000 is 10.00 USD.'
+                        type: integer
+                        example: 100
+                        readOnly: true
+                      captured_amount:
+                        description: 'The amount of the payin that was captured, in minor units.
+
+
+                          For example, 1000 is 10.00 USD.'
+                        type: integer
+                        example: 100
+                        readOnly: true
+                      refundable_amount:
+                        description: 'The amount of the payin that can still be refunded, in minor units.
+
+
+                          For example, 1000 is 10.00 USD.'
+                        type: integer
+                        example: 100
+                        readOnly: true
+                      non_refundable_reason_code:
+                        description: Why the payin is nonrefundable. Provided when refundable_amount is 0.
+                        type: string
+                        nullable: true
+                        readOnly: true
+                        enum:
+                        - VOIDED
+                        - FAILED
+                        - FULLY_REFUNDED
+                        - HAS_CHARGEBACKS
+                        - HAS_ACH_RETURN
+                        - IN_ACH_RETURN_WINDOW
+                        - IN_SETTLEMENT_WINDOW
+                      status:
+                        description: The status of the payin.
+                        type: string
+                        enum:
+                        - AUTHORIZED
+                        - CANCELED
+                        - CREATED
+                        - FAILED
+                        - IN_REVIEW
+                        - PRESENTING
+                        - PROCESSING
+                        - RETURNED
+                        - SUCCEEDED
+                        example: PROCESSING
+                      refusal_code:
+                        description: 'The code explaining the reason for the refusal if the payin or refund failed to process.
+
+
+                          This value will be `null` if the payin or refund succeeded.'
+                        type: string
+                        enum:
+                        - null
+                        - AUTHORIZATION_EXPIRED
+                        - DECLINED
+                        - DO_NOT_HONOR
+                        - EXPIRED_CARD
+                        - FRAUDULENT_CARD
+                        - INCORRECT_PAYMENT_INFORMATION
+                        - INSUFFICIENT_FUNDS
+                        - INVALID_CARD_SECURITY_CODE
+                        - INVALID_EXPIRATION_DATE
+                        - INVALID_PIN
+                        - LOST_CARD
+                        - NO_CARD_NUMBER_ON_FILE_WITH_ISSUER
+                        - NO_SUCH_CARD_ISSUER
+                        - OVER_LIMIT
+                        - PROCESSING_ERROR
+                        - RESTRICTED_CARD_TYPE
+                        - RETRY
+                        - RETRY_WITH_THREEDS
+                        - RISK_DECLINE
+                        - STOLEN_CARD
+                        - THREEDS_CHALLENGE_FAILED
+                        - UNEXPECTED_PAYIN_TOKEN
+                        - UNSUPPORTED_CARD_TYPE
+                        readOnly: true
+                      refusal_desc:
+                        description: 'The description explaining the reason for the refusal if the payin or refund failed to process. This will be a human-readable value that may be presented to the end user.
+
+
+                          This value will be `null` if the payin or refund succeeded.'
+                        type: string
+                        enum:
+                        - null
+                        - Authorization expired
+                        - Declined
+                        - Do not honor
+                        - Expired card
+                        - Fraudulent card
+                        - Incorrect payment information
+                        - Insufficient funds
+                        - Invalid card security code
+                        - Invalid expiration date
+                        - Invalid PIN
+                        - Lost card
+                        - No card number on file with issuer
+                        - No such card issuer
+                        - Over limit
+                        - Processing error
+                        - Restricted card type
+                        - Retry
+                        - Retry with 3DS
+                        - Risk decline
+                        - Stolen card
+                        - 3DS challenge failed
+                        - Unexpected payin token
+                        - Unsupported card type
+                        readOnly: true
+                      detailed_refusal_code:
+                        description: 'The detailed refusal code that could be more descriptive than the refusal code. It may take up to 5 minutes for the detailed refusal code to populate after the payment fails.
+
+
+                          This value will be `null` if the payment succeeded.'
+                        type: string
+                        enum:
+                        - null
+                        - AUTHORIZATION_EXPIRED
+                        - DECLINED
+                        - DO_NOT_HONOR
+                        - EXPIRED_CARD
+                        - FRAUDULENT_CARD
+                        - INCORRECT_PAYMENT_INFORMATION
+                        - INSUFFICIENT_FUNDS
+                        - INVALID_CARD_SECURITY_CODE
+                        - INVALID_EXPIRATION_DATE
+                        - INVALID_PIN
+                        - LOST_CARD
+                        - NO_CARD_NUMBER_ON_FILE_WITH_ISSUER
+                        - NO_SUCH_CARD_ISSUER
+                        - OVER_LIMIT
+                        - PROCESSING_ERROR
+                        - RESTRICTED_CARD_TYPE
+                        - RETRY
+                        - RETRY_WITH_THREEDS
+                        - RISK_DECLINE
+                        - STOLEN_CARD
+                        - THREEDS_CHALLENGE_FAILED
+                        - UNEXPECTED_PAYIN_TOKEN
+                        - UNSUPPORTED_CARD_TYPE
+                        readOnly: true
+                      detailed_refusal_desc:
+                        description: 'The description explaining the detailed refusal reason if the payin or refund failed to process. This will be a human-readable value that may be presented to the end user.
+
+
+                          This value will be `null` if the payment succeeded.'
+                        type: string
+                        enum:
+                        - null
+                        - Authorization expired
+                        - Declined
+                        - Do not honor
+                        - Expired card
+                        - Fraudulent card
+                        - Incorrect payment information
+                        - Insufficient funds
+                        - Invalid card security code
+                        - Invalid expiration date
+                        - Invalid PIN
+                        - Lost card
+                        - No card number on file with issuer
+                        - No such card issuer
+                        - Over limit
+                        - Processing error
+                        - Restricted card type
+                        - Retry
+                        - Retry with 3DS
+                        - Risk decline
+                        - Stolen card
+                        - 3DS challenge failed
+                        - Unexpected payin token
+                        - Unsupported card type
+                        readOnly: true
+                      auth_code:
+                        description: The authorization code if the payin was approved.
+                        type: string
+                        example: '12345'
+                      avs_result_code:
+                        description: The address verification service result code.
+                        type: string
+                        example: Y
+                      cvc_result_code:
+                        description: The card verification code result code.
+                        type: string
+                        example: M
+                      amount_splits:
+                        description: 'Represents how the payin amount was allocated to the originating merchant, the platform and one or more other merchants.<br/><br/>
+
+
+                          A `PLATFORM` split defines a platform fee on the payin.<br/><br/>
+
+
+                          A `MERCHANT` split allocates a portion of the payin to the specified merchant.<br/><br/>
+
+
+                          Any remaining amount not specified by the amount splits was allocated to the originating merchant associated with the payin.'
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            amount:
+                              description: 'The amount allocated, in minor units.
+
+
+                                For example, 1000 is 10.00 USD.'
+                              type: integer
+                              example: 3
+                            currency_code:
+                              $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code'
+                            type:
+                              description: 'The type of receiver for this split.<br/><br/>
+
+
+                                `PLATFORM` allocates the split amount to the platform. `MERCHANT` allocates the split amount to the merchant specified by merchant_id.'
+                              type: string
+                              enum:
+                              - PLATFORM
+                              - MERCHANT
+                            merchant_id:
+                              description: 'Required when type is `MERCHANT`.<br/><br/>
+
+
+                                The unique identifier of the merchant receiving this split. The merchant must be fully onboarded and in an ACTIVE status.<br/><br/>
+
+
+                                Must not match the merchant_id of the originating merchant on the payin. Must not be duplicated within the same amount_splits array. Not valid when object type is `PLATFORM`.<br/><br/>
+
+
+                                Prefix: mid in production, sbx_mid in sandbox.'
+                              type: string
+                              example: mid_abc123
+                            platform:
+                              description: The minimal representation of the platform receiving this split. Present when type is `PLATFORM`.
+                              type: object
+                              properties:
+                                platform_id:
+                                  $ref: '#/paths/~1v1~1deposit_method_configs/post/requestBody/content/application~1json/schema/properties/platform_id'
+                                  readOnly: true
+                                name:
+                                  readOnly: true
+                                  description: The platform name.
+                                  type: string
+                                  example: Platform Name
+                            merchant:
+                              description: The minimal representation of the merchant receiving this split. Present when type is `MERCHANT`.
+                              $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D~1activity/get/responses/200/content/application~1json/schema/properties/data/properties/activities/items/properties/merchant'
+                          required:
+                          - amount
+                          - currency_code
+                          - type
+                        example:
+                        - amount: 3
+                          currency_code: USD
+                          type: PLATFORM
+                      merchant_fees:
+                        description: The amount of the payin billed to the merchant.
+                        type: object
+                        properties:
+                          total_amount:
+                            description: The total amount of fees billed to the merchant.
+                            type: object
+                            properties:
+                              amount:
+                                description: 'The amount, in minor units.
+
+
+                                  For example, 1000 is 10.00 USD.'
+                                type: integer
+                                minimum: 0
+                              currency_code:
+                                $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code'
+                        example:
+                          total_amount:
+                            amount: 2
+                            currency_code: USD
+                      method_type:
+                        description: The type of payment method.
+                        type: string
+                        enum:
+                        - CARD
+                        - APPLE_PAY
+                        - ACH
+                        - PLAID_ACH
+                        - PAYPAL_WALLET
+                        - VENMO
+                        - PAYPAL_PAYLATER
+                      card:
+                        description: Card payment method details.
+                        type: object
+                        properties:
+                          type:
+                            description: Card type.
+                            type: string
+                            enum:
+                            - CREDIT
+                            - DEBIT
+                            - PREPAID
+                          brand:
+                            description: Card brand.
+                            type: string
+                            example: MASTERCARD
+                            enum:
+                            - VISA
+                            - MASTERCARD
+                            - DISCOVER
+                            - AMERICAN_EXPRESS
+                            - OTHER
+                          brand_desc:
+                            description: Card brand in a friendly language.
+                            type: string
+                            example: Mastercard
+                            enum:
+                            - Visa
+                            - Mastercard
+                            - Discover
+                            - American Express
+                            - Other
+                          last_4:
+                            description: Last 4 digits of the card number.
+                            type: string
+                            example: '4444'
+                          exp_month:
+                            description: The card expiration month.
+                            type: integer
+                            example: 12
+                            maximum: 12
+                            minimum: 1
+                          exp_year:
+                            description: The card expiration year, in 4-digits.
+                            type: integer
+                            example: 2027
+                            maximum: 2099
+                            minimum: 2000
+                      apple_pay:
+                        description: Apple Pay payment method details.
+                        type: object
+                        properties:
+                          type:
+                            $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/card/properties/type'
+                          brand:
+                            $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/card/properties/brand'
+                          brand_desc:
+                            $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/card/properties/brand_desc'
+                          description:
+                            description: A human-readable description of the payment method provided by Apple.
+                            type: string
+                            example: Visa 1234
+                      ach:
+                        description: ACH payment method details.
+                        type: object
+                        properties:
+                          account_number_last_4:
+                            description: The last 4 digits of the account number.
+                            type: string
+                            example: '5678'
+                          routing_number:
+                            $ref: '#/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/ach/properties/routing_number'
+                          bank_name:
+                            description: The bank name.
+                            type: string
+                            example: Wells Fargo Bank
+                          account_type:
+                            $ref: '#/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/ach/properties/account_type'
+                          account_holder_type:
+                            $ref: '#/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/ach/properties/account_holder_type'
+                      plaid_ach:
+                        $ref: '#/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/plaid_ach'
+                        description: ACH payment method details from Plaid.
+                      paypal_wallet:
+                        description: PayPal Wallet payment method. Required for method_type PAYPAL_WALLET.
+                        type: object
+                        properties:
+                          email:
+                            description: The email address of the PayPal user
+                            type: string
+                            example: janesmith@example.com
+                      venmo:
+                        description: Venmo payment method. Required for method_type VENMO.
+                        type: object
+                        properties:
+                          email:
+                            description: The email address of the Venmo user
+                            type: string
+                            example: janesmith@example.com
+                      paypal_paylater:
+                        description: PayPal PayLater payment method. Required for method_type PAYPAL_PAYLATER.
+                        type: object
+                        properties:
+                          email:
+                            description: The email address of the PayPal user
+                            type: string
+                            example: janesmith@example.com
+                      billing_contact:
+                        $ref: '#/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/billing_contact'
+                      device_data:
+                        description: Device data
+                        type: object
+                        properties:
+                          application_identifier:
+                            description: Identifies the application that the device used on the payin or payment method as described in ISO/IEC 7816-5.
+                            type: string
+                            example: A0000000031010
+                          application_label:
+                            description: The human-readable name associated with the application identifier according to ISO/IEC 7816-5.
+                            type: string
+                            example: VISA CREDIT
+                          application_preferred_name:
+                            description: The human-readable name associated with the application identifier in the cardholder’s local language.
+                            type: string
+                            example: VISA CREDIT
+                          transaction_status_information:
+                            description: A collection of indicators that the device will set to show what processing steps have been performed on the current transaction (e.g. Cardholder Verification, Data Authentication).
+                            type: string
+                            example: E800
+                          application_pan_sequence_number:
+                            description: Identifies and differentiates cards with the same PAN.
+                            type: string
+                            example: 1
+                          entry_type:
+                            description: The entry type used on the device.
+                            type: string
+                            example: TAPPED
+                            enum:
+                            - TAPPED
+                            - SWIPED
+                            - DIPPED
+                            - KEYED
+                            - INVALID
+                            - UNKNOWN
+                          verification_type:
+                            description: 'The verification type for verifying the user processing the payment is the cardholder.
+
+
+                              Types:
+
+                              * `SIGNATURE` - The user provided a signature on the device.
+
+                              * `OFFLINE_PIN` - The user entered their pin on the device and it was verified by the EMV chip card.
+
+                              * `ONLINE_PIN` - The user entered their pin on the device and it was verified by the card issuer.
+
+                              * `OFFLINE_PIN_SIGNATURE` - The user entered their PIN and provided a signature on the device.
+
+                              * `NONE` - The user could not be verified.'
+                            type: string
+                            enum:
+                            - SIGNATURE
+                            - OFFLINE_PIN
+                            - ONLINE_PIN
+                            - OFFLINE_PIN_SIGNATURE
+                            - NONE
+                          signature:
+                            description: A signature image, formatted as a base64 encoded data URI
+                            type: string
+                        readOnly: true
+                      method_metadata:
+                        $ref: '#/paths/~1v1~1deposit_method_configs/post/requestBody/content/application~1json/schema/properties/metadata'
+                      metadata:
+                        $ref: '#/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/metadata'
+                      refunds:
+                        type: array
+                        items:
+                          description: The refund details.
+                          type: object
+                          properties:
+                            refund_id:
+                              description: "The unique refund identifier. \n\nPrefix is \"rfd\" in production and \"sbx_rfd\" in sandbox."
+                              type: string
+                              example: rfd_2DrDU206kzAhclm1WrZbuwDERRk
+                            payin_id:
+                              description: "The unique payin identifier that was voided or refunded. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                              type: string
+                              example: pyi_2DrDKk5NIMbpuNGqm109SkpGDHh
+                            merchant_id:
+                              $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_id'
+                            billing_type:
+                              $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/billing_type'
+                            amount:
+                              description: 'The amount refunded, in minor units.
+
+
+                                For example, 1000 is 10.00 USD.'
+                              type: integer
+                              example: 100
+                            currency_code:
+                              $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code'
+                            merchant_fees:
+                              description: The refund fee billed to the merchant.
+                              type: object
+                              properties:
+                                total_amount:
+                                  description: The total amount of fees billed to the merchant.
+                                  type: object
+                                  properties:
+                                    amount:
+                                      $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_fees/properties/total_amount/properties/amount'
+                                    currency_code:
+                                      $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code'
+                              example:
+                                total_amount:
+                                  amount: 150
+                                  currency_code: USD
+                            reason:
+                              description: The reason a refund was issued.
+                              type: string
+                              example: Requested by customer
+                            status:
+                              description: The status of the refund.
+                              type: string
+                              enum:
+                              - CREATED
+                              - PROCESSING
+                              - SUCCEEDED
+                              - FAILED
+                              - CANCELED
+                              - IN_REVIEW
+                            refusal_code:
+                              $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/refusal_code'
+                            refusal_desc:
+                              $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/refusal_desc'
+                            detailed_refusal_code:
+                              $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/detailed_refusal_code'
+                            detailed_refusal_desc:
+                              $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/detailed_refusal_desc'
+                            non_voidable_reason_code:
+                              description: Why the refund is nonvoidable.
+                              type: string
+                              nullable: true
+                              readOnly: true
+                              enum:
+                              - VOIDED
+                              - PAST_SETTLEMENT
+                            auth_code:
+                              description: The authorization code if the refund was approved.
+                              type: string
+                              example: '12345'
+                            metadata:
+                              $ref: '#/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/metadata'
+                            amount_splits:
+                              description: 'Represents how the refund amount was allocated between the originating merchant, the platform, and one or more other merchants.<br/><br/>
+
+
+                                A `PLATFORM` split defines the amount debited from the platform.<br/><br/>
+
+
+                                A `MERCHANT` split defines the amount debited from the specified merchant.<br/><br/>
+
+
+                                Any remaining amount not specified by the amount splits was debited from the originating merchant.'
+                              $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/ach_return/properties/amount_splits'
+                            payin_billing_fees_reversal_config:
+                              description: Controls whether the billing fees from the original payin are returned to the originating merchant. This configuration overrides the `billing_fees_reversal_config` defined on the payin config or the merchant's default configuration.
+                              type: object
+                              properties:
+                                on_full_refund:
+                                  description: 'Determines whether the billing fees for the original payin are returned to the originating merchant when a refund for the full amount is processed.<br/><br/>
+
+
+                                    When `true`, the billing fee is credited back to the merchant and included in the refund''s computed billing fee.'
+                                  type: boolean
+                            expected_deposit_date:
+                              $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date'
+                              description: Date the funds are expected to be available in a deposit.
+                            ach_return:
+                              $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/ach_return'
+                            has_ach_return:
+                              $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/has_ach_return'
+                            source:
+                              description: The source of the refund. Indicates the integration that created the refund.
+                              type: string
+                              nullable: false
+                              enum:
+                              - API_DIRECT
+                              - COMPONENT
+                              - EXTERNAL
+                            source_desc:
+                              description: The description of the source of the refund. This will be a human-readable value that may be presented to the end user.
+                              type: string
+                              nullable: false
+                            created_at:
+                              description: Date and time void or refund was created at in UTC RFC 3339 format.
+                              type: string
+                              format: date-time
+                              example: '2022-01-01T12:00:00Z'
+                            updated_at:
+                              description: Date and time refund was last updated at in UTC RFC 3339 format.
+                              type: string
+                              format: date-time
+                              example: '2022-01-01T12:00:00Z'
+                      has_refunds:
+                        description: Boolean indicating that the payin has one or more refunds created.
+                        type: boolean
+                      chargebacks:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            chargeback_id:
+                              description: "The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                              type: string
+                              example: chb_2TndahOgm9XTiidLB7csk0IsR9b
+                            payin_id:
+                              $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/payin_id'
+                            merchant_id:
+                              $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_id'
+                            amount:
+                              description: 'The amount of the chargeback, in minor units.
+
+
+                                For example, 1000 is 10.00 USD.'
+                              type: integer
+                              minimum: 0
+                            currency_code:
+                              $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code'
+                            status:
+                              description: The status of the chargeback.
+                              type: string
+                              enum:
+                              - INQUIRY_ACTION_REQUIRED
+                              - DISPUTE_ACTION_REQUIRED
+                              - INQUIRY_RESPONDED
+                              - CHARGEBACK_PROCESSING
+                              - PRE_ARBITRATION_PROCESSING
+                              - PROVISIONAL_WIN
+                              - WON
+                              - LOST
+                              - ARBITRATION
+                              example: WON
+                            metadata:
+                              $ref: '#/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/metadata'
+                              description: Valid JSON key-value object specified by the platform to store additional information. This will contain metadata from the associated payin.
+                            merchant_fees:
+                              description: The dispute fee billed to the merchant.
+                              type: object
+                              properties:
+                                total_amount:
+                                  description: The total amount of fees billed to the merchant.
+                                  type: object
+                                  properties:
+                                    amount:
+                                      $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_fees/properties/total_amount/properties/amount'
+                                    currency_code:
+                                      $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code'
+                              example:
+                                total_amount:
+                                  amount: 2500
+                                  currency_code: USD
+                            method_type:
+                              description: The type of payment method.
+                              type: string
+                              enum:
+                              - CARD
+                              - APPLE_PAY
+                              - PAYPAL_WALLET
+                              - VENMO
+                              - PAYPAL_PAYLATER
+                            card:
+                              $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/card'
+                            apple_pay:
+                              $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/apple_pay'
+                            paypal_wallet:
+                              $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_wallet'
+                            venmo:
+                              $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/venmo'
+                            paypal_paylater:
+                              $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_paylater'
+                            reason_code:
+                              description: The code explaining the dispute reason for the chargeback.
+                              type: string
+                              enum:
+                              - CREDIT_NOT_PROCESSED
+                              - DUPLICATE_TRANSACTION
+                              - FRAUD
+                              - GENERAL
+                              - INCORRECT_AMOUNT
+                              - NOT_RECEIVED
+                              - NOT_ACCEPTABLE
+                              - SUBSCRIPTION_CANCELED
+                              - UNRECOGNIZED
+                              - UNCATEGORIZED
+                              readOnly: true
+                            reason_desc:
+                              description: The description explaining the dispute reason for the chargeback. This will be a human-readable value that may be presented to the end user.
+                              type: string
+                              examples:
+                              - The customer claims they should receive a refund or partial refund because the product was returned, canceled, or not fully fulfilled, but they have not seen the refund be processed.
+                              - The customer claims they were charged multiple times for the same product or service.
+                              - The customer claims they did not authorize or recognize the payment.
+                              - This chargeback was initiated by the cardholder for a reason that does not fit into more specific categories.
+                              - The customer claims they were charged an incorrect amount for the product or service purchased.
+                              - The customer claims they did not receive the product or service they purchased.
+                              - The customer claims the product was defective, damaged, or not accurately described prior to purchasing.
+                              - The customer claims the payment was processed after the subscription was canceled.
+                              - The customer claims they do not recognize the merchant or the payment.
+                              - This chargeback was initiated by the cardholder for a reason that does not fit into more specific categories.
+                              readOnly: true
+                            acquirer_ref:
+                              type: string
+                              description: Acquirer Reference Number (ARN) is the unique identifier to trace the chargeback with the issuing bank.
+                            due_date:
+                              $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date'
+                              description: Date chargeback times out and will be decisioned as a win or a loss depending on the current status.
+                            chargeback_evidence:
+                              type: array
+                              items:
+                                description: Chargeback evidence details
+                                type: object
+                                properties:
+                                  chargeback_evidence_id:
+                                    description: 'The unique chargeback evidence identifier.
+
+
+                                      Prefix is "cbe" in production and "sbx_cbe" in sandbox.'
+                                    type: string
+                                    example: cbe_2DrDU206kzAhclm1WrZbuwDERRk
+                                  chargeback_id:
+                                    $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/chargebacks/items/properties/chargeback_id'
+                                  is_required:
+                                    description: Boolean indicating if evidence is required to dispute the chargeback.
+                                    type: boolean
+                                  type:
+                                    type: string
+                                    description: The type of evidence.
+                                    enum:
+                                    - 3DS_VERIFICATION
+                                    - ADDITIONAL_AUTHORIZED_SIGNER
+                                    - ADDITIONAL_HOUSEHOLD_SIGNER
+                                    - AUTHORIZATION
+                                    - CANCELLATION_POLICY
+                                    - CVV2_CAPTURE
+                                    - DIGITAL_DOWNLOAD
+                                    - ITEM_CONDITION
+                                    - LEGAL_ATTESTATION
+                                    - ORDER_FORM
+                                    - OTHER
+                                    - OTHER_PAYMENT_METHODS
+                                    - PRODUCT_OR_SERVICE_USAGE
+                                    - PROOF_OF_DELIVERY_TO_EMPLOYEE
+                                    - PROOF_OF_DELIVERY
+                                    - REBUTTAL
+                                    - RECEIPT
+                                    - RECURRING_BILLING_AGREEMENT
+                                    - RENTAL_AGREEMENT
+                                    - TRANSACTION_HISTORY
+                                  type_desc:
+                                    type: string
+                                    description: The description explaining the type of evidence.
+                                  file_upload_mode:
+                                    $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/chargebacks/items/properties/chargeback_evidence/items/properties/response_mode'
+                                    description: The mode for adding files to the evidence. If `REQUIRED`, the `file_upload_ids` must be set to respond to the chargeback.
+                                  file_upload_ids:
+                                    type: array
+                                    description: List of file upload IDs for the evidence.
+                                    items:
+                                      description: "The unique file upload identifier. \n\nPrefix is \"fiu\" in production and \"sbx_fiu\" in sandbox."
+                                      type: string
+                                      example: fiu_2DrDU206kzAhclm1WrZbuwDERRk
+                                    nullable: true
+                                  response_mode:
+                                    description: The mode for adding a response to the evidence. If `REQUIRED`, the `response` must be set to respond to the chargeback.
+                                    type: string
+                                    enum:
+                                    - ALLOWED
+                                    - NOT_ALLOWED
+                                    - REQUIRED
+                                  response:
+                                    type: string
+                                    description: Plain text description to provide additional information for the chargeback evidence.
+                                    nullable: true
+                                  created_at:
+                                    description: Date and time chargeback evidence was created at in UTC RFC 3339 format.
+                                    $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/chargebacks/items/properties/created_at'
+                                    readOnly: true
+                                  updated_at:
+                                    description: Date and time chargeback evidence was last updated at in UTC RFC 3339 format.
+                                    $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/chargebacks/items/properties/created_at'
+                                    readOnly: true
+                            validation_errors:
+                              description: List of errors with the chargeback evidence to respond to the chargeback, if applicable.
+                              type: array
+                              items:
+                                type: object
+                                description: Details of the error with the chargeback evidence.
+                                properties:
+                                  field:
+                                    description: The field in the request that had an error, if applicable.
+                                    type: string
+                                  code:
+                                    description: The code describing the error.
+                                    type: string
+                                  message:
+                                    description: The description of the error related to the field.
+                                    type: string
+                            expected_deposit_date:
+                              $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date'
+                              description: Date the fee of the chargeback is expected to be deducted in a deposit. Funds pulled from the merchant or given to the merchant is dependent on the chargeback status and is not represented by the expected deposit date.
+                            source:
+                              description: The source of the chargeback. Indicates the integration that created the chargeback.
+                              type: string
+                              nullable: false
+                              enum:
+                              - SYSTEM
+                            source_desc:
+                              description: The description of the source of the chargeback. This will be a human-readable value that may be presented to the end user.
+                              type: string
+                              nullable: false
+                            created_at:
+                              description: Date and time chargeback was created at in UTC RFC 3339 format.
+                              readOnly: true
+                              type: string
+                              format: date-time
+                              example: '2022-01-01T12:00:00Z'
+                            updated_at:
+                              description: Date and time chargeback was last updated at in UTC RFC 3339 format.
+                              $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/chargebacks/items/properties/created_at'
+                              readOnly: true
+                      has_chargebacks:
+                        description: Boolean indicating that the payin has one or more chargebacks created.
+                        type: boolean
+                      ach_return:
+                        description: The ACH return details.
+                        type: object
+                        properties:
+                          ach_return_id:
+                            description: "The unique ACH return identifier. \n\nPrefix is \"ret\" in production and \"sbx_ret\" in sandbox."
+                            type: string
+                            example: ret_2DrDKk5NIMbpuNGqm109SkpGDHh
+                          merchant_id:
+                            $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_id'
+                          payin_id:
+                            description: 'The unique payin identifier. This will only be set if there is not a refund_id set.
+
+
+                              Prefix is "pyi" in production and "sbx_pyi" in sandbox.'
+                            $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/payin_id'
+                          refund_id:
+                            description: 'The unique refund identifier.  This will only be set if there is not a payin_id set.
+
+
+                              Prefix is "rfd_" in production and "sbx_rfd_" in sandbox.'
+                            type: string
+                            example: rfd_2DrDU206kzAhclm1WrZbuwDERRk
+                          status:
+                            description: The status of the ACH return.
+                            type: string
+                            enum:
+                            - SUCCEEDED
+                            example: SUCCEEDED
+                          return_code:
+                            description: The code explaining the reason the ACH payment was returned.
+                            type: string
+                            nullable: false
+                            enum:
+                            - R01
+                            - R02
+                            - R03
+                            - R05
+                            - R06
+                            - R07
+                            - R08
+                            - R09
+                            - R10
+                            - R11
+                            - R12
+                            - R13
+                            - R14
+                            - R15
+                            - R16
+                            - R17
+                            - R18
+                            - R19
+                            - R20
+                            - R21
+                            - R22
+                            - R23
+                            - R24
+                            - R25
+                            - R26
+                            - R27
+                            - R28
+                            - R29
+                            - R30
+                            - R31
+                            - R32
+                            - R33
+                            - R34
+                            - R35
+                            - R36
+                            - R37
+                            - R38
+                            - R39
+                            - R40
+                            - R41
+                            - R42
+                            - R43
+                            - R44
+                            - R45
+                            - R46
+                            - R47
+                            - R50
+                            - R51
+                            - R52
+                            - R53
+                            - R61
+                            - R62
+                            - R67
+                            - R68
+                            - R69
+                            - R70
+                            - R71
+                            - R72
+                            - R73
+                            - R74
+                            - R75
+                            - R76
+                            - R77
+                            - R80
+                            - R81
+                            - R82
+                            - R83
+                            - R84
+                            - R85
+                            readOnly: true
+                          return_desc:
+                            description: The description explaining the reason the ACH payment was returned. This will be a human-readable value that may be presented to the end user.
+                            type: string
+                            nullable: false
+                            examples:
+                            - Insufficient Funds
+                            - Account Closed
+                            - Corporate Customer Advises Not Authorized
+                            readOnly: true
+                          amount:
+                            description: 'The amount captured by the ACH return, in minor units.
+
+
+                              For example, 1000 is 10.00 USD.'
+                            type: integer
+                            example: 100
+                          currency_code:
+                            $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code'
+                          amount_splits:
+                            description: 'Represents how the ACH return amount was allocated between the originating merchant, the platform, and one or more other merchants.<br/><br/>
+
+
+                              A `PLATFORM` split defines the amount debited from the platform.<br/><br/>
+
+
+                              A `MERCHANT` split defines the amount debited from the specified merchant.<br/><br/>
+
+
+                              Any remaining amount not specified by the amount splits was debited from the originating merchant.'
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                amount:
+                                  description: 'The amount allocated, in minor units.
+
+
+                                    For example, 1000 is 10.00 USD.'
+                                  type: integer
+                                  example: 3
+                                currency_code:
+                                  $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code'
+                                type:
+                                  description: 'The type of receiver for this split.<br/><br/>
+
+
+                                    `PLATFORM` allocates the split amount to the platform. `MERCHANT` allocates the split amount to the merchant specified by merchant_id.'
+                                  type: string
+                                  enum:
+                                  - PLATFORM
+                                  - MERCHANT
+                                merchant_id:
+                                  description: 'Required when type is `MERCHANT`.<br/><br/>
+
+
+                                    The unique identifier of the merchant debited from.<br/><br/>
+
+
+                                    Not valid when type is `PLATFORM`.'
+                                  type: string
+                                  example: mid_abc123
+                              required:
+                              - amount
+                              - currency_code
+                              - type
+                            example:
+                            - amount: 3
+                              currency_code: USD
+                              type: PLATFORM
+                          merchant_fees:
+                            description: The ACH return fee billed to the merchant
+                            type: object
+                            properties:
+                              total_amount:
+                                description: The total amount of fees billed to the merchant.
+                                type: object
+                                properties:
+                                  amount:
+                                    $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_fees/properties/total_amount/properties/amount'
+                                  currency_code:
+                                    $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code'
+                            example:
+                              total_amount:
+                                amount: 2
+                                currency_code: USD
+                          metadata:
+                            $ref: '#/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/metadata'
+                          expected_deposit_date:
+                            $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date'
+                            description: Date the funds are expected to be available in a deposit.
+                          source:
+                            description: The source of the ACH return. Indicates the integration that created the ACH return.
+                            type: string
+                            nullable: false
+                            enum:
+                            - SYSTEM
+                          source_desc:
+                            description: The description of the source of the ACH return. This will be a human-readable value that may be presented to the end user.
+                            type: string
+                            nullable: false
+                          created_at:
+                            description: Date and time ACH return was created at in UTC RFC 3339 format.
+                            type: string
+                            format: date-time
+                            example: '2022-01-01T12:00:00Z'
+                          updated_at:
+                            description: Date and time ACH return was last updated at in UTC RFC 3339 format.
+                            type: string
+                            format: date-time
+                            example: '2022-01-01T12:00:00Z'
+                      has_ach_return:
+                        description: Boolean indicating that the payin has an ACH return.
+                        type: boolean
+                      payin_config:
+                        description: Payin config details.
+                        type: object
+                        properties:
+                          payin_config_id:
+                            $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/threeds_attempt/properties/payin_config_id'
+                            readOnly: true
+                          processing_mode:
+                            readOnly: true
+                            description: "Determines how to process the payin when [creating the payin](ref:create_payin) via the Payment Component or the API.\n\nOptions:\n  * `AUTHORIZE` - Only authorize the payin, separating the authorization and capture of funds. Authorize will place a hold on the funds and the payin must be [captured](ref:capture_payin) in a separate request.\n  * `AUTHORIZE_AND_CAPTURE` - Authorize and capture the payin in a single request (default)."
+                            type: string
+                            default: AUTHORIZE_AND_CAPTURE
+                            enum:
+                            - AUTHORIZE
+                            - AUTHORIZE_AND_CAPTURE
+                          amount:
+                            description: 'The total amount requested for processing, in minor units.
+
+
+                              For example, 1000 is 10.00 USD.'
+                            type: integer
+                            example: 100
+                            minimum: 1
+                            readOnly: true
+                          currency_code:
+                            $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code'
+                            readOnly: true
+                          amount_splits:
+                            readOnly: true
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                rate:
+                                  description: 'The amount split defined as a rate, in percent mille (1 PCM = 0.001%). The amount split will be calculated on the authorized amount of the payin.
+
+
+                                    For example, 3000 is 3%.'
+                                  type: integer
+                                  example: 3000
+                                  minimum: 0
+                                rate_cap:
+                                  description: "The amount split rate cap, in minor units. Used to cap the rate to a specified amount.\n\nFor example, 1000 is 10.00 USD.\n\nThe following validation must be met:\n  If the rate is greater than 0%, then the rate_cap must be greater than $0. For example, to bill a rate of 1% up to $100 set the value to 10000.\n  If the rate is 0%, then the rate_cap must be $0."
+                                  type: integer
+                                  example: 1000
+                                  minimum: 0
+                                amount:
+                                  description: 'The amount split, in minor units.
+
+
+                                    For example, 1000 is 10.00 USD.'
+                                  type: integer
+                                  example: 3
+                                  minimum: 0
+                                currency_code:
+                                  $ref: '#/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code'
+                                type:
+                                  description: 'The type of receiver for this split.<br/><br/>
+
+
+                                    `PLATFORM` allocates the split amount to the platform. `MERCHANT` allocates the split amount to the merchant specified by merchant_id.'
+                                  type: string
+                                  enum:
+                                  - PLATFORM
+                                  - MERCHANT
+                                merchant_id:
+                                  description: 'Required when type is `MERCHANT`.<br/><br/>
+
+
+                                    The unique identifier of the merchant receiving this split. The merchant status must be ACTIVE.<br/><br/>
+
+
+                                    The following constraints must be met:
+
+
+                                    - Cannot match the merchant_id of the originating merchant on the payin.
+
+                                    - Cannot be duplicated within the same amount_splits array.
+
+                                    - Not valid when type is `PLATFORM`.<br/><br/>
+
+
+                                    Prefix is mid in production and sbx_mid in sandbox.'
+                                  type: string
+                                  example: mid_abc123
+                                amount_split_reversal_config:
+                                  description: Controls whether this amount split is reversed on a refund for the full amount or an ACH return. When not provided, both attributes default to false.
+                                  type: object
+                                  properties:
+                                    on_full_refund:
+                                      description: 'Determines whether this amount split is reversed when a refund for the full amount is processed on this payin.<br/><br/>
+
+
+                                        When `true`, the receiver''s allocation is pulled back on the refund. When `false`, the receiver retains their allocation and the originating merchant absorbs this amount of the refund.<br/><br/>
+
+
+                                        This configuration only applies to full refunds. For partial refunds, amount_splits on the refund request can be provided to specify the reversal amounts.'
+                                      type: boolean
+                                      default: false
+                                    on_ach_return:
+                                      description: 'Determines whether this amount split is reversed when an ACH return is processed on this payin.<br/><br/>
+
+
+                                        When `true`, the receiver''s allocation is pulled back on the ACH return. When `false`, the receiver retains their allocation and the originating merchant absorbs this amount of the ACH return.'
+                                      type: boolean
+                                      default: false
+                              required:
+                              - amount
+                              - currency_code
+                              - type
+                            example:
+                            - amount: 3
+                              currency_code: USD
+                              type: PLATFORM
+                            maxItems: 26
+                            minItems: 0
+                      threeds_attempt:
+                        nullable: true
+                        description: 3DS attempt details.
+                        type: object
+                        properties:
+                          threeds_attempt_id:
+                            description: "The unique threeds attempt identifier. \n\nPrefix is \"tds\" in production and \"sbx_tds\" in sandbox."
+                            type: string
+                            example: tds_2DrDFJPutxE5AIbJSopAnqniEbr
+                          merchant_id:
+                            $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_id'
+                          payin_config_id:
+                            description: "The unique payin config identifier. \n\nPrefix is \"cfg\" in production and \"sbx_cfg\" in sandbox."
+                            type: string
+                            example: cfg_2DrDPKzdQypRudLd8DhQKZX27dA
+                          status:
+                            description: The status of the threeds attempt.
+                            type: string
+                            enum:
+                            - CREATED
+                            - FINGERPRINTED
+                            - SUCCEEDED
+                            - CHALLENGED
+                            - FAILED
+                            example: CREATED
+                          failed_reason_code:
+                            description: 'The code explaining the reason for the 3DS request failure.
+
+
+                              This value will be set if the 3DS attempt status is `FAILED`.'
+                            type: string
+                            nullable: true
+                            readOnly: true
+                            enum:
+                            - 3DS_ATTEMPT_TIMED_OUT
+                            - CARD_NOT_ENROLLED
+                            - CHALLENGE_FAILED
+                            - MERCHANT_NOT_BOARDED
+                            - UNEXPECTED_ERROR
+                            - UNSUPPORTED_PAYMENT_DATA
+                          failed_reason_desc:
+                            description: 'The description explaining the reason for the payin''s 3DS request failure. This will be a human-readable value that may be presented to the end user.
+
+
+                              This value will be `null` if the 3DS request succeeded or if not applicable.'
+                            type: string
+                            nullable: true
+                            examples:
+                            - 3DS attempt timed out
+                            - Card not enrolled to 3DS
+                            - Failed 3DS challenge
+                            - Merchant not boarded to 3DS
+                            - Unexpected error
+                            - Unsupported payment data
+                            readOnly: true
+                          created_at:
+                            description: The datetime at which the attempt was initiated, in RFC3339 format
+                            $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/chargebacks/items/properties/created_at'
+                          updated_at:
+                            description: The datetime at which the attempt was last updated, in RFC3339 format
+                            $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/chargebacks/items/properties/created_at'
+                          fingerprinted_at:
+                            description: 'The datetime at which the attempt was fingerprinted, in RFC3339 format
+
+
+                              The 3DS fingerprint step may open a hidden IFRAME to the issuing bank, allowing the bank to run proprietary fingerprinting identification.'
+                            $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/chargebacks/items/properties/created_at'
+                          challenged_at:
+                            description: 'The datetime at which the attempt was challenged, in RFC3339 format
+
+
+                              The 3DS challenge step will display a modal dialog, provided by the issuing bank, for the customer to authenticate to their bank.'
+                            $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/chargebacks/items/properties/created_at'
+                          succeeded_at:
+                            description: 'The datetime at which the attempt succeeded, in RFC3339 format
+
+
+                              The 3DS attempt succeeded if the customer authenticates to their bank, frictionlessly or through the challenge step.'
+                            $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/chargebacks/items/properties/created_at'
+                          failed_at:
+                            description: 'The datetime at which the attempt failed, in RFC3339 format
+
+
+                              The 3DS attempt failed for a variety of reasons, such as issuer does not support 3DS or the customer fails to complete the challenge step.'
+                            $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/chargebacks/items/properties/created_at'
+                      expected_deposit_date:
+                        description: Date the funds are expected to be available in a deposit.
+                        type: string
+                        format: date
+                        example: '2022-01-01'
+                      source:
+                        description: The source of the payin. Indicates the integration that created the payin.
+                        type: string
+                        nullable: false
+                        enum:
+                        - API_DIRECT
+                        - API_STORED_PAYMENT_METHOD
+                        - COMPONENT
+                        - DEVICE
+                        - EXTERNAL
+                        - IVR
+                        - TAP_TO_PHONE
+                      source_desc:
+                        description: The description of the source of the payin. This will be a human-readable value that may be presented to the end user.
+                        type: string
+                        nullable: false
+                      created_at:
+                        description: Date and time payin was created at in UTC RFC 3339 format.
+                        type: string
+                        format: date-time
+                        example: '2022-01-01T12:00:00Z'
+                      updated_at:
+                        description: Date and time payin was last updated at in UTC RFC 3339 format.
+                        type: string
+                        format: date-time
+                        example: '2022-01-01T12:00:00Z'
+                  errors:
+                    $ref: '#/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1deposits/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1deposits/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1deposits/get/responses/403'
+        '409':
+          description: Conflict on the requested resource.
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1deposits/get/responses/400/content/application~1json/schema'
+              example:
+                status: ERROR
+                data: null
+                errors:
+                - field: string
+                  code: string
+                  message: Conflict
+        5XX:
+          $ref: '#/paths/~1v1~1deposits/get/responses/5XX'
+      tags:
+      - Deposit Methods
+  /v1/deposit_methods:
+    post:
+      operationId: create_deposit_method
+      summary: Create deposit method
+      description: 'Create a deposit method. A deposit method is assigned to a merchant and is where the merchant''s funds for their payment activity will be deposited to.
+
+
+        This endpoint requires Rainforest approval. Platforms that meet all [requirements](doc:send-sensitive-data-via-api#requirements) and are approved by Rainforest can send the full bank account numbers to Rainforest via a direct API integration.'
+      parameters:
+      - $ref: '#/paths/~1v1~1deposits/get/parameters/0'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                deposit_method_config_id:
+                  description: 'The unique deposit method config identifier. A deposit method must be configured prior to this request. See [create a deposit method config](ref:create_deposit_method_config) if a deposit method configuration has not been created yet.
+
+
+                    Prefix is "dmc" in production and "sbx_dmc" in sandbox.'
+                  type: string
+                  example: dmc_2TLhjntzSYJ8BuCaDxY22xP1Xb2
+                method_type:
+                  description: The type of deposit method.
+                  type: string
+                  enum:
+                  - ACH
+                  - PLAID_ACH
+                ach:
+                  description: ACH deposit method details.
+                  type: object
+                  properties:
+                    account_number:
+                      description: The bank account number.
+                      type: string
+                      example: '12345678'
+                    routing_number:
+                      description: The 9-digit routing number.
+                      type: string
+                      example: 091000019
+                      maxLength: 9
+                      minLength: 9
+                    account_type:
+                      description: The account type. Defaulted to CHECKING if omitted.
+                      type: string
+                      example: CHECKING
+                      enum:
+                      - CHECKING
+                      - SAVINGS
+                    account_holder_type:
+                      description: The account holder type.
+                      type: string
+                      example: PERSONAL
+                      enum:
+                      - PERSONAL
+                      - BUSINESS
+                billing_contact:
+                  description: Billing contact details.
+                  type: object
+                  properties:
+                    name:
+                      description: First and last name.
+                      type: string
+                      example: Jane Smith
+                      maxLength: 100
+                    address_line_1:
+                      description: First line of street address.
+                      type: string
+                      example: 123 Example Street
+                      maxLength: 100
+                    address_line_2:
+                      description: Second line of street address, if required.
+                      type: string
+                      example: Suite 123
+                      maxLength: 100
+                    city:
+                      description: City for address.
+                      type: string
+                      example: Atlanta
+                      maxLength: 100
+                    state:
+                      description: State, province, or region for address.
+                      type: string
+                      example: GA
+                      maxLength: 100
+                    postal_code:
+                      description: Postal code or ZIP code for address.
+                      type: string
+                      example: '30305'
+                      maxLength: 15
+                    country:
+                      description: "2-digit country code. \nFind country codes here: https://www.iso.org/obp"
+                      type: string
+                      example: US
+                      maxLength: 2
+                      minLength: 2
+                    email:
+                      description: Email address.
+                      type: string
+                      example: janesmith@example.com
+                      maxLength: 100
+                    phone:
+                      description: Phone number, including extension.
+                      type: string
+                      example: '+14041234567'
+                      maxLength: 100
+              required:
+              - deposit_method_config_id
+              - method_type
+              - ach
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    type: object
+                    properties:
+                      deposit_method_id:
+                        description: "The unique deposit method identifier. \n\nPrefix is \"dmt\" in production and \"sbx_dmt\" in sandbox."
+                        type: string
+                        example: dmt_2DrDRpyAdp5MPUJnrJmoZcMmtfF
+                      deposit_method_config_id:
+                        $ref: '#/paths/~1v1~1deposit_method_configs/post/requestBody/content/application~1json/schema/properties/deposit_method_config_id'
+                        readOnly: true
+                      status:
+                        description: The status of the deposit method.
+                        type: string
+                        enum:
+                        - CREATED
+                        - ACTIVE
+                        - REPLACED
+                        example: ACTIVE
+                      fingerprint:
+                        description: The unique identifier of a deposit method across all platform merchants.
+                        type: string
+                        example: 52q5eKHLvCOfRlYiNZL4hltKmXEnTIT8
+                        readOnly: true
+                      method_type:
+                        $ref: '#/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/method_type'
+                      ach:
+                        description: ACH deposit method details.
+                        $ref: '#/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/ach'
+                      plaid_ach:
+                        description: ACH deposit method details from Plaid.
+                        type: object
+                        properties:
+                          account_number_last_4:
+                            $ref: '#/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/ach/properties/account_number_last_4'
+                          routing_number:
+                            $ref: '#/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/ach/properties/routing_number'
+                          bank_name:
+                            $ref: '#/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/ach/properties/bank_name'
+                          account_type:
+                            $ref: '#/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/ach/properties/account_type'
+                          account_holder_type:
+                            $ref: '#/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/ach/properties/account_holder_type'
+                      billing_contact:
+                        $ref: '#/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/billing_contact'
+                      metadata:
+                        description: 'Valid JSON key-value object specified by the platform to store additional information. Keys are queryable in list endpoints. Do not use the metadata field to store sensitive or confidential data.
+
+
+                          Metadata must be less than 8 KB in size.
+
+                          '
+                        type: object
+                        example:
+                          key1: value1
+                          key2:
+                            inner_key1: inner_value1
+                        minLength: 0
+                      replaces_deposit_method_id:
+                        description: 'The unique identifier for the deposit method that was replaced by this deposit method.
+
+
+                          Prefix is "dmt" in production and "sbx_dmt" in sandbox.
+
+
+                          This value will be `null` if this deposit method does not replace another deposit method.'
+                        type: string
+                        nullable: true
+                        example: dmt_33FPts9UyEOKq91K2lAg9ZUM2ZS
+                      replaced_by_deposit_method_id:
+                        description: 'The unique identifier for the deposit method that replaced this deposit method.
+
+
+                          Prefix is "dmt" in production and "sbx_dmt" in sandbox.
+
+
+                          This value will be `null` if the deposit method has not been replaced.'
+                        type: string
+                        nullable: true
+                        example: dmt_33FPts9UyEOKq91K2lAg9ZUM2ZS
+                      replaced_at:
+                        description: Date and time deposit method was replaced in UTC RFC 3339 format.
+                        type: string
+                        format: date-time
+                        example: '2022-01-01T12:00:00Z'
+                      replaced_reason_code:
+                        description: 'The code explaining the reason the deposit method was replaced.
+
+
+                          This value will be `null` if the deposit method has not been replaced.'
+                        type: string
+                        nullable: true
+                        enum:
+                        - C01
+                        - C02
+                        - C03
+                        - C04
+                        - C05
+                        - C06
+                        - C07
+                        - C08
+                        - C09
+                        - C10
+                        - C11
+                        - C12
+                      replaced_reason_desc:
+                        description: 'The description explaining the reason the deposit method was replaced. This will be a human-readable value that may be presented to the end user.
+
+
+                          This value will be `null` if the deposit method has not been replaced.'
+                        type: string
+                        nullable: true
+                        examples:
+                        - null
+                        - Incorrect account number
+                        - Incorrect routing number
+                        - Incorrect routing number and account number
+                        - Incorrect account name
+                        - Incorrect payment code
+                        - Incorrect account number and transit code
+                        - Incorrect routing number, account number and payment code
+                        - Incorrect foreign routing number
+                        - Incorrect individual identification number
+                        - Incorrect company name
+                        - Incorrect company identification
+                        - Incorrect company name and identification
+                        readOnly: true
+                      created_at:
+                        description: Date and time deposit method was created at in UTC RFC 3339 format.
+                        type: string
+                        format: date-time
+                        example: '2022-01-01T12:00:00Z'
+                      updated_at:
+                        description: Date and time deposit method was last updated at in UTC RFC 3339 format.
+                        type: string
+                        format: date-time
+                        example: '2022-01-01T12:00:00Z'
+                  errors:
+                    $ref: '#/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1deposits/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1deposits/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1deposits/get/responses/403'
+        5XX:
+          $ref: '#/paths/~1v1~1deposits/get/responses/5XX'
+      tags:
+      - Deposit Methods
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: APIKey

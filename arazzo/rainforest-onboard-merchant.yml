@@ -1,0 +1,58 @@
+arazzo: 1.0.1
+info:
+  title: Rainforest — onboard a merchant
+  version: 1.0.0
+  summary: Create a merchant, submit its application, and confirm it reaches ACTIVE.
+sourceDescriptions:
+- name: merchants
+  url: ../openapi/rainforest-merchants-openapi.yaml
+  type: openapi
+workflows:
+- workflowId: onboard-merchant
+  summary: Create a merchant, submit the application, drive it to a decision (sandbox), and confirm ACTIVE.
+  inputs:
+    type: object
+    properties:
+      name: { type: string }
+      merchant_application_id: { type: string }
+  steps:
+  - stepId: createMerchant
+    description: Create the merchant (a pending application is created with it).
+    operationId: create_merchant
+    requestBody:
+      payload:
+        name: $inputs.name
+    outputs:
+      merchant_id: $response.body#/data/id
+  - stepId: submitApplication
+    description: Submit the merchant application for KYC/KYB.
+    operationId: submit_merchant_application
+    parameters:
+    - name: merchant_id
+      in: path
+      value: $steps.createMerchant.outputs.merchant_id
+    - name: merchant_application_id
+      in: path
+      value: $inputs.merchant_application_id
+  - stepId: simulateDecision
+    description: Sandbox only — advance the application to a decision and fire webhooks.
+    operationId: simulate_merchant_application
+    parameters:
+    - name: merchant_id
+      in: path
+      value: $steps.createMerchant.outputs.merchant_id
+    - name: merchant_application_id
+      in: path
+      value: $inputs.merchant_application_id
+  - stepId: getMerchant
+    description: Confirm the merchant status (must be ACTIVE before processing).
+    operationId: get_merchant
+    parameters:
+    - name: merchant_id
+      in: path
+      value: $steps.createMerchant.outputs.merchant_id
+    outputs:
+      status: $response.body#/data/status
+  outputs:
+    merchant_id: $steps.createMerchant.outputs.merchant_id
+    status: $steps.getMerchant.outputs.status

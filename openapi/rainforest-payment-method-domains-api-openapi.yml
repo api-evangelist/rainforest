@@ -1,0 +1,248 @@
+openapi: 3.1.0
+info:
+  title: Authentication ACH Returns Payment Method Domains API
+  version: 1.0.0
+  description: This resource is used for authentication actions
+  contact:
+    name: Rainforest
+    email: support@rainforestpay.com
+    url: https://rainforestpay.com
+servers:
+- url: https://api.sandbox.rainforestpay.com
+  description: Sandbox server
+- url: https://api.rainforestpay.com
+  description: Production server
+security:
+- BearerAuth: []
+tags:
+- name: Payment Method Domains
+  description: Resources for payment method domain functions.
+paths:
+  /v1/payment_method_domains:
+    get:
+      operationId: list_payment_method_domains
+      summary: List payment method domains
+      description: List payment method domains
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    allOf:
+                    - $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/data/allOf/0'
+                    - type: object
+                      properties:
+                        results:
+                          description: List of payment method domains
+                          type: array
+                          items:
+                            $ref: '#/paths/~1v1~1payment_method_domains/post/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Payment Method Domains
+    post:
+      operationId: create_payment_method_domain
+      summary: Create payment method domain
+      description: 'Create payment method domain to verify your domain for payment processing with Apple Pay.
+
+
+        A platform can have up to 99 domains.
+
+
+        If your integration requires a domain per merchant, then register the domain by providing a merchant_id in the request. Each merchant can have up to 99 domains.'
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/paths/~1v1~1payment_method_domains/post/responses/200/content/application~1json/schema/properties/data'
+              required:
+              - domain_name
+            examples:
+              without_platform_id:
+                value:
+                  domain_name: rainforestpay.com
+              with_platform_id:
+                value:
+                  platform_id: plt_2cm5nBXB4GnMNsqPkoaUXmrOds9
+                  domain_name: rainforestpay.com
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    description: A payment method domain
+                    type: object
+                    properties:
+                      payment_method_domain_id:
+                        readOnly: true
+                        description: "The unique payment method domain identifier. \n\nPrefix is \"pmd\" in production and \"sbx_pmd\" in sandbox."
+                        type: string
+                        example: pmd_2cm9diJDpnUga0fUFvgSwGlmMHB
+                      merchant_id:
+                        description: 'The unique merchant identifier. Set if the Payment Method Domain is specific to a merchant.
+
+
+                          Prefix is "mid" in production and "sbx_mid" in sandbox.'
+                        $ref: '#/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id'
+                      domain_name:
+                        description: A fully qualified domain name
+                        type: string
+                        example: pay.yourdomain.com
+                      status:
+                        readOnly: true
+                        description: The status of the payment method domain
+                        type: string
+                        enum:
+                        - CREATED
+                        - VERIFIED
+                        - DELETED
+                      created_at:
+                        description: The datetime when the domain was created, in RFC3339 format.
+                        readOnly: true
+                        type: string
+                        format: date-time
+                        example: '2022-01-01T12:00:00Z'
+                      updated_at:
+                        description: The datetime when the domain was updated, in RFC3339 format.
+                        $ref: '#/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at'
+                        readOnly: true
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Payment Method Domains
+  /v1/payment_method_domains/{payment_method_domain_id}:
+    get:
+      operationId: get_payment_method_domain
+      summary: Get payment method domain
+      description: Get payment method domain
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - required: true
+        in: path
+        name: payment_method_domain_id
+        schema:
+          type: string
+        description: "The unique payment method domain identifier. \n\nPrefix is \"pmd\" in production and \"sbx_pmd\" in sandbox."
+        examples:
+          production:
+            value: pmd_2cm9diJDpnUga0fUFvgSwGlmMHB
+          sandbox:
+            value: sbx_pmd_2cm9diJDpnUga0fUFvgSwGlmMHB
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1payment_method_domains/post/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Payment Method Domains
+    delete:
+      operationId: delete_payment_method_domain
+      summary: Delete payment method domain
+      description: Delete payment method domain
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - $ref: '#/paths/~1v1~1payment_method_domains~1%7Bpayment_method_domain_id%7D/get/parameters/1'
+        required: true
+        in: path
+      responses:
+        '204':
+          description: No Content
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Payment Method Domains
+  /v1/payment_method_domains/{payment_method_domain_id}/verify:
+    post:
+      operationId: verify_payment_method_domain
+      summary: Verify payment method domain
+      description: Verify payment method domain
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - $ref: '#/paths/~1v1~1payment_method_domains~1%7Bpayment_method_domain_id%7D/get/parameters/1'
+        required: true
+        in: path
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1payment_method_domains/post/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Payment Method Domains
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: APIKey

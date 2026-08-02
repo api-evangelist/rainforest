@@ -1,0 +1,1398 @@
+{
+  "info": {
+    "_postman_id": "8ee7f32a-49ba-457c-b052-9bfde62420e5",
+    "name": "Authentication ACH Returns Payment Method Domains API",
+    "description": "This resource is used for authentication actions\n\nContact Support:\n Name: Rainforest\n Email: support@rainforestpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:43:51.000Z",
+    "updatedAt": "2026-07-28T02:43:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8ee7f32a-49ba-457c-b052-9bfde62420e5"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "payment_method_domains",
+          "item": [
+            {
+              "name": "{payment_method_domain_id}",
+              "item": [
+                {
+                  "name": "verify",
+                  "item": [
+                    {
+                      "name": "Verify payment method domain",
+                      "id": "b6f7949a-4007-4979-bd34-e317307e4e83",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/payment_method_domains/:payment_method_domain_id/verify",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "payment_method_domains",
+                            ":payment_method_domain_id",
+                            "verify"
+                          ],
+                          "variable": [
+                            {
+                              "id": "f266435f-11ad-4e87-b951-118187125931",
+                              "key": "payment_method_domain_id",
+                              "value": "<string>",
+                              "description": "(Required) The unique payment method domain identifier. \n\nPrefix is \"pmd\" in production and \"sbx_pmd\" in sandbox."
+                            }
+                          ]
+                        },
+                        "description": "Verify payment method domain"
+                      },
+                      "response": [
+                        {
+                          "id": "cb95b1c8-433c-4f1a-8c74-89203e78dfbf",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/payment_method_domains/:payment_method_domain_id/verify",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "payment_method_domains",
+                                ":payment_method_domain_id",
+                                "verify"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "payment_method_domain_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"payment_method_domain_id\": \"<string>\",\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"domain_name\": \"<string>\",\n    \"status\": \"CREATED\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": {\n      \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n    }\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-07-28T02:43:52.000Z",
+                          "updatedAt": "2026-07-28T02:43:52.000Z",
+                          "uid": "35240-cb95b1c8-433c-4f1a-8c74-89203e78dfbf"
+                        },
+                        {
+                          "id": "30b48595-af34-4d19-8557-3c820742bba7",
+                          "name": "400 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/payment_method_domains/:payment_method_domain_id/verify",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "payment_method_domains",
+                                ":payment_method_domain_id",
+                                "verify"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "payment_method_domain_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:52.000Z",
+                          "updatedAt": "2026-07-28T02:43:52.000Z",
+                          "uid": "35240-30b48595-af34-4d19-8557-3c820742bba7"
+                        },
+                        {
+                          "id": "d58e443d-3ee1-494a-9b36-b33eabeb40fa",
+                          "name": "401 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/payment_method_domains/:payment_method_domain_id/verify",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "payment_method_domains",
+                                ":payment_method_domain_id",
+                                "verify"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "payment_method_domain_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:52.000Z",
+                          "updatedAt": "2026-07-28T02:43:52.000Z",
+                          "uid": "35240-d58e443d-3ee1-494a-9b36-b33eabeb40fa"
+                        },
+                        {
+                          "id": "1c5d451c-15ae-4a82-8318-b2fb425849ef",
+                          "name": "403 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/payment_method_domains/:payment_method_domain_id/verify",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "payment_method_domains",
+                                ":payment_method_domain_id",
+                                "verify"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "payment_method_domain_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:52.000Z",
+                          "updatedAt": "2026-07-28T02:43:52.000Z",
+                          "uid": "35240-1c5d451c-15ae-4a82-8318-b2fb425849ef"
+                        },
+                        {
+                          "id": "7c4ba3ae-e45b-4f9c-9d7c-edcac030c5da",
+                          "name": "5XX response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/payment_method_domains/:payment_method_domain_id/verify",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "payment_method_domains",
+                                ":payment_method_domain_id",
+                                "verify"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "payment_method_domain_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:52.000Z",
+                          "updatedAt": "2026-07-28T02:43:52.000Z",
+                          "uid": "35240-7c4ba3ae-e45b-4f9c-9d7c-edcac030c5da"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:43:52.000Z",
+                      "updatedAt": "2026-07-28T02:43:52.000Z",
+                      "uid": "35240-b6f7949a-4007-4979-bd34-e317307e4e83"
+                    }
+                  ],
+                  "id": "342094e4-d5e4-4b3b-9d09-dff8b0a2db81",
+                  "createdAt": "2026-07-28T02:43:52.000Z",
+                  "updatedAt": "2026-07-28T02:43:52.000Z",
+                  "uid": "35240-342094e4-d5e4-4b3b-9d09-dff8b0a2db81"
+                },
+                {
+                  "name": "Get payment method domain",
+                  "id": "0091b52f-1dc2-4c43-8bd7-8b3b6c7aac98",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payment_method_domains/:payment_method_domain_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payment_method_domains",
+                        ":payment_method_domain_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "97ce7648-f91b-4f0f-ad86-58ba87a0b18f",
+                          "key": "payment_method_domain_id",
+                          "value": "<string>",
+                          "description": "(Required) The unique payment method domain identifier. \n\nPrefix is \"pmd\" in production and \"sbx_pmd\" in sandbox."
+                        }
+                      ]
+                    },
+                    "description": "Get payment method domain"
+                  },
+                  "response": [
+                    {
+                      "id": "5efb6a5c-b427-4868-a9f6-d9399f7d763d",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/payment_method_domains/:payment_method_domain_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "payment_method_domains",
+                            ":payment_method_domain_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payment_method_domain_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"payment_method_domain_id\": \"<string>\",\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"domain_name\": \"<string>\",\n    \"status\": \"CREATED\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": {\n      \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n    }\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:43:52.000Z",
+                      "updatedAt": "2026-07-28T02:43:52.000Z",
+                      "uid": "35240-5efb6a5c-b427-4868-a9f6-d9399f7d763d"
+                    },
+                    {
+                      "id": "00d015f3-c9cd-43ae-9fde-5655fde5802a",
+                      "name": "400 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/payment_method_domains/:payment_method_domain_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "payment_method_domains",
+                            ":payment_method_domain_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payment_method_domain_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:52.000Z",
+                      "updatedAt": "2026-07-28T02:43:52.000Z",
+                      "uid": "35240-00d015f3-c9cd-43ae-9fde-5655fde5802a"
+                    },
+                    {
+                      "id": "3f11b76a-886a-4722-901d-df27f51db3bb",
+                      "name": "401 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/payment_method_domains/:payment_method_domain_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "payment_method_domains",
+                            ":payment_method_domain_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payment_method_domain_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:52.000Z",
+                      "updatedAt": "2026-07-28T02:43:52.000Z",
+                      "uid": "35240-3f11b76a-886a-4722-901d-df27f51db3bb"
+                    },
+                    {
+                      "id": "36aac90b-7eb4-45ac-ac47-324b79fa8178",
+                      "name": "403 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/payment_method_domains/:payment_method_domain_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "payment_method_domains",
+                            ":payment_method_domain_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payment_method_domain_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:52.000Z",
+                      "updatedAt": "2026-07-28T02:43:52.000Z",
+                      "uid": "35240-36aac90b-7eb4-45ac-ac47-324b79fa8178"
+                    },
+                    {
+                      "id": "1a56eaa8-d434-4f49-80a1-a0b02e3f0c95",
+                      "name": "5XX response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/payment_method_domains/:payment_method_domain_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "payment_method_domains",
+                            ":payment_method_domain_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payment_method_domain_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:52.000Z",
+                      "updatedAt": "2026-07-28T02:43:52.000Z",
+                      "uid": "35240-1a56eaa8-d434-4f49-80a1-a0b02e3f0c95"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:43:52.000Z",
+                  "updatedAt": "2026-07-28T02:43:52.000Z",
+                  "uid": "35240-0091b52f-1dc2-4c43-8bd7-8b3b6c7aac98"
+                },
+                {
+                  "name": "Delete payment method domain",
+                  "id": "c2568a82-f894-48a6-a161-f61fa24c3f5e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payment_method_domains/:payment_method_domain_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payment_method_domains",
+                        ":payment_method_domain_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "3cecac16-2205-443f-8db1-b0bb1ef54c57",
+                          "key": "payment_method_domain_id",
+                          "value": "<string>",
+                          "description": "(Required) The unique payment method domain identifier. \n\nPrefix is \"pmd\" in production and \"sbx_pmd\" in sandbox."
+                        }
+                      ]
+                    },
+                    "description": "Delete payment method domain"
+                  },
+                  "response": [
+                    {
+                      "id": "1a486bbb-bf9a-4c8b-965b-b088bc3b82f3",
+                      "name": "No Content",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/payment_method_domains/:payment_method_domain_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "payment_method_domains",
+                            ":payment_method_domain_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payment_method_domain_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:52.000Z",
+                      "updatedAt": "2026-07-28T02:43:52.000Z",
+                      "uid": "35240-1a486bbb-bf9a-4c8b-965b-b088bc3b82f3"
+                    },
+                    {
+                      "id": "88cc3307-a891-4e20-aa0f-dc43fe7ef701",
+                      "name": "400 response",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/payment_method_domains/:payment_method_domain_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "payment_method_domains",
+                            ":payment_method_domain_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payment_method_domain_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:52.000Z",
+                      "updatedAt": "2026-07-28T02:43:52.000Z",
+                      "uid": "35240-88cc3307-a891-4e20-aa0f-dc43fe7ef701"
+                    },
+                    {
+                      "id": "cc2c9641-7f54-489c-aaa6-bf4e21fc4553",
+                      "name": "401 response",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/payment_method_domains/:payment_method_domain_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "payment_method_domains",
+                            ":payment_method_domain_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payment_method_domain_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:52.000Z",
+                      "updatedAt": "2026-07-28T02:43:52.000Z",
+                      "uid": "35240-cc2c9641-7f54-489c-aaa6-bf4e21fc4553"
+                    },
+                    {
+                      "id": "d30ee788-c2a1-4391-8ec7-e3b91467df86",
+                      "name": "403 response",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/payment_method_domains/:payment_method_domain_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "payment_method_domains",
+                            ":payment_method_domain_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payment_method_domain_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:52.000Z",
+                      "updatedAt": "2026-07-28T02:43:52.000Z",
+                      "uid": "35240-d30ee788-c2a1-4391-8ec7-e3b91467df86"
+                    },
+                    {
+                      "id": "045f3b63-02b1-4f0d-8ff0-5966fe90dd57",
+                      "name": "5XX response",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/payment_method_domains/:payment_method_domain_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "payment_method_domains",
+                            ":payment_method_domain_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payment_method_domain_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:52.000Z",
+                      "updatedAt": "2026-07-28T02:43:52.000Z",
+                      "uid": "35240-045f3b63-02b1-4f0d-8ff0-5966fe90dd57"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:43:52.000Z",
+                  "updatedAt": "2026-07-28T02:43:52.000Z",
+                  "uid": "35240-c2568a82-f894-48a6-a161-f61fa24c3f5e"
+                }
+              ],
+              "id": "8e11c644-6ac8-4f13-acff-81cdf842de8b",
+              "createdAt": "2026-07-28T02:43:52.000Z",
+              "updatedAt": "2026-07-28T02:43:52.000Z",
+              "uid": "35240-8e11c644-6ac8-4f13-acff-81cdf842de8b"
+            },
+            {
+              "name": "List payment method domains",
+              "id": "511b2647-6b6b-481c-af19-a73486f919d1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/payment_method_domains",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "payment_method_domains"
+                  ]
+                },
+                "description": "List payment method domains"
+              },
+              "response": [
+                {
+                  "id": "ae0e934f-9811-4940-bba0-3a3366386215",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payment_method_domains",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payment_method_domains"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"results\": [\n      {\n        \"payment_method_domain_id\": \"<string>\",\n        \"merchant_id\": {\n          \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n        },\n        \"domain_name\": \"<string>\",\n        \"status\": \"DELETED\",\n        \"created_at\": \"<dateTime>\",\n        \"updated_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        }\n      },\n      {\n        \"payment_method_domain_id\": \"<string>\",\n        \"merchant_id\": {\n          \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n        },\n        \"domain_name\": \"<string>\",\n        \"status\": \"DELETED\",\n        \"created_at\": \"<dateTime>\",\n        \"updated_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        }\n      }\n    ]\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:43:52.000Z",
+                  "updatedAt": "2026-07-28T02:43:52.000Z",
+                  "uid": "35240-ae0e934f-9811-4940-bba0-3a3366386215"
+                },
+                {
+                  "id": "914d79e6-64b6-4864-921c-0821a655914d",
+                  "name": "400 response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payment_method_domains",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payment_method_domains"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:52.000Z",
+                  "updatedAt": "2026-07-28T02:43:52.000Z",
+                  "uid": "35240-914d79e6-64b6-4864-921c-0821a655914d"
+                },
+                {
+                  "id": "32ad98bc-10c8-4dc5-ad3c-4d309980b832",
+                  "name": "401 response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payment_method_domains",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payment_method_domains"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:52.000Z",
+                  "updatedAt": "2026-07-28T02:43:52.000Z",
+                  "uid": "35240-32ad98bc-10c8-4dc5-ad3c-4d309980b832"
+                },
+                {
+                  "id": "2331e928-d7db-44b7-8c3d-3a6655ebc62f",
+                  "name": "403 response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payment_method_domains",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payment_method_domains"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:52.000Z",
+                  "updatedAt": "2026-07-28T02:43:52.000Z",
+                  "uid": "35240-2331e928-d7db-44b7-8c3d-3a6655ebc62f"
+                },
+                {
+                  "id": "23c3e56a-f5b5-4a11-9b6c-195ae0c79b43",
+                  "name": "5XX response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payment_method_domains",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payment_method_domains"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:52.000Z",
+                  "updatedAt": "2026-07-28T02:43:52.000Z",
+                  "uid": "35240-23c3e56a-f5b5-4a11-9b6c-195ae0c79b43"
+                }
+              ],
+              "createdAt": "2026-07-28T02:43:52.000Z",
+              "updatedAt": "2026-07-28T02:43:52.000Z",
+              "uid": "35240-511b2647-6b6b-481c-af19-a73486f919d1"
+            },
+            {
+              "name": "Create payment method domain",
+              "id": "4526de40-b5a0-4f05-8d27-035958493285",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payment_method_domain_id\": \"<string>\",\n  \"merchant_id\": {\n    \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n  },\n  \"domain_name\": \"<string>\",\n  \"status\": \"VERIFIED\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": {\n    \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/payment_method_domains",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "payment_method_domains"
+                  ]
+                },
+                "description": "Create payment method domain to verify your domain for payment processing with Apple Pay.\n\nA platform can have up to 99 domains.\n\nIf your integration requires a domain per merchant, then register the domain by providing a merchant_id in the request. Each merchant can have up to 99 domains."
+              },
+              "response": [
+                {
+                  "id": "f784e7c2-bfe2-41f1-9c1d-b800ea081251",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"payment_method_domain_id\": \"<string>\",\n  \"merchant_id\": {\n    \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n  },\n  \"domain_name\": \"<string>\",\n  \"status\": \"VERIFIED\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": {\n    \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payment_method_domains",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payment_method_domains"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"payment_method_domain_id\": \"<string>\",\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"domain_name\": \"<string>\",\n    \"status\": \"CREATED\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": {\n      \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n    }\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:43:52.000Z",
+                  "updatedAt": "2026-07-28T02:43:52.000Z",
+                  "uid": "35240-f784e7c2-bfe2-41f1-9c1d-b800ea081251"
+                },
+                {
+                  "id": "65b56d8c-5e59-4f46-9c6e-7eda2fbdcd9e",
+                  "name": "400 response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"payment_method_domain_id\": \"<string>\",\n  \"merchant_id\": {\n    \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n  },\n  \"domain_name\": \"<string>\",\n  \"status\": \"VERIFIED\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": {\n    \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payment_method_domains",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payment_method_domains"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:52.000Z",
+                  "updatedAt": "2026-07-28T02:43:52.000Z",
+                  "uid": "35240-65b56d8c-5e59-4f46-9c6e-7eda2fbdcd9e"
+                },
+                {
+                  "id": "3879f710-7268-4618-81c6-56f8144190b1",
+                  "name": "401 response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"payment_method_domain_id\": \"<string>\",\n  \"merchant_id\": {\n    \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n  },\n  \"domain_name\": \"<string>\",\n  \"status\": \"VERIFIED\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": {\n    \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payment_method_domains",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payment_method_domains"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:52.000Z",
+                  "updatedAt": "2026-07-28T02:43:52.000Z",
+                  "uid": "35240-3879f710-7268-4618-81c6-56f8144190b1"
+                },
+                {
+                  "id": "17a0ab01-28c5-4730-8fb4-6ac4b45df858",
+                  "name": "403 response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"payment_method_domain_id\": \"<string>\",\n  \"merchant_id\": {\n    \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n  },\n  \"domain_name\": \"<string>\",\n  \"status\": \"VERIFIED\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": {\n    \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payment_method_domains",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payment_method_domains"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:52.000Z",
+                  "updatedAt": "2026-07-28T02:43:52.000Z",
+                  "uid": "35240-17a0ab01-28c5-4730-8fb4-6ac4b45df858"
+                },
+                {
+                  "id": "33fe93cd-59d2-4eec-b572-d239f0a42dfd",
+                  "name": "5XX response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"payment_method_domain_id\": \"<string>\",\n  \"merchant_id\": {\n    \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n  },\n  \"domain_name\": \"<string>\",\n  \"status\": \"VERIFIED\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": {\n    \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payment_method_domains",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payment_method_domains"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:52.000Z",
+                  "updatedAt": "2026-07-28T02:43:52.000Z",
+                  "uid": "35240-33fe93cd-59d2-4eec-b572-d239f0a42dfd"
+                }
+              ],
+              "createdAt": "2026-07-28T02:43:52.000Z",
+              "updatedAt": "2026-07-28T02:43:52.000Z",
+              "uid": "35240-4526de40-b5a0-4f05-8d27-035958493285"
+            }
+          ],
+          "id": "a01fd8f6-fd6f-4a86-8160-92d3e5f97afb",
+          "createdAt": "2026-07-28T02:43:52.000Z",
+          "updatedAt": "2026-07-28T02:43:52.000Z",
+          "uid": "35240-a01fd8f6-fd6f-4a86-8160-92d3e5f97afb"
+        }
+      ],
+      "id": "2f606a9c-3254-443f-b908-896ad6a590d9",
+      "createdAt": "2026-07-28T02:43:52.000Z",
+      "updatedAt": "2026-07-28T02:43:52.000Z",
+      "uid": "35240-2f606a9c-3254-443f-b908-896ad6a590d9"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.sandbox.rainforestpay.com"
+    }
+  ]
+}

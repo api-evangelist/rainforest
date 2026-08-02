@@ -1,0 +1,256 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: openapi/*-openapi.yaml
+note: No official hosted Rainforest MCP server was found. Candidate tool list derived one-per-operation
+  from the OpenAPI; not an endorsed server.
+server:
+  name: rainforest
+  transport: http
+tools:
+- name: create_api_key
+  description: Create API key
+  source_operation: openapi/rainforest-authentication-openapi.yaml#create_api_key
+- name: list_api_keys
+  description: List API keys
+  source_operation: openapi/rainforest-authentication-openapi.yaml#list_api_keys
+- name: get_api_key
+  description: Get API key
+  source_operation: openapi/rainforest-authentication-openapi.yaml#get_api_key
+- name: delete_api_key
+  description: Delete API key
+  source_operation: openapi/rainforest-authentication-openapi.yaml#delete_api_key
+- name: disable_api_key
+  description: Disable API key
+  source_operation: openapi/rainforest-authentication-openapi.yaml#disable_api_key
+- name: enable_api_key
+  description: Enable API key
+  source_operation: openapi/rainforest-authentication-openapi.yaml#enable_api_key
+- name: create_session
+  description: Create session
+  source_operation: openapi/rainforest-authentication-openapi.yaml#create_session
+- name: delete_session
+  description: Delete session
+  source_operation: openapi/rainforest-authentication-openapi.yaml#delete_session
+- name: list_deposits
+  description: List deposits
+  source_operation: openapi/rainforest-deposits-openapi.yaml#list_deposits
+- name: get_deposit
+  description: Get deposit
+  source_operation: openapi/rainforest-deposits-openapi.yaml#get_deposit
+- name: get_deposit_activity
+  description: Get deposit activity
+  source_operation: openapi/rainforest-deposits-openapi.yaml#get_deposit_activity
+- name: simulate_deposit_status
+  description: Simulate deposit status change
+  source_operation: openapi/rainforest-deposits-openapi.yaml#simulate_deposit_status
+- name: simulate_merchant_deposit
+  description: Simulate merchant deposit creation
+  source_operation: openapi/rainforest-deposits-openapi.yaml#simulate_merchant_deposit
+- name: create_deposit_method_config
+  description: Create deposit method config
+  source_operation: openapi/rainforest-deposits-openapi.yaml#create_deposit_method_config
+- name: get_deposit_method
+  description: Get deposit method
+  source_operation: openapi/rainforest-deposits-openapi.yaml#get_deposit_method
+- name: create_deposit_method_payin
+  description: Create payin from deposit method
+  source_operation: openapi/rainforest-deposits-openapi.yaml#create_deposit_method_payin
+- name: create_deposit_method
+  description: Create deposit method
+  source_operation: openapi/rainforest-deposits-openapi.yaml#create_deposit_method
+- name: create_file_upload_config
+  description: Create file upload config
+  source_operation: openapi/rainforest-file_uploads-openapi.yaml#create_file_upload_config
+- name: get_file_upload_config
+  description: Get file upload config
+  source_operation: openapi/rainforest-file_uploads-openapi.yaml#get_file_upload_config
+- name: get_file_upload
+  description: Get file upload
+  source_operation: openapi/rainforest-file_uploads-openapi.yaml#get_file_upload
+- name: forward_payment_method
+  description: Forward payment method
+  source_operation: openapi/rainforest-forward_requests-openapi.yaml#forward_payment_method
+- name: get_health
+  description: Get health
+  source_operation: openapi/rainforest-health-openapi.yaml#get_health
+- name: create_billing_profile
+  description: Create a billing profile
+  source_operation: openapi/rainforest-merchants-openapi.yaml#create_billing_profile
+- name: list_billing_profiles
+  description: List billing profiles
+  source_operation: openapi/rainforest-merchants-openapi.yaml#list_billing_profiles
+- name: get_billing_profile
+  description: Get billing profile
+  source_operation: openapi/rainforest-merchants-openapi.yaml#get_billing_profile
+- name: deactivate_billing_profile
+  description: Deactivate a billing profile
+  source_operation: openapi/rainforest-merchants-openapi.yaml#deactivate_billing_profile
+- name: list_merchant_applications
+  description: List merchant applications
+  source_operation: openapi/rainforest-merchants-openapi.yaml#list_merchant_applications
+- name: get_merchant_application
+  description: Get merchant application
+  source_operation: openapi/rainforest-merchants-openapi.yaml#get_merchant_application
+- name: update_merchant_application
+  description: Update merchant application
+  source_operation: openapi/rainforest-merchants-openapi.yaml#update_merchant_application
+- name: verify_merchant_application
+  description: Verify merchant application
+  source_operation: openapi/rainforest-merchants-openapi.yaml#verify_merchant_application
+- name: submit_merchant_application
+  description: Submit merchant application
+  source_operation: openapi/rainforest-merchants-openapi.yaml#submit_merchant_application
+- name: simulate_merchant_application
+  description: Simulate merchant application status change
+  source_operation: openapi/rainforest-merchants-openapi.yaml#simulate_merchant_application
+- name: create_merchant
+  description: Create merchant
+  source_operation: openapi/rainforest-merchants-openapi.yaml#create_merchant
+- name: list_merchants
+  description: List merchants
+  source_operation: openapi/rainforest-merchants-openapi.yaml#list_merchants
+- name: get_merchant
+  description: Get merchant
+  source_operation: openapi/rainforest-merchants-openapi.yaml#get_merchant
+- name: update_merchant
+  description: Update merchant
+  source_operation: openapi/rainforest-merchants-openapi.yaml#update_merchant
+- name: cancel_merchant
+  description: Cancel merchant
+  source_operation: openapi/rainforest-merchants-openapi.yaml#cancel_merchant
+- name: update_merchant_billing_profile
+  description: Update merchant billing profile
+  source_operation: openapi/rainforest-merchants-openapi.yaml#update_merchant_billing_profile
+- name: get_ach_return
+  description: Get ACH return
+  source_operation: openapi/rainforest-payments-openapi.yaml#get_ach_return
+- name: update_ach_return_metadata
+  description: Update ACH return metadata
+  source_operation: openapi/rainforest-payments-openapi.yaml#update_ach_return_metadata
+- name: create_bin_lookup
+  description: Create BIN lookup
+  source_operation: openapi/rainforest-payments-openapi.yaml#create_bin_lookup
+- name: get_chargeback
+  description: Get chargeback
+  source_operation: openapi/rainforest-payments-openapi.yaml#get_chargeback
+- name: accept_chargeback
+  description: Accept chargeback
+  source_operation: openapi/rainforest-payments-openapi.yaml#accept_chargeback
+- name: submit_chargeback
+  description: Submit chargeback
+  source_operation: openapi/rainforest-payments-openapi.yaml#submit_chargeback
+- name: update_chargeback_evidence
+  description: Update chargeback evidence
+  source_operation: openapi/rainforest-payments-openapi.yaml#update_chargeback_evidence
+- name: update_chargeback_metadata
+  description: Update chargeback metadata
+  source_operation: openapi/rainforest-payments-openapi.yaml#update_chargeback_metadata
+- name: simulate_payin_chargeback
+  description: Simulate a chargeback against a payin
+  source_operation: openapi/rainforest-payments-openapi.yaml#simulate_payin_chargeback
+- name: simulate_chargeback
+  description: Simulate chargeback status change
+  source_operation: openapi/rainforest-payments-openapi.yaml#simulate_chargeback
+- name: create_device_registration
+  description: Create device registration
+  source_operation: openapi/rainforest-payments-openapi.yaml#create_device_registration
+- name: list_device_registrations
+  description: List device registrations
+  source_operation: openapi/rainforest-payments-openapi.yaml#list_device_registrations
+- name: get_device_registration
+  description: Get device registration
+  source_operation: openapi/rainforest-payments-openapi.yaml#get_device_registration
+- name: delete_device_registration
+  description: Delete device registration
+  source_operation: openapi/rainforest-payments-openapi.yaml#delete_device_registration
+- name: create_device_payin
+  description: Present payin on a registered device
+  source_operation: openapi/rainforest-payments-openapi.yaml#create_device_payin
+- name: create_device_payment_method
+  description: Present payment method on a registered device
+  source_operation: openapi/rainforest-payments-openapi.yaml#create_device_payment_method
+- name: cancel_device_presented
+  description: Cancel presented entity on device
+  source_operation: openapi/rainforest-payments-openapi.yaml#cancel_device_presented
+- name: simulate_on_device
+  description: Simulate device interaction
+  source_operation: openapi/rainforest-payments-openapi.yaml#simulate_on_device
+- name: create_payin_config
+  description: Create payin config
+  source_operation: openapi/rainforest-payments-openapi.yaml#create_payin_config
+- name: get_payin_config
+  description: Get payin config
+  source_operation: openapi/rainforest-payments-openapi.yaml#get_payin_config
+- name: list_payins
+  description: List payins
+  source_operation: openapi/rainforest-payments-openapi.yaml#list_payins
+- name: create_payin
+  description: Create payin
+  source_operation: openapi/rainforest-payments-openapi.yaml#create_payin
+- name: get_payin
+  description: Get payin
+  source_operation: openapi/rainforest-payments-openapi.yaml#get_payin
+- name: update_payin_metadata
+  description: Update payin metadata
+  source_operation: openapi/rainforest-payments-openapi.yaml#update_payin_metadata
+- name: capture_payin
+  description: Capture payin
+  source_operation: openapi/rainforest-payments-openapi.yaml#capture_payin
+- name: void_or_refund_payin
+  description: Void or refund payin
+  source_operation: openapi/rainforest-payments-openapi.yaml#void_or_refund_payin
+- name: simulate_payin_ach_return
+  description: Simulate payin ACH return
+  source_operation: openapi/rainforest-payments-openapi.yaml#simulate_payin_ach_return
+- name: list_payment_method_domains
+  description: List payment method domains
+  source_operation: openapi/rainforest-payments-openapi.yaml#list_payment_method_domains
+- name: create_payment_method_domain
+  description: Create payment method domain
+  source_operation: openapi/rainforest-payments-openapi.yaml#create_payment_method_domain
+- name: get_payment_method_domain
+  description: Get payment method domain
+  source_operation: openapi/rainforest-payments-openapi.yaml#get_payment_method_domain
+- name: delete_payment_method_domain
+  description: Delete payment method domain
+  source_operation: openapi/rainforest-payments-openapi.yaml#delete_payment_method_domain
+- name: verify_payment_method_domain
+  description: Verify payment method domain
+  source_operation: openapi/rainforest-payments-openapi.yaml#verify_payment_method_domain
+- name: create_payment_method_config
+  description: Create payment method config
+  source_operation: openapi/rainforest-payments-openapi.yaml#create_payment_method_config
+- name: get_payment_method_config
+  description: Get payment method config
+  source_operation: openapi/rainforest-payments-openapi.yaml#get_payment_method_config
+- name: list_payment_methods
+  description: List payment methods
+  source_operation: openapi/rainforest-payments-openapi.yaml#list_payment_methods
+- name: create_payment_method
+  description: Create payment method
+  source_operation: openapi/rainforest-payments-openapi.yaml#create_payment_method
+- name: get_payment_method
+  description: Get payment method
+  source_operation: openapi/rainforest-payments-openapi.yaml#get_payment_method
+- name: update_payment_method
+  description: Update payment method
+  source_operation: openapi/rainforest-payments-openapi.yaml#update_payment_method
+- name: create_payment_method_payin
+  description: Create payin from stored payment method
+  source_operation: openapi/rainforest-payments-openapi.yaml#create_payment_method_payin
+- name: deactivate_payment_method
+  description: Deactivate payment method
+  source_operation: openapi/rainforest-payments-openapi.yaml#deactivate_payment_method
+- name: list_payments
+  description: List payments
+  source_operation: openapi/rainforest-payments-openapi.yaml#list_payments
+- name: get_refund
+  description: Get refund
+  source_operation: openapi/rainforest-payments-openapi.yaml#get_refund
+- name: update_refund_metadata
+  description: Update refund metadata
+  source_operation: openapi/rainforest-payments-openapi.yaml#update_refund_metadata
+- name: void_refund
+  description: Void refund
+  source_operation: openapi/rainforest-payments-openapi.yaml#void_refund

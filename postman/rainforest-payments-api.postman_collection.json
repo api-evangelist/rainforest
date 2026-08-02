@@ -1,0 +1,550 @@
+{
+  "info": {
+    "_postman_id": "14a88249-448c-4d8f-bbe5-a9cfa48d66e8",
+    "name": "Authentication ACH Returns Payments API",
+    "description": "This resource is used for authentication actions\n\nContact Support:\n Name: Rainforest\n Email: support@rainforestpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:43:53.000Z",
+    "updatedAt": "2026-07-28T02:43:53.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-14a88249-448c-4d8f-bbe5-a9cfa48d66e8"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "payments",
+          "item": [
+            {
+              "name": "List payments",
+              "id": "d4efd319-7ce7-4089-a707-8973ee070de2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/payments?id=<string>&deposit_id=<string>&status=CHARGEBACK_PROCESSING&status=WON&payment_type=PAYIN&payment_type=ACH_RETURN&source=TAP_TO_PHONE&source=IVR&due_date.start=<dateTime>&due_date.end=<dateTime>&sort_by=expected_deposit_date&omit_total_results=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "payments"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox.",
+                      "key": "deposit_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "One or more payment statuses to filter by. Provide parameter multiple times to filter by multiple payment status types. Some statuses are only valid for certain payment activity types.\n\nACH returns: `CREATED`\n\nchargebacks: `INQUIRY_ACTION_REQUIRED` `INQUIRY_PROCESSING` `DISPUTE_ACTION_REQUIRED` `CHARGEBACK_PROCESSING`\n  `PROVISIONAL_WIN` `WON` `LOST` `PRE_ARBITRATION_PROCESSING` `ARBITRATION`\n\npayins: `CANCELED` `CREATED` `FAILED` `IN_REVIEW` `PRESENTING` `PROCESSING` `SUCCEEDED`\n\nrefunds: `CANCELED` `CREATED` `FAILED` `IN_REVIEW` `PROCESSING` `SUCCEEDED`",
+                      "key": "status",
+                      "value": "CHARGEBACK_PROCESSING"
+                    },
+                    {
+                      "description": "One or more payment statuses to filter by. Provide parameter multiple times to filter by multiple payment status types. Some statuses are only valid for certain payment activity types.\n\nACH returns: `CREATED`\n\nchargebacks: `INQUIRY_ACTION_REQUIRED` `INQUIRY_PROCESSING` `DISPUTE_ACTION_REQUIRED` `CHARGEBACK_PROCESSING`\n  `PROVISIONAL_WIN` `WON` `LOST` `PRE_ARBITRATION_PROCESSING` `ARBITRATION`\n\npayins: `CANCELED` `CREATED` `FAILED` `IN_REVIEW` `PRESENTING` `PROCESSING` `SUCCEEDED`\n\nrefunds: `CANCELED` `CREATED` `FAILED` `IN_REVIEW` `PROCESSING` `SUCCEEDED`",
+                      "key": "status",
+                      "value": "WON"
+                    },
+                    {
+                      "description": "One or more payment types to filter by. Provide parameter multiples times to filter by multiple payment types. \n\n`ACH_RETURN` `CHARGEBACK` `PAYIN` `REFUND`",
+                      "key": "payment_type",
+                      "value": "PAYIN"
+                    },
+                    {
+                      "description": "One or more payment types to filter by. Provide parameter multiples times to filter by multiple payment types. \n\n`ACH_RETURN` `CHARGEBACK` `PAYIN` `REFUND`",
+                      "key": "payment_type",
+                      "value": "ACH_RETURN"
+                    },
+                    {
+                      "description": "One or more payment sources to filter by. Provide parameter multiple times to filter by multiple payment sources. Some sources are only valid for certain payment activity types.\n\nACH returns and chargebacks: `SYSTEM`\n\npayins: `API_DIRECT` `API_STORED_PAYMENT_METHOD` `COMPONENT` `DEVICE` `EXTERNAL` `IVR` `TAP_TO_PHONE`\n\nrefunds: `API_DIRECT` `COMPONENT` `EXTERNAL`",
+                      "key": "source",
+                      "value": "TAP_TO_PHONE"
+                    },
+                    {
+                      "description": "One or more payment sources to filter by. Provide parameter multiple times to filter by multiple payment sources. Some sources are only valid for certain payment activity types.\n\nACH returns and chargebacks: `SYSTEM`\n\npayins: `API_DIRECT` `API_STORED_PAYMENT_METHOD` `COMPONENT` `DEVICE` `EXTERNAL` `IVR` `TAP_TO_PHONE`\n\nrefunds: `API_DIRECT` `COMPONENT` `EXTERNAL`",
+                      "key": "source",
+                      "value": "IVR"
+                    },
+                    {
+                      "description": "Due on or after in UTC RFC 3339 format.",
+                      "key": "due_date.start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Due on or before in UTC RFC 3339 format.",
+                      "key": "due_date.end",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                      "key": "sort_by",
+                      "value": "expected_deposit_date"
+                    },
+                    {
+                      "description": "The `total_results` field in the response will be set to -1. Allows for faster query results.",
+                      "key": "omit_total_results",
+                      "value": "<boolean>"
+                    }
+                  ]
+                },
+                "description": "Query a list of payments, which includes payins, refunds, chargebacks, and ACH returns, given optional search criteria."
+              },
+              "response": [
+                {
+                  "id": "b7b4bc40-eee8-4a55-991f-138c47277779",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payments?id=<string>&deposit_id=<string>&status=WON&payment_type=ACH_RETURN&source=IVR&due_date.start=<dateTime>&due_date.end=<dateTime>&sort_by=expected_deposit_date&omit_total_results=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payments"
+                      ],
+                      "query": [
+                        {
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox.",
+                          "key": "deposit_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "One or more payment statuses to filter by. Provide parameter multiple times to filter by multiple payment status types. Some statuses are only valid for certain payment activity types.\n\nACH returns: `CREATED`\n\nchargebacks: `INQUIRY_ACTION_REQUIRED` `INQUIRY_PROCESSING` `DISPUTE_ACTION_REQUIRED` `CHARGEBACK_PROCESSING`\n  `PROVISIONAL_WIN` `WON` `LOST` `PRE_ARBITRATION_PROCESSING` `ARBITRATION`\n\npayins: `CANCELED` `CREATED` `FAILED` `IN_REVIEW` `PRESENTING` `PROCESSING` `SUCCEEDED`\n\nrefunds: `CANCELED` `CREATED` `FAILED` `IN_REVIEW` `PROCESSING` `SUCCEEDED`",
+                          "key": "status",
+                          "value": "WON"
+                        },
+                        {
+                          "description": "One or more payment types to filter by. Provide parameter multiples times to filter by multiple payment types. \n\n`ACH_RETURN` `CHARGEBACK` `PAYIN` `REFUND`",
+                          "key": "payment_type",
+                          "value": "ACH_RETURN"
+                        },
+                        {
+                          "description": "One or more payment sources to filter by. Provide parameter multiple times to filter by multiple payment sources. Some sources are only valid for certain payment activity types.\n\nACH returns and chargebacks: `SYSTEM`\n\npayins: `API_DIRECT` `API_STORED_PAYMENT_METHOD` `COMPONENT` `DEVICE` `EXTERNAL` `IVR` `TAP_TO_PHONE`\n\nrefunds: `API_DIRECT` `COMPONENT` `EXTERNAL`",
+                          "key": "source",
+                          "value": "IVR"
+                        },
+                        {
+                          "description": "Due on or after in UTC RFC 3339 format.",
+                          "key": "due_date.start",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Due on or before in UTC RFC 3339 format.",
+                          "key": "due_date.end",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                          "key": "sort_by",
+                          "value": "expected_deposit_date"
+                        },
+                        {
+                          "description": "The `total_results` field in the response will be set to -1. Allows for faster query results.",
+                          "key": "omit_total_results",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"last_key\": {\n      \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/data/allOf/1/properties/last_key not found in the OpenAPI spec\"\n    },\n    \"results\": [\n      {\n        \"payment_type\": \"REFUND\",\n        \"id\": \"<string>\",\n        \"parent_id\": \"<string>\",\n        \"merchant_id\": {\n          \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n        },\n        \"payment_method_id\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id not found in the OpenAPI spec\"\n        },\n        \"payment_method_config_id\": {\n          \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/payment_method_config_id not found in the OpenAPI spec\"\n        },\n        \"amount\": \"<integer>\",\n        \"currency_code\": {\n          \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n        },\n        \"status\": \"INQUIRY_PROCESSING\",\n        \"refusal_code\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/refusal_code not found in the OpenAPI spec\"\n        },\n        \"refusal_desc\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/refusal_desc not found in the OpenAPI spec\"\n        },\n        \"detailed_refusal_code\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/detailed_refusal_code not found in the OpenAPI spec\"\n        },\n        \"detailed_refusal_desc\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/detailed_refusal_desc not found in the OpenAPI spec\"\n        },\n        \"amount_splits\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/amount_splits not found in the OpenAPI spec\"\n        },\n        \"merchant_fees\": {\n          \"total_amount\": {\n            \"amount\": {\n              \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_fees/properties/total_amount/properties/amount not found in the OpenAPI spec\"\n            },\n            \"currency_code\": {\n              \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n            }\n          }\n        },\n        \"method_type\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/method_type not found in the OpenAPI spec\"\n        },\n        \"card\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/card not found in the OpenAPI spec\"\n        },\n        \"apple_pay\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/apple_pay not found in the OpenAPI spec\"\n        },\n        \"ach\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/ach not found in the OpenAPI spec\"\n        },\n        \"plaid_ach\": {\n          \"value\": \"reference #/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data/properties/plaid_ach not found in the OpenAPI spec\"\n        },\n        \"paypal_wallet\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_wallet not found in the OpenAPI spec\"\n        },\n        \"venmo\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/venmo not found in the OpenAPI spec\"\n        },\n        \"paypal_paylater\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_paylater not found in the OpenAPI spec\"\n        },\n        \"billing_contact\": {\n          \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n        },\n        \"method_metadata\": {\n          \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/method_metadata not found in the OpenAPI spec\"\n        },\n        \"metadata\": {\n          \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n        },\n        \"has_refunds\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/has_refunds not found in the OpenAPI spec\"\n        },\n        \"has_chargebacks\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/has_chargebacks not found in the OpenAPI spec\"\n        },\n        \"acquirer_ref\": \"<string>\",\n        \"due_date\": \"<string>\",\n        \"merchant\": {\n          \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/merchant not found in the OpenAPI spec\"\n        },\n        \"expected_deposit_date\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date not found in the OpenAPI spec\"\n        },\n        \"source\": \"IVR\",\n        \"source_desc\": \"<string>\",\n        \"created_at\": \"<dateTime>\",\n        \"updated_at\": \"<dateTime>\"\n      },\n      {\n        \"payment_type\": \"PAYIN\",\n        \"id\": \"<string>\",\n        \"parent_id\": \"<string>\",\n        \"merchant_id\": {\n          \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n        },\n        \"payment_method_id\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id not found in the OpenAPI spec\"\n        },\n        \"payment_method_config_id\": {\n          \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/payment_method_config_id not found in the OpenAPI spec\"\n        },\n        \"amount\": \"<integer>\",\n        \"currency_code\": {\n          \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n        },\n        \"status\": \"CREATED\",\n        \"refusal_code\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/refusal_code not found in the OpenAPI spec\"\n        },\n        \"refusal_desc\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/refusal_desc not found in the OpenAPI spec\"\n        },\n        \"detailed_refusal_code\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/detailed_refusal_code not found in the OpenAPI spec\"\n        },\n        \"detailed_refusal_desc\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/detailed_refusal_desc not found in the OpenAPI spec\"\n        },\n        \"amount_splits\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/amount_splits not found in the OpenAPI spec\"\n        },\n        \"merchant_fees\": {\n          \"total_amount\": {\n            \"amount\": {\n              \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_fees/properties/total_amount/properties/amount not found in the OpenAPI spec\"\n            },\n            \"currency_code\": {\n              \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n            }\n          }\n        },\n        \"method_type\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/method_type not found in the OpenAPI spec\"\n        },\n        \"card\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/card not found in the OpenAPI spec\"\n        },\n        \"apple_pay\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/apple_pay not found in the OpenAPI spec\"\n        },\n        \"ach\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/ach not found in the OpenAPI spec\"\n        },\n        \"plaid_ach\": {\n          \"value\": \"reference #/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data/properties/plaid_ach not found in the OpenAPI spec\"\n        },\n        \"paypal_wallet\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_wallet not found in the OpenAPI spec\"\n        },\n        \"venmo\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/venmo not found in the OpenAPI spec\"\n        },\n        \"paypal_paylater\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_paylater not found in the OpenAPI spec\"\n        },\n        \"billing_contact\": {\n          \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n        },\n        \"method_metadata\": {\n          \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/method_metadata not found in the OpenAPI spec\"\n        },\n        \"metadata\": {\n          \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n        },\n        \"has_refunds\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/has_refunds not found in the OpenAPI spec\"\n        },\n        \"has_chargebacks\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/has_chargebacks not found in the OpenAPI spec\"\n        },\n        \"acquirer_ref\": \"<string>\",\n        \"due_date\": \"<string>\",\n        \"merchant\": {\n          \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/merchant not found in the OpenAPI spec\"\n        },\n        \"expected_deposit_date\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date not found in the OpenAPI spec\"\n        },\n        \"source\": \"API_STORED_PAYMENT_METHOD\",\n        \"source_desc\": \"<string>\",\n        \"created_at\": \"<dateTime>\",\n        \"updated_at\": \"<dateTime>\"\n      }\n    ]\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:43:54.000Z",
+                  "updatedAt": "2026-07-28T02:43:54.000Z",
+                  "uid": "35240-b7b4bc40-eee8-4a55-991f-138c47277779"
+                },
+                {
+                  "id": "9c68be43-49dc-4099-a674-63253063eb41",
+                  "name": "400 response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payments?id=<string>&deposit_id=<string>&status=WON&payment_type=ACH_RETURN&source=IVR&due_date.start=<dateTime>&due_date.end=<dateTime>&sort_by=expected_deposit_date&omit_total_results=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payments"
+                      ],
+                      "query": [
+                        {
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox.",
+                          "key": "deposit_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "One or more payment statuses to filter by. Provide parameter multiple times to filter by multiple payment status types. Some statuses are only valid for certain payment activity types.\n\nACH returns: `CREATED`\n\nchargebacks: `INQUIRY_ACTION_REQUIRED` `INQUIRY_PROCESSING` `DISPUTE_ACTION_REQUIRED` `CHARGEBACK_PROCESSING`\n  `PROVISIONAL_WIN` `WON` `LOST` `PRE_ARBITRATION_PROCESSING` `ARBITRATION`\n\npayins: `CANCELED` `CREATED` `FAILED` `IN_REVIEW` `PRESENTING` `PROCESSING` `SUCCEEDED`\n\nrefunds: `CANCELED` `CREATED` `FAILED` `IN_REVIEW` `PROCESSING` `SUCCEEDED`",
+                          "key": "status",
+                          "value": "WON"
+                        },
+                        {
+                          "description": "One or more payment types to filter by. Provide parameter multiples times to filter by multiple payment types. \n\n`ACH_RETURN` `CHARGEBACK` `PAYIN` `REFUND`",
+                          "key": "payment_type",
+                          "value": "ACH_RETURN"
+                        },
+                        {
+                          "description": "One or more payment sources to filter by. Provide parameter multiple times to filter by multiple payment sources. Some sources are only valid for certain payment activity types.\n\nACH returns and chargebacks: `SYSTEM`\n\npayins: `API_DIRECT` `API_STORED_PAYMENT_METHOD` `COMPONENT` `DEVICE` `EXTERNAL` `IVR` `TAP_TO_PHONE`\n\nrefunds: `API_DIRECT` `COMPONENT` `EXTERNAL`",
+                          "key": "source",
+                          "value": "IVR"
+                        },
+                        {
+                          "description": "Due on or after in UTC RFC 3339 format.",
+                          "key": "due_date.start",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Due on or before in UTC RFC 3339 format.",
+                          "key": "due_date.end",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                          "key": "sort_by",
+                          "value": "expected_deposit_date"
+                        },
+                        {
+                          "description": "The `total_results` field in the response will be set to -1. Allows for faster query results.",
+                          "key": "omit_total_results",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:54.000Z",
+                  "updatedAt": "2026-07-28T02:43:54.000Z",
+                  "uid": "35240-9c68be43-49dc-4099-a674-63253063eb41"
+                },
+                {
+                  "id": "680a546e-ec70-4d19-a297-82f079208865",
+                  "name": "401 response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payments?id=<string>&deposit_id=<string>&status=WON&payment_type=ACH_RETURN&source=IVR&due_date.start=<dateTime>&due_date.end=<dateTime>&sort_by=expected_deposit_date&omit_total_results=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payments"
+                      ],
+                      "query": [
+                        {
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox.",
+                          "key": "deposit_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "One or more payment statuses to filter by. Provide parameter multiple times to filter by multiple payment status types. Some statuses are only valid for certain payment activity types.\n\nACH returns: `CREATED`\n\nchargebacks: `INQUIRY_ACTION_REQUIRED` `INQUIRY_PROCESSING` `DISPUTE_ACTION_REQUIRED` `CHARGEBACK_PROCESSING`\n  `PROVISIONAL_WIN` `WON` `LOST` `PRE_ARBITRATION_PROCESSING` `ARBITRATION`\n\npayins: `CANCELED` `CREATED` `FAILED` `IN_REVIEW` `PRESENTING` `PROCESSING` `SUCCEEDED`\n\nrefunds: `CANCELED` `CREATED` `FAILED` `IN_REVIEW` `PROCESSING` `SUCCEEDED`",
+                          "key": "status",
+                          "value": "WON"
+                        },
+                        {
+                          "description": "One or more payment types to filter by. Provide parameter multiples times to filter by multiple payment types. \n\n`ACH_RETURN` `CHARGEBACK` `PAYIN` `REFUND`",
+                          "key": "payment_type",
+                          "value": "ACH_RETURN"
+                        },
+                        {
+                          "description": "One or more payment sources to filter by. Provide parameter multiple times to filter by multiple payment sources. Some sources are only valid for certain payment activity types.\n\nACH returns and chargebacks: `SYSTEM`\n\npayins: `API_DIRECT` `API_STORED_PAYMENT_METHOD` `COMPONENT` `DEVICE` `EXTERNAL` `IVR` `TAP_TO_PHONE`\n\nrefunds: `API_DIRECT` `COMPONENT` `EXTERNAL`",
+                          "key": "source",
+                          "value": "IVR"
+                        },
+                        {
+                          "description": "Due on or after in UTC RFC 3339 format.",
+                          "key": "due_date.start",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Due on or before in UTC RFC 3339 format.",
+                          "key": "due_date.end",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                          "key": "sort_by",
+                          "value": "expected_deposit_date"
+                        },
+                        {
+                          "description": "The `total_results` field in the response will be set to -1. Allows for faster query results.",
+                          "key": "omit_total_results",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:54.000Z",
+                  "updatedAt": "2026-07-28T02:43:54.000Z",
+                  "uid": "35240-680a546e-ec70-4d19-a297-82f079208865"
+                },
+                {
+                  "id": "5cc4306d-d0cd-4ef2-90eb-20a443db91be",
+                  "name": "403 response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payments?id=<string>&deposit_id=<string>&status=WON&payment_type=ACH_RETURN&source=IVR&due_date.start=<dateTime>&due_date.end=<dateTime>&sort_by=expected_deposit_date&omit_total_results=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payments"
+                      ],
+                      "query": [
+                        {
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox.",
+                          "key": "deposit_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "One or more payment statuses to filter by. Provide parameter multiple times to filter by multiple payment status types. Some statuses are only valid for certain payment activity types.\n\nACH returns: `CREATED`\n\nchargebacks: `INQUIRY_ACTION_REQUIRED` `INQUIRY_PROCESSING` `DISPUTE_ACTION_REQUIRED` `CHARGEBACK_PROCESSING`\n  `PROVISIONAL_WIN` `WON` `LOST` `PRE_ARBITRATION_PROCESSING` `ARBITRATION`\n\npayins: `CANCELED` `CREATED` `FAILED` `IN_REVIEW` `PRESENTING` `PROCESSING` `SUCCEEDED`\n\nrefunds: `CANCELED` `CREATED` `FAILED` `IN_REVIEW` `PROCESSING` `SUCCEEDED`",
+                          "key": "status",
+                          "value": "WON"
+                        },
+                        {
+                          "description": "One or more payment types to filter by. Provide parameter multiples times to filter by multiple payment types. \n\n`ACH_RETURN` `CHARGEBACK` `PAYIN` `REFUND`",
+                          "key": "payment_type",
+                          "value": "ACH_RETURN"
+                        },
+                        {
+                          "description": "One or more payment sources to filter by. Provide parameter multiple times to filter by multiple payment sources. Some sources are only valid for certain payment activity types.\n\nACH returns and chargebacks: `SYSTEM`\n\npayins: `API_DIRECT` `API_STORED_PAYMENT_METHOD` `COMPONENT` `DEVICE` `EXTERNAL` `IVR` `TAP_TO_PHONE`\n\nrefunds: `API_DIRECT` `COMPONENT` `EXTERNAL`",
+                          "key": "source",
+                          "value": "IVR"
+                        },
+                        {
+                          "description": "Due on or after in UTC RFC 3339 format.",
+                          "key": "due_date.start",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Due on or before in UTC RFC 3339 format.",
+                          "key": "due_date.end",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                          "key": "sort_by",
+                          "value": "expected_deposit_date"
+                        },
+                        {
+                          "description": "The `total_results` field in the response will be set to -1. Allows for faster query results.",
+                          "key": "omit_total_results",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:54.000Z",
+                  "updatedAt": "2026-07-28T02:43:54.000Z",
+                  "uid": "35240-5cc4306d-d0cd-4ef2-90eb-20a443db91be"
+                },
+                {
+                  "id": "a59beac4-e2e5-4541-9754-0856e49cfb97",
+                  "name": "5XX response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payments?id=<string>&deposit_id=<string>&status=WON&payment_type=ACH_RETURN&source=IVR&due_date.start=<dateTime>&due_date.end=<dateTime>&sort_by=expected_deposit_date&omit_total_results=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payments"
+                      ],
+                      "query": [
+                        {
+                          "key": "id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox.",
+                          "key": "deposit_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "One or more payment statuses to filter by. Provide parameter multiple times to filter by multiple payment status types. Some statuses are only valid for certain payment activity types.\n\nACH returns: `CREATED`\n\nchargebacks: `INQUIRY_ACTION_REQUIRED` `INQUIRY_PROCESSING` `DISPUTE_ACTION_REQUIRED` `CHARGEBACK_PROCESSING`\n  `PROVISIONAL_WIN` `WON` `LOST` `PRE_ARBITRATION_PROCESSING` `ARBITRATION`\n\npayins: `CANCELED` `CREATED` `FAILED` `IN_REVIEW` `PRESENTING` `PROCESSING` `SUCCEEDED`\n\nrefunds: `CANCELED` `CREATED` `FAILED` `IN_REVIEW` `PROCESSING` `SUCCEEDED`",
+                          "key": "status",
+                          "value": "WON"
+                        },
+                        {
+                          "description": "One or more payment types to filter by. Provide parameter multiples times to filter by multiple payment types. \n\n`ACH_RETURN` `CHARGEBACK` `PAYIN` `REFUND`",
+                          "key": "payment_type",
+                          "value": "ACH_RETURN"
+                        },
+                        {
+                          "description": "One or more payment sources to filter by. Provide parameter multiple times to filter by multiple payment sources. Some sources are only valid for certain payment activity types.\n\nACH returns and chargebacks: `SYSTEM`\n\npayins: `API_DIRECT` `API_STORED_PAYMENT_METHOD` `COMPONENT` `DEVICE` `EXTERNAL` `IVR` `TAP_TO_PHONE`\n\nrefunds: `API_DIRECT` `COMPONENT` `EXTERNAL`",
+                          "key": "source",
+                          "value": "IVR"
+                        },
+                        {
+                          "description": "Due on or after in UTC RFC 3339 format.",
+                          "key": "due_date.start",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Due on or before in UTC RFC 3339 format.",
+                          "key": "due_date.end",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                          "key": "sort_by",
+                          "value": "expected_deposit_date"
+                        },
+                        {
+                          "description": "The `total_results` field in the response will be set to -1. Allows for faster query results.",
+                          "key": "omit_total_results",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:54.000Z",
+                  "updatedAt": "2026-07-28T02:43:54.000Z",
+                  "uid": "35240-a59beac4-e2e5-4541-9754-0856e49cfb97"
+                }
+              ],
+              "createdAt": "2026-07-28T02:43:54.000Z",
+              "updatedAt": "2026-07-28T02:43:54.000Z",
+              "uid": "35240-d4efd319-7ce7-4089-a707-8973ee070de2"
+            }
+          ],
+          "id": "69b8aa7b-11e4-4815-91b0-c722c9cdf889",
+          "createdAt": "2026-07-28T02:43:54.000Z",
+          "updatedAt": "2026-07-28T02:43:54.000Z",
+          "uid": "35240-69b8aa7b-11e4-4815-91b0-c722c9cdf889"
+        }
+      ],
+      "id": "cb30050b-e4ab-47b4-9532-0b540ae91da2",
+      "createdAt": "2026-07-28T02:43:54.000Z",
+      "updatedAt": "2026-07-28T02:43:54.000Z",
+      "uid": "35240-cb30050b-e4ab-47b4-9532-0b540ae91da2"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.sandbox.rainforestpay.com"
+    }
+  ]
+}

@@ -1,0 +1,2898 @@
+{
+  "info": {
+    "_postman_id": "390ec9fc-8533-444f-af31-9a634d381859",
+    "name": "Authentication ACH Returns Devices API",
+    "description": "This resource is used for authentication actions\n\nContact Support:\n Name: Rainforest\n Email: support@rainforestpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:43:29.000Z",
+    "updatedAt": "2026-07-28T02:43:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-390ec9fc-8533-444f-af31-9a634d381859"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "device_registrations",
+          "item": [
+            {
+              "name": "{device_registration_id}",
+              "item": [
+                {
+                  "name": "payin",
+                  "item": [
+                    {
+                      "name": "Present payin on a registered device",
+                      "id": "89ebe1c2-f446-4990-aaeb-3541712ef120",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"payin_config_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/payin",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "device_registrations",
+                            ":device_registration_id",
+                            "payin"
+                          ],
+                          "variable": [
+                            {
+                              "id": "3284fa4d-bb70-4ad4-8ae3-bae3a53edf45",
+                              "key": "device_registration_id",
+                              "value": "<string>",
+                              "description": "(Required) The unique device registration identifier.\n\nPrefix is \"dvc\" in production and \"sbx_dvc\" in sandbox."
+                            }
+                          ]
+                        },
+                        "description": "Present a payin for processing on a registered device using a payin configuration. The merchant status must be `ACTIVE` to process a payin.\n\n> \ud83d\udcd8 Note\n>\n> A payment method created on a registered device may only be used for payins within the same merchant for which it was collected."
+                      },
+                      "response": [
+                        {
+                          "id": "715cf3f9-dded-4bdd-8529-77aff8d9d4a6",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"payin_config_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/payin",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "device_registrations",
+                                ":device_registration_id",
+                                "payin"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "device_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-07-28T02:43:30.000Z",
+                          "updatedAt": "2026-07-28T02:43:30.000Z",
+                          "uid": "35240-715cf3f9-dded-4bdd-8529-77aff8d9d4a6"
+                        },
+                        {
+                          "id": "e2e27dec-ae04-47b4-b175-407bcaece3b9",
+                          "name": "400 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"payin_config_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/payin",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "device_registrations",
+                                ":device_registration_id",
+                                "payin"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "device_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:30.000Z",
+                          "updatedAt": "2026-07-28T02:43:30.000Z",
+                          "uid": "35240-e2e27dec-ae04-47b4-b175-407bcaece3b9"
+                        },
+                        {
+                          "id": "0fbf087d-9810-4f47-9dc8-b10f102ad0d0",
+                          "name": "401 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"payin_config_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/payin",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "device_registrations",
+                                ":device_registration_id",
+                                "payin"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "device_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:30.000Z",
+                          "updatedAt": "2026-07-28T02:43:30.000Z",
+                          "uid": "35240-0fbf087d-9810-4f47-9dc8-b10f102ad0d0"
+                        },
+                        {
+                          "id": "ce699a49-ff1d-4e9e-a7fe-29e3ca9700dd",
+                          "name": "403 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"payin_config_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/payin",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "device_registrations",
+                                ":device_registration_id",
+                                "payin"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "device_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:30.000Z",
+                          "updatedAt": "2026-07-28T02:43:30.000Z",
+                          "uid": "35240-ce699a49-ff1d-4e9e-a7fe-29e3ca9700dd"
+                        },
+                        {
+                          "id": "1085df2d-e624-4983-9c98-b34c4f3595f2",
+                          "name": "404 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"payin_config_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/payin",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "device_registrations",
+                                ":device_registration_id",
+                                "payin"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "device_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:30.000Z",
+                          "updatedAt": "2026-07-28T02:43:30.000Z",
+                          "uid": "35240-1085df2d-e624-4983-9c98-b34c4f3595f2"
+                        },
+                        {
+                          "id": "ecceacdd-679e-4d4c-823f-f8208eb07901",
+                          "name": "409 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"payin_config_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/payin",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "device_registrations",
+                                ":device_registration_id",
+                                "payin"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "device_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Conflict",
+                          "code": 409,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:30.000Z",
+                          "updatedAt": "2026-07-28T02:43:30.000Z",
+                          "uid": "35240-ecceacdd-679e-4d4c-823f-f8208eb07901"
+                        },
+                        {
+                          "id": "202cf2d1-662e-430f-88ab-874c2b2e1a05",
+                          "name": "5XX response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"payin_config_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/payin",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "device_registrations",
+                                ":device_registration_id",
+                                "payin"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "device_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:30.000Z",
+                          "updatedAt": "2026-07-28T02:43:30.000Z",
+                          "uid": "35240-202cf2d1-662e-430f-88ab-874c2b2e1a05"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:43:30.000Z",
+                      "updatedAt": "2026-07-28T02:43:30.000Z",
+                      "uid": "35240-89ebe1c2-f446-4990-aaeb-3541712ef120"
+                    }
+                  ],
+                  "id": "45a4e21c-97c8-4f78-be51-9d179fc5db8c",
+                  "createdAt": "2026-07-28T02:43:30.000Z",
+                  "updatedAt": "2026-07-28T02:43:30.000Z",
+                  "uid": "35240-45a4e21c-97c8-4f78-be51-9d179fc5db8c"
+                },
+                {
+                  "name": "payment_method",
+                  "item": [
+                    {
+                      "name": "Present payment method on a registered device",
+                      "id": "f5a6045d-9a87-46ec-a1fc-d2a9ff5abe63",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"payment_method_config_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/payment_method",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "device_registrations",
+                            ":device_registration_id",
+                            "payment_method"
+                          ],
+                          "variable": [
+                            {
+                              "id": "bd77b5ad-9817-4a5b-be6c-f93e48dd7f89",
+                              "key": "device_registration_id",
+                              "value": "<string>",
+                              "description": "(Required) The unique device registration identifier.\n\nPrefix is \"dvc\" in production and \"sbx_dvc\" in sandbox."
+                            }
+                          ]
+                        },
+                        "description": "Create a payment method on a registered device using a payment method configuration. The merchant status must be `ACTIVE` to create a payment method.\n\n> \ud83d\udcd8 Note\n>\n> A payment method created on a registered device may only be used for payins within the same merchant for which it was collected."
+                      },
+                      "response": [
+                        {
+                          "id": "2530ea11-e0ba-4f79-bcb0-7f161a51a3f3",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"payment_method_config_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/payment_method",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "device_registrations",
+                                ":device_registration_id",
+                                "payment_method"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "device_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"value\": \"reference #/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-07-28T02:43:30.000Z",
+                          "updatedAt": "2026-07-28T02:43:30.000Z",
+                          "uid": "35240-2530ea11-e0ba-4f79-bcb0-7f161a51a3f3"
+                        },
+                        {
+                          "id": "fee60b42-6753-4532-bb84-dab3ccbc7610",
+                          "name": "400 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"payment_method_config_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/payment_method",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "device_registrations",
+                                ":device_registration_id",
+                                "payment_method"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "device_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:30.000Z",
+                          "updatedAt": "2026-07-28T02:43:30.000Z",
+                          "uid": "35240-fee60b42-6753-4532-bb84-dab3ccbc7610"
+                        },
+                        {
+                          "id": "68924947-de5c-44cc-a7ac-887a4532666a",
+                          "name": "401 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"payment_method_config_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/payment_method",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "device_registrations",
+                                ":device_registration_id",
+                                "payment_method"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "device_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:30.000Z",
+                          "updatedAt": "2026-07-28T02:43:30.000Z",
+                          "uid": "35240-68924947-de5c-44cc-a7ac-887a4532666a"
+                        },
+                        {
+                          "id": "ebb1a579-ef63-40d4-97f2-3de6444a180a",
+                          "name": "403 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"payment_method_config_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/payment_method",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "device_registrations",
+                                ":device_registration_id",
+                                "payment_method"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "device_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:30.000Z",
+                          "updatedAt": "2026-07-28T02:43:30.000Z",
+                          "uid": "35240-ebb1a579-ef63-40d4-97f2-3de6444a180a"
+                        },
+                        {
+                          "id": "cace8c70-21c7-4ec2-b47a-75417870dba0",
+                          "name": "404 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"payment_method_config_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/payment_method",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "device_registrations",
+                                ":device_registration_id",
+                                "payment_method"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "device_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:30.000Z",
+                          "updatedAt": "2026-07-28T02:43:30.000Z",
+                          "uid": "35240-cace8c70-21c7-4ec2-b47a-75417870dba0"
+                        },
+                        {
+                          "id": "2e203206-9bc6-4839-9c9f-61d8845e7707",
+                          "name": "409 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"payment_method_config_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/payment_method",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "device_registrations",
+                                ":device_registration_id",
+                                "payment_method"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "device_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Conflict",
+                          "code": 409,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:30.000Z",
+                          "updatedAt": "2026-07-28T02:43:30.000Z",
+                          "uid": "35240-2e203206-9bc6-4839-9c9f-61d8845e7707"
+                        },
+                        {
+                          "id": "4b70edad-4e2a-4368-978d-365fa7488122",
+                          "name": "5XX response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"payment_method_config_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/payment_method",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "device_registrations",
+                                ":device_registration_id",
+                                "payment_method"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "device_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:30.000Z",
+                          "updatedAt": "2026-07-28T02:43:30.000Z",
+                          "uid": "35240-4b70edad-4e2a-4368-978d-365fa7488122"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:43:30.000Z",
+                      "updatedAt": "2026-07-28T02:43:30.000Z",
+                      "uid": "35240-f5a6045d-9a87-46ec-a1fc-d2a9ff5abe63"
+                    }
+                  ],
+                  "id": "6cad5fc5-1051-473f-b314-75cfcede2c96",
+                  "createdAt": "2026-07-28T02:43:30.000Z",
+                  "updatedAt": "2026-07-28T02:43:30.000Z",
+                  "uid": "35240-6cad5fc5-1051-473f-b314-75cfcede2c96"
+                },
+                {
+                  "name": "cancel",
+                  "item": [
+                    {
+                      "name": "Cancel presented entity on device",
+                      "id": "20749e29-8784-473f-af09-1e676acec30f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "device_registrations",
+                            ":device_registration_id",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "id": "1e023ba3-5432-480b-bc8a-05fca5d76a91",
+                              "key": "device_registration_id",
+                              "value": "<string>",
+                              "description": "(Required) The unique device registration identifier.\n\nPrefix is \"dvc\" in production and \"sbx_dvc\" in sandbox."
+                            }
+                          ]
+                        },
+                        "description": "Best effort attempt to cancel currently presented payin or payment method on device. This does not guarantee the presented entity can be canceled on the device. If the payin begins processing before it can be canceled, then you will need to void the payin if it processes. A corresponding webhook will trigger if the presented payin or payment method is canceled or processes.\n\nIf no payin or payment method is being presented at the time of the request, a `202 Accepted` response will be returned."
+                      },
+                      "response": [
+                        {
+                          "id": "a34a1995-6f30-4eeb-bdd8-2af6128c74c3",
+                          "name": "Accepted\n\nThe device is not currently presenting a payin or payment method, so no cancel action is necessary.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/cancel",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "device_registrations",
+                                ":device_registration_id",
+                                "cancel"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "device_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Accepted",
+                          "code": 202,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:30.000Z",
+                          "updatedAt": "2026-07-28T02:43:30.000Z",
+                          "uid": "35240-a34a1995-6f30-4eeb-bdd8-2af6128c74c3"
+                        },
+                        {
+                          "id": "d775d989-4309-4c94-9ff3-b9ab19a8d20c",
+                          "name": "No Content",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/cancel",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "device_registrations",
+                                ":device_registration_id",
+                                "cancel"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "device_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:30.000Z",
+                          "updatedAt": "2026-07-28T02:43:30.000Z",
+                          "uid": "35240-d775d989-4309-4c94-9ff3-b9ab19a8d20c"
+                        },
+                        {
+                          "id": "25a12a0b-924b-4dc7-811e-8f1784ab7491",
+                          "name": "400 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/cancel",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "device_registrations",
+                                ":device_registration_id",
+                                "cancel"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "device_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:30.000Z",
+                          "updatedAt": "2026-07-28T02:43:30.000Z",
+                          "uid": "35240-25a12a0b-924b-4dc7-811e-8f1784ab7491"
+                        },
+                        {
+                          "id": "93273c24-fdde-4735-87bd-bb6c67498092",
+                          "name": "401 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/cancel",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "device_registrations",
+                                ":device_registration_id",
+                                "cancel"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "device_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:30.000Z",
+                          "updatedAt": "2026-07-28T02:43:30.000Z",
+                          "uid": "35240-93273c24-fdde-4735-87bd-bb6c67498092"
+                        },
+                        {
+                          "id": "0499a6a2-ae08-4d48-b768-cac90f53a87e",
+                          "name": "403 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/cancel",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "device_registrations",
+                                ":device_registration_id",
+                                "cancel"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "device_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:30.000Z",
+                          "updatedAt": "2026-07-28T02:43:30.000Z",
+                          "uid": "35240-0499a6a2-ae08-4d48-b768-cac90f53a87e"
+                        },
+                        {
+                          "id": "2d7439c2-d5a4-4159-bca6-53cd2063ecec",
+                          "name": "404 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/cancel",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "device_registrations",
+                                ":device_registration_id",
+                                "cancel"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "device_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:30.000Z",
+                          "updatedAt": "2026-07-28T02:43:30.000Z",
+                          "uid": "35240-2d7439c2-d5a4-4159-bca6-53cd2063ecec"
+                        },
+                        {
+                          "id": "98be3dcf-27ef-4cf9-a9db-9bf395b19235",
+                          "name": "5XX response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/cancel",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "device_registrations",
+                                ":device_registration_id",
+                                "cancel"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "device_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:30.000Z",
+                          "updatedAt": "2026-07-28T02:43:30.000Z",
+                          "uid": "35240-98be3dcf-27ef-4cf9-a9db-9bf395b19235"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:43:30.000Z",
+                      "updatedAt": "2026-07-28T02:43:30.000Z",
+                      "uid": "35240-20749e29-8784-473f-af09-1e676acec30f"
+                    }
+                  ],
+                  "id": "0795bd53-121f-42b8-80bb-bbff25859a23",
+                  "createdAt": "2026-07-28T02:43:30.000Z",
+                  "updatedAt": "2026-07-28T02:43:30.000Z",
+                  "uid": "35240-0795bd53-121f-42b8-80bb-bbff25859a23"
+                },
+                {
+                  "name": "simulate",
+                  "item": [
+                    {
+                      "name": "Simulate device interaction",
+                      "id": "26d92c00-af16-4b69-85b4-dbd67f470f26",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"event\": \"PRESENTED\",\n  \"card\": \"MC_PREPAID_SUCCESS\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/simulate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "device_registrations",
+                            ":device_registration_id",
+                            "simulate"
+                          ],
+                          "variable": [
+                            {
+                              "id": "770f64de-f089-490f-9676-ca7f664d1c1c",
+                              "key": "device_registration_id",
+                              "value": "<string>",
+                              "description": "(Required) The unique device registration identifier.\n\nPrefix is \"dvc\" in production and \"sbx_dvc\" in sandbox."
+                            }
+                          ]
+                        },
+                        "description": "Only available in the Rainforest sandbox environment.\n\nAfter presenting a payin or payment method on a virtual device this endpoint is available to move on from the `PRESENTING` status to a desired subsequent status.\n\nThe expected webhook will be sent for the payin or payment method on status change."
+                      },
+                      "response": [
+                        {
+                          "id": "b31be508-e0df-4b39-b1c1-2453b575b1d1",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"event\": \"PRESENTED\",\n  \"card\": \"MC_PREPAID_SUCCESS\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/simulate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "device_registrations",
+                                ":device_registration_id",
+                                "simulate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "device_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:30.000Z",
+                          "updatedAt": "2026-07-28T02:43:30.000Z",
+                          "uid": "35240-b31be508-e0df-4b39-b1c1-2453b575b1d1"
+                        },
+                        {
+                          "id": "502ec1b5-2abd-4d8a-ade7-2e94eade6c7c",
+                          "name": "400 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"event\": \"PRESENTED\",\n  \"card\": \"MC_PREPAID_SUCCESS\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/simulate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "device_registrations",
+                                ":device_registration_id",
+                                "simulate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "device_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:30.000Z",
+                          "updatedAt": "2026-07-28T02:43:30.000Z",
+                          "uid": "35240-502ec1b5-2abd-4d8a-ade7-2e94eade6c7c"
+                        },
+                        {
+                          "id": "f7a1eecc-7995-4990-ac09-5f13b8ac3621",
+                          "name": "401 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"event\": \"PRESENTED\",\n  \"card\": \"MC_PREPAID_SUCCESS\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/simulate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "device_registrations",
+                                ":device_registration_id",
+                                "simulate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "device_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:30.000Z",
+                          "updatedAt": "2026-07-28T02:43:30.000Z",
+                          "uid": "35240-f7a1eecc-7995-4990-ac09-5f13b8ac3621"
+                        },
+                        {
+                          "id": "bf9bdc59-de1a-44f1-b53b-5f2272d48c61",
+                          "name": "403 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"event\": \"PRESENTED\",\n  \"card\": \"MC_PREPAID_SUCCESS\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/simulate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "device_registrations",
+                                ":device_registration_id",
+                                "simulate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "device_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:30.000Z",
+                          "updatedAt": "2026-07-28T02:43:30.000Z",
+                          "uid": "35240-bf9bdc59-de1a-44f1-b53b-5f2272d48c61"
+                        },
+                        {
+                          "id": "614c37e5-bdb4-4f14-9e42-971093665484",
+                          "name": "404 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"event\": \"PRESENTED\",\n  \"card\": \"MC_PREPAID_SUCCESS\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/simulate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "device_registrations",
+                                ":device_registration_id",
+                                "simulate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "device_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:30.000Z",
+                          "updatedAt": "2026-07-28T02:43:30.000Z",
+                          "uid": "35240-614c37e5-bdb4-4f14-9e42-971093665484"
+                        },
+                        {
+                          "id": "6a51bdf8-9647-41c6-8344-5e7fccd2762c",
+                          "name": "409 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"event\": \"PRESENTED\",\n  \"card\": \"MC_PREPAID_SUCCESS\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/simulate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "device_registrations",
+                                ":device_registration_id",
+                                "simulate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "device_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Conflict",
+                          "code": 409,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:30.000Z",
+                          "updatedAt": "2026-07-28T02:43:30.000Z",
+                          "uid": "35240-6a51bdf8-9647-41c6-8344-5e7fccd2762c"
+                        },
+                        {
+                          "id": "c99c7272-782e-4ab2-937b-03ebdbec0f9c",
+                          "name": "5XX response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"event\": \"PRESENTED\",\n  \"card\": \"MC_PREPAID_SUCCESS\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id/simulate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "device_registrations",
+                                ":device_registration_id",
+                                "simulate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "device_registration_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:30.000Z",
+                          "updatedAt": "2026-07-28T02:43:30.000Z",
+                          "uid": "35240-c99c7272-782e-4ab2-937b-03ebdbec0f9c"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:43:30.000Z",
+                      "updatedAt": "2026-07-28T02:43:30.000Z",
+                      "uid": "35240-26d92c00-af16-4b69-85b4-dbd67f470f26"
+                    }
+                  ],
+                  "id": "08885f9d-1705-4dcb-bf0f-89792f917a79",
+                  "createdAt": "2026-07-28T02:43:30.000Z",
+                  "updatedAt": "2026-07-28T02:43:30.000Z",
+                  "uid": "35240-08885f9d-1705-4dcb-bf0f-89792f917a79"
+                },
+                {
+                  "name": "Get device registration",
+                  "id": "bebcf1be-da3a-4cf9-a640-a0024cf0a4ec",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "device_registrations",
+                        ":device_registration_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4edc2a11-8075-4ead-b0e6-519468820808",
+                          "key": "device_registration_id",
+                          "value": "<string>",
+                          "description": "(Required) The unique device registration identifier.\n\nPrefix is \"dvc\" in production and \"sbx_dvc\" in sandbox."
+                        }
+                      ]
+                    },
+                    "description": "Get registered device details by the device registration ID."
+                  },
+                  "response": [
+                    {
+                      "id": "c8cbba1b-7ee5-4d0c-8e04-29812f0fe6d6",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "device_registrations",
+                            ":device_registration_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "device_registration_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"device_registration_id\": {},\n    \"merchant_id\": {\n      \"name\": \"merchant_id\",\n      \"schema\": \"ess\",\n      \"description\": \"The unique merchant identifier. \\n\\nPrefix is \\\"mid\\\" in production and \\\"sbx_mid\\\" in sandbox.\",\n      \"examples\": {\n        \"production\": {\n          \"value\": \"mid_2DrDFJPutxE5AIbJSopAnqniEbr\"\n        },\n        \"sandbox\": {\n          \"value\": \"sbx_mid_2DrDFJPutxE5AIbJSopAnqniEbr\"\n        }\n      }\n    },\n    \"make\": \"<string>\",\n    \"model\": \"<string>\",\n    \"serial_number\": \"<string>\",\n    \"device_name\": \"<string>\",\n    \"capabilities\": [\n      \"SIGNATURE\",\n      \"SIGNATURE\"\n    ],\n    \"created_at\": \"<dateTime>\",\n    \"deleted_at\": \"<dateTime>\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:43:30.000Z",
+                      "updatedAt": "2026-07-28T02:43:30.000Z",
+                      "uid": "35240-c8cbba1b-7ee5-4d0c-8e04-29812f0fe6d6"
+                    },
+                    {
+                      "id": "feae5e5f-568c-441a-b4fe-f6961e3a22ca",
+                      "name": "400 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "device_registrations",
+                            ":device_registration_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "device_registration_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:30.000Z",
+                      "updatedAt": "2026-07-28T02:43:30.000Z",
+                      "uid": "35240-feae5e5f-568c-441a-b4fe-f6961e3a22ca"
+                    },
+                    {
+                      "id": "4c9ede73-1bf0-4a2e-9730-601e7818d610",
+                      "name": "401 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "device_registrations",
+                            ":device_registration_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "device_registration_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:30.000Z",
+                      "updatedAt": "2026-07-28T02:43:30.000Z",
+                      "uid": "35240-4c9ede73-1bf0-4a2e-9730-601e7818d610"
+                    },
+                    {
+                      "id": "62099f8a-fecb-4548-b7ae-6e1f444705f3",
+                      "name": "403 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "device_registrations",
+                            ":device_registration_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "device_registration_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:30.000Z",
+                      "updatedAt": "2026-07-28T02:43:30.000Z",
+                      "uid": "35240-62099f8a-fecb-4548-b7ae-6e1f444705f3"
+                    },
+                    {
+                      "id": "b334fbc9-f9c7-4f13-9a61-37e11e36d51c",
+                      "name": "404 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "device_registrations",
+                            ":device_registration_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "device_registration_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:30.000Z",
+                      "updatedAt": "2026-07-28T02:43:30.000Z",
+                      "uid": "35240-b334fbc9-f9c7-4f13-9a61-37e11e36d51c"
+                    },
+                    {
+                      "id": "ba0b8c9d-58f2-4eb3-905a-3455e1f30103",
+                      "name": "5XX response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "device_registrations",
+                            ":device_registration_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "device_registration_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:30.000Z",
+                      "updatedAt": "2026-07-28T02:43:30.000Z",
+                      "uid": "35240-ba0b8c9d-58f2-4eb3-905a-3455e1f30103"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:43:30.000Z",
+                  "updatedAt": "2026-07-28T02:43:30.000Z",
+                  "uid": "35240-bebcf1be-da3a-4cf9-a640-a0024cf0a4ec"
+                },
+                {
+                  "name": "Delete device registration",
+                  "id": "04e7cc18-bd4f-4627-a692-ecf47adcb415",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "device_registrations",
+                        ":device_registration_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "476aa3a4-c093-46c2-83da-097e337d9e5f",
+                          "key": "device_registration_id",
+                          "value": "<string>",
+                          "description": "(Required) The unique device registration identifier.\n\nPrefix is \"dvc\" in production and \"sbx_dvc\" in sandbox."
+                        }
+                      ]
+                    },
+                    "description": "Delete a device registration. The device will be able to be re-registered."
+                  },
+                  "response": [
+                    {
+                      "id": "61114327-5d8f-457b-be73-0f586580c404",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "device_registrations",
+                            ":device_registration_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "device_registration_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:30.000Z",
+                      "updatedAt": "2026-07-28T02:43:30.000Z",
+                      "uid": "35240-61114327-5d8f-457b-be73-0f586580c404"
+                    },
+                    {
+                      "id": "781076c4-1436-478b-b056-c980d9f6124e",
+                      "name": "400 response",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "device_registrations",
+                            ":device_registration_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "device_registration_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:30.000Z",
+                      "updatedAt": "2026-07-28T02:43:30.000Z",
+                      "uid": "35240-781076c4-1436-478b-b056-c980d9f6124e"
+                    },
+                    {
+                      "id": "8d6134f1-2646-446f-9569-b64664b5c691",
+                      "name": "401 response",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "device_registrations",
+                            ":device_registration_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "device_registration_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:30.000Z",
+                      "updatedAt": "2026-07-28T02:43:30.000Z",
+                      "uid": "35240-8d6134f1-2646-446f-9569-b64664b5c691"
+                    },
+                    {
+                      "id": "d8efef3d-3d18-43c6-a167-50fa3cb92ef2",
+                      "name": "403 response",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "device_registrations",
+                            ":device_registration_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "device_registration_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:30.000Z",
+                      "updatedAt": "2026-07-28T02:43:30.000Z",
+                      "uid": "35240-d8efef3d-3d18-43c6-a167-50fa3cb92ef2"
+                    },
+                    {
+                      "id": "4eca2bf0-6c94-423a-8182-ec599e436e61",
+                      "name": "404 response",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "device_registrations",
+                            ":device_registration_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "device_registration_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:30.000Z",
+                      "updatedAt": "2026-07-28T02:43:30.000Z",
+                      "uid": "35240-4eca2bf0-6c94-423a-8182-ec599e436e61"
+                    },
+                    {
+                      "id": "578b43b8-a8a1-41b3-874a-7a6448c84e8a",
+                      "name": "5XX response",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/device_registrations/:device_registration_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "device_registrations",
+                            ":device_registration_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "device_registration_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:30.000Z",
+                      "updatedAt": "2026-07-28T02:43:30.000Z",
+                      "uid": "35240-578b43b8-a8a1-41b3-874a-7a6448c84e8a"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:43:30.000Z",
+                  "updatedAt": "2026-07-28T02:43:30.000Z",
+                  "uid": "35240-04e7cc18-bd4f-4627-a692-ecf47adcb415"
+                }
+              ],
+              "id": "6134c4b9-dd67-4979-b585-10bba20a378d",
+              "createdAt": "2026-07-28T02:43:30.000Z",
+              "updatedAt": "2026-07-28T02:43:30.000Z",
+              "uid": "35240-6134c4b9-dd67-4979-b585-10bba20a378d"
+            },
+            {
+              "name": "Create device registration",
+              "id": "c74bfbb9-53e8-403b-af92-e42ffcfaf834",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"merchant_id\": \"<string>\",\n  \"registration_code\": \"<string>\",\n  \"device_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/device_registrations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "device_registrations"
+                  ]
+                },
+                "description": "Create a device registration for payment processing on a specific merchant. When a device is registered, the device receives a new device_registration_id for payment processing. The merchant status must be `ACTIVE` to register a device."
+              },
+              "response": [
+                {
+                  "id": "754f5a3c-4585-4965-b7a0-f670966d03d9",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"merchant_id\": \"<string>\",\n  \"registration_code\": \"<string>\",\n  \"device_name\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/device_registrations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "device_registrations"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"device_registration_id\": {},\n    \"merchant_id\": {\n      \"name\": \"merchant_id\",\n      \"schema\": \"ess\",\n      \"description\": \"The unique merchant identifier. \\n\\nPrefix is \\\"mid\\\" in production and \\\"sbx_mid\\\" in sandbox.\",\n      \"examples\": {\n        \"production\": {\n          \"value\": \"mid_2DrDFJPutxE5AIbJSopAnqniEbr\"\n        },\n        \"sandbox\": {\n          \"value\": \"sbx_mid_2DrDFJPutxE5AIbJSopAnqniEbr\"\n        }\n      }\n    },\n    \"make\": \"<string>\",\n    \"model\": \"<string>\",\n    \"serial_number\": \"<string>\",\n    \"device_name\": \"<string>\",\n    \"capabilities\": [\n      \"SIGNATURE\",\n      \"SIGNATURE\"\n    ],\n    \"created_at\": \"<dateTime>\",\n    \"deleted_at\": \"<dateTime>\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:43:30.000Z",
+                  "updatedAt": "2026-07-28T02:43:30.000Z",
+                  "uid": "35240-754f5a3c-4585-4965-b7a0-f670966d03d9"
+                },
+                {
+                  "id": "e492f9ba-a538-4cc8-a33c-55916f8f5d53",
+                  "name": "400 response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"merchant_id\": \"<string>\",\n  \"registration_code\": \"<string>\",\n  \"device_name\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/device_registrations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "device_registrations"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:30.000Z",
+                  "updatedAt": "2026-07-28T02:43:30.000Z",
+                  "uid": "35240-e492f9ba-a538-4cc8-a33c-55916f8f5d53"
+                },
+                {
+                  "id": "bf8de0c4-f61c-479a-a9c9-24e26cdf899d",
+                  "name": "401 response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"merchant_id\": \"<string>\",\n  \"registration_code\": \"<string>\",\n  \"device_name\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/device_registrations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "device_registrations"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:30.000Z",
+                  "updatedAt": "2026-07-28T02:43:30.000Z",
+                  "uid": "35240-bf8de0c4-f61c-479a-a9c9-24e26cdf899d"
+                },
+                {
+                  "id": "44e86818-8f1d-4714-b84d-b5770d5cfb0b",
+                  "name": "403 response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"merchant_id\": \"<string>\",\n  \"registration_code\": \"<string>\",\n  \"device_name\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/device_registrations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "device_registrations"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:30.000Z",
+                  "updatedAt": "2026-07-28T02:43:30.000Z",
+                  "uid": "35240-44e86818-8f1d-4714-b84d-b5770d5cfb0b"
+                },
+                {
+                  "id": "ffa206eb-340d-432f-921f-a106c08a9355",
+                  "name": "5XX response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"merchant_id\": \"<string>\",\n  \"registration_code\": \"<string>\",\n  \"device_name\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/device_registrations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "device_registrations"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:30.000Z",
+                  "updatedAt": "2026-07-28T02:43:30.000Z",
+                  "uid": "35240-ffa206eb-340d-432f-921f-a106c08a9355"
+                }
+              ],
+              "createdAt": "2026-07-28T02:43:30.000Z",
+              "updatedAt": "2026-07-28T02:43:30.000Z",
+              "uid": "35240-c74bfbb9-53e8-403b-af92-e42ffcfaf834"
+            },
+            {
+              "name": "List device registrations",
+              "id": "381ac2fa-24ca-4d7b-8513-974249155f3f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/device_registrations?sort_by=created_at&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "device_registrations"
+                  ],
+                  "query": [
+                    {
+                      "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                      "key": "sort_by",
+                      "value": "created_at"
+                    },
+                    {
+                      "description": "The offset of the first result to return; zero-based.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                },
+                "description": "Query a list of registered devices given optional search criteria."
+              },
+              "response": [
+                {
+                  "id": "d48e4387-937b-4d20-aeee-563b11444f1f",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/device_registrations?sort_by=created_at&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "device_registrations"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                          "key": "sort_by",
+                          "value": "created_at"
+                        },
+                        {
+                          "description": "The offset of the first result to return; zero-based.",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"results\": [\n      {\n        \"device_registration_id\": {},\n        \"merchant_id\": {\n          \"name\": \"merchant_id\",\n          \"schema\": \"Lorem reprehenderit id\",\n          \"description\": \"The unique merchant identifier. \\n\\nPrefix is \\\"mid\\\" in production and \\\"sbx_mid\\\" in sandbox.\",\n          \"examples\": {\n            \"production\": {\n              \"value\": \"mid_2DrDFJPutxE5AIbJSopAnqniEbr\"\n            },\n            \"sandbox\": {\n              \"value\": \"sbx_mid_2DrDFJPutxE5AIbJSopAnqniEbr\"\n            }\n          }\n        },\n        \"make\": \"<string>\",\n        \"model\": \"<string>\",\n        \"serial_number\": \"<string>\",\n        \"device_name\": \"<string>\",\n        \"capabilities\": [\n          \"SIGNATURE\",\n          \"SIGNATURE\"\n        ],\n        \"created_at\": \"<dateTime>\",\n        \"deleted_at\": \"<dateTime>\"\n      },\n      {\n        \"device_registration_id\": {},\n        \"merchant_id\": {\n          \"name\": \"merchant_id\",\n          \"schema\": \"labore in dolore ut\",\n          \"description\": \"The unique merchant identifier. \\n\\nPrefix is \\\"mid\\\" in production and \\\"sbx_mid\\\" in sandbox.\",\n          \"examples\": {\n            \"production\": {\n              \"value\": \"mid_2DrDFJPutxE5AIbJSopAnqniEbr\"\n            },\n            \"sandbox\": {\n              \"value\": \"sbx_mid_2DrDFJPutxE5AIbJSopAnqniEbr\"\n            }\n          }\n        },\n        \"make\": \"<string>\",\n        \"model\": \"<string>\",\n        \"serial_number\": \"<string>\",\n        \"device_name\": \"<string>\",\n        \"capabilities\": [\n          \"SIGNATURE\",\n          \"SIGNATURE\"\n        ],\n        \"created_at\": \"<dateTime>\",\n        \"deleted_at\": \"<dateTime>\"\n      }\n    ]\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:43:30.000Z",
+                  "updatedAt": "2026-07-28T02:43:30.000Z",
+                  "uid": "35240-d48e4387-937b-4d20-aeee-563b11444f1f"
+                },
+                {
+                  "id": "7590cc06-45f6-46b7-a359-e22913a4c0ed",
+                  "name": "400 response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/device_registrations?sort_by=created_at&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "device_registrations"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                          "key": "sort_by",
+                          "value": "created_at"
+                        },
+                        {
+                          "description": "The offset of the first result to return; zero-based.",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:30.000Z",
+                  "updatedAt": "2026-07-28T02:43:30.000Z",
+                  "uid": "35240-7590cc06-45f6-46b7-a359-e22913a4c0ed"
+                },
+                {
+                  "id": "a02fa7ec-194c-4f53-a91d-96b4aef15837",
+                  "name": "401 response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/device_registrations?sort_by=created_at&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "device_registrations"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                          "key": "sort_by",
+                          "value": "created_at"
+                        },
+                        {
+                          "description": "The offset of the first result to return; zero-based.",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:30.000Z",
+                  "updatedAt": "2026-07-28T02:43:30.000Z",
+                  "uid": "35240-a02fa7ec-194c-4f53-a91d-96b4aef15837"
+                },
+                {
+                  "id": "edc9e057-59e4-4e33-92d1-0b3fb8e2bd16",
+                  "name": "403 response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/device_registrations?sort_by=created_at&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "device_registrations"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                          "key": "sort_by",
+                          "value": "created_at"
+                        },
+                        {
+                          "description": "The offset of the first result to return; zero-based.",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:30.000Z",
+                  "updatedAt": "2026-07-28T02:43:30.000Z",
+                  "uid": "35240-edc9e057-59e4-4e33-92d1-0b3fb8e2bd16"
+                },
+                {
+                  "id": "76e7f2cc-63ae-4b79-a412-61f289951870",
+                  "name": "5XX response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/device_registrations?sort_by=created_at&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "device_registrations"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                          "key": "sort_by",
+                          "value": "created_at"
+                        },
+                        {
+                          "description": "The offset of the first result to return; zero-based.",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:30.000Z",
+                  "updatedAt": "2026-07-28T02:43:30.000Z",
+                  "uid": "35240-76e7f2cc-63ae-4b79-a412-61f289951870"
+                }
+              ],
+              "createdAt": "2026-07-28T02:43:30.000Z",
+              "updatedAt": "2026-07-28T02:43:30.000Z",
+              "uid": "35240-381ac2fa-24ca-4d7b-8513-974249155f3f"
+            }
+          ],
+          "id": "f569336c-a456-4dd9-b15b-0b3ff454996d",
+          "createdAt": "2026-07-28T02:43:30.000Z",
+          "updatedAt": "2026-07-28T02:43:30.000Z",
+          "uid": "35240-f569336c-a456-4dd9-b15b-0b3ff454996d"
+        }
+      ],
+      "id": "ca4da7bd-55b6-4b19-84eb-fa9cbc3d0433",
+      "createdAt": "2026-07-28T02:43:30.000Z",
+      "updatedAt": "2026-07-28T02:43:30.000Z",
+      "uid": "35240-ca4da7bd-55b6-4b19-84eb-fa9cbc3d0433"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.sandbox.rainforestpay.com"
+    }
+  ]
+}

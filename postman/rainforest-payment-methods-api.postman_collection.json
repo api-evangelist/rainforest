@@ -1,0 +1,2268 @@
+{
+  "info": {
+    "_postman_id": "2b19b322-d284-401c-8fc3-c8a3cc174bd6",
+    "name": "Authentication ACH Returns Payment Methods API",
+    "description": "This resource is used for authentication actions\n\nContact Support:\n Name: Rainforest\n Email: support@rainforestpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:43:52.000Z",
+    "updatedAt": "2026-07-28T02:43:52.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2b19b322-d284-401c-8fc3-c8a3cc174bd6"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "payment_methods",
+          "item": [
+            {
+              "name": "{payment_method_id}",
+              "item": [
+                {
+                  "name": "payin",
+                  "item": [
+                    {
+                      "name": "Create payin from stored payment method",
+                      "id": "7efdcadd-685d-4dab-bf73-3a298cc6ccfc",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"payin_config_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/payment_methods/:payment_method_id/payin",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "payment_methods",
+                            ":payment_method_id",
+                            "payin"
+                          ],
+                          "variable": [
+                            {
+                              "id": "1f00ba1f-e620-416c-be63-88fadfea8ae1",
+                              "key": "payment_method_id",
+                              "value": "<string>",
+                              "description": "(Required) The unique payment method identifier. \n\nPrefix is \"mtd\" in production and \"sbx_mtd\" in sandbox."
+                            }
+                          ]
+                        },
+                        "description": "Create and process a payin using a payin configuration and a stored payment method. The merchant status must be `ACTIVE` to create a payin."
+                      },
+                      "response": [
+                        {
+                          "id": "f27344f0-6b0a-41e0-b0c0-ab0e37067717",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"payin_config_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/payment_methods/:payment_method_id/payin",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "payment_methods",
+                                ":payment_method_id",
+                                "payin"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "payment_method_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-07-28T02:43:53.000Z",
+                          "updatedAt": "2026-07-28T02:43:53.000Z",
+                          "uid": "35240-f27344f0-6b0a-41e0-b0c0-ab0e37067717"
+                        },
+                        {
+                          "id": "72dfdce3-f514-4f86-9365-5a4e8ecad987",
+                          "name": "400 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"payin_config_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/payment_methods/:payment_method_id/payin",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "payment_methods",
+                                ":payment_method_id",
+                                "payin"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "payment_method_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:53.000Z",
+                          "updatedAt": "2026-07-28T02:43:53.000Z",
+                          "uid": "35240-72dfdce3-f514-4f86-9365-5a4e8ecad987"
+                        },
+                        {
+                          "id": "6abe0123-9294-4043-b1b8-ed8180f5a98b",
+                          "name": "401 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"payin_config_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/payment_methods/:payment_method_id/payin",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "payment_methods",
+                                ":payment_method_id",
+                                "payin"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "payment_method_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:53.000Z",
+                          "updatedAt": "2026-07-28T02:43:53.000Z",
+                          "uid": "35240-6abe0123-9294-4043-b1b8-ed8180f5a98b"
+                        },
+                        {
+                          "id": "fdd5b578-9221-42e3-ad9c-675fbcf4cad5",
+                          "name": "403 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"payin_config_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/payment_methods/:payment_method_id/payin",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "payment_methods",
+                                ":payment_method_id",
+                                "payin"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "payment_method_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:53.000Z",
+                          "updatedAt": "2026-07-28T02:43:53.000Z",
+                          "uid": "35240-fdd5b578-9221-42e3-ad9c-675fbcf4cad5"
+                        },
+                        {
+                          "id": "bf014873-8381-4dcb-a903-d4f50b669df3",
+                          "name": "404 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"payin_config_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/payment_methods/:payment_method_id/payin",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "payment_methods",
+                                ":payment_method_id",
+                                "payin"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "payment_method_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:53.000Z",
+                          "updatedAt": "2026-07-28T02:43:53.000Z",
+                          "uid": "35240-bf014873-8381-4dcb-a903-d4f50b669df3"
+                        },
+                        {
+                          "id": "7c9d32a7-f68f-4635-a19e-c32ee2a85e7f",
+                          "name": "5XX response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"payin_config_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/payment_methods/:payment_method_id/payin",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "payment_methods",
+                                ":payment_method_id",
+                                "payin"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "payment_method_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:53.000Z",
+                          "updatedAt": "2026-07-28T02:43:53.000Z",
+                          "uid": "35240-7c9d32a7-f68f-4635-a19e-c32ee2a85e7f"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:43:53.000Z",
+                      "updatedAt": "2026-07-28T02:43:53.000Z",
+                      "uid": "35240-7efdcadd-685d-4dab-bf73-3a298cc6ccfc"
+                    }
+                  ],
+                  "id": "c66bc8cf-d3c8-4d37-b158-e945f791c058",
+                  "createdAt": "2026-07-28T02:43:53.000Z",
+                  "updatedAt": "2026-07-28T02:43:53.000Z",
+                  "uid": "35240-c66bc8cf-d3c8-4d37-b158-e945f791c058"
+                },
+                {
+                  "name": "deactivate",
+                  "item": [
+                    {
+                      "name": "Deactivate payment method",
+                      "id": "c2e8c98f-2646-4705-9b46-a1b5f3c484a6",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/payment_methods/:payment_method_id/deactivate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "payment_methods",
+                            ":payment_method_id",
+                            "deactivate"
+                          ],
+                          "variable": [
+                            {
+                              "id": "39b1a085-6572-415e-bb98-a949b2a27e69",
+                              "key": "payment_method_id",
+                              "value": "<string>",
+                              "description": "(Required) The unique payment method identifier. \n\nPrefix is \"mtd\" in production and \"sbx_mtd\" in sandbox."
+                            }
+                          ]
+                        },
+                        "description": "Deactivate payment method. Deactivated payment methods cannot be used to process payins. The payment method status must be `ACTIVE` to be deactivated."
+                      },
+                      "response": [
+                        {
+                          "id": "9287c411-6673-43fb-a959-19f536cb3e6f",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/payment_methods/:payment_method_id/deactivate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "payment_methods",
+                                ":payment_method_id",
+                                "deactivate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "payment_method_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"payment_method_id\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id not found in the OpenAPI spec\"\n    },\n    \"payment_method_config_id\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/payment_method_config_id not found in the OpenAPI spec\"\n    },\n    \"device_registration_id\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/device_registration_id not found in the OpenAPI spec\"\n    },\n    \"billable_merchant_id\": \"<string>\",\n    \"merchant_id\": \"<string>\",\n    \"fingerprint\": \"<string>\",\n    \"method_type\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/method_type not found in the OpenAPI spec\"\n    },\n    \"card\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/card not found in the OpenAPI spec\"\n    },\n    \"apple_pay\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/apple_pay not found in the OpenAPI spec\"\n    },\n    \"ach\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/ach not found in the OpenAPI spec\"\n    },\n    \"plaid_ach\": {\n      \"account_number_last_4\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/ach/properties/account_number_last_4 not found in the OpenAPI spec\"\n      },\n      \"routing_number\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach/properties/routing_number not found in the OpenAPI spec\"\n      },\n      \"bank_name\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/ach/properties/bank_name not found in the OpenAPI spec\"\n      },\n      \"account_type\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach/properties/account_type not found in the OpenAPI spec\"\n      },\n      \"account_holder_type\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach/properties/account_holder_type not found in the OpenAPI spec\"\n      }\n    },\n    \"paypal_wallet\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_wallet not found in the OpenAPI spec\"\n    },\n    \"venmo\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/venmo not found in the OpenAPI spec\"\n    },\n    \"paypal_paylater\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_paylater not found in the OpenAPI spec\"\n    },\n    \"status\": \"FAILED\",\n    \"is_available\": \"<boolean>\",\n    \"billing_contact\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n    },\n    \"device_data\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/device_data not found in the OpenAPI spec\"\n    },\n    \"metadata\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/method_metadata not found in the OpenAPI spec\"\n    },\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"replaces_payment_method_id\": \"<string>\",\n    \"replaced_by_payment_method_id\": \"<string>\",\n    \"replaced_at\": \"<dateTime>\",\n    \"replaced_reason_code\": \"C12\",\n    \"replaced_reason_desc\": \"<string>\",\n    \"replacement_disabled_at\": \"<dateTime>\",\n    \"replacement_disabled_reason_code\": \"D01\",\n    \"replacement_disabled_reason_desc\": \"<string>\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-07-28T02:43:53.000Z",
+                          "updatedAt": "2026-07-28T02:43:53.000Z",
+                          "uid": "35240-9287c411-6673-43fb-a959-19f536cb3e6f"
+                        },
+                        {
+                          "id": "12508a3e-f138-40a3-affd-7a21bcb1e8a9",
+                          "name": "400 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/payment_methods/:payment_method_id/deactivate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "payment_methods",
+                                ":payment_method_id",
+                                "deactivate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "payment_method_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:53.000Z",
+                          "updatedAt": "2026-07-28T02:43:53.000Z",
+                          "uid": "35240-12508a3e-f138-40a3-affd-7a21bcb1e8a9"
+                        },
+                        {
+                          "id": "b772d0e9-2017-4653-897d-449fb37a7629",
+                          "name": "401 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/payment_methods/:payment_method_id/deactivate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "payment_methods",
+                                ":payment_method_id",
+                                "deactivate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "payment_method_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:53.000Z",
+                          "updatedAt": "2026-07-28T02:43:53.000Z",
+                          "uid": "35240-b772d0e9-2017-4653-897d-449fb37a7629"
+                        },
+                        {
+                          "id": "4efab341-a5c4-471d-bfb3-b818221acae6",
+                          "name": "403 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/payment_methods/:payment_method_id/deactivate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "payment_methods",
+                                ":payment_method_id",
+                                "deactivate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "payment_method_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:53.000Z",
+                          "updatedAt": "2026-07-28T02:43:53.000Z",
+                          "uid": "35240-4efab341-a5c4-471d-bfb3-b818221acae6"
+                        },
+                        {
+                          "id": "143b152c-e98d-4579-b912-d666ed245a5c",
+                          "name": "404 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/payment_methods/:payment_method_id/deactivate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "payment_methods",
+                                ":payment_method_id",
+                                "deactivate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "payment_method_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:53.000Z",
+                          "updatedAt": "2026-07-28T02:43:53.000Z",
+                          "uid": "35240-143b152c-e98d-4579-b912-d666ed245a5c"
+                        },
+                        {
+                          "id": "e98226b7-be10-40e2-875b-2e56e5eb10d2",
+                          "name": "5XX response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/payment_methods/:payment_method_id/deactivate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "payment_methods",
+                                ":payment_method_id",
+                                "deactivate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "payment_method_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:53.000Z",
+                          "updatedAt": "2026-07-28T02:43:53.000Z",
+                          "uid": "35240-e98226b7-be10-40e2-875b-2e56e5eb10d2"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:43:53.000Z",
+                      "updatedAt": "2026-07-28T02:43:53.000Z",
+                      "uid": "35240-c2e8c98f-2646-4705-9b46-a1b5f3c484a6"
+                    }
+                  ],
+                  "id": "029d7ba0-9db6-4e44-8553-d79c67bd06df",
+                  "createdAt": "2026-07-28T02:43:53.000Z",
+                  "updatedAt": "2026-07-28T02:43:53.000Z",
+                  "uid": "35240-029d7ba0-9db6-4e44-8553-d79c67bd06df"
+                },
+                {
+                  "name": "Get payment method",
+                  "id": "d033891d-606a-4f65-88eb-f9a1a1fe8f31",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payment_methods/:payment_method_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payment_methods",
+                        ":payment_method_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "b4033f69-5e7b-458e-bef8-7a3703231e6a",
+                          "key": "payment_method_id",
+                          "value": "<string>",
+                          "description": "(Required) The unique payment method identifier. \n\nPrefix is \"mtd\" in production and \"sbx_mtd\" in sandbox."
+                        }
+                      ]
+                    },
+                    "description": "Get payment method details by the payment method ID."
+                  },
+                  "response": [
+                    {
+                      "id": "6dd74731-3c86-420d-bbbc-8c22e81ca83b",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/payment_methods/:payment_method_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "payment_methods",
+                            ":payment_method_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payment_method_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"payment_method_id\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id not found in the OpenAPI spec\"\n    },\n    \"payment_method_config_id\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/payment_method_config_id not found in the OpenAPI spec\"\n    },\n    \"device_registration_id\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/device_registration_id not found in the OpenAPI spec\"\n    },\n    \"billable_merchant_id\": \"<string>\",\n    \"merchant_id\": \"<string>\",\n    \"fingerprint\": \"<string>\",\n    \"method_type\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/method_type not found in the OpenAPI spec\"\n    },\n    \"card\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/card not found in the OpenAPI spec\"\n    },\n    \"apple_pay\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/apple_pay not found in the OpenAPI spec\"\n    },\n    \"ach\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/ach not found in the OpenAPI spec\"\n    },\n    \"plaid_ach\": {\n      \"account_number_last_4\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/ach/properties/account_number_last_4 not found in the OpenAPI spec\"\n      },\n      \"routing_number\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach/properties/routing_number not found in the OpenAPI spec\"\n      },\n      \"bank_name\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/ach/properties/bank_name not found in the OpenAPI spec\"\n      },\n      \"account_type\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach/properties/account_type not found in the OpenAPI spec\"\n      },\n      \"account_holder_type\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach/properties/account_holder_type not found in the OpenAPI spec\"\n      }\n    },\n    \"paypal_wallet\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_wallet not found in the OpenAPI spec\"\n    },\n    \"venmo\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/venmo not found in the OpenAPI spec\"\n    },\n    \"paypal_paylater\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_paylater not found in the OpenAPI spec\"\n    },\n    \"status\": \"FAILED\",\n    \"is_available\": \"<boolean>\",\n    \"billing_contact\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n    },\n    \"device_data\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/device_data not found in the OpenAPI spec\"\n    },\n    \"metadata\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/method_metadata not found in the OpenAPI spec\"\n    },\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"replaces_payment_method_id\": \"<string>\",\n    \"replaced_by_payment_method_id\": \"<string>\",\n    \"replaced_at\": \"<dateTime>\",\n    \"replaced_reason_code\": \"C12\",\n    \"replaced_reason_desc\": \"<string>\",\n    \"replacement_disabled_at\": \"<dateTime>\",\n    \"replacement_disabled_reason_code\": \"D01\",\n    \"replacement_disabled_reason_desc\": \"<string>\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:43:53.000Z",
+                      "updatedAt": "2026-07-28T02:43:53.000Z",
+                      "uid": "35240-6dd74731-3c86-420d-bbbc-8c22e81ca83b"
+                    },
+                    {
+                      "id": "7539d537-a59f-4bc3-864d-d04439da1ffc",
+                      "name": "400 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/payment_methods/:payment_method_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "payment_methods",
+                            ":payment_method_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payment_method_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:53.000Z",
+                      "updatedAt": "2026-07-28T02:43:53.000Z",
+                      "uid": "35240-7539d537-a59f-4bc3-864d-d04439da1ffc"
+                    },
+                    {
+                      "id": "356c6f65-3a4e-4584-961d-cd17dcb59d83",
+                      "name": "401 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/payment_methods/:payment_method_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "payment_methods",
+                            ":payment_method_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payment_method_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:53.000Z",
+                      "updatedAt": "2026-07-28T02:43:53.000Z",
+                      "uid": "35240-356c6f65-3a4e-4584-961d-cd17dcb59d83"
+                    },
+                    {
+                      "id": "ca19bd07-e38a-4397-8acf-8a6981764f00",
+                      "name": "403 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/payment_methods/:payment_method_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "payment_methods",
+                            ":payment_method_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payment_method_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:53.000Z",
+                      "updatedAt": "2026-07-28T02:43:53.000Z",
+                      "uid": "35240-ca19bd07-e38a-4397-8acf-8a6981764f00"
+                    },
+                    {
+                      "id": "fb87abd4-a94a-48aa-9fb2-dbb2d29e2430",
+                      "name": "404 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/payment_methods/:payment_method_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "payment_methods",
+                            ":payment_method_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payment_method_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:53.000Z",
+                      "updatedAt": "2026-07-28T02:43:53.000Z",
+                      "uid": "35240-fb87abd4-a94a-48aa-9fb2-dbb2d29e2430"
+                    },
+                    {
+                      "id": "8cfc2c48-9835-4cea-938e-ddb5379461b7",
+                      "name": "5XX response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/payment_methods/:payment_method_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "payment_methods",
+                            ":payment_method_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payment_method_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:53.000Z",
+                      "updatedAt": "2026-07-28T02:43:53.000Z",
+                      "uid": "35240-8cfc2c48-9835-4cea-938e-ddb5379461b7"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:43:53.000Z",
+                  "updatedAt": "2026-07-28T02:43:53.000Z",
+                  "uid": "35240-d033891d-606a-4f65-88eb-f9a1a1fe8f31"
+                },
+                {
+                  "name": "Update payment method",
+                  "id": "197bcc07-7211-45af-9e0c-b5e5945db36c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"billable_merchant_id\": \"<string>\",\n  \"billing_contact\": {\n    \"name\": \"<string>\",\n    \"address_line_1\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/address_line_1 not found in the OpenAPI spec\"\n    },\n    \"address_line_2\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/address_line_2 not found in the OpenAPI spec\"\n    },\n    \"city\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/city not found in the OpenAPI spec\"\n    },\n    \"state\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/state not found in the OpenAPI spec\"\n    },\n    \"postal_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/postal_code not found in the OpenAPI spec\"\n    },\n    \"country\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/country not found in the OpenAPI spec\"\n    },\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payment_methods/:payment_method_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payment_methods",
+                        ":payment_method_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "62863c21-99fb-4b02-b331-2c6b889bb07c",
+                          "key": "payment_method_id",
+                          "value": "<string>",
+                          "description": "(Required) The unique payment method identifier. \n\nPrefix is \"mtd\" in production and \"sbx_mtd\" in sandbox."
+                        }
+                      ]
+                    },
+                    "description": "Update supported fields on a payment method. Only fields included in the payload will be updated. Omitted fields will not be updated."
+                  },
+                  "response": [
+                    {
+                      "id": "2d472fc4-c857-4d24-b0cc-de5cfbf771d5",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"billable_merchant_id\": \"<string>\",\n  \"billing_contact\": {\n    \"name\": \"<string>\",\n    \"address_line_1\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/address_line_1 not found in the OpenAPI spec\"\n    },\n    \"address_line_2\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/address_line_2 not found in the OpenAPI spec\"\n    },\n    \"city\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/city not found in the OpenAPI spec\"\n    },\n    \"state\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/state not found in the OpenAPI spec\"\n    },\n    \"postal_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/postal_code not found in the OpenAPI spec\"\n    },\n    \"country\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/country not found in the OpenAPI spec\"\n    },\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/payment_methods/:payment_method_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "payment_methods",
+                            ":payment_method_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payment_method_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"payment_method_id\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id not found in the OpenAPI spec\"\n    },\n    \"payment_method_config_id\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/payment_method_config_id not found in the OpenAPI spec\"\n    },\n    \"device_registration_id\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/device_registration_id not found in the OpenAPI spec\"\n    },\n    \"billable_merchant_id\": \"<string>\",\n    \"merchant_id\": \"<string>\",\n    \"fingerprint\": \"<string>\",\n    \"method_type\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/method_type not found in the OpenAPI spec\"\n    },\n    \"card\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/card not found in the OpenAPI spec\"\n    },\n    \"apple_pay\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/apple_pay not found in the OpenAPI spec\"\n    },\n    \"ach\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/ach not found in the OpenAPI spec\"\n    },\n    \"plaid_ach\": {\n      \"account_number_last_4\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/ach/properties/account_number_last_4 not found in the OpenAPI spec\"\n      },\n      \"routing_number\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach/properties/routing_number not found in the OpenAPI spec\"\n      },\n      \"bank_name\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/ach/properties/bank_name not found in the OpenAPI spec\"\n      },\n      \"account_type\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach/properties/account_type not found in the OpenAPI spec\"\n      },\n      \"account_holder_type\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach/properties/account_holder_type not found in the OpenAPI spec\"\n      }\n    },\n    \"paypal_wallet\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_wallet not found in the OpenAPI spec\"\n    },\n    \"venmo\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/venmo not found in the OpenAPI spec\"\n    },\n    \"paypal_paylater\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_paylater not found in the OpenAPI spec\"\n    },\n    \"status\": \"FAILED\",\n    \"is_available\": \"<boolean>\",\n    \"billing_contact\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n    },\n    \"device_data\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/device_data not found in the OpenAPI spec\"\n    },\n    \"metadata\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/method_metadata not found in the OpenAPI spec\"\n    },\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"replaces_payment_method_id\": \"<string>\",\n    \"replaced_by_payment_method_id\": \"<string>\",\n    \"replaced_at\": \"<dateTime>\",\n    \"replaced_reason_code\": \"C12\",\n    \"replaced_reason_desc\": \"<string>\",\n    \"replacement_disabled_at\": \"<dateTime>\",\n    \"replacement_disabled_reason_code\": \"D01\",\n    \"replacement_disabled_reason_desc\": \"<string>\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:43:53.000Z",
+                      "updatedAt": "2026-07-28T02:43:53.000Z",
+                      "uid": "35240-2d472fc4-c857-4d24-b0cc-de5cfbf771d5"
+                    },
+                    {
+                      "id": "82885ddc-7a6e-4457-9d3c-b4476c1edff3",
+                      "name": "400 response",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"billable_merchant_id\": \"<string>\",\n  \"billing_contact\": {\n    \"name\": \"<string>\",\n    \"address_line_1\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/address_line_1 not found in the OpenAPI spec\"\n    },\n    \"address_line_2\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/address_line_2 not found in the OpenAPI spec\"\n    },\n    \"city\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/city not found in the OpenAPI spec\"\n    },\n    \"state\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/state not found in the OpenAPI spec\"\n    },\n    \"postal_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/postal_code not found in the OpenAPI spec\"\n    },\n    \"country\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/country not found in the OpenAPI spec\"\n    },\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/payment_methods/:payment_method_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "payment_methods",
+                            ":payment_method_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payment_method_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:53.000Z",
+                      "updatedAt": "2026-07-28T02:43:53.000Z",
+                      "uid": "35240-82885ddc-7a6e-4457-9d3c-b4476c1edff3"
+                    },
+                    {
+                      "id": "e2c0da85-6e7c-46d9-8331-7d5bcd78abd2",
+                      "name": "401 response",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"billable_merchant_id\": \"<string>\",\n  \"billing_contact\": {\n    \"name\": \"<string>\",\n    \"address_line_1\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/address_line_1 not found in the OpenAPI spec\"\n    },\n    \"address_line_2\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/address_line_2 not found in the OpenAPI spec\"\n    },\n    \"city\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/city not found in the OpenAPI spec\"\n    },\n    \"state\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/state not found in the OpenAPI spec\"\n    },\n    \"postal_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/postal_code not found in the OpenAPI spec\"\n    },\n    \"country\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/country not found in the OpenAPI spec\"\n    },\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/payment_methods/:payment_method_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "payment_methods",
+                            ":payment_method_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payment_method_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:53.000Z",
+                      "updatedAt": "2026-07-28T02:43:53.000Z",
+                      "uid": "35240-e2c0da85-6e7c-46d9-8331-7d5bcd78abd2"
+                    },
+                    {
+                      "id": "f73107f4-2ee7-46e2-aa9b-48f241e27af9",
+                      "name": "403 response",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"billable_merchant_id\": \"<string>\",\n  \"billing_contact\": {\n    \"name\": \"<string>\",\n    \"address_line_1\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/address_line_1 not found in the OpenAPI spec\"\n    },\n    \"address_line_2\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/address_line_2 not found in the OpenAPI spec\"\n    },\n    \"city\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/city not found in the OpenAPI spec\"\n    },\n    \"state\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/state not found in the OpenAPI spec\"\n    },\n    \"postal_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/postal_code not found in the OpenAPI spec\"\n    },\n    \"country\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/country not found in the OpenAPI spec\"\n    },\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/payment_methods/:payment_method_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "payment_methods",
+                            ":payment_method_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payment_method_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:53.000Z",
+                      "updatedAt": "2026-07-28T02:43:53.000Z",
+                      "uid": "35240-f73107f4-2ee7-46e2-aa9b-48f241e27af9"
+                    },
+                    {
+                      "id": "5a5c7cef-714c-454c-8936-239052fafc27",
+                      "name": "404 response",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"billable_merchant_id\": \"<string>\",\n  \"billing_contact\": {\n    \"name\": \"<string>\",\n    \"address_line_1\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/address_line_1 not found in the OpenAPI spec\"\n    },\n    \"address_line_2\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/address_line_2 not found in the OpenAPI spec\"\n    },\n    \"city\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/city not found in the OpenAPI spec\"\n    },\n    \"state\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/state not found in the OpenAPI spec\"\n    },\n    \"postal_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/postal_code not found in the OpenAPI spec\"\n    },\n    \"country\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/country not found in the OpenAPI spec\"\n    },\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/payment_methods/:payment_method_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "payment_methods",
+                            ":payment_method_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payment_method_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:53.000Z",
+                      "updatedAt": "2026-07-28T02:43:53.000Z",
+                      "uid": "35240-5a5c7cef-714c-454c-8936-239052fafc27"
+                    },
+                    {
+                      "id": "44daf792-d1cc-4a9a-9967-397a3c5b89e4",
+                      "name": "5XX response",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"billable_merchant_id\": \"<string>\",\n  \"billing_contact\": {\n    \"name\": \"<string>\",\n    \"address_line_1\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/address_line_1 not found in the OpenAPI spec\"\n    },\n    \"address_line_2\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/address_line_2 not found in the OpenAPI spec\"\n    },\n    \"city\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/city not found in the OpenAPI spec\"\n    },\n    \"state\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/state not found in the OpenAPI spec\"\n    },\n    \"postal_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/postal_code not found in the OpenAPI spec\"\n    },\n    \"country\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/country not found in the OpenAPI spec\"\n    },\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/payment_methods/:payment_method_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "payment_methods",
+                            ":payment_method_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "payment_method_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:53.000Z",
+                      "updatedAt": "2026-07-28T02:43:53.000Z",
+                      "uid": "35240-44daf792-d1cc-4a9a-9967-397a3c5b89e4"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:43:53.000Z",
+                  "updatedAt": "2026-07-28T02:43:53.000Z",
+                  "uid": "35240-197bcc07-7211-45af-9e0c-b5e5945db36c"
+                }
+              ],
+              "id": "696b6781-d31d-498e-acf1-ac4d12fac9c4",
+              "createdAt": "2026-07-28T02:43:53.000Z",
+              "updatedAt": "2026-07-28T02:43:53.000Z",
+              "uid": "35240-696b6781-d31d-498e-acf1-ac4d12fac9c4"
+            },
+            {
+              "name": "List payment methods",
+              "id": "d9af7ccb-17b0-422d-bc77-94587ff528c4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/payment_methods?billable_merchant_id=<string>&fingerprint=<string>&status=PRESENTING&status=FAILED&updated_at.start=<dateTime>&updated_at.end=<dateTime>&replaced_at.start=<dateTime>&replaced_at.end=<dateTime>&replacement_disabled.start=<dateTime>&replacement_disabled.end=<dateTime>&sort_by=status",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "payment_methods"
+                  ],
+                  "query": [
+                    {
+                      "description": "The unique merchant identifier for the billable merchant, utilized in processes such as BIN Lookup and Card Account Updater.\n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox.",
+                      "key": "billable_merchant_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The unique identifier of a payment method across all platform merchants.",
+                      "key": "fingerprint",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "One or more payment method statuses to filter by. Provide parameter multiple times to filter by multiple payin status types.\n\n`ACTIVE` `CANCELED` `CREATED` `DEACTIVATED` `FAILED` `PRESENTING` `REPLACED`",
+                      "key": "status",
+                      "value": "PRESENTING"
+                    },
+                    {
+                      "description": "One or more payment method statuses to filter by. Provide parameter multiple times to filter by multiple payin status types.\n\n`ACTIVE` `CANCELED` `CREATED` `DEACTIVATED` `FAILED` `PRESENTING` `REPLACED`",
+                      "key": "status",
+                      "value": "FAILED"
+                    },
+                    {
+                      "description": "Last updated on or after in UTC RFC 3339 format.",
+                      "key": "updated_at.start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Last updated on or before in UTC RFC 3339 format.",
+                      "key": "updated_at.end",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Replaced on or after in UTC RFC 3339 format.",
+                      "key": "replaced_at.start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Replaced on or before in UTC RFC 3339 format.",
+                      "key": "replaced_at.end",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Replacement disabled on or after in UTC RFC 3339 format.",
+                      "key": "replacement_disabled.start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Replacement disabled on or before in UTC RFC 3339 format.",
+                      "key": "replacement_disabled.end",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                      "key": "sort_by",
+                      "value": "status"
+                    }
+                  ]
+                },
+                "description": "Query a list of payment methods given optional search criteria."
+              },
+              "response": [
+                {
+                  "id": "12821178-46ba-4d9a-9b63-c84c9102b708",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payment_methods?billable_merchant_id=<string>&fingerprint=<string>&status=FAILED&updated_at.start=<dateTime>&updated_at.end=<dateTime>&replaced_at.start=<dateTime>&replaced_at.end=<dateTime>&replacement_disabled.start=<dateTime>&replacement_disabled.end=<dateTime>&sort_by=status",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payment_methods"
+                      ],
+                      "query": [
+                        {
+                          "description": "The unique merchant identifier for the billable merchant, utilized in processes such as BIN Lookup and Card Account Updater.\n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox.",
+                          "key": "billable_merchant_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The unique identifier of a payment method across all platform merchants.",
+                          "key": "fingerprint",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "One or more payment method statuses to filter by. Provide parameter multiple times to filter by multiple payin status types.\n\n`ACTIVE` `CANCELED` `CREATED` `DEACTIVATED` `FAILED` `PRESENTING` `REPLACED`",
+                          "key": "status",
+                          "value": "FAILED"
+                        },
+                        {
+                          "description": "Last updated on or after in UTC RFC 3339 format.",
+                          "key": "updated_at.start",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Last updated on or before in UTC RFC 3339 format.",
+                          "key": "updated_at.end",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Replaced on or after in UTC RFC 3339 format.",
+                          "key": "replaced_at.start",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Replaced on or before in UTC RFC 3339 format.",
+                          "key": "replaced_at.end",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Replacement disabled on or after in UTC RFC 3339 format.",
+                          "key": "replacement_disabled.start",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Replacement disabled on or before in UTC RFC 3339 format.",
+                          "key": "replacement_disabled.end",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                          "key": "sort_by",
+                          "value": "status"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"last_key\": {\n      \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/data/allOf/1/properties/last_key not found in the OpenAPI spec\"\n    },\n    \"results\": [\n      {\n        \"payment_method_id\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id not found in the OpenAPI spec\"\n        },\n        \"payment_method_config_id\": {\n          \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/payment_method_config_id not found in the OpenAPI spec\"\n        },\n        \"device_registration_id\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/device_registration_id not found in the OpenAPI spec\"\n        },\n        \"billable_merchant_id\": \"<string>\",\n        \"merchant_id\": \"<string>\",\n        \"fingerprint\": \"<string>\",\n        \"method_type\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/method_type not found in the OpenAPI spec\"\n        },\n        \"card\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/card not found in the OpenAPI spec\"\n        },\n        \"apple_pay\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/apple_pay not found in the OpenAPI spec\"\n        },\n        \"ach\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/ach not found in the OpenAPI spec\"\n        },\n        \"plaid_ach\": {\n          \"account_number_last_4\": {\n            \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/ach/properties/account_number_last_4 not found in the OpenAPI spec\"\n          },\n          \"routing_number\": {\n            \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach/properties/routing_number not found in the OpenAPI spec\"\n          },\n          \"bank_name\": {\n            \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/ach/properties/bank_name not found in the OpenAPI spec\"\n          },\n          \"account_type\": {\n            \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach/properties/account_type not found in the OpenAPI spec\"\n          },\n          \"account_holder_type\": {\n            \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach/properties/account_holder_type not found in the OpenAPI spec\"\n          }\n        },\n        \"paypal_wallet\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_wallet not found in the OpenAPI spec\"\n        },\n        \"venmo\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/venmo not found in the OpenAPI spec\"\n        },\n        \"paypal_paylater\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_paylater not found in the OpenAPI spec\"\n        },\n        \"status\": \"REPLACED\",\n        \"is_available\": \"<boolean>\",\n        \"billing_contact\": {\n          \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n        },\n        \"device_data\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/device_data not found in the OpenAPI spec\"\n        },\n        \"metadata\": {\n          \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/method_metadata not found in the OpenAPI spec\"\n        },\n        \"created_at\": \"<dateTime>\",\n        \"updated_at\": \"<dateTime>\",\n        \"replaces_payment_method_id\": \"<string>\",\n        \"replaced_by_payment_method_id\": \"<string>\",\n        \"replaced_at\": \"<dateTime>\",\n        \"replaced_reason_code\": \"C05\",\n        \"replaced_reason_desc\": \"<string>\",\n        \"replacement_disabled_at\": \"<dateTime>\",\n        \"replacement_disabled_reason_code\": \"D01\",\n        \"replacement_disabled_reason_desc\": \"<string>\"\n      },\n      {\n        \"payment_method_id\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id not found in the OpenAPI spec\"\n        },\n        \"payment_method_config_id\": {\n          \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/payment_method_config_id not found in the OpenAPI spec\"\n        },\n        \"device_registration_id\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/device_registration_id not found in the OpenAPI spec\"\n        },\n        \"billable_merchant_id\": \"<string>\",\n        \"merchant_id\": \"<string>\",\n        \"fingerprint\": \"<string>\",\n        \"method_type\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/method_type not found in the OpenAPI spec\"\n        },\n        \"card\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/card not found in the OpenAPI spec\"\n        },\n        \"apple_pay\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/apple_pay not found in the OpenAPI spec\"\n        },\n        \"ach\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/ach not found in the OpenAPI spec\"\n        },\n        \"plaid_ach\": {\n          \"account_number_last_4\": {\n            \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/ach/properties/account_number_last_4 not found in the OpenAPI spec\"\n          },\n          \"routing_number\": {\n            \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach/properties/routing_number not found in the OpenAPI spec\"\n          },\n          \"bank_name\": {\n            \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/ach/properties/bank_name not found in the OpenAPI spec\"\n          },\n          \"account_type\": {\n            \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach/properties/account_type not found in the OpenAPI spec\"\n          },\n          \"account_holder_type\": {\n            \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach/properties/account_holder_type not found in the OpenAPI spec\"\n          }\n        },\n        \"paypal_wallet\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_wallet not found in the OpenAPI spec\"\n        },\n        \"venmo\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/venmo not found in the OpenAPI spec\"\n        },\n        \"paypal_paylater\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_paylater not found in the OpenAPI spec\"\n        },\n        \"status\": \"CREATED\",\n        \"is_available\": \"<boolean>\",\n        \"billing_contact\": {\n          \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n        },\n        \"device_data\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/device_data not found in the OpenAPI spec\"\n        },\n        \"metadata\": {\n          \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/method_metadata not found in the OpenAPI spec\"\n        },\n        \"created_at\": \"<dateTime>\",\n        \"updated_at\": \"<dateTime>\",\n        \"replaces_payment_method_id\": \"<string>\",\n        \"replaced_by_payment_method_id\": \"<string>\",\n        \"replaced_at\": \"<dateTime>\",\n        \"replaced_reason_code\": \"C09\",\n        \"replaced_reason_desc\": \"<string>\",\n        \"replacement_disabled_at\": \"<dateTime>\",\n        \"replacement_disabled_reason_code\": \"D02\",\n        \"replacement_disabled_reason_desc\": \"<string>\"\n      }\n    ]\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:43:53.000Z",
+                  "updatedAt": "2026-07-28T02:43:53.000Z",
+                  "uid": "35240-12821178-46ba-4d9a-9b63-c84c9102b708"
+                },
+                {
+                  "id": "6ee6c7d1-3ff1-4474-a685-4f17a6397402",
+                  "name": "400 response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payment_methods?billable_merchant_id=<string>&fingerprint=<string>&status=FAILED&updated_at.start=<dateTime>&updated_at.end=<dateTime>&replaced_at.start=<dateTime>&replaced_at.end=<dateTime>&replacement_disabled.start=<dateTime>&replacement_disabled.end=<dateTime>&sort_by=status",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payment_methods"
+                      ],
+                      "query": [
+                        {
+                          "description": "The unique merchant identifier for the billable merchant, utilized in processes such as BIN Lookup and Card Account Updater.\n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox.",
+                          "key": "billable_merchant_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The unique identifier of a payment method across all platform merchants.",
+                          "key": "fingerprint",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "One or more payment method statuses to filter by. Provide parameter multiple times to filter by multiple payin status types.\n\n`ACTIVE` `CANCELED` `CREATED` `DEACTIVATED` `FAILED` `PRESENTING` `REPLACED`",
+                          "key": "status",
+                          "value": "FAILED"
+                        },
+                        {
+                          "description": "Last updated on or after in UTC RFC 3339 format.",
+                          "key": "updated_at.start",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Last updated on or before in UTC RFC 3339 format.",
+                          "key": "updated_at.end",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Replaced on or after in UTC RFC 3339 format.",
+                          "key": "replaced_at.start",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Replaced on or before in UTC RFC 3339 format.",
+                          "key": "replaced_at.end",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Replacement disabled on or after in UTC RFC 3339 format.",
+                          "key": "replacement_disabled.start",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Replacement disabled on or before in UTC RFC 3339 format.",
+                          "key": "replacement_disabled.end",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                          "key": "sort_by",
+                          "value": "status"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:53.000Z",
+                  "updatedAt": "2026-07-28T02:43:53.000Z",
+                  "uid": "35240-6ee6c7d1-3ff1-4474-a685-4f17a6397402"
+                },
+                {
+                  "id": "114991d3-0fe1-4acc-952a-5d01de167213",
+                  "name": "401 response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payment_methods?billable_merchant_id=<string>&fingerprint=<string>&status=FAILED&updated_at.start=<dateTime>&updated_at.end=<dateTime>&replaced_at.start=<dateTime>&replaced_at.end=<dateTime>&replacement_disabled.start=<dateTime>&replacement_disabled.end=<dateTime>&sort_by=status",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payment_methods"
+                      ],
+                      "query": [
+                        {
+                          "description": "The unique merchant identifier for the billable merchant, utilized in processes such as BIN Lookup and Card Account Updater.\n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox.",
+                          "key": "billable_merchant_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The unique identifier of a payment method across all platform merchants.",
+                          "key": "fingerprint",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "One or more payment method statuses to filter by. Provide parameter multiple times to filter by multiple payin status types.\n\n`ACTIVE` `CANCELED` `CREATED` `DEACTIVATED` `FAILED` `PRESENTING` `REPLACED`",
+                          "key": "status",
+                          "value": "FAILED"
+                        },
+                        {
+                          "description": "Last updated on or after in UTC RFC 3339 format.",
+                          "key": "updated_at.start",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Last updated on or before in UTC RFC 3339 format.",
+                          "key": "updated_at.end",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Replaced on or after in UTC RFC 3339 format.",
+                          "key": "replaced_at.start",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Replaced on or before in UTC RFC 3339 format.",
+                          "key": "replaced_at.end",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Replacement disabled on or after in UTC RFC 3339 format.",
+                          "key": "replacement_disabled.start",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Replacement disabled on or before in UTC RFC 3339 format.",
+                          "key": "replacement_disabled.end",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                          "key": "sort_by",
+                          "value": "status"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:53.000Z",
+                  "updatedAt": "2026-07-28T02:43:53.000Z",
+                  "uid": "35240-114991d3-0fe1-4acc-952a-5d01de167213"
+                },
+                {
+                  "id": "ceb74f1a-d514-483c-8ffc-9a7dda0a8004",
+                  "name": "403 response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payment_methods?billable_merchant_id=<string>&fingerprint=<string>&status=FAILED&updated_at.start=<dateTime>&updated_at.end=<dateTime>&replaced_at.start=<dateTime>&replaced_at.end=<dateTime>&replacement_disabled.start=<dateTime>&replacement_disabled.end=<dateTime>&sort_by=status",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payment_methods"
+                      ],
+                      "query": [
+                        {
+                          "description": "The unique merchant identifier for the billable merchant, utilized in processes such as BIN Lookup and Card Account Updater.\n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox.",
+                          "key": "billable_merchant_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The unique identifier of a payment method across all platform merchants.",
+                          "key": "fingerprint",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "One or more payment method statuses to filter by. Provide parameter multiple times to filter by multiple payin status types.\n\n`ACTIVE` `CANCELED` `CREATED` `DEACTIVATED` `FAILED` `PRESENTING` `REPLACED`",
+                          "key": "status",
+                          "value": "FAILED"
+                        },
+                        {
+                          "description": "Last updated on or after in UTC RFC 3339 format.",
+                          "key": "updated_at.start",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Last updated on or before in UTC RFC 3339 format.",
+                          "key": "updated_at.end",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Replaced on or after in UTC RFC 3339 format.",
+                          "key": "replaced_at.start",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Replaced on or before in UTC RFC 3339 format.",
+                          "key": "replaced_at.end",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Replacement disabled on or after in UTC RFC 3339 format.",
+                          "key": "replacement_disabled.start",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Replacement disabled on or before in UTC RFC 3339 format.",
+                          "key": "replacement_disabled.end",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                          "key": "sort_by",
+                          "value": "status"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:53.000Z",
+                  "updatedAt": "2026-07-28T02:43:53.000Z",
+                  "uid": "35240-ceb74f1a-d514-483c-8ffc-9a7dda0a8004"
+                },
+                {
+                  "id": "03c6f123-82a9-405a-9852-b425259790b8",
+                  "name": "5XX response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payment_methods?billable_merchant_id=<string>&fingerprint=<string>&status=FAILED&updated_at.start=<dateTime>&updated_at.end=<dateTime>&replaced_at.start=<dateTime>&replaced_at.end=<dateTime>&replacement_disabled.start=<dateTime>&replacement_disabled.end=<dateTime>&sort_by=status",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payment_methods"
+                      ],
+                      "query": [
+                        {
+                          "description": "The unique merchant identifier for the billable merchant, utilized in processes such as BIN Lookup and Card Account Updater.\n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox.",
+                          "key": "billable_merchant_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The unique identifier of a payment method across all platform merchants.",
+                          "key": "fingerprint",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "One or more payment method statuses to filter by. Provide parameter multiple times to filter by multiple payin status types.\n\n`ACTIVE` `CANCELED` `CREATED` `DEACTIVATED` `FAILED` `PRESENTING` `REPLACED`",
+                          "key": "status",
+                          "value": "FAILED"
+                        },
+                        {
+                          "description": "Last updated on or after in UTC RFC 3339 format.",
+                          "key": "updated_at.start",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Last updated on or before in UTC RFC 3339 format.",
+                          "key": "updated_at.end",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Replaced on or after in UTC RFC 3339 format.",
+                          "key": "replaced_at.start",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Replaced on or before in UTC RFC 3339 format.",
+                          "key": "replaced_at.end",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Replacement disabled on or after in UTC RFC 3339 format.",
+                          "key": "replacement_disabled.start",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Replacement disabled on or before in UTC RFC 3339 format.",
+                          "key": "replacement_disabled.end",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Optional value by which to sort the result set. Default sort by is created_at.",
+                          "key": "sort_by",
+                          "value": "status"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:53.000Z",
+                  "updatedAt": "2026-07-28T02:43:53.000Z",
+                  "uid": "35240-03c6f123-82a9-405a-9852-b425259790b8"
+                }
+              ],
+              "createdAt": "2026-07-28T02:43:53.000Z",
+              "updatedAt": "2026-07-28T02:43:53.000Z",
+              "uid": "35240-d9af7ccb-17b0-422d-bc77-94587ff528c4"
+            },
+            {
+              "name": "Create payment method",
+              "id": "56f55594-4bbd-48f5-8a33-2bcd851c5975",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payment_method_config_id\": \"<string>\",\n  \"payment_method_id\": {\n    \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id not found in the OpenAPI spec\"\n  },\n  \"method_type\": {\n    \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/method_type not found in the OpenAPI spec\"\n  },\n  \"card\": {\n    \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/card not found in the OpenAPI spec\"\n  },\n  \"ach\": {\n    \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach not found in the OpenAPI spec\"\n  },\n  \"billing_contact\": {\n    \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/payment_methods",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "payment_methods"
+                  ]
+                },
+                "description": "Create a saved payment method.\n\nTo duplicate a saved payment method, set the payment_method_id of the payment method to be duplicated. Billing contact and metadata is not persisted from the duplicated payment method and must be defined on the [Payment Method Config](ref:create_payment_method_config) or on the request. Only the stored sensitive payment method details (i.e full card or bank account number) will persist to the duplicated payment method.\n\nIf the method_type is set, then this endpoint requires Rainforest approval. Platforms that meet all [requirements](doc:send-sensitive-data-via-api#requirements) and are approved by Rainforest can send the full card and bank account numbers to Rainforest via a server-to-serve direct API integration."
+              },
+              "response": [
+                {
+                  "id": "12cd22e2-84f8-423d-bebc-1748db6e0dbc",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"payment_method_config_id\": \"<string>\",\n  \"payment_method_id\": {\n    \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id not found in the OpenAPI spec\"\n  },\n  \"method_type\": {\n    \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/method_type not found in the OpenAPI spec\"\n  },\n  \"card\": {\n    \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/card not found in the OpenAPI spec\"\n  },\n  \"ach\": {\n    \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach not found in the OpenAPI spec\"\n  },\n  \"billing_contact\": {\n    \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payment_methods",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payment_methods"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"payment_method_id\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id not found in the OpenAPI spec\"\n    },\n    \"payment_method_config_id\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/payment_method_config_id not found in the OpenAPI spec\"\n    },\n    \"device_registration_id\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/device_registration_id not found in the OpenAPI spec\"\n    },\n    \"billable_merchant_id\": \"<string>\",\n    \"merchant_id\": \"<string>\",\n    \"fingerprint\": \"<string>\",\n    \"method_type\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/method_type not found in the OpenAPI spec\"\n    },\n    \"card\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/card not found in the OpenAPI spec\"\n    },\n    \"apple_pay\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/apple_pay not found in the OpenAPI spec\"\n    },\n    \"ach\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/ach not found in the OpenAPI spec\"\n    },\n    \"plaid_ach\": {\n      \"account_number_last_4\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/ach/properties/account_number_last_4 not found in the OpenAPI spec\"\n      },\n      \"routing_number\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach/properties/routing_number not found in the OpenAPI spec\"\n      },\n      \"bank_name\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/ach/properties/bank_name not found in the OpenAPI spec\"\n      },\n      \"account_type\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach/properties/account_type not found in the OpenAPI spec\"\n      },\n      \"account_holder_type\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach/properties/account_holder_type not found in the OpenAPI spec\"\n      }\n    },\n    \"paypal_wallet\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_wallet not found in the OpenAPI spec\"\n    },\n    \"venmo\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/venmo not found in the OpenAPI spec\"\n    },\n    \"paypal_paylater\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_paylater not found in the OpenAPI spec\"\n    },\n    \"status\": \"FAILED\",\n    \"is_available\": \"<boolean>\",\n    \"billing_contact\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n    },\n    \"device_data\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/device_data not found in the OpenAPI spec\"\n    },\n    \"metadata\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/method_metadata not found in the OpenAPI spec\"\n    },\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"replaces_payment_method_id\": \"<string>\",\n    \"replaced_by_payment_method_id\": \"<string>\",\n    \"replaced_at\": \"<dateTime>\",\n    \"replaced_reason_code\": \"C12\",\n    \"replaced_reason_desc\": \"<string>\",\n    \"replacement_disabled_at\": \"<dateTime>\",\n    \"replacement_disabled_reason_code\": \"D01\",\n    \"replacement_disabled_reason_desc\": \"<string>\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:43:53.000Z",
+                  "updatedAt": "2026-07-28T02:43:53.000Z",
+                  "uid": "35240-12cd22e2-84f8-423d-bebc-1748db6e0dbc"
+                },
+                {
+                  "id": "214bc354-37dd-47f0-92b8-05389cc9cc6a",
+                  "name": "400 response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"payment_method_config_id\": \"<string>\",\n  \"payment_method_id\": {\n    \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id not found in the OpenAPI spec\"\n  },\n  \"method_type\": {\n    \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/method_type not found in the OpenAPI spec\"\n  },\n  \"card\": {\n    \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/card not found in the OpenAPI spec\"\n  },\n  \"ach\": {\n    \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach not found in the OpenAPI spec\"\n  },\n  \"billing_contact\": {\n    \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payment_methods",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payment_methods"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:53.000Z",
+                  "updatedAt": "2026-07-28T02:43:53.000Z",
+                  "uid": "35240-214bc354-37dd-47f0-92b8-05389cc9cc6a"
+                },
+                {
+                  "id": "f697a127-cfc1-42e9-8f92-c699e01bbf2b",
+                  "name": "401 response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"payment_method_config_id\": \"<string>\",\n  \"payment_method_id\": {\n    \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id not found in the OpenAPI spec\"\n  },\n  \"method_type\": {\n    \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/method_type not found in the OpenAPI spec\"\n  },\n  \"card\": {\n    \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/card not found in the OpenAPI spec\"\n  },\n  \"ach\": {\n    \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach not found in the OpenAPI spec\"\n  },\n  \"billing_contact\": {\n    \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payment_methods",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payment_methods"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:53.000Z",
+                  "updatedAt": "2026-07-28T02:43:53.000Z",
+                  "uid": "35240-f697a127-cfc1-42e9-8f92-c699e01bbf2b"
+                },
+                {
+                  "id": "6222ad15-5a21-4859-a5dd-c5aab1b5ba8c",
+                  "name": "403 response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"payment_method_config_id\": \"<string>\",\n  \"payment_method_id\": {\n    \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id not found in the OpenAPI spec\"\n  },\n  \"method_type\": {\n    \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/method_type not found in the OpenAPI spec\"\n  },\n  \"card\": {\n    \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/card not found in the OpenAPI spec\"\n  },\n  \"ach\": {\n    \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach not found in the OpenAPI spec\"\n  },\n  \"billing_contact\": {\n    \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payment_methods",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payment_methods"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:53.000Z",
+                  "updatedAt": "2026-07-28T02:43:53.000Z",
+                  "uid": "35240-6222ad15-5a21-4859-a5dd-c5aab1b5ba8c"
+                },
+                {
+                  "id": "ccd1d028-1fb3-4a35-b630-217445e76b54",
+                  "name": "5XX response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"payment_method_config_id\": \"<string>\",\n  \"payment_method_id\": {\n    \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id not found in the OpenAPI spec\"\n  },\n  \"method_type\": {\n    \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/method_type not found in the OpenAPI spec\"\n  },\n  \"card\": {\n    \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/card not found in the OpenAPI spec\"\n  },\n  \"ach\": {\n    \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/ach not found in the OpenAPI spec\"\n  },\n  \"billing_contact\": {\n    \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payment_methods",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payment_methods"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:53.000Z",
+                  "updatedAt": "2026-07-28T02:43:53.000Z",
+                  "uid": "35240-ccd1d028-1fb3-4a35-b630-217445e76b54"
+                }
+              ],
+              "createdAt": "2026-07-28T02:43:53.000Z",
+              "updatedAt": "2026-07-28T02:43:53.000Z",
+              "uid": "35240-56f55594-4bbd-48f5-8a33-2bcd851c5975"
+            }
+          ],
+          "id": "14cb4513-dd81-4755-b758-4b95d9d2636f",
+          "createdAt": "2026-07-28T02:43:53.000Z",
+          "updatedAt": "2026-07-28T02:43:53.000Z",
+          "uid": "35240-14cb4513-dd81-4755-b758-4b95d9d2636f"
+        }
+      ],
+      "id": "aefa7c45-bc89-40a0-9d7d-d729311d3814",
+      "createdAt": "2026-07-28T02:43:53.000Z",
+      "updatedAt": "2026-07-28T02:43:53.000Z",
+      "uid": "35240-aefa7c45-bc89-40a0-9d7d-d729311d3814"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.sandbox.rainforestpay.com"
+    }
+  ]
+}

@@ -1,0 +1,321 @@
+openapi: 3.1.0
+info:
+  title: Authentication ACH Returns API
+  version: 1.0.0
+  description: This resource is used for authentication actions
+  contact:
+    name: Rainforest
+    email: support@rainforestpay.com
+    url: https://rainforestpay.com
+servers:
+- url: https://api.sandbox.rainforestpay.com
+  description: Sandbox server
+- url: https://api.rainforestpay.com
+  description: Production server
+security:
+- BearerAuth: []
+tags:
+- name: ACH Returns
+  description: Resources for ACH return functions.
+paths:
+  /v1/ach_returns/{ach_return_id}:
+    get:
+      operationId: get_ach_return
+      summary: Get ACH return
+      description: Get ACH return details by the ach return ID.
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - in: path
+        required: true
+        name: ach_return_id
+        schema:
+          type: string
+        description: "The unique ACH return identifier. \n\nPrefix is \"ret\" in production and \"sbx_ret\" in sandbox."
+        examples:
+          production:
+            value: ret_2db5NydANlaU0UJu4EUnGoR24hD
+          sandbox:
+            value: sbx_ret_2db5NydANlaU0UJu4EUnGoR24hD
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    description: The ACH return details.
+                    type: object
+                    properties:
+                      ach_return_id:
+                        description: "The unique ACH return identifier. \n\nPrefix is \"ret\" in production and \"sbx_ret\" in sandbox."
+                        type: string
+                        example: ret_2DrDKk5NIMbpuNGqm109SkpGDHh
+                      merchant_id:
+                        $ref: '#/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id'
+                      payin_id:
+                        description: 'The unique payin identifier. This will only be set if there is not a refund_id set.
+
+
+                          Prefix is "pyi" in production and "sbx_pyi" in sandbox.'
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payin_id'
+                      refund_id:
+                        description: 'The unique refund identifier.  This will only be set if there is not a payin_id set.
+
+
+                          Prefix is "rfd_" in production and "sbx_rfd_" in sandbox.'
+                        type: string
+                        example: rfd_2DrDU206kzAhclm1WrZbuwDERRk
+                      status:
+                        description: The status of the ACH return.
+                        type: string
+                        enum:
+                        - SUCCEEDED
+                        example: SUCCEEDED
+                      return_code:
+                        description: The code explaining the reason the ACH payment was returned.
+                        type: string
+                        nullable: false
+                        enum:
+                        - R01
+                        - R02
+                        - R03
+                        - R05
+                        - R06
+                        - R07
+                        - R08
+                        - R09
+                        - R10
+                        - R11
+                        - R12
+                        - R13
+                        - R14
+                        - R15
+                        - R16
+                        - R17
+                        - R18
+                        - R19
+                        - R20
+                        - R21
+                        - R22
+                        - R23
+                        - R24
+                        - R25
+                        - R26
+                        - R27
+                        - R28
+                        - R29
+                        - R30
+                        - R31
+                        - R32
+                        - R33
+                        - R34
+                        - R35
+                        - R36
+                        - R37
+                        - R38
+                        - R39
+                        - R40
+                        - R41
+                        - R42
+                        - R43
+                        - R44
+                        - R45
+                        - R46
+                        - R47
+                        - R50
+                        - R51
+                        - R52
+                        - R53
+                        - R61
+                        - R62
+                        - R67
+                        - R68
+                        - R69
+                        - R70
+                        - R71
+                        - R72
+                        - R73
+                        - R74
+                        - R75
+                        - R76
+                        - R77
+                        - R80
+                        - R81
+                        - R82
+                        - R83
+                        - R84
+                        - R85
+                        readOnly: true
+                      return_desc:
+                        description: The description explaining the reason the ACH payment was returned. This will be a human-readable value that may be presented to the end user.
+                        type: string
+                        nullable: false
+                        examples:
+                        - Insufficient Funds
+                        - Account Closed
+                        - Corporate Customer Advises Not Authorized
+                        readOnly: true
+                      amount:
+                        description: 'The amount captured by the ACH return, in minor units.
+
+
+                          For example, 1000 is 10.00 USD.'
+                        type: integer
+                        example: 100
+                      currency_code:
+                        $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code'
+                      amount_splits:
+                        description: 'Represents how the ACH return amount was allocated between the originating merchant, the platform, and one or more other merchants.<br/><br/>
+
+
+                          A `PLATFORM` split defines the amount debited from the platform.<br/><br/>
+
+
+                          A `MERCHANT` split defines the amount debited from the specified merchant.<br/><br/>
+
+
+                          Any remaining amount not specified by the amount splits was debited from the originating merchant.'
+                        $ref: '#/paths/~1v1~1refunds~1%7Brefund_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/amount_splits'
+                      merchant_fees:
+                        description: The ACH return fee billed to the merchant
+                        type: object
+                        properties:
+                          total_amount:
+                            description: The total amount of fees billed to the merchant.
+                            type: object
+                            properties:
+                              amount:
+                                $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_fees/properties/total_amount/properties/amount'
+                              currency_code:
+                                $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code'
+                        example:
+                          total_amount:
+                            amount: 2
+                            currency_code: USD
+                      metadata:
+                        $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema'
+                      expected_deposit_date:
+                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date'
+                        description: Date the funds are expected to be available in a deposit.
+                      source:
+                        description: The source of the ACH return. Indicates the integration that created the ACH return.
+                        type: string
+                        nullable: false
+                        enum:
+                        - SYSTEM
+                      source_desc:
+                        description: The description of the source of the ACH return. This will be a human-readable value that may be presented to the end user.
+                        type: string
+                        nullable: false
+                      created_at:
+                        description: Date and time ACH return was created at in UTC RFC 3339 format.
+                        type: string
+                        format: date-time
+                        example: '2022-01-01T12:00:00Z'
+                      updated_at:
+                        description: Date and time ACH return was last updated at in UTC RFC 3339 format.
+                        type: string
+                        format: date-time
+                        example: '2022-01-01T12:00:00Z'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - ACH Returns
+  /v1/ach_returns/{ach_return_id}/metadata:
+    patch:
+      operationId: update_ach_return_metadata
+      summary: Update ACH return metadata
+      description: "The body of the request is the JSON key-value metadata to patch to the ACH return. Do not use the metadata field to store sensitive or confidential data. \n\nUpdating metadata will merge with the existing metadata stored on the ACH return by the top-level key. If the same top-level key is passed in this request, it will overwrite the value stored on the ACH return. Only keys included in the payload will be updated. To remove a key, set the key's value to null. To remove all metadata pass null for the metadata value.\n\nACH return Metadata must be less than 8 KB in size.\n\nACH return metadata can only be updated using an API key. This request should not be made by your frontend and should only be done by backend logic that only the platform can complete."
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - $ref: '#/paths/~1v1~1ach_returns~1%7Bach_return_id%7D/get/parameters/1'
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1ach_returns~1%7Bach_return_id%7D/get/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - ACH Returns
+  /v1/payins/{payin_id}/simulate_ach_return:
+    post:
+      operationId: simulate_payin_ach_return
+      summary: Simulate payin ACH return
+      description: 'Only available in the Rainforest sandbox environment.
+
+
+        May only be called on an ACH payin in `PROCESSING` or `SUCCEEDED` statuses. An ACH return must not have already been created for the payin.
+
+
+        The expected webhooks will be sent as the payin''s status is advanced and when the ACH return is created.'
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/parameters/1'
+        in: path
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - ACH Returns
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: APIKey

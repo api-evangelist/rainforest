@@ -1,0 +1,30 @@
+generated: '2026-07-20'
+method: searched
+source: https://www.rainforestpay.com/data-security-compliance
+standards:
+- id: pci-dss
+  conforms: true
+  level: Level 1 Service Provider
+  evidence: Independently assessed by a PCI QSA; PCI DSS Level 1 Service Provider certification.
+  source: https://www.rainforestpay.com/data-security-compliance
+- id: oauth2
+  conforms: false
+  evidence: API uses HTTP Bearer API keys, not OAuth2.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use a custom { status, data, errors[] } envelope, not application/problem+json.
+- id: idempotency
+  conforms: true
+  evidence: idempotency_key on payin/payment-method config objects.
+- id: pagination
+  conforms: true
+  evidence: limit/offset + start_key cursor + sort params across list endpoints.
+- id: pgp-encryption
+  conforms: true
+  evidence: Publishes a migration PGP key for encrypted transfer of PCI-sensitive data.
+  source: https://docs.rainforestpay.com/docs/migration-pgp-key
+compliance_program:
+  pci_dss: Level 1 Service Provider
+  hosting: AWS
+  data_protection: end-to-end encryption; encryption in transit; PAN encrypted at rest (row-level); payment tokenization
+  page: https://www.rainforestpay.com/data-security-compliance

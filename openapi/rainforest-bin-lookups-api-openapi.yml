@@ -1,0 +1,120 @@
+openapi: 3.1.0
+info:
+  title: Authentication ACH Returns BIN Lookups API
+  version: 1.0.0
+  description: This resource is used for authentication actions
+  contact:
+    name: Rainforest
+    email: support@rainforestpay.com
+    url: https://rainforestpay.com
+servers:
+- url: https://api.sandbox.rainforestpay.com
+  description: Sandbox server
+- url: https://api.rainforestpay.com
+  description: Production server
+security:
+- BearerAuth: []
+tags:
+- name: BIN Lookups
+  description: Resources for BIN lookup functions.
+paths:
+  /v1/bin_lookup:
+    post:
+      operationId: create_bin_lookup
+      summary: Create BIN lookup
+      description: 'Retrieve information from the card''s BIN, such as the card brand, card type, country, and other details.
+
+
+        This endpoint requires Rainforest approval. Platforms that meet all [requirements](doc:send-sensitive-data-via-api#requirements) and are approved by Rainforest can send the full card numbers to Rainforest via a server-to-serve direct API integration.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                billable_merchant_id:
+                  description: 'The unique merchant identifier for the billable merchant.
+
+
+                    Prefix is "mid" in production and "sbx_mid" in sandbox.'
+                  $ref: '#/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data/properties/billable_merchant_id'
+                card_number:
+                  description: The card number, formatted with no spaces (e.g 0000000000000000).
+                  type: string
+                  example: '4111111111111111'
+              required:
+              - billable_merchant_id
+              - card_number
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    description: The BIN lookup details.
+                    type: object
+                    properties:
+                      bin_lookup_id:
+                        description: "The unique BIN lookup identifier. \n\nPrefix is \"bin\" in production and \"sbx_bin\" in sandbox."
+                        type: string
+                        example: bin_2DrDKk5NIMbpuNGqm109SkpGDHh
+                      billable_merchant_id:
+                        description: 'The unique merchant identifier for the billable merchant.
+
+
+                          Prefix is "mid" in production and "sbx_mid" in sandbox.'
+                        $ref: '#/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data/properties/billable_merchant_id'
+                      bin:
+                        description: The first 8 digits of the card number.
+                        type: string
+                      brand:
+                        description: Card brand.
+                        type: string
+                        example: MASTERCARD
+                        enum:
+                        - VISA
+                        - MASTERCARD
+                        - DISCOVER
+                        - AMERICAN_EXPRESS
+                        - OTHER
+                      type:
+                        description: Card type.
+                        type: string
+                        example: CREDIT
+                        enum:
+                        - CREDIT
+                        - DEBIT
+                        - PREPAID
+                      last_4:
+                        description: The last 4 digits of the card number.
+                        type: string
+                      country:
+                        $ref: '#/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/country'
+                      is_business:
+                        description: Is a business card
+                        type: boolean
+                      is_healthcare:
+                        description: Is a healthcare card
+                        type: boolean
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - BIN Lookups
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: APIKey

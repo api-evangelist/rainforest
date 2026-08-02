@@ -1,0 +1,1219 @@
+{
+  "info": {
+    "_postman_id": "62c7e08b-2bad-407b-8d26-8b3e72689db3",
+    "name": "Authentication ACH Returns Refunds API",
+    "description": "This resource is used for authentication actions\n\nContact Support:\n Name: Rainforest\n Email: support@rainforestpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:43:54.000Z",
+    "updatedAt": "2026-07-28T02:43:54.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-62c7e08b-2bad-407b-8d26-8b3e72689db3"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "refunds",
+          "item": [
+            {
+              "name": "{refund_id}",
+              "item": [
+                {
+                  "name": "metadata",
+                  "item": [
+                    {
+                      "name": "Update refund metadata",
+                      "id": "654c41d9-9055-448d-a355-e3e8f18e3c3d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/refunds/:refund_id/metadata",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "refunds",
+                            ":refund_id",
+                            "metadata"
+                          ],
+                          "variable": [
+                            {
+                              "id": "ea59f88f-6db6-4cb1-a96b-dbb71f269e7e",
+                              "key": "refund_id",
+                              "value": "<string>",
+                              "description": "(Required) The unique refund identifier. \n\nPrefix is \"rfd\" in production and \"sbx_rfd\" in sandbox."
+                            }
+                          ]
+                        },
+                        "description": "The body of the request is the JSON key-value metadata to patch to the payin. Do not use the metadata field to store sensitive or confidential data. \n\nUpdating metadata will merge with the existing metadata stored on the refund by the top-level key. If the same top-level key is passed in this request, it will overwrite the value stored on the refund. Only keys included in the payload will be updated. To remove a key, set the key's value to null. To remove all metadata pass null for the metadata value.\n\nRefund metadata must be less than 8 KB in size.\n\nRefund metadata can only be updated using an API key. This request should not be made by your frontend and should only be done by backend logic that only the platform can complete."
+                      },
+                      "response": [
+                        {
+                          "id": "5f8e2616-c717-4298-995d-60292622d156",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/refunds/:refund_id/metadata",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "refunds",
+                                ":refund_id",
+                                "metadata"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "refund_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"refund_id\": \"<string>\",\n    \"payin_id\": \"<string>\",\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"billing_type\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/billing_type not found in the OpenAPI spec\"\n    },\n    \"amount\": \"<integer>\",\n    \"currency_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n    },\n    \"merchant_fees\": {\n      \"total_amount\": {\n        \"amount\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_fees/properties/total_amount/properties/amount not found in the OpenAPI spec\"\n        },\n        \"currency_code\": {\n          \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n        }\n      }\n    },\n    \"reason\": \"<string>\",\n    \"status\": \"PROCESSING\",\n    \"refusal_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/refusal_code not found in the OpenAPI spec\"\n    },\n    \"refusal_desc\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/refusal_desc not found in the OpenAPI spec\"\n    },\n    \"detailed_refusal_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/detailed_refusal_code not found in the OpenAPI spec\"\n    },\n    \"detailed_refusal_desc\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/detailed_refusal_desc not found in the OpenAPI spec\"\n    },\n    \"non_voidable_reason_code\": \"PAST_SETTLEMENT\",\n    \"auth_code\": \"<string>\",\n    \"metadata\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    \"amount_splits\": [\n      {\n        \"amount\": \"<integer>\",\n        \"currency_code\": {\n          \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n        },\n        \"type\": \"MERCHANT\",\n        \"merchant_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<integer>\",\n        \"currency_code\": {\n          \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n        },\n        \"type\": \"PLATFORM\",\n        \"merchant_id\": \"<string>\"\n      }\n    ],\n    \"payin_billing_fees_reversal_config\": {\n      \"on_full_refund\": \"<boolean>\"\n    },\n    \"expected_deposit_date\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date not found in the OpenAPI spec\"\n    },\n    \"ach_return\": {\n      \"value\": \"reference #/paths/~1v1~1ach_returns~1%7Bach_return_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n    },\n    \"has_ach_return\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/has_ach_return not found in the OpenAPI spec\"\n    },\n    \"source\": \"COMPONENT\",\n    \"source_desc\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-07-28T02:43:55.000Z",
+                          "updatedAt": "2026-07-28T02:43:55.000Z",
+                          "uid": "35240-5f8e2616-c717-4298-995d-60292622d156"
+                        },
+                        {
+                          "id": "427cf984-ee14-4524-85b3-dae1bd844efe",
+                          "name": "400 response",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/refunds/:refund_id/metadata",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "refunds",
+                                ":refund_id",
+                                "metadata"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "refund_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:55.000Z",
+                          "updatedAt": "2026-07-28T02:43:55.000Z",
+                          "uid": "35240-427cf984-ee14-4524-85b3-dae1bd844efe"
+                        },
+                        {
+                          "id": "4d6a88dd-ec5b-4735-828f-16659df81b33",
+                          "name": "401 response",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/refunds/:refund_id/metadata",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "refunds",
+                                ":refund_id",
+                                "metadata"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "refund_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:55.000Z",
+                          "updatedAt": "2026-07-28T02:43:55.000Z",
+                          "uid": "35240-4d6a88dd-ec5b-4735-828f-16659df81b33"
+                        },
+                        {
+                          "id": "a8181dfc-6a14-413c-af9d-de05f99ff197",
+                          "name": "403 response",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/refunds/:refund_id/metadata",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "refunds",
+                                ":refund_id",
+                                "metadata"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "refund_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:55.000Z",
+                          "updatedAt": "2026-07-28T02:43:55.000Z",
+                          "uid": "35240-a8181dfc-6a14-413c-af9d-de05f99ff197"
+                        },
+                        {
+                          "id": "1be0cd96-7177-4435-9929-6d15ed91b649",
+                          "name": "404 response",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/refunds/:refund_id/metadata",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "refunds",
+                                ":refund_id",
+                                "metadata"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "refund_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:55.000Z",
+                          "updatedAt": "2026-07-28T02:43:55.000Z",
+                          "uid": "35240-1be0cd96-7177-4435-9929-6d15ed91b649"
+                        },
+                        {
+                          "id": "088668e8-18e8-4add-b8f5-b8ac8a8cfeb6",
+                          "name": "5XX response",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/refunds/:refund_id/metadata",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "refunds",
+                                ":refund_id",
+                                "metadata"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "refund_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:55.000Z",
+                          "updatedAt": "2026-07-28T02:43:55.000Z",
+                          "uid": "35240-088668e8-18e8-4add-b8f5-b8ac8a8cfeb6"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:43:55.000Z",
+                      "updatedAt": "2026-07-28T02:43:55.000Z",
+                      "uid": "35240-654c41d9-9055-448d-a355-e3e8f18e3c3d"
+                    }
+                  ],
+                  "id": "11274bff-59c6-4c51-97ab-bac0c2f4f95f",
+                  "createdAt": "2026-07-28T02:43:55.000Z",
+                  "updatedAt": "2026-07-28T02:43:55.000Z",
+                  "uid": "35240-11274bff-59c6-4c51-97ab-bac0c2f4f95f"
+                },
+                {
+                  "name": "void",
+                  "item": [
+                    {
+                      "name": "Void refund",
+                      "id": "c3fc14e5-4069-4edf-9011-76e4fecab756",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"reason\": \"REQUESTED_BY_CUSTOMER\",\n  \"idempotency_key\": \"<string>\",\n  \"metadata\": {\n    \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/refunds/:refund_id/void",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "refunds",
+                            ":refund_id",
+                            "void"
+                          ],
+                          "variable": [
+                            {
+                              "id": "c852a902-05ab-40e7-acee-052d451da0a0",
+                              "key": "refund_id",
+                              "value": "<string>",
+                              "description": "(Required) The unique refund identifier. \n\nPrefix is \"rfd\" in production and \"sbx_rfd\" in sandbox."
+                            }
+                          ]
+                        },
+                        "description": "Void a refund by the refund ID.\n\nSee the refund `non_voidable_reason_code` for details on if the refund is eligible for a void."
+                      },
+                      "response": [
+                        {
+                          "id": "c3cbad83-54be-4ed0-8347-5132947e17bd",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"reason\": \"REQUESTED_BY_CUSTOMER\",\n  \"idempotency_key\": \"<string>\",\n  \"metadata\": {\n    \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/refunds/:refund_id/void",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "refunds",
+                                ":refund_id",
+                                "void"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "refund_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"refund_id\": \"<string>\",\n    \"payin_id\": \"<string>\",\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"billing_type\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/billing_type not found in the OpenAPI spec\"\n    },\n    \"amount\": \"<integer>\",\n    \"currency_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n    },\n    \"merchant_fees\": {\n      \"total_amount\": {\n        \"amount\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_fees/properties/total_amount/properties/amount not found in the OpenAPI spec\"\n        },\n        \"currency_code\": {\n          \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n        }\n      }\n    },\n    \"reason\": \"<string>\",\n    \"status\": \"PROCESSING\",\n    \"refusal_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/refusal_code not found in the OpenAPI spec\"\n    },\n    \"refusal_desc\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/refusal_desc not found in the OpenAPI spec\"\n    },\n    \"detailed_refusal_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/detailed_refusal_code not found in the OpenAPI spec\"\n    },\n    \"detailed_refusal_desc\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/detailed_refusal_desc not found in the OpenAPI spec\"\n    },\n    \"non_voidable_reason_code\": \"PAST_SETTLEMENT\",\n    \"auth_code\": \"<string>\",\n    \"metadata\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    \"amount_splits\": [\n      {\n        \"amount\": \"<integer>\",\n        \"currency_code\": {\n          \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n        },\n        \"type\": \"MERCHANT\",\n        \"merchant_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<integer>\",\n        \"currency_code\": {\n          \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n        },\n        \"type\": \"PLATFORM\",\n        \"merchant_id\": \"<string>\"\n      }\n    ],\n    \"payin_billing_fees_reversal_config\": {\n      \"on_full_refund\": \"<boolean>\"\n    },\n    \"expected_deposit_date\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date not found in the OpenAPI spec\"\n    },\n    \"ach_return\": {\n      \"value\": \"reference #/paths/~1v1~1ach_returns~1%7Bach_return_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n    },\n    \"has_ach_return\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/has_ach_return not found in the OpenAPI spec\"\n    },\n    \"source\": \"COMPONENT\",\n    \"source_desc\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-07-28T02:43:55.000Z",
+                          "updatedAt": "2026-07-28T02:43:55.000Z",
+                          "uid": "35240-c3cbad83-54be-4ed0-8347-5132947e17bd"
+                        },
+                        {
+                          "id": "89085bbb-7f25-48dd-986e-d4b5722b0440",
+                          "name": "400 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"reason\": \"REQUESTED_BY_CUSTOMER\",\n  \"idempotency_key\": \"<string>\",\n  \"metadata\": {\n    \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/refunds/:refund_id/void",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "refunds",
+                                ":refund_id",
+                                "void"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "refund_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:55.000Z",
+                          "updatedAt": "2026-07-28T02:43:55.000Z",
+                          "uid": "35240-89085bbb-7f25-48dd-986e-d4b5722b0440"
+                        },
+                        {
+                          "id": "e54694d7-c7c8-45f1-ae08-0a8b47d8d420",
+                          "name": "401 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"reason\": \"REQUESTED_BY_CUSTOMER\",\n  \"idempotency_key\": \"<string>\",\n  \"metadata\": {\n    \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/refunds/:refund_id/void",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "refunds",
+                                ":refund_id",
+                                "void"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "refund_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:55.000Z",
+                          "updatedAt": "2026-07-28T02:43:55.000Z",
+                          "uid": "35240-e54694d7-c7c8-45f1-ae08-0a8b47d8d420"
+                        },
+                        {
+                          "id": "c24568f7-09c2-4655-b76c-6da682824061",
+                          "name": "403 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"reason\": \"REQUESTED_BY_CUSTOMER\",\n  \"idempotency_key\": \"<string>\",\n  \"metadata\": {\n    \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/refunds/:refund_id/void",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "refunds",
+                                ":refund_id",
+                                "void"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "refund_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:55.000Z",
+                          "updatedAt": "2026-07-28T02:43:55.000Z",
+                          "uid": "35240-c24568f7-09c2-4655-b76c-6da682824061"
+                        },
+                        {
+                          "id": "7566b48e-bda9-469e-a5e8-27f556aabc1d",
+                          "name": "404 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"reason\": \"REQUESTED_BY_CUSTOMER\",\n  \"idempotency_key\": \"<string>\",\n  \"metadata\": {\n    \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/refunds/:refund_id/void",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "refunds",
+                                ":refund_id",
+                                "void"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "refund_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:55.000Z",
+                          "updatedAt": "2026-07-28T02:43:55.000Z",
+                          "uid": "35240-7566b48e-bda9-469e-a5e8-27f556aabc1d"
+                        },
+                        {
+                          "id": "ee910b19-b849-4720-aa2c-c3294c848bf4",
+                          "name": "Conflict on the requested resource.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"reason\": \"REQUESTED_BY_CUSTOMER\",\n  \"idempotency_key\": \"<string>\",\n  \"metadata\": {\n    \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/refunds/:refund_id/void",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "refunds",
+                                ":refund_id",
+                                "void"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "refund_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Conflict",
+                          "code": 409,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference #/paths/~1v1~1payins/get/responses/400/content/application~1json/schema not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-07-28T02:43:55.000Z",
+                          "updatedAt": "2026-07-28T02:43:55.000Z",
+                          "uid": "35240-ee910b19-b849-4720-aa2c-c3294c848bf4"
+                        },
+                        {
+                          "id": "cb1b1116-5fa0-432c-a655-b928171c02da",
+                          "name": "5XX response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"reason\": \"REQUESTED_BY_CUSTOMER\",\n  \"idempotency_key\": \"<string>\",\n  \"metadata\": {\n    \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/refunds/:refund_id/void",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "refunds",
+                                ":refund_id",
+                                "void"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "refund_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:55.000Z",
+                          "updatedAt": "2026-07-28T02:43:55.000Z",
+                          "uid": "35240-cb1b1116-5fa0-432c-a655-b928171c02da"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:43:55.000Z",
+                      "updatedAt": "2026-07-28T02:43:55.000Z",
+                      "uid": "35240-c3fc14e5-4069-4edf-9011-76e4fecab756"
+                    }
+                  ],
+                  "id": "0b7199d5-4998-44f0-8308-56e2231f865a",
+                  "createdAt": "2026-07-28T02:43:55.000Z",
+                  "updatedAt": "2026-07-28T02:43:55.000Z",
+                  "uid": "35240-0b7199d5-4998-44f0-8308-56e2231f865a"
+                },
+                {
+                  "name": "Get refund",
+                  "id": "18501fab-e87e-4c7a-b11a-46be547d1329",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/refunds/:refund_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "refunds",
+                        ":refund_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "20fb15e4-263e-4779-8ed6-e769495baa5f",
+                          "key": "refund_id",
+                          "value": "<string>",
+                          "description": "(Required) The unique refund identifier. \n\nPrefix is \"rfd\" in production and \"sbx_rfd\" in sandbox."
+                        }
+                      ]
+                    },
+                    "description": "Get refund details by the refund ID."
+                  },
+                  "response": [
+                    {
+                      "id": "7100b352-f171-4b5a-8d34-8d72df3e6464",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/refunds/:refund_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "refunds",
+                            ":refund_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "refund_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"refund_id\": \"<string>\",\n    \"payin_id\": \"<string>\",\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"billing_type\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/billing_type not found in the OpenAPI spec\"\n    },\n    \"amount\": \"<integer>\",\n    \"currency_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n    },\n    \"merchant_fees\": {\n      \"total_amount\": {\n        \"amount\": {\n          \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_fees/properties/total_amount/properties/amount not found in the OpenAPI spec\"\n        },\n        \"currency_code\": {\n          \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n        }\n      }\n    },\n    \"reason\": \"<string>\",\n    \"status\": \"PROCESSING\",\n    \"refusal_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/refusal_code not found in the OpenAPI spec\"\n    },\n    \"refusal_desc\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/refusal_desc not found in the OpenAPI spec\"\n    },\n    \"detailed_refusal_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/detailed_refusal_code not found in the OpenAPI spec\"\n    },\n    \"detailed_refusal_desc\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/detailed_refusal_desc not found in the OpenAPI spec\"\n    },\n    \"non_voidable_reason_code\": \"PAST_SETTLEMENT\",\n    \"auth_code\": \"<string>\",\n    \"metadata\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    \"amount_splits\": [\n      {\n        \"amount\": \"<integer>\",\n        \"currency_code\": {\n          \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n        },\n        \"type\": \"MERCHANT\",\n        \"merchant_id\": \"<string>\"\n      },\n      {\n        \"amount\": \"<integer>\",\n        \"currency_code\": {\n          \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n        },\n        \"type\": \"PLATFORM\",\n        \"merchant_id\": \"<string>\"\n      }\n    ],\n    \"payin_billing_fees_reversal_config\": {\n      \"on_full_refund\": \"<boolean>\"\n    },\n    \"expected_deposit_date\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date not found in the OpenAPI spec\"\n    },\n    \"ach_return\": {\n      \"value\": \"reference #/paths/~1v1~1ach_returns~1%7Bach_return_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n    },\n    \"has_ach_return\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/has_ach_return not found in the OpenAPI spec\"\n    },\n    \"source\": \"COMPONENT\",\n    \"source_desc\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:43:55.000Z",
+                      "updatedAt": "2026-07-28T02:43:55.000Z",
+                      "uid": "35240-7100b352-f171-4b5a-8d34-8d72df3e6464"
+                    },
+                    {
+                      "id": "b28e1278-49d3-4382-99ca-a16641e68b4e",
+                      "name": "400 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/refunds/:refund_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "refunds",
+                            ":refund_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "refund_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:55.000Z",
+                      "updatedAt": "2026-07-28T02:43:55.000Z",
+                      "uid": "35240-b28e1278-49d3-4382-99ca-a16641e68b4e"
+                    },
+                    {
+                      "id": "4b8afb00-ba82-4b78-b7f5-139307b7a9fd",
+                      "name": "401 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/refunds/:refund_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "refunds",
+                            ":refund_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "refund_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:55.000Z",
+                      "updatedAt": "2026-07-28T02:43:55.000Z",
+                      "uid": "35240-4b8afb00-ba82-4b78-b7f5-139307b7a9fd"
+                    },
+                    {
+                      "id": "f9f0b19b-adf5-4335-a675-a6309d6c5f17",
+                      "name": "403 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/refunds/:refund_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "refunds",
+                            ":refund_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "refund_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:55.000Z",
+                      "updatedAt": "2026-07-28T02:43:55.000Z",
+                      "uid": "35240-f9f0b19b-adf5-4335-a675-a6309d6c5f17"
+                    },
+                    {
+                      "id": "51f8f2c3-affe-497a-a3fe-ebee3eaff86c",
+                      "name": "404 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/refunds/:refund_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "refunds",
+                            ":refund_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "refund_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:55.000Z",
+                      "updatedAt": "2026-07-28T02:43:55.000Z",
+                      "uid": "35240-51f8f2c3-affe-497a-a3fe-ebee3eaff86c"
+                    },
+                    {
+                      "id": "eb7cc540-7d4d-48dd-b5bc-8228b388fbaf",
+                      "name": "5XX response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/refunds/:refund_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "refunds",
+                            ":refund_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "refund_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:55.000Z",
+                      "updatedAt": "2026-07-28T02:43:55.000Z",
+                      "uid": "35240-eb7cc540-7d4d-48dd-b5bc-8228b388fbaf"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:43:55.000Z",
+                  "updatedAt": "2026-07-28T02:43:55.000Z",
+                  "uid": "35240-18501fab-e87e-4c7a-b11a-46be547d1329"
+                }
+              ],
+              "id": "7f043754-8bc7-415e-884b-5246131987b4",
+              "createdAt": "2026-07-28T02:43:55.000Z",
+              "updatedAt": "2026-07-28T02:43:55.000Z",
+              "uid": "35240-7f043754-8bc7-415e-884b-5246131987b4"
+            }
+          ],
+          "id": "593142d0-0fbb-4b1c-bd50-479b8f53f2af",
+          "createdAt": "2026-07-28T02:43:55.000Z",
+          "updatedAt": "2026-07-28T02:43:55.000Z",
+          "uid": "35240-593142d0-0fbb-4b1c-bd50-479b8f53f2af"
+        }
+      ],
+      "id": "da6d4e34-cdc3-4f0a-8440-5df3be52df7e",
+      "createdAt": "2026-07-28T02:43:55.000Z",
+      "updatedAt": "2026-07-28T02:43:55.000Z",
+      "uid": "35240-da6d4e34-cdc3-4f0a-8440-5df3be52df7e"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.sandbox.rainforestpay.com"
+    }
+  ]
+}

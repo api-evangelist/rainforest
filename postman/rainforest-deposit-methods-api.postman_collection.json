@@ -1,0 +1,1083 @@
+{
+  "info": {
+    "_postman_id": "8f16b1d0-3792-4328-9a18-c548509160d9",
+    "name": "Authentication ACH Returns Deposit Methods API",
+    "description": "This resource is used for authentication actions\n\nContact Support:\n Name: Rainforest\n Email: support@rainforestpay.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:43:21.000Z",
+    "updatedAt": "2026-07-28T02:43:21.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8f16b1d0-3792-4328-9a18-c548509160d9"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "deposit_methods",
+          "item": [
+            {
+              "name": "{deposit_method_id}",
+              "item": [
+                {
+                  "name": "payin",
+                  "item": [
+                    {
+                      "name": "Create payin from deposit method",
+                      "id": "ed2de5f4-8506-4b27-bc36-e4b48909ade8",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Rainforest-Api-Version",
+                            "value": "2024-10-16"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"payin_config_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/deposit_methods/:deposit_method_id/payin",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "deposit_methods",
+                            ":deposit_method_id",
+                            "payin"
+                          ],
+                          "variable": [
+                            {
+                              "id": "d76a3941-bf2e-4986-a443-ddc5868e3fb6",
+                              "key": "deposit_method_id",
+                              "value": "<string>",
+                              "description": "(Required) The unique deposit method identifier. \n\nPrefix is \"dmt\" in production and \"sbx_dmt\" in sandbox."
+                            }
+                          ]
+                        },
+                        "description": "Create and process a payin using a payin configuration and a deposit method. The merchant status must be ACTIVE to create a payin.\n\nThe deposit method details (i.e bank account number and billing contact) will be duplicated to a payment method and a payin will process against the newly created payment method. Metadata, method metadata, and new billing contact details can be defined on the [Payin Config](ref:create_payin_config).\n\nThis endpoint requires Rainforest approval."
+                      },
+                      "response": [
+                        {
+                          "id": "16f9c470-2cb5-4dec-b25a-7efdf882dfa3",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Rainforest-Api-Version",
+                                "value": "2024-10-16"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"payin_config_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/deposit_methods/:deposit_method_id/payin",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "deposit_methods",
+                                ":deposit_method_id",
+                                "payin"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deposit_method_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"payin_id\": \"<string>\",\n    \"payin_config_id\": \"<string>\",\n    \"merchant_id\": \"<string>\",\n    \"payment_method_id\": \"<string>\",\n    \"payment_method_config_id\": \"<string>\",\n    \"device_registration_id\": \"<string>\",\n    \"threeds_attempt_id\": \"<string>\",\n    \"idempotency_key\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_method_configs/post/requestBody/content/application~1json/schema/properties/idempotency_key not found in the OpenAPI spec\"\n    },\n    \"billing_type\": {\n      \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/billing_type not found in the OpenAPI spec\"\n    },\n    \"amount\": \"<integer>\",\n    \"currency_code\": {\n      \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n    },\n    \"is_partially_authorized\": \"<boolean>\",\n    \"authorized_amount\": \"<integer>\",\n    \"captured_amount\": \"<integer>\",\n    \"refundable_amount\": \"<integer>\",\n    \"non_refundable_reason_code\": \"FAILED\",\n    \"status\": \"PROCESSING\",\n    \"refusal_code\": \"INVALID_PIN\",\n    \"refusal_desc\": \"No card number on file with issuer\",\n    \"detailed_refusal_code\": \"INVALID_CARD_SECURITY_CODE\",\n    \"detailed_refusal_desc\": \"Incorrect payment information\",\n    \"auth_code\": \"<string>\",\n    \"avs_result_code\": \"<string>\",\n    \"cvc_result_code\": \"<string>\",\n    \"amount_splits\": [\n      {\n        \"amount\": \"<integer>\",\n        \"currency_code\": {\n          \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n        },\n        \"type\": \"MERCHANT\",\n        \"merchant_id\": \"<string>\",\n        \"platform\": {\n          \"platform_id\": {\n            \"value\": \"reference #/paths/~1v1~1deposit_method_configs/post/requestBody/content/application~1json/schema/properties/platform_id not found in the OpenAPI spec\"\n          },\n          \"name\": \"<string>\"\n        },\n        \"merchant\": {\n          \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D~1activity/get/responses/200/content/application~1json/schema/properties/data/properties/activities/items/properties/merchant not found in the OpenAPI spec\"\n        }\n      }\n    ],\n    \"merchant_fees\": {\n      \"total_amount\": {\n        \"amount\": \"<integer>\",\n        \"currency_code\": {\n          \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n        }\n      }\n    },\n    \"method_type\": \"CARD\",\n    \"card\": {\n      \"type\": \"PREPAID\",\n      \"brand\": \"AMERICAN_EXPRESS\",\n      \"brand_desc\": \"Other\",\n      \"last_4\": \"<string>\",\n      \"exp_month\": \"<integer>\",\n      \"exp_year\": \"<integer>\"\n    },\n    \"apple_pay\": {\n      \"type\": \"CREDIT\",\n      \"brand\": \"DISCOVER\",\n      \"brand_desc\": \"Mastercard\",\n      \"description\": \"<string>\"\n    },\n    \"ach\": {\n      \"account_number_last_4\": \"<string>\",\n      \"routing_number\": \"<string>\",\n      \"bank_name\": \"<string>\",\n      \"account_type\": \"SAVINGS\",\n      \"account_holder_type\": \"BUSINESS\"\n    },\n    \"plaid_ach\": {\n      \"account_number_last_4\": {\n        \"value\": \"reference #/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/ach/properties/account_number_last_4 not found in the OpenAPI spec\"\n      },\n      \"routing_number\": \"<string>\",\n      \"bank_name\": {\n        \"value\": \"reference #/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/ach/properties/bank_name not found in the OpenAPI spec\"\n      },\n      \"account_type\": \"SAVINGS\",\n      \"account_holder_type\": \"PERSONAL\"\n    },\n    \"paypal_wallet\": {\n      \"email\": \"<string>\"\n    },\n    \"venmo\": {\n      \"email\": \"<string>\"\n    },\n    \"paypal_paylater\": {\n      \"email\": \"<string>\"\n    },\n    \"billing_contact\": {\n      \"name\": \"<string>\",\n      \"address_line_1\": \"<string>\",\n      \"address_line_2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"country\": \"<string>\",\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\"\n    },\n    \"device_data\": {\n      \"application_identifier\": \"<string>\",\n      \"application_label\": \"<string>\",\n      \"application_preferred_name\": \"<string>\",\n      \"transaction_status_information\": \"<string>\",\n      \"application_pan_sequence_number\": \"<string>\",\n      \"entry_type\": \"INVALID\",\n      \"verification_type\": \"SIGNATURE\",\n      \"signature\": \"<string>\"\n    },\n    \"method_metadata\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_method_configs/post/requestBody/content/application~1json/schema/properties/metadata not found in the OpenAPI spec\"\n    },\n    \"metadata\": {},\n    \"refunds\": [\n      {\n        \"refund_id\": \"<string>\",\n        \"payin_id\": \"<string>\",\n        \"merchant_id\": \"<string>\",\n        \"billing_type\": {\n          \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/billing_type not found in the OpenAPI spec\"\n        },\n        \"amount\": \"<integer>\",\n        \"currency_code\": {\n          \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n        },\n        \"merchant_fees\": {\n          \"total_amount\": {\n            \"amount\": \"<integer>\",\n            \"currency_code\": {\n              \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n            }\n          }\n        },\n        \"reason\": \"<string>\",\n        \"status\": \"SUCCEEDED\",\n        \"refusal_code\": \"INVALID_PIN\",\n        \"refusal_desc\": \"Invalid PIN\",\n        \"detailed_refusal_code\": \"DO_NOT_HONOR\",\n        \"detailed_refusal_desc\": \"Restricted card type\",\n        \"non_voidable_reason_code\": \"PAST_SETTLEMENT\",\n        \"auth_code\": \"<string>\",\n        \"metadata\": {},\n        \"amount_splits\": [\n          {\n            \"amount\": \"<integer>\",\n            \"currency_code\": {\n              \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n            },\n            \"type\": \"MERCHANT\",\n            \"merchant_id\": \"<string>\"\n          }\n        ],\n        \"payin_billing_fees_reversal_config\": {\n          \"on_full_refund\": \"<boolean>\"\n        },\n        \"expected_deposit_date\": \"<date>\",\n        \"ach_return\": {\n          \"ach_return_id\": \"<string>\",\n          \"merchant_id\": \"<string>\",\n          \"payin_id\": \"<string>\",\n          \"refund_id\": \"<string>\",\n          \"status\": \"SUCCEEDED\",\n          \"return_code\": \"R74\",\n          \"return_desc\": \"<string>\",\n          \"amount\": \"<integer>\",\n          \"currency_code\": {\n            \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n          },\n          \"amount_splits\": [\n            {\n              \"amount\": \"<integer>\",\n              \"currency_code\": {\n                \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n              },\n              \"type\": \"MERCHANT\",\n              \"merchant_id\": \"<string>\"\n            }\n          ],\n          \"merchant_fees\": {\n            \"total_amount\": {\n              \"amount\": \"<integer>\",\n              \"currency_code\": {\n                \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n              }\n            }\n          },\n          \"metadata\": {},\n          \"expected_deposit_date\": \"<date>\",\n          \"source\": \"SYSTEM\",\n          \"source_desc\": \"<string>\",\n          \"created_at\": \"<dateTime>\",\n          \"updated_at\": \"<dateTime>\"\n        },\n        \"has_ach_return\": \"<boolean>\",\n        \"source\": \"API_DIRECT\",\n        \"source_desc\": \"<string>\",\n        \"created_at\": \"<dateTime>\",\n        \"updated_at\": \"<dateTime>\"\n      }\n    ],\n    \"has_refunds\": \"<boolean>\",\n    \"chargebacks\": [\n      {\n        \"chargeback_id\": \"<string>\",\n        \"payin_id\": \"<string>\",\n        \"merchant_id\": \"<string>\",\n        \"amount\": \"<integer>\",\n        \"currency_code\": {\n          \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n        },\n        \"status\": \"CHARGEBACK_PROCESSING\",\n        \"metadata\": {},\n        \"merchant_fees\": {\n          \"total_amount\": {\n            \"amount\": \"<integer>\",\n            \"currency_code\": {\n              \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n            }\n          }\n        },\n        \"method_type\": \"VENMO\",\n        \"card\": {\n          \"type\": \"PREPAID\",\n          \"brand\": \"DISCOVER\",\n          \"brand_desc\": \"Other\",\n          \"last_4\": \"<string>\",\n          \"exp_month\": \"<integer>\",\n          \"exp_year\": \"<integer>\"\n        },\n        \"apple_pay\": {\n          \"type\": \"CREDIT\",\n          \"brand\": \"DISCOVER\",\n          \"brand_desc\": \"Visa\",\n          \"description\": \"<string>\"\n        },\n        \"paypal_wallet\": {\n          \"email\": \"<string>\"\n        },\n        \"venmo\": {\n          \"email\": \"<string>\"\n        },\n        \"paypal_paylater\": {\n          \"email\": \"<string>\"\n        },\n        \"reason_code\": \"NOT_ACCEPTABLE\",\n        \"reason_desc\": \"<string>\",\n        \"acquirer_ref\": \"<string>\",\n        \"due_date\": \"<date>\",\n        \"chargeback_evidence\": [\n          {\n            \"chargeback_evidence_id\": \"<string>\",\n            \"chargeback_id\": \"<string>\",\n            \"is_required\": \"<boolean>\",\n            \"type\": \"OTHER_PAYMENT_METHODS\",\n            \"type_desc\": \"<string>\",\n            \"file_upload_mode\": \"NOT_ALLOWED\",\n            \"file_upload_ids\": [\n              \"<string>\"\n            ],\n            \"response_mode\": \"NOT_ALLOWED\",\n            \"response\": \"<string>\",\n            \"created_at\": \"<dateTime>\",\n            \"updated_at\": \"<dateTime>\"\n          }\n        ],\n        \"validation_errors\": [\n          {\n            \"field\": \"<string>\",\n            \"code\": \"<string>\",\n            \"message\": \"<string>\"\n          }\n        ],\n        \"expected_deposit_date\": \"<date>\",\n        \"source\": \"SYSTEM\",\n        \"source_desc\": \"<string>\",\n        \"created_at\": \"<dateTime>\",\n        \"updated_at\": \"<dateTime>\"\n      }\n    ],\n    \"has_chargebacks\": \"<boolean>\",\n    \"ach_return\": {\n      \"ach_return_id\": \"<string>\",\n      \"merchant_id\": \"<string>\",\n      \"payin_id\": \"<string>\",\n      \"refund_id\": \"<string>\",\n      \"status\": \"SUCCEEDED\",\n      \"return_code\": \"R38\",\n      \"return_desc\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"currency_code\": {\n        \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n      },\n      \"amount_splits\": [\n        {\n          \"amount\": \"<integer>\",\n          \"currency_code\": {\n            \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n          },\n          \"type\": \"MERCHANT\",\n          \"merchant_id\": \"<string>\"\n        }\n      ],\n      \"merchant_fees\": {\n        \"total_amount\": {\n          \"amount\": \"<integer>\",\n          \"currency_code\": {\n            \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n          }\n        }\n      },\n      \"metadata\": {},\n      \"expected_deposit_date\": \"<date>\",\n      \"source\": \"SYSTEM\",\n      \"source_desc\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    },\n    \"has_ach_return\": \"<boolean>\",\n    \"payin_config\": {\n      \"payin_config_id\": \"<string>\",\n      \"processing_mode\": \"AUTHORIZE_AND_CAPTURE\",\n      \"amount\": \"<integer>\",\n      \"currency_code\": {\n        \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n      },\n      \"amount_splits\": [\n        {\n          \"amount\": \"<integer>\",\n          \"currency_code\": {\n            \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n          },\n          \"type\": \"MERCHANT\",\n          \"rate\": \"<integer>\",\n          \"rate_cap\": \"<integer>\",\n          \"merchant_id\": \"<string>\",\n          \"amount_split_reversal_config\": {\n            \"on_full_refund\": false,\n            \"on_ach_return\": false\n          }\n        },\n        {\n          \"amount\": \"<integer>\",\n          \"currency_code\": {\n            \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n          },\n          \"type\": \"PLATFORM\",\n          \"rate\": \"<integer>\",\n          \"rate_cap\": \"<integer>\",\n          \"merchant_id\": \"<string>\",\n          \"amount_split_reversal_config\": {\n            \"on_full_refund\": false,\n            \"on_ach_return\": false\n          }\n        },\n        {\n          \"amount\": \"<integer>\",\n          \"currency_code\": {\n            \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n          },\n          \"type\": \"MERCHANT\",\n          \"rate\": \"<integer>\",\n          \"rate_cap\": \"<integer>\",\n          \"merchant_id\": \"<string>\",\n          \"amount_split_reversal_config\": {\n            \"on_full_refund\": false,\n            \"on_ach_return\": false\n          }\n        },\n        {\n          \"amount\": \"<integer>\",\n          \"currency_code\": {\n            \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n          },\n          \"type\": \"MERCHANT\",\n          \"rate\": \"<integer>\",\n          \"rate_cap\": \"<integer>\",\n          \"merchant_id\": \"<string>\",\n          \"amount_split_reversal_config\": {\n            \"on_full_refund\": false,\n            \"on_ach_return\": false\n          }\n        },\n        {\n          \"amount\": \"<integer>\",\n          \"currency_code\": {\n            \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n          },\n          \"type\": \"MERCHANT\",\n          \"rate\": \"<integer>\",\n          \"rate_cap\": \"<integer>\",\n          \"merchant_id\": \"<string>\",\n          \"amount_split_reversal_config\": {\n            \"on_full_refund\": false,\n            \"on_ach_return\": false\n          }\n        },\n        {\n          \"amount\": \"<integer>\",\n          \"currency_code\": {\n            \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n          },\n          \"type\": \"MERCHANT\",\n          \"rate\": \"<integer>\",\n          \"rate_cap\": \"<integer>\",\n          \"merchant_id\": \"<string>\",\n          \"amount_split_reversal_config\": {\n            \"on_full_refund\": false,\n            \"on_ach_return\": false\n          }\n        },\n        {\n          \"amount\": \"<integer>\",\n          \"currency_code\": {\n            \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n          },\n          \"type\": \"PLATFORM\",\n          \"rate\": \"<integer>\",\n          \"rate_cap\": \"<integer>\",\n          \"merchant_id\": \"<string>\",\n          \"amount_split_reversal_config\": {\n            \"on_full_refund\": false,\n            \"on_ach_return\": false\n          }\n        },\n        {\n          \"amount\": \"<integer>\",\n          \"currency_code\": {\n            \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n          },\n          \"type\": \"PLATFORM\",\n          \"rate\": \"<integer>\",\n          \"rate_cap\": \"<integer>\",\n          \"merchant_id\": \"<string>\",\n          \"amount_split_reversal_config\": {\n            \"on_full_refund\": false,\n            \"on_ach_return\": false\n          }\n        },\n        {\n          \"amount\": \"<integer>\",\n          \"currency_code\": {\n            \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n          },\n          \"type\": \"PLATFORM\",\n          \"rate\": \"<integer>\",\n          \"rate_cap\": \"<integer>\",\n          \"merchant_id\": \"<string>\",\n          \"amount_split_reversal_config\": {\n            \"on_full_refund\": false,\n            \"on_ach_return\": false\n          }\n        },\n        {\n          \"amount\": \"<integer>\",\n          \"currency_code\": {\n            \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n          },\n          \"type\": \"MERCHANT\",\n          \"rate\": \"<integer>\",\n          \"rate_cap\": \"<integer>\",\n          \"merchant_id\": \"<string>\",\n          \"amount_split_reversal_config\": {\n            \"on_full_refund\": false,\n            \"on_ach_return\": false\n          }\n        },\n        {\n          \"amount\": \"<integer>\",\n          \"currency_code\": {\n            \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n          },\n          \"type\": \"PLATFORM\",\n          \"rate\": \"<integer>\",\n          \"rate_cap\": \"<integer>\",\n          \"merchant_id\": \"<string>\",\n          \"amount_split_reversal_config\": {\n            \"on_full_refund\": false,\n            \"on_ach_return\": false\n          }\n        },\n        {\n          \"amount\": \"<integer>\",\n          \"currency_code\": {\n            \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n          },\n          \"type\": \"PLATFORM\",\n          \"rate\": \"<integer>\",\n          \"rate_cap\": \"<integer>\",\n          \"merchant_id\": \"<string>\",\n          \"amount_split_reversal_config\": {\n            \"on_full_refund\": false,\n            \"on_ach_return\": false\n          }\n        },\n        {\n          \"amount\": \"<integer>\",\n          \"currency_code\": {\n            \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n          },\n          \"type\": \"MERCHANT\",\n          \"rate\": \"<integer>\",\n          \"rate_cap\": \"<integer>\",\n          \"merchant_id\": \"<string>\",\n          \"amount_split_reversal_config\": {\n            \"on_full_refund\": false,\n            \"on_ach_return\": false\n          }\n        },\n        {\n          \"amount\": \"<integer>\",\n          \"currency_code\": {\n            \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n          },\n          \"type\": \"MERCHANT\",\n          \"rate\": \"<integer>\",\n          \"rate_cap\": \"<integer>\",\n          \"merchant_id\": \"<string>\",\n          \"amount_split_reversal_config\": {\n            \"on_full_refund\": false,\n            \"on_ach_return\": false\n          }\n        },\n        {\n          \"amount\": \"<integer>\",\n          \"currency_code\": {\n            \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n          },\n          \"type\": \"PLATFORM\",\n          \"rate\": \"<integer>\",\n          \"rate_cap\": \"<integer>\",\n          \"merchant_id\": \"<string>\",\n          \"amount_split_reversal_config\": {\n            \"on_full_refund\": false,\n            \"on_ach_return\": false\n          }\n        },\n        {\n          \"amount\": \"<integer>\",\n          \"currency_code\": {\n            \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n          },\n          \"type\": \"PLATFORM\",\n          \"rate\": \"<integer>\",\n          \"rate_cap\": \"<integer>\",\n          \"merchant_id\": \"<string>\",\n          \"amount_split_reversal_config\": {\n            \"on_full_refund\": false,\n            \"on_ach_return\": false\n          }\n        },\n        {\n          \"amount\": \"<integer>\",\n          \"currency_code\": {\n            \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n          },\n          \"type\": \"PLATFORM\",\n          \"rate\": \"<integer>\",\n          \"rate_cap\": \"<integer>\",\n          \"merchant_id\": \"<string>\",\n          \"amount_split_reversal_config\": {\n            \"on_full_refund\": false,\n            \"on_ach_return\": false\n          }\n        },\n        {\n          \"amount\": \"<integer>\",\n          \"currency_code\": {\n            \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n          },\n          \"type\": \"PLATFORM\",\n          \"rate\": \"<integer>\",\n          \"rate_cap\": \"<integer>\",\n          \"merchant_id\": \"<string>\",\n          \"amount_split_reversal_config\": {\n            \"on_full_refund\": false,\n            \"on_ach_return\": false\n          }\n        },\n        {\n          \"amount\": \"<integer>\",\n          \"currency_code\": {\n            \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n          },\n          \"type\": \"MERCHANT\",\n          \"rate\": \"<integer>\",\n          \"rate_cap\": \"<integer>\",\n          \"merchant_id\": \"<string>\",\n          \"amount_split_reversal_config\": {\n            \"on_full_refund\": false,\n            \"on_ach_return\": false\n          }\n        },\n        {\n          \"amount\": \"<integer>\",\n          \"currency_code\": {\n            \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n          },\n          \"type\": \"MERCHANT\",\n          \"rate\": \"<integer>\",\n          \"rate_cap\": \"<integer>\",\n          \"merchant_id\": \"<string>\",\n          \"amount_split_reversal_config\": {\n            \"on_full_refund\": false,\n            \"on_ach_return\": false\n          }\n        }\n      ]\n    },\n    \"threeds_attempt\": {\n      \"threeds_attempt_id\": \"<string>\",\n      \"merchant_id\": \"<string>\",\n      \"payin_config_id\": \"<string>\",\n      \"status\": \"CREATED\",\n      \"failed_reason_code\": \"MERCHANT_NOT_BOARDED\",\n      \"failed_reason_desc\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\",\n      \"fingerprinted_at\": \"<dateTime>\",\n      \"challenged_at\": \"<dateTime>\",\n      \"succeeded_at\": \"<dateTime>\",\n      \"failed_at\": \"<dateTime>\"\n    },\n    \"expected_deposit_date\": \"<date>\",\n    \"source\": \"IVR\",\n    \"source_desc\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+                          "createdAt": "2026-07-28T02:43:21.000Z",
+                          "updatedAt": "2026-07-28T02:43:21.000Z",
+                          "uid": "35240-16f9c470-2cb5-4dec-b25a-7efdf882dfa3"
+                        },
+                        {
+                          "id": "11eec4e9-6188-4265-9a51-108abef35561",
+                          "name": "400 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Rainforest-Api-Version",
+                                "value": "2024-10-16"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"payin_config_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/deposit_methods/:deposit_method_id/payin",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "deposit_methods",
+                                ":deposit_method_id",
+                                "payin"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deposit_method_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:21.000Z",
+                          "updatedAt": "2026-07-28T02:43:21.000Z",
+                          "uid": "35240-11eec4e9-6188-4265-9a51-108abef35561"
+                        },
+                        {
+                          "id": "58a4158e-c73f-48de-b350-095318fd1e44",
+                          "name": "401 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Rainforest-Api-Version",
+                                "value": "2024-10-16"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"payin_config_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/deposit_methods/:deposit_method_id/payin",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "deposit_methods",
+                                ":deposit_method_id",
+                                "payin"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deposit_method_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:21.000Z",
+                          "updatedAt": "2026-07-28T02:43:21.000Z",
+                          "uid": "35240-58a4158e-c73f-48de-b350-095318fd1e44"
+                        },
+                        {
+                          "id": "b07588a0-b978-464d-9768-72ee3bf4741c",
+                          "name": "403 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Rainforest-Api-Version",
+                                "value": "2024-10-16"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"payin_config_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/deposit_methods/:deposit_method_id/payin",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "deposit_methods",
+                                ":deposit_method_id",
+                                "payin"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deposit_method_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:21.000Z",
+                          "updatedAt": "2026-07-28T02:43:21.000Z",
+                          "uid": "35240-b07588a0-b978-464d-9768-72ee3bf4741c"
+                        },
+                        {
+                          "id": "a286a599-ea65-4615-bf4a-aed40adbd7ad",
+                          "name": "Conflict on the requested resource.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Rainforest-Api-Version",
+                                "value": "2024-10-16"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"payin_config_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/deposit_methods/:deposit_method_id/payin",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "deposit_methods",
+                                ":deposit_method_id",
+                                "payin"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deposit_method_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Conflict",
+                          "code": 409,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"value\": \"reference #/paths/~1v1~1deposits/get/responses/400/content/application~1json/schema not found in the OpenAPI spec\"\n}",
+                          "createdAt": "2026-07-28T02:43:21.000Z",
+                          "updatedAt": "2026-07-28T02:43:21.000Z",
+                          "uid": "35240-a286a599-ea65-4615-bf4a-aed40adbd7ad"
+                        },
+                        {
+                          "id": "f305450c-06da-480e-97b6-2a98342cab8b",
+                          "name": "5XX response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Rainforest-Api-Version",
+                                "value": "2024-10-16"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"payin_config_id\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/deposit_methods/:deposit_method_id/payin",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "deposit_methods",
+                                ":deposit_method_id",
+                                "payin"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deposit_method_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:43:21.000Z",
+                          "updatedAt": "2026-07-28T02:43:21.000Z",
+                          "uid": "35240-f305450c-06da-480e-97b6-2a98342cab8b"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:43:21.000Z",
+                      "updatedAt": "2026-07-28T02:43:21.000Z",
+                      "uid": "35240-ed2de5f4-8506-4b27-bc36-e4b48909ade8"
+                    }
+                  ],
+                  "id": "a3be16d1-3cd9-4961-ba2b-10fbdefb4e7e",
+                  "createdAt": "2026-07-28T02:43:21.000Z",
+                  "updatedAt": "2026-07-28T02:43:21.000Z",
+                  "uid": "35240-a3be16d1-3cd9-4961-ba2b-10fbdefb4e7e"
+                },
+                {
+                  "name": "Get deposit method",
+                  "id": "e0045ec3-8f75-4473-a994-006d9d84a1dd",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/deposit_methods/:deposit_method_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "deposit_methods",
+                        ":deposit_method_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "9dca1d15-c63c-42a1-9204-a3eb2634107c",
+                          "key": "deposit_method_id",
+                          "value": "<string>",
+                          "description": "(Required) The unique deposit method identifier. \n\nPrefix is \"dmt\" in production and \"sbx_dmt\" in sandbox."
+                        }
+                      ]
+                    },
+                    "description": "Get deposit method details by the deposit method ID."
+                  },
+                  "response": [
+                    {
+                      "id": "e03186f2-131e-4e15-8b45-162a4c176f69",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/deposit_methods/:deposit_method_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "deposit_methods",
+                            ":deposit_method_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "deposit_method_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"deposit_method_id\": \"<string>\",\n    \"deposit_method_config_id\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_method_configs/post/requestBody/content/application~1json/schema/properties/deposit_method_config_id not found in the OpenAPI spec\"\n    },\n    \"status\": \"CREATED\",\n    \"fingerprint\": \"<string>\",\n    \"method_type\": \"PLAID_ACH\",\n    \"ach\": {\n      \"account_number_last_4\": \"<string>\",\n      \"routing_number\": \"<string>\",\n      \"bank_name\": \"<string>\",\n      \"account_type\": \"SAVINGS\",\n      \"account_holder_type\": \"BUSINESS\"\n    },\n    \"plaid_ach\": {\n      \"account_number_last_4\": {\n        \"value\": \"reference #/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/ach/properties/account_number_last_4 not found in the OpenAPI spec\"\n      },\n      \"routing_number\": \"<string>\",\n      \"bank_name\": {\n        \"value\": \"reference #/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/ach/properties/bank_name not found in the OpenAPI spec\"\n      },\n      \"account_type\": \"SAVINGS\",\n      \"account_holder_type\": \"BUSINESS\"\n    },\n    \"billing_contact\": {\n      \"name\": \"<string>\",\n      \"address_line_1\": \"<string>\",\n      \"address_line_2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"country\": \"<string>\",\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\"\n    },\n    \"metadata\": {},\n    \"replaces_deposit_method_id\": \"<string>\",\n    \"replaced_by_deposit_method_id\": \"<string>\",\n    \"replaced_at\": \"<dateTime>\",\n    \"replaced_reason_code\": \"C03\",\n    \"replaced_reason_desc\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:43:21.000Z",
+                      "updatedAt": "2026-07-28T02:43:21.000Z",
+                      "uid": "35240-e03186f2-131e-4e15-8b45-162a4c176f69"
+                    },
+                    {
+                      "id": "a0969edd-0159-4682-9b27-4adad04741cb",
+                      "name": "400 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/deposit_methods/:deposit_method_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "deposit_methods",
+                            ":deposit_method_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "deposit_method_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:21.000Z",
+                      "updatedAt": "2026-07-28T02:43:21.000Z",
+                      "uid": "35240-a0969edd-0159-4682-9b27-4adad04741cb"
+                    },
+                    {
+                      "id": "ce2fd52a-7e2a-4957-a27f-8e1ae7372187",
+                      "name": "401 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/deposit_methods/:deposit_method_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "deposit_methods",
+                            ":deposit_method_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "deposit_method_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:21.000Z",
+                      "updatedAt": "2026-07-28T02:43:21.000Z",
+                      "uid": "35240-ce2fd52a-7e2a-4957-a27f-8e1ae7372187"
+                    },
+                    {
+                      "id": "52727c61-d180-444c-8cbe-4c727988ff53",
+                      "name": "403 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/deposit_methods/:deposit_method_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "deposit_methods",
+                            ":deposit_method_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "deposit_method_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:21.000Z",
+                      "updatedAt": "2026-07-28T02:43:21.000Z",
+                      "uid": "35240-52727c61-d180-444c-8cbe-4c727988ff53"
+                    },
+                    {
+                      "id": "1b8de038-883b-4358-8732-5f1ab9ca6cc2",
+                      "name": "404 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/deposit_methods/:deposit_method_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "deposit_methods",
+                            ":deposit_method_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "deposit_method_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:21.000Z",
+                      "updatedAt": "2026-07-28T02:43:21.000Z",
+                      "uid": "35240-1b8de038-883b-4358-8732-5f1ab9ca6cc2"
+                    },
+                    {
+                      "id": "f27b958a-48ab-49d1-a0ce-cd68e2647813",
+                      "name": "5XX response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/deposit_methods/:deposit_method_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "deposit_methods",
+                            ":deposit_method_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "deposit_method_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:43:21.000Z",
+                      "updatedAt": "2026-07-28T02:43:21.000Z",
+                      "uid": "35240-f27b958a-48ab-49d1-a0ce-cd68e2647813"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:43:21.000Z",
+                  "updatedAt": "2026-07-28T02:43:21.000Z",
+                  "uid": "35240-e0045ec3-8f75-4473-a994-006d9d84a1dd"
+                }
+              ],
+              "id": "4a6ca36d-5a7d-4b2e-817a-4aa4c98236ff",
+              "createdAt": "2026-07-28T02:43:21.000Z",
+              "updatedAt": "2026-07-28T02:43:21.000Z",
+              "uid": "35240-4a6ca36d-5a7d-4b2e-817a-4aa4c98236ff"
+            },
+            {
+              "name": "Create deposit method",
+              "id": "70b9b0a8-bd3e-41b8-8d07-4530fc82710d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deposit_method_config_id\": \"<string>\",\n  \"method_type\": \"ACH\",\n  \"ach\": {\n    \"account_number\": \"<string>\",\n    \"routing_number\": \"<string>\",\n    \"account_type\": \"SAVINGS\",\n    \"account_holder_type\": \"BUSINESS\"\n  },\n  \"billing_contact\": {\n    \"name\": \"<string>\",\n    \"address_line_1\": \"<string>\",\n    \"address_line_2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"country\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/deposit_methods",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "deposit_methods"
+                  ]
+                },
+                "description": "Create a deposit method. A deposit method is assigned to a merchant and is where the merchant's funds for their payment activity will be deposited to.\n\nThis endpoint requires Rainforest approval. Platforms that meet all [requirements](doc:send-sensitive-data-via-api#requirements) and are approved by Rainforest can send the full bank account numbers to Rainforest via a direct API integration."
+              },
+              "response": [
+                {
+                  "id": "d7e7a0ac-49fc-46a7-a277-395aa7772891",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"deposit_method_config_id\": \"<string>\",\n  \"method_type\": \"ACH\",\n  \"ach\": {\n    \"account_number\": \"<string>\",\n    \"routing_number\": \"<string>\",\n    \"account_type\": \"SAVINGS\",\n    \"account_holder_type\": \"BUSINESS\"\n  },\n  \"billing_contact\": {\n    \"name\": \"<string>\",\n    \"address_line_1\": \"<string>\",\n    \"address_line_2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"country\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/deposit_methods",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "deposit_methods"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"deposit_method_id\": \"<string>\",\n    \"deposit_method_config_id\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_method_configs/post/requestBody/content/application~1json/schema/properties/deposit_method_config_id not found in the OpenAPI spec\"\n    },\n    \"status\": \"CREATED\",\n    \"fingerprint\": \"<string>\",\n    \"method_type\": \"PLAID_ACH\",\n    \"ach\": {\n      \"account_number_last_4\": \"<string>\",\n      \"routing_number\": \"<string>\",\n      \"bank_name\": \"<string>\",\n      \"account_type\": \"SAVINGS\",\n      \"account_holder_type\": \"BUSINESS\"\n    },\n    \"plaid_ach\": {\n      \"account_number_last_4\": {\n        \"value\": \"reference #/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/ach/properties/account_number_last_4 not found in the OpenAPI spec\"\n      },\n      \"routing_number\": \"<string>\",\n      \"bank_name\": {\n        \"value\": \"reference #/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/ach/properties/bank_name not found in the OpenAPI spec\"\n      },\n      \"account_type\": \"SAVINGS\",\n      \"account_holder_type\": \"BUSINESS\"\n    },\n    \"billing_contact\": {\n      \"name\": \"<string>\",\n      \"address_line_1\": \"<string>\",\n      \"address_line_2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"country\": \"<string>\",\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\"\n    },\n    \"metadata\": {},\n    \"replaces_deposit_method_id\": \"<string>\",\n    \"replaced_by_deposit_method_id\": \"<string>\",\n    \"replaced_at\": \"<dateTime>\",\n    \"replaced_reason_code\": \"C03\",\n    \"replaced_reason_desc\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:43:21.000Z",
+                  "updatedAt": "2026-07-28T02:43:21.000Z",
+                  "uid": "35240-d7e7a0ac-49fc-46a7-a277-395aa7772891"
+                },
+                {
+                  "id": "4994bfb7-30e9-4b33-b600-157fea27f0c1",
+                  "name": "400 response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"deposit_method_config_id\": \"<string>\",\n  \"method_type\": \"ACH\",\n  \"ach\": {\n    \"account_number\": \"<string>\",\n    \"routing_number\": \"<string>\",\n    \"account_type\": \"SAVINGS\",\n    \"account_holder_type\": \"BUSINESS\"\n  },\n  \"billing_contact\": {\n    \"name\": \"<string>\",\n    \"address_line_1\": \"<string>\",\n    \"address_line_2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"country\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/deposit_methods",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "deposit_methods"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:21.000Z",
+                  "updatedAt": "2026-07-28T02:43:21.000Z",
+                  "uid": "35240-4994bfb7-30e9-4b33-b600-157fea27f0c1"
+                },
+                {
+                  "id": "1c4ddc21-aa42-4aaa-9eb5-8ba2428f7974",
+                  "name": "401 response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"deposit_method_config_id\": \"<string>\",\n  \"method_type\": \"ACH\",\n  \"ach\": {\n    \"account_number\": \"<string>\",\n    \"routing_number\": \"<string>\",\n    \"account_type\": \"SAVINGS\",\n    \"account_holder_type\": \"BUSINESS\"\n  },\n  \"billing_contact\": {\n    \"name\": \"<string>\",\n    \"address_line_1\": \"<string>\",\n    \"address_line_2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"country\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/deposit_methods",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "deposit_methods"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:21.000Z",
+                  "updatedAt": "2026-07-28T02:43:21.000Z",
+                  "uid": "35240-1c4ddc21-aa42-4aaa-9eb5-8ba2428f7974"
+                },
+                {
+                  "id": "8ab4086e-d3cc-486d-9178-01fcb93a98d0",
+                  "name": "403 response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"deposit_method_config_id\": \"<string>\",\n  \"method_type\": \"ACH\",\n  \"ach\": {\n    \"account_number\": \"<string>\",\n    \"routing_number\": \"<string>\",\n    \"account_type\": \"SAVINGS\",\n    \"account_holder_type\": \"BUSINESS\"\n  },\n  \"billing_contact\": {\n    \"name\": \"<string>\",\n    \"address_line_1\": \"<string>\",\n    \"address_line_2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"country\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/deposit_methods",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "deposit_methods"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:21.000Z",
+                  "updatedAt": "2026-07-28T02:43:21.000Z",
+                  "uid": "35240-8ab4086e-d3cc-486d-9178-01fcb93a98d0"
+                },
+                {
+                  "id": "4a2572df-1ca4-4bf8-9cf4-ffa0e137590e",
+                  "name": "5XX response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"deposit_method_config_id\": \"<string>\",\n  \"method_type\": \"ACH\",\n  \"ach\": {\n    \"account_number\": \"<string>\",\n    \"routing_number\": \"<string>\",\n    \"account_type\": \"SAVINGS\",\n    \"account_holder_type\": \"BUSINESS\"\n  },\n  \"billing_contact\": {\n    \"name\": \"<string>\",\n    \"address_line_1\": \"<string>\",\n    \"address_line_2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"country\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/deposit_methods",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "deposit_methods"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:43:21.000Z",
+                  "updatedAt": "2026-07-28T02:43:21.000Z",
+                  "uid": "35240-4a2572df-1ca4-4bf8-9cf4-ffa0e137590e"
+                }
+              ],
+              "createdAt": "2026-07-28T02:43:21.000Z",
+              "updatedAt": "2026-07-28T02:43:21.000Z",
+              "uid": "35240-70b9b0a8-bd3e-41b8-8d07-4530fc82710d"
+            }
+          ],
+          "id": "f871f00e-8abc-4585-891d-a8cd773b18a0",
+          "createdAt": "2026-07-28T02:43:21.000Z",
+          "updatedAt": "2026-07-28T02:43:21.000Z",
+          "uid": "35240-f871f00e-8abc-4585-891d-a8cd773b18a0"
+        }
+      ],
+      "id": "6b590504-896a-4c23-94d4-0a5e3316889b",
+      "createdAt": "2026-07-28T02:43:21.000Z",
+      "updatedAt": "2026-07-28T02:43:21.000Z",
+      "uid": "35240-6b590504-896a-4c23-94d4-0a5e3316889b"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.sandbox.rainforestpay.com"
+    }
+  ]
+}

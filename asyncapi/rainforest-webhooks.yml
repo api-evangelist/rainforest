@@ -1,0 +1,37 @@
+generated: '2026-07-20'
+method: searched
+type: Webhooks
+source: https://docs.rainforestpay.com/docs/webhooks-and-notifications
+note: >-
+  Rainforest documents a full webhook surface but does not publish an AsyncAPI document.
+  This is the captured webhook catalog (no AsyncAPI fabricated).
+delivery:
+  payload_fields: [event_type, data]
+  event_format: "{resource}.{status}"
+  example_event: payin.processing
+  data_payload: >-
+    The data payload includes all fields returned by the GET endpoint of the corresponding
+    resource (e.g. payin.processing carries the get_payin payload).
+  configuration: Portal (add endpoint URL, subscribe to specific events or all events); no-code Zapier option
+  signature_verification: true
+  verify_recipe: https://docs.rainforestpay.com/recipes/verify-webhooks-1
+  retries: exponential backoff (e.g. 3 failed attempts spread over ~35 minutes)
+  replay: single event or all failed events over a time window, from the Portal
+  rate_limiting: per-endpoint events-per-second cap configurable on the Advanced tab
+event_resources:
+- resource: payin
+  docs: https://docs.rainforestpay.com/docs/payin-webhooks
+- resource: merchant
+  docs: https://docs.rainforestpay.com/docs/merchant-webhooks
+- resource: merchant_application
+  docs: https://docs.rainforestpay.com/docs/merchant-application-webhooks
+- resource: deposit
+  docs: https://docs.rainforestpay.com/docs/deposit-webhooks
+- resource: chargeback
+  docs: https://docs.rainforestpay.com/docs/chargeback-webhooks
+- resource: refund
+  docs: https://docs.rainforestpay.com/docs/refund-webhooks
+- resource: payment_method
+  docs: https://docs.rainforestpay.com/docs/payment-method-webhooks
+- resource: ach_return
+  docs: https://docs.rainforestpay.com/docs/ach-return-webhooks

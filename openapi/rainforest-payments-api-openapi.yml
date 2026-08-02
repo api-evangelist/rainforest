@@ -1,0 +1,343 @@
+openapi: 3.1.0
+info:
+  title: Authentication ACH Returns Payments API
+  version: 1.0.0
+  description: This resource is used for authentication actions
+  contact:
+    name: Rainforest
+    email: support@rainforestpay.com
+    url: https://rainforestpay.com
+servers:
+- url: https://api.sandbox.rainforestpay.com
+  description: Sandbox server
+- url: https://api.rainforestpay.com
+  description: Production server
+security:
+- BearerAuth: []
+tags:
+- name: Payments
+  description: Resources for payment functions.
+paths:
+  /v1/payments:
+    get:
+      operationId: list_payments
+      summary: List payments
+      description: Query a list of payments, which includes payins, refunds, chargebacks, and ACH returns, given optional search criteria.
+      parameters:
+      - $ref: '#/paths/~1v1~1payins/get/parameters/0'
+      - name: id
+        in: query
+        schema:
+          type: string
+          description: The unique identifier for a Payin, Refund, or Chargeback.
+      - in: query
+        name: deposit_id
+        schema:
+          type: string
+        description: "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox."
+        examples:
+          production:
+            value: dep_2DrDKk5NIMbpuNGqm109SkpGDHh
+          sandbox:
+            value: sbx_dep_2DrDKk5NIMbpuNGqm109SkpGDHh
+      - $ref: '#/paths/~1v1~1device_registrations/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_id'
+        in: query
+      - $ref: '#/paths/~1v1~1payins/get/parameters/2'
+        in: query
+      - $ref: '#/paths/~1v1~1payins/get/parameters/3'
+        in: query
+      - $ref: '#/paths/~1v1~1payins/get/parameters/4'
+        in: query
+      - name: status
+        in: query
+        description: "One or more payment statuses to filter by. Provide parameter multiple times to filter by multiple payment status types. Some statuses are only valid for certain payment activity types.\n\nACH returns: `CREATED`\n\nchargebacks: `INQUIRY_ACTION_REQUIRED` `INQUIRY_PROCESSING` `DISPUTE_ACTION_REQUIRED` `CHARGEBACK_PROCESSING`\n  `PROVISIONAL_WIN` `WON` `LOST` `PRE_ARBITRATION_PROCESSING` `ARBITRATION`\n\npayins: `CANCELED` `CREATED` `FAILED` `IN_REVIEW` `PRESENTING` `PROCESSING` `SUCCEEDED`\n\nrefunds: `CANCELED` `CREATED` `FAILED` `IN_REVIEW` `PROCESSING` `SUCCEEDED`"
+        schema:
+          type: array
+          items:
+            description: "The status of the payment activity. Some statuses are only valid for certain payment activity types.\n\nACH returns: `CREATED` \n\nchargebacks: `DISPUTE_ACTION_REQUIRED` `CHARGEBACK_PROCESSING` `INQUIRY_ACTION_REQUIRED` `INQUIRY_PROCESSING` `LOST` `PROVISIONAL_WIN` `WON` \n\npayins: `AUTHORIZED` `CANCELED` `CREATED` `FAILED` `IN_REVIEW` `PRESENTING` `PROCESSING` `RETURNED` `SUCCEEDED`\n\nrefunds: `CANCELED` `CREATED` `FAILED` `IN_REVIEW` `PROCESSING` `SUCCEEDED`"
+            type: string
+            enum:
+            - AUTHORIZED
+            - CANCELED
+            - CHARGEBACK_PROCESSING
+            - CREATED
+            - DISPUTE_ACTION_REQUIRED
+            - FAILED
+            - IN_REVIEW
+            - INQUIRY_ACTION_REQUIRED
+            - INQUIRY_PROCESSING
+            - LOST
+            - PRESENTING
+            - PROCESSING
+            - PROVISIONAL_WIN
+            - RETURNED
+            - SUCCEEDED
+            - WON
+            example: PROCESSING
+      - name: payment_type
+        in: query
+        description: "One or more payment types to filter by. Provide parameter multiples times to filter by multiple payment types. \n\n`ACH_RETURN` `CHARGEBACK` `PAYIN` `REFUND`"
+        schema:
+          type: array
+          items:
+            description: The type of payment.
+            type: string
+            enum:
+            - ACH_RETURN
+            - CHARGEBACK
+            - PAYIN
+            - REFUND
+            example: PAYIN
+      - in: query
+        name: source
+        description: 'One or more payment sources to filter by. Provide parameter multiple times to filter by multiple payment sources. Some sources are only valid for certain payment activity types.
+
+
+          ACH returns and chargebacks: `SYSTEM`
+
+
+          payins: `API_DIRECT` `API_STORED_PAYMENT_METHOD` `COMPONENT` `DEVICE` `EXTERNAL` `IVR` `TAP_TO_PHONE`
+
+
+          refunds: `API_DIRECT` `COMPONENT` `EXTERNAL`'
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - API_DIRECT
+            - API_STORED_PAYMENT_METHOD
+            - COMPONENT
+            - DEVICE
+            - EXTERNAL
+            - IVR
+            - SYSTEM
+            - TAP_TO_PHONE
+      - $ref: '#/paths/~1v1~1payins/get/parameters/7'
+        in: query
+      - $ref: '#/paths/~1v1~1payins/get/parameters/8'
+        in: query
+      - $ref: '#/paths/~1v1~1payins/get/parameters/9'
+        in: query
+      - in: query
+        name: due_date.start
+        description: Due on or after in UTC RFC 3339 format.
+        schema:
+          type: string
+          format: date-time
+        example: '2022-01-01T12:00:00Z'
+      - in: query
+        name: due_date.end
+        description: Due on or before in UTC RFC 3339 format.
+        schema:
+          type: string
+          format: date-time
+        example: '2022-01-01T12:00:00Z'
+      - $ref: '#/paths/~1v1~1payins/get/parameters/10'
+        in: query
+      - $ref: '#/paths/~1v1~1payins/get/parameters/11'
+        in: query
+      - name: sort_by
+        in: query
+        description: Optional value by which to sort the result set. Default sort by is created_at.
+        schema:
+          type: string
+          enum:
+          - amount
+          - billing_contact_name
+          - created_at
+          - expected_deposit_date
+          - merchant_id
+          - method_type
+          - payment_id
+          - payment_type
+          - status
+          - acquirer_ref
+          - due_date
+      - $ref: '#/paths/~1v1~1payins/get/parameters/13'
+        in: query
+      - $ref: '#/paths/~1v1~1payins/get/parameters/14'
+        in: query
+      - $ref: '#/paths/~1v1~1payins/get/parameters/15'
+        in: query
+      - $ref: '#/paths/~1v1~1payins/get/parameters/16'
+        in: query
+        deprecated: true
+      - in: query
+        name: omit_total_results
+        schema:
+          type: boolean
+        description: The `total_results` field in the response will be set to -1. Allows for faster query results.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    allOf:
+                    - $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/data/allOf/0'
+                    - type: object
+                      properties:
+                        last_key:
+                          $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/data/allOf/1/properties/last_key'
+                        results:
+                          description: List of payments.
+                          type: array
+                          items:
+                            description: A payment activity, including payins, refunds, chargebacks, and bounced checks.
+                            type: object
+                            properties:
+                              payment_type:
+                                $ref: '#/paths/~1v1~1payments/get/parameters/8/schema/items'
+                              id:
+                                description: The unique identifier for this payment activity.
+                                type: string
+                                example: pyi_2DrDU206kzAhclm1WrZbuwDERRk
+                              parent_id:
+                                description: The unique payin identifier that this entity relates to.  Set on refunds, chargebacks, and bounced checks.
+                                type: string
+                                example: pyi_2DrDKk5NIMbpuNGqm109SkpGDHh
+                              merchant_id:
+                                $ref: '#/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id'
+                              payment_method_id:
+                                $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id'
+                              payment_method_config_id:
+                                $ref: '#/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/payment_method_config_id'
+                                readOnly: true
+                              amount:
+                                description: 'The amount of this activity, in minor units.
+
+
+                                  For example, 1000 is 10.00 USD.'
+                                type: integer
+                                example: 100
+                              currency_code:
+                                $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code'
+                              status:
+                                $ref: '#/paths/~1v1~1payments/get/parameters/7/schema/items'
+                              refusal_code:
+                                $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/refusal_code'
+                              refusal_desc:
+                                $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/refusal_desc'
+                              detailed_refusal_code:
+                                $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/detailed_refusal_code'
+                              detailed_refusal_desc:
+                                $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/detailed_refusal_desc'
+                              amount_splits:
+                                description: 'Represents how the payin amount was allocated to the originating merchant, the platform and one or more other merchants.<br/><br/>
+
+
+                                  A `PLATFORM` split defines a platform fee on the payin.<br/><br/>
+
+
+                                  A `MERCHANT` split allocates a portion of the payin to the specified merchant.<br/><br/>
+
+
+                                  Any remaining amount not specified by the amount splits was allocated to the originating merchant associated with the payin.'
+                                $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/amount_splits'
+                              merchant_fees:
+                                description: The amount of the payment activity billed to the merchant.
+                                type: object
+                                properties:
+                                  total_amount:
+                                    description: The total amount of fees billed to the merchant.
+                                    type: object
+                                    properties:
+                                      amount:
+                                        $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_fees/properties/total_amount/properties/amount'
+                                      currency_code:
+                                        $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code'
+                                example:
+                                  total_amount:
+                                    amount: 2
+                                    currency_code: USD
+                              method_type:
+                                $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/method_type'
+                              card:
+                                $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/card'
+                              apple_pay:
+                                $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/apple_pay'
+                              ach:
+                                $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/ach'
+                              plaid_ach:
+                                $ref: '#/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data/properties/plaid_ach'
+                              paypal_wallet:
+                                $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_wallet'
+                              venmo:
+                                $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/venmo'
+                              paypal_paylater:
+                                $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_paylater'
+                              billing_contact:
+                                $ref: '#/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact'
+                              method_metadata:
+                                $ref: '#/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/method_metadata'
+                              metadata:
+                                $ref: '#/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema'
+                              has_refunds:
+                                $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/has_refunds'
+                              has_chargebacks:
+                                $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/has_chargebacks'
+                              acquirer_ref:
+                                type: string
+                                description: Acquirer Reference Number (ARN) is a unique identifier to trace a chargeback with the issuing bank. This field will only be set if the `payment_type` is `CHARGEBACK`.
+                                example: '65125434121594201070412'
+                              due_date:
+                                type: string
+                                description: Date chargeback times out and will be decisioned as a win or a loss depending on the current status.
+                                example: '2024-10-16'
+                              merchant:
+                                $ref: '#/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/merchant'
+                                description: The minimal representation of the merchant.
+                              expected_deposit_date:
+                                $ref: '#/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date'
+                                description: Date the funds are expected to be available in a deposit. For chargebacks, this field represents the date the fee of the chargeback is expected to be deducted in a deposit. Funds pulled from the merchant or given to the merchant is dependent on the chargeback status and is not represented by the expected deposit date.
+                              source:
+                                description: The source of the payment. Indicates the integration that created the payment.
+                                type: string
+                                nullable: false
+                                enum:
+                                - API_DIRECT
+                                - API_STORED_PAYMENT_METHOD
+                                - COMPONENT
+                                - DEVICE
+                                - EXTERNAL
+                                - IVR
+                                - SYSTEM
+                                - TAP_TO_PHONE
+                              source_desc:
+                                description: The description of the source of the payment. This will be a human-readable value that may be presented to the end user.
+                                type: string
+                                nullable: false
+                              created_at:
+                                description: Date and time payment activity was created at in UTC RFC 3339 format.
+                                type: string
+                                format: date-time
+                                example: '2022-01-01T12:00:00Z'
+                              updated_at:
+                                description: Date and time payment activity was last updated at in UTC RFC 3339 format.
+                                type: string
+                                format: date-time
+                                example: '2022-01-01T12:00:00Z'
+                  errors:
+                    $ref: '#/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1payins/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1payins/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1payins/get/responses/403'
+        5XX:
+          $ref: '#/paths/~1v1~1payins/get/responses/5XX'
+      tags:
+      - Payments
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: APIKey

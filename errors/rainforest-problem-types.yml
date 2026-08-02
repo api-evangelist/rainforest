@@ -1,0 +1,45 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/rainforest-payments-openapi.yaml, openapi/rainforest-merchants-openapi.yaml
+format: custom-envelope
+envelope:
+  description: >-
+    Rainforest does not use RFC 9457 problem+json. Every response carries a top-level
+    envelope; on error `status` is `ERROR`, `data` is null, and `errors[]` lists field-level
+    problems.
+  shape:
+    status: ERROR
+    data: null
+    errors:
+    - field: <string>
+      code: <error-code>
+      message: <human message>
+problems:
+- status: 400
+  title: Bad request
+  description: Bad request, check for validation errors.
+  example_code: RequestBody
+- status: 401
+  title: Unauthorized
+  description: Authorization missing or invalid.
+  example_code: AuthUnauthorized
+- status: 403
+  title: Forbidden
+  description: Authorization insufficient for the requested action.
+  example_code: AuthForbidden
+- status: 404
+  title: Not found
+  description: The requested resource does not exist.
+- status: 409
+  title: Conflict
+  description: The request conflicts with the current state of the resource.
+- status: 412
+  title: Precondition failed
+  description: A precondition (e.g. required resource status) was not met.
+- status: 500
+  title: Internal server error
+  description: Unexpected error.
+error_codes_seen:
+- RequestBody
+- AuthUnauthorized
+- AuthForbidden

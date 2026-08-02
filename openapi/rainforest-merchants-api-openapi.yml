@@ -1,0 +1,1242 @@
+openapi: 3.1.0
+info:
+  title: Authentication ACH Returns Merchants API
+  version: 1.0.0
+  description: This resource is used for authentication actions
+  contact:
+    name: Rainforest
+    email: support@rainforestpay.com
+    url: https://rainforestpay.com
+servers:
+- url: https://api.sandbox.rainforestpay.com
+  description: Sandbox server
+- url: https://api.rainforestpay.com
+  description: Production server
+security:
+- BearerAuth: []
+tags:
+- name: Merchants
+  description: Resources for merchant functions.
+paths:
+  /v1/merchants:
+    post:
+      operationId: create_merchant
+      summary: Create merchant
+      description: Create a merchant with an initial merchant application.
+      parameters:
+      - $ref: '#/paths/~1v1~1merchants/get/parameters/0'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - type: object
+                properties:
+                  merchant_id:
+                    $ref: '#/paths/~1v1~1merchants/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_id'
+                    readOnly: true
+                  platform_id:
+                    $ref: '#/paths/~1v1~1billing_profiles/post/requestBody/content/application~1json/schema/allOf/0/properties/platform_id'
+                    readOnly: true
+                  billing_profile_id:
+                    description: 'The unique billing profile identifier. If omitted, the merchant will be assigned the platform''s default billing profile.
+
+
+                      Prefix is "bpf" in production and "sbx_bpf" in sandbox.'
+                    type: string
+                    example: bpf_2DrDFJPutxE5AIbJSopAnqniEbr
+                  billing_profile:
+                    readOnly: true
+                    type: object
+                    properties:
+                      id:
+                        $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/billing_profile_id'
+                        readOnly: true
+                      name:
+                        readOnly: true
+                        description: The billing profile name.
+                        type: string
+                        example: Default
+                  name:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/name'
+                  dba_name:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/dba_name'
+                  legal_name:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/legal_name'
+                  merchant_type:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/merchant_type'
+                  mcc:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/mcc'
+                  mcc_desc:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/mcc_desc'
+                    readOnly: true
+                  email:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/email'
+                  website:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/website'
+                  phone_number:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/phone_number'
+                  average_ticket:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/average_ticket'
+                  high_ticket:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/high_ticket'
+                  average_monthly_volume:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/average_monthly_volume'
+                  address:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/address'
+                  tax_id:
+                    writeOnly: true
+                    description: 'The merchant tax ID, formatted with no spaces (e.g 123456789). Required for all merchant types except for INDIVIDUAL.
+
+
+                      Setting this field requires Rainforest approval. Platforms that meet all [requirements](doc:send-sensitive-data-via-api#requirements) and are approved by Rainforest can send the tax ID to Rainforest via a direct API integration.'
+                    type: string
+                    example: '123456789'
+                  tax_id_last_4:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/tax_id_last_4'
+                    readOnly: true
+                  owner_1:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/owner_1'
+                  owner_2:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/owner_1'
+                  owner_3:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/owner_1'
+                  owner_4:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/owner_1'
+                  billing_frequency:
+                    description: The merchant billing frequency.
+                    type: string
+                    enum:
+                    - DAILY
+                    - MONTHLY
+                  billing_type:
+                    description: The merchant billing type.
+                    type: string
+                    enum:
+                    - NET
+                    - GROSS
+                  deposit_frequency:
+                    description: The merchant deposit frequency for funding deposits.
+                    type: string
+                    enum:
+                    - DAILY
+                    - WEEKLY
+                    - MONTHLY
+                    - DISABLED
+                  card_release_delay_days:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D/patch/requestBody/content/application~1json/schema/properties/card_release_delay_days'
+                  ach_release_delay_days:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D/patch/requestBody/content/application~1json/schema/properties/ach_release_delay_days'
+                  validated_ach_release_delay_days:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D/patch/requestBody/content/application~1json/schema/properties/validated_ach_release_delay_days'
+                  balance_checked_ach_release_delay_days:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D/patch/requestBody/content/application~1json/schema/properties/balance_checked_ach_release_delay_days'
+                  accelerated_ach_release_delay_days:
+                    description: 'The number of business days after processing until Accelerated ACH payments are made available to the merchant in a deposit.
+
+
+                      For example, 1 is T+1 and 2 is T+2'
+                    type: integer
+                  paypal_wallet_release_delay_days:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D/patch/requestBody/content/application~1json/schema/properties/paypal_wallet_release_delay_days'
+                  venmo_release_delay_days:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D/patch/requestBody/content/application~1json/schema/properties/venmo_release_delay_days'
+                  paypal_paylater_release_delay_days:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D/patch/requestBody/content/application~1json/schema/properties/paypal_paylater_release_delay_days'
+                  allowed_payment_method_types:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/allowed_payment_method_types'
+                    readOnly: true
+                  available_deposit_method_ids:
+                    description: This field is only utilized by the Merchant Onboarding Component on the deposit method step. It defines the available deposit methods in the bank account selector for the merchant to choose from.
+                    type: array
+                    items:
+                      description: 'The unique deposit method identifier.
+
+
+                        Prefix is "dmt" in production and "sbx_dmt" in sandbox.'
+                      type: string
+                      example: dmt_2DrDRpyAdp5MPUJnrJmoZcMmtfF
+                  deposit_routes:
+                    type: object
+                    description: 'Object with key names that correspond to the purpose of deposit method.
+
+
+                      For example, the deposit route for the PAYMENTS key represents the deposit method being used for the merchant''s funding deposits. The deposit route for the BILLING key represents the deposit method being used for the merchant''s billing deposits, only applicable for merchants on gross billing.'
+                    additionalProperties:
+                      type: object
+                      properties:
+                        deposit_method_id:
+                          description: 'The unique deposit method identifier to use for this deposit route.
+
+
+                            Prefix is "dmt" in production and "sbx_dmt" in sandbox.'
+                          type: string
+                          nullable: true
+                          example: dmt_2DrDRpyAdp5MPUJnrJmoZcMmtfF
+                  additional_underwriting_data:
+                    $ref: '#/paths/~1v1~1merchants/post/responses/200/content/application~1json/schema/properties/data/properties/additional_underwriting_data'
+                    writeOnly: true
+                  status:
+                    $ref: '#/paths/~1v1~1merchants/get/parameters/4/schema/items'
+                    readOnly: true
+                  threeds_onboarding:
+                    readOnly: true
+                    type: object
+                    nullable: true
+                    description: 'For merchants with 3DS enabled, the merchant must be onboarded to the 4 major card brands in order to process payments with 3DS protection.
+
+
+                      Each card brand has onboarding requirements that must be met. When the merchant is onboarded to the card brand, the `onboarded_at` timestamp will be set. After the merchant has been onboarded to the card brand, Rainforest will attempt to run 3DS if requested on the payin config.
+
+
+                      Once Rainforest has successfully run 3DS on the specified card brand, the `verified_at` timestamp will be set. This is the indicator that the merchant was onboarded to 3DS successfully.'
+                    properties:
+                      american_express:
+                        $ref: '#/paths/~1v1~1merchants/post/requestBody/content/application~1json/schema/allOf/0/properties/threeds_onboarding/properties/visa'
+                        description: The 3DS onboarding details with American Express.
+                      discover:
+                        $ref: '#/paths/~1v1~1merchants/post/requestBody/content/application~1json/schema/allOf/0/properties/threeds_onboarding/properties/visa'
+                        description: The 3DS onboarding details with Discover.
+                      mastercard:
+                        $ref: '#/paths/~1v1~1merchants/post/requestBody/content/application~1json/schema/allOf/0/properties/threeds_onboarding/properties/visa'
+                        description: The 3DS onboarding details with Mastercard.
+                      visa:
+                        description: The 3DS onboarding details with Visa.
+                        type: object
+                        readOnly: true
+                        properties:
+                          card_brand:
+                            description: Card brand.
+                            type: string
+                            example: MASTERCARD
+                            enum:
+                            - AMERICAN_EXPRESS
+                            - DISCOVER
+                            - MASTERCARD
+                            - VISA
+                          card_brand_desc:
+                            description: Card brand in a friendly language.
+                            type: string
+                            example: Mastercard
+                            enum:
+                            - American Express
+                            - Discover
+                            - Mastercard
+                            - Visa
+                          onboarded_at:
+                            type: string
+                            description: Date and time the merchant was onboarded to the specified card brand for 3DS in UTC RFC 3339 format.
+                            format: date-time
+                            example: '2022-01-01T12:00:00Z'
+                            readOnly: true
+                            nullable: true
+                          verified_at:
+                            type: string
+                            description: Date and time the merchant successfully ran 3DS with the specified card brand in UTC RFC 3339 format.
+                            format: date-time
+                            example: '2022-01-01T12:00:00Z'
+                            readOnly: true
+                            nullable: true
+                  card_account_updater_enabled:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D/patch/requestBody/content/application~1json/schema/properties/card_account_updater_enabled'
+                  accelerated_ach_mode:
+                    readOnly: true
+                    description: 'Determines if an ACH payin will utilize the Accelerated ACH Release Delay Days when the payin meets the criteria.
+
+
+                      Options:
+
+                      * `ENABLED` - ACH payins will be accelerated, if applicable.
+
+                      * `DISABLED` - ACH payins will not be accelerated.
+
+                      * `DISABLED_BY_RAINFOREST` - ACH payins cannot be accelerated and this feature is disabled by Rainforest.'
+                    type: string
+                    enum:
+                    - ENABLED
+                    - DISABLED
+                    - DISABLED_BY_RAINFOREST
+                  reverse_payin_billing_fees_on_full_refund_enabled:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D/patch/requestBody/content/application~1json/schema/properties/reverse_payin_billing_fees_on_full_refund_enabled'
+                  reverse_payin_billing_fees_on_ach_return_enabled:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D/patch/requestBody/content/application~1json/schema/properties/reverse_payin_billing_fees_on_ach_return_enabled'
+                  created_at:
+                    description: Date and time merchant was created at in UTC RFC 3339 format.
+                    type: string
+                    format: date-time
+                    example: '2022-01-01T12:00:00Z'
+                    readOnly: true
+                  updated_at:
+                    description: Date and time merchant was last updated at in UTC RFC 3339 format.
+                    type: string
+                    format: date-time
+                    example: '2022-01-01T12:00:00Z'
+                    readOnly: true
+                  latest_merchant_application:
+                    readOnly: true
+                    type: object
+                    properties:
+                      merchant_application_id:
+                        $ref: '#/paths/~1v1~1merchants/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_application_id'
+                        readOnly: true
+                      status:
+                        $ref: '#/paths/~1v1~1merchants/get/parameters/10/schema/items'
+                        readOnly: true
+                      updated_at:
+                        description: Date and time merchant application was last updated at in UTC RFC 3339 format.
+                        type: string
+                        format: date-time
+                        example: '2022-01-01T12:00:00Z'
+                        readOnly: true
+              - type: object
+                properties:
+                  billing_frequency:
+                    $ref: '#/paths/~1v1~1merchants/post/requestBody/content/application~1json/schema/allOf/0/properties/billing_frequency'
+                    description: The merchant billing frequency. If omitted, the merchant will be assigned the platform's default billing frequency.
+                  billing_type:
+                    $ref: '#/paths/~1v1~1merchants/post/requestBody/content/application~1json/schema/allOf/0/properties/billing_type'
+                    description: The merchant billing type. If omitted, the merchant will be assigned the platform's default billing type.
+                  deposit_frequency:
+                    $ref: '#/paths/~1v1~1merchants/post/requestBody/content/application~1json/schema/allOf/0/properties/deposit_frequency'
+                    description: 'The merchant deposit frequency for funding deposits. Supported values are `DAILY`, `WEEKLY`, or `MONTHLY`.
+
+
+                      Platform must be configured for the specified deposit frequency, please reach out to Support or your Platform Success Manager if not configured for a deposit frequency.
+
+
+                      If omitted, the merchant will be assigned the platform''s default deposit frequency.'
+                  no_owner_has_25_percent:
+                    type: boolean
+                    nullable: true
+                    description: Indicates that no owner holds 25% or more ownership of the merchant. When set to `true`, owner ownership percentages are not required to be 25% or greater.
+                  card_account_updater_enabled:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D/patch/requestBody/content/application~1json/schema/properties/card_account_updater_enabled'
+                    description: Boolean indicating if card account updater is enabled. If omitted, the merchant will be assigned the platform's default value.
+                  accelerated_ach_mode:
+                    type: string
+                    enum:
+                    - ENABLED
+                    - DISABLED
+                    description: 'The Accelerated ACH status for this merchant.
+
+
+                      Options:
+
+                      * `ENABLED` - ACH payins will be accelerated, if applicable.
+
+                      * `DISABLED` - ACH payins will not be accelerated.'
+                  reverse_payin_billing_fees_on_full_refund_enabled:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D/patch/requestBody/content/application~1json/schema/properties/reverse_payin_billing_fees_on_full_refund_enabled'
+                    description: Boolean indicating if payin billing fees are reversed to the merchant when a refund for the full amount is processed. If omitted, the merchant will be assigned the platform's default value.
+                  reverse_payin_billing_fees_on_ach_return_enabled:
+                    $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D/patch/requestBody/content/application~1json/schema/properties/reverse_payin_billing_fees_on_ach_return_enabled'
+                    description: Boolean indicating if payin billing fees are reversed to the merchant when an ACH return is processed. If omitted, the merchant will be assigned the platform's default value.
+                required:
+                - name
+            examples:
+              individual:
+                value:
+                  name: Merchant
+                  legal_name: Merchant, Inc.
+                  merchant_type: INDIVIDUAL
+                  mcc: '4722'
+                  email: merchant@example.com
+                  website: https://www.merchantwebsite.com
+                  phone_number: '+14041234567'
+                  average_ticket: 1000
+                  high_ticket: 100000
+                  average_monthly_volume: 1000000
+                  billing_contact:
+                    address_line_1: 123 Example Street
+                    address_line_2: Suite 123
+                    city: Atlanta
+                    state: GA
+                    postal_code: '30305'
+                    country: US
+                  owner_1:
+                    first_name: Jane
+                    last_name: Smith
+                    dob: '1990-10-10'
+                    encrypted_ssn: SUPywcKsExepLYVgbqfHtOXc2NNM8LOTvsACcR5jkKaGr0lMRY/Lf5xflVXAl/9vuNWEnDy/jh7oDC9uH2j3+ha0uUPBSXz09FSSZ4Y2d71zBze6m+xKXJWTvX53dBZjpp6amuW7GnJNw6UAFEjjTe8Z4rm03T9IRd2VOdkyWl5fNTZyC7hXQpvfO/TjzzBc5T2N5k7KmnQovdQovGQhh4niKHIQntmM6lKyXWrFGlY9Erto30rJLJgR2BHhvEVnFo4EQ/pDWqLwjmqTErmDu4nGtNgpOJMBwQ7xl1Y+vLlT8ZzvPJebzntM/6r9f5TiHCty4Age3M7P6Cu0/Anmg7LrLP19lZf9n0j4cdXPl0sb1l7tjjnlcBUS7wPdrHl+tXGfOojGPB4tXgDzS6qY+cvns+ybEK/T3HU8tCUiPXgN6IpZ2b0GEpfh6BvG+q1Hov68UOkeUmF3keeKMuk1PLL5FcveXSifRnn+fyuAP4D4pBw8itMXsJ5SfkaLOuSXm95m+CP4vOUDAlkG0t0RJckSmG+Ttq2Lu9ZOREWkwDNZ2WyJtvlGa5mOPl7Vlf65U3LJYsZLEzNaeZoV1M6fp3RHZ3t6M3uXmpHDgsHwMSL8z9/ICwpXhBtj7PDeiOv34+dgF5YbLGaHtTkzUPsK8tadzAEyl5yhvVnJ26+Ysho=
+                    ssn_last_4: '4321'
+                    email: owner@example.com
+                    phone_number: '+12342342345'
+                    address_line_1: 456 Example Street
+                    address_line_2: Suite 456
+                    city: Atlanta
+                    state: GA
+                    postal_code: '30305'
+                    country: US
+              llc:
+                value:
+                  name: Merchant
+                  legal_name: Merchant, LLC.
+                  merchant_type: LLC
+                  mcc: '4722'
+                  email: merchant@example.com
+                  website: https://www.merchantwebsite.com
+                  phone_number: '+14041234567'
+                  average_ticket: 1000
+                  high_ticket: 100000
+                  average_monthly_volume: 1000000
+                  billing_contact:
+                    address_line_1: 123 Example Street
+                    address_line_2: Suite 123
+                    city: Atlanta
+                    state: GA
+                    postal_code: '30305'
+                    country: US
+                  encrypted_tax_id: UN9mYszj6KU4svZuzksUoUDzFaMGGq0BYdCjMJvgvOdVQWPCqdnUQ6g4Cgi0av5hsU2FA6M35JcOt9hI26MSrYwJzAEZ1JNt0TR3t2XZnTdz+TTJomSXxhySdIb4TCnoNpA40kdH/4hDMSlZaLs1bs22H12qWwQ04aH0Mox5Rj2n3BDK2kXYcgqR1C+mvWSP3wPy5zhmIfPZIrrbw+lnDlYhdlWf3atbsIog+qNk+iKDmOzx6AeZYNPCWjQugA71EKDoTKlL1sGGPleYwxgOVu8Z97UQeYsxO6NqHd7BMOPzK816WQapzJp0OoRThq0poz4uyqMZNp9AryR6QO4JQAm/ZDjrqT6U76qeN469DkxdHTMI5uSm04WvY2b+ra7WAis1IrSkw2EDgGXX/XJ9lJWRZXHNVXXnASMFsrv0mk9TKUW7MON2lM3uSWUqn/vT9/QWG8RDoDtHwfmBhayjKynEoKe2IVuPSsFcHy7lgTQqFvVLyplbeiGBta2qKzcD4YOWYyhN2g47yaL7hVzcc67x4/N7QncAs1NazoNrPXywQWpLajkuzd360dxRlLJKhCdmomTDU1XtzU26IKJmnWglU3s241Sctd1Zh4roNMAKcYu6WUCOmyIMLdSvfdmfd4zh6o+Dpf60qnXsLTT4aPyPykrMOooCA3lv6lBsc9I=
+                  tax_id_last_4: '6789'
+                  owner_1:
+                    first_name: Jane
+                    last_name: Smith
+                    dob: '1990-10-10'
+                    encrypted_ssn: SUPywcKsExepLYVgbqfHtOXc2NNM8LOTvsACcR5jkKaGr0lMRY/Lf5xflVXAl/9vuNWEnDy/jh7oDC9uH2j3+ha0uUPBSXz09FSSZ4Y2d71zBze6m+xKXJWTvX53dBZjpp6amuW7GnJNw6UAFEjjTe8Z4rm03T9IRd2VOdkyWl5fNTZyC7hXQpvfO/TjzzBc5T2N5k7KmnQovdQovGQhh4niKHIQntmM6lKyXWrFGlY9Erto30rJLJgR2BHhvEVnFo4EQ/pDWqLwjmqTErmDu4nGtNgpOJMBwQ7xl1Y+vLlT8ZzvPJebzntM/6r9f5TiHCty4Age3M7P6Cu0/Anmg7LrLP19lZf9n0j4cdXPl0sb1l7tjjnlcBUS7wPdrHl+tXGfOojGPB4tXgDzS6qY+cvns+ybEK/T3HU8tCUiPXgN6IpZ2b0GEpfh6BvG+q1Hov68UOkeUmF3keeKMuk1PLL5FcveXSifRnn+fyuAP4D4pBw8itMXsJ5SfkaLOuSXm95m+CP4vOUDAlkG0t0RJckSmG+Ttq2Lu9ZOREWkwDNZ2WyJtvlGa5mOPl7Vlf65U3LJYsZLEzNaeZoV1M6fp3RHZ3t6M3uXmpHDgsHwMSL8z9/ICwpXhBtj7PDeiOv34+dgF5YbLGaHtTkzUPsK8tadzAEyl5yhvVnJ26+Ysho=
+                    ssn_last_4: '4321'
+                    email: owner@example.com
+                    phone_number: '+12342342345'
+                    address_line_1: 456 Example Street
+                    address_line_2: Suite 456
+                    city: Atlanta
+                    state: GA
+                    postal_code: '30305'
+                    country: US
+                    ownership: 100
+              llp:
+                value:
+                  name: Merchant
+                  legal_name: Merchant, Co.
+                  merchant_type: LLP
+                  mcc: '4722'
+                  email: merchant@example.com
+                  website: https://www.merchantwebsite.com
+                  phone_number: '+14041234567'
+                  average_ticket: 1000
+                  high_ticket: 100000
+                  average_monthly_volume: 1000000
+                  billing_contact:
+                    address_line_1: 123 Example Street
+                    address_line_2: Suite 123
+                    city: Atlanta
+                    state: GA
+                    postal_code: '30305'
+                    country: US
+                  encrypted_tax_id: UN9mYszj6KU4svZuzksUoUDzFaMGGq0BYdCjMJvgvOdVQWPCqdnUQ6g4Cgi0av5hsU2FA6M35JcOt9hI26MSrYwJzAEZ1JNt0TR3t2XZnTdz+TTJomSXxhySdIb4TCnoNpA40kdH/4hDMSlZaLs1bs22H12qWwQ04aH0Mox5Rj2n3BDK2kXYcgqR1C+mvWSP3wPy5zhmIfPZIrrbw+lnDlYhdlWf3atbsIog+qNk+iKDmOzx6AeZYNPCWjQugA71EKDoTKlL1sGGPleYwxgOVu8Z97UQeYsxO6NqHd7BMOPzK816WQapzJp0OoRThq0poz4uyqMZNp9AryR6QO4JQAm/ZDjrqT6U76qeN469DkxdHTMI5uSm04WvY2b+ra7WAis1IrSkw2EDgGXX/XJ9lJWRZXHNVXXnASMFsrv0mk9TKUW7MON2lM3uSWUqn/vT9/QWG8RDoDtHwfmBhayjKynEoKe2IVuPSsFcHy7lgTQqFvVLyplbeiGBta2qKzcD4YOWYyhN2g47yaL7hVzcc67x4/N7QncAs1NazoNrPXywQWpLajkuzd360dxRlLJKhCdmomTDU1XtzU26IKJmnWglU3s241Sctd1Zh4roNMAKcYu6WUCOmyIMLdSvfdmfd4zh6o+Dpf60qnXsLTT4aPyPykrMOooCA3lv6lBsc9I=
+                  tax_id_last_4: '6789'
+                  owner_1:
+                    first_name: Jane
+                    last_name: Smith
+                    dob: '1990-10-10'
+                    encrypted_ssn: SUPywcKsExepLYVgbqfHtOXc2NNM8LOTvsACcR5jkKaGr0lMRY/Lf5xflVXAl/9vuNWEnDy/jh7oDC9uH2j3+ha0uUPBSXz09FSSZ4Y2d71zBze6m+xKXJWTvX53dBZjpp6amuW7GnJNw6UAFEjjTe8Z4rm03T9IRd2VOdkyWl5fNTZyC7hXQpvfO/TjzzBc5T2N5k7KmnQovdQovGQhh4niKHIQntmM6lKyXWrFGlY9Erto30rJLJgR2BHhvEVnFo4EQ/pDWqLwjmqTErmDu4nGtNgpOJMBwQ7xl1Y+vLlT8ZzvPJebzntM/6r9f5TiHCty4Age3M7P6Cu0/Anmg7LrLP19lZf9n0j4cdXPl0sb1l7tjjnlcBUS7wPdrHl+tXGfOojGPB4tXgDzS6qY+cvns+ybEK/T3HU8tCUiPXgN6IpZ2b0GEpfh6BvG+q1Hov68UOkeUmF3keeKMuk1PLL5FcveXSifRnn+fyuAP4D4pBw8itMXsJ5SfkaLOuSXm95m+CP4vOUDAlkG0t0RJckSmG+Ttq2Lu9ZOREWkwDNZ2WyJtvlGa5mOPl7Vlf65U3LJYsZLEzNaeZoV1M6fp3RHZ3t6M3uXmpHDgsHwMSL8z9/ICwpXhBtj7PDeiOv34+dgF5YbLGaHtTkzUPsK8tadzAEyl5yhvVnJ26+Ysho=
+                    ssn_last_4: '4321'
+                    email: owner@example.com
+                    phone_number: '+12342342345'
+                    address_line_1: 456 Example Street
+                    address_line_2: Suite 456
+                    city: Atlanta
+                    state: GA
+                    postal_code: '30305'
+                    country: US
+                    ownership: 100
+              partnership:
+                value:
+                  name: Merchant
+                  legal_name: Merchant, Inc.
+                  merchant_type: PARTNERSHIP
+                  mcc: '4722'
+                  email: merchant@example.com
+                  website: https://www.merchantwebsite.com
+                  phone_number: '+14041234567'
+                  average_ticket: 1000
+                  high_ticket: 100000
+                  average_monthly_volume: 1000000
+                  billing_contact:
+                    address_line_1: 123 Example Street
+                    address_line_2: Suite 123
+                    city: Atlanta
+                    state: GA
+                    postal_code: '30305'
+                    country: US
+                  encrypted_tax_id: UN9mYszj6KU4svZuzksUoUDzFaMGGq0BYdCjMJvgvOdVQWPCqdnUQ6g4Cgi0av5hsU2FA6M35JcOt9hI26MSrYwJzAEZ1JNt0TR3t2XZnTdz+TTJomSXxhySdIb4TCnoNpA40kdH/4hDMSlZaLs1bs22H12qWwQ04aH0Mox5Rj2n3BDK2kXYcgqR1C+mvWSP3wPy5zhmIfPZIrrbw+lnDlYhdlWf3atbsIog+qNk+iKDmOzx6AeZYNPCWjQugA71EKDoTKlL1sGGPleYwxgOVu8Z97UQeYsxO6NqHd7BMOPzK816WQapzJp0OoRThq0poz4uyqMZNp9AryR6QO4JQAm/ZDjrqT6U76qeN469DkxdHTMI5uSm04WvY2b+ra7WAis1IrSkw2EDgGXX/XJ9lJWRZXHNVXXnASMFsrv0mk9TKUW7MON2lM3uSWUqn/vT9/QWG8RDoDtHwfmBhayjKynEoKe2IVuPSsFcHy7lgTQqFvVLyplbeiGBta2qKzcD4YOWYyhN2g47yaL7hVzcc67x4/N7QncAs1NazoNrPXywQWpLajkuzd360dxRlLJKhCdmomTDU1XtzU26IKJmnWglU3s241Sctd1Zh4roNMAKcYu6WUCOmyIMLdSvfdmfd4zh6o+Dpf60qnXsLTT4aPyPykrMOooCA3lv6lBsc9I=
+                  tax_id_last_4: '6789'
+                  owner_1:
+                    first_name: Jane
+                    last_name: Smith
+                    dob: '1990-10-10'
+                    encrypted_ssn: SUPywcKsExepLYVgbqfHtOXc2NNM8LOTvsACcR5jkKaGr0lMRY/Lf5xflVXAl/9vuNWEnDy/jh7oDC9uH2j3+ha0uUPBSXz09FSSZ4Y2d71zBze6m+xKXJWTvX53dBZjpp6amuW7GnJNw6UAFEjjTe8Z4rm03T9IRd2VOdkyWl5fNTZyC7hXQpvfO/TjzzBc5T2N5k7KmnQovdQovGQhh4niKHIQntmM6lKyXWrFGlY9Erto30rJLJgR2BHhvEVnFo4EQ/pDWqLwjmqTErmDu4nGtNgpOJMBwQ7xl1Y+vLlT8ZzvPJebzntM/6r9f5TiHCty4Age3M7P6Cu0/Anmg7LrLP19lZf9n0j4cdXPl0sb1l7tjjnlcBUS7wPdrHl+tXGfOojGPB4tXgDzS6qY+cvns+ybEK/T3HU8tCUiPXgN6IpZ2b0GEpfh6BvG+q1Hov68UOkeUmF3keeKMuk1PLL5FcveXSifRnn+fyuAP4D4pBw8itMXsJ5SfkaLOuSXm95m+CP4vOUDAlkG0t0RJckSmG+Ttq2Lu9ZOREWkwDNZ2WyJtvlGa5mOPl7Vlf65U3LJYsZLEzNaeZoV1M6fp3RHZ3t6M3uXmpHDgsHwMSL8z9/ICwpXhBtj7PDeiOv34+dgF5YbLGaHtTkzUPsK8tadzAEyl5yhvVnJ26+Ysho=
+                    ssn_last_4: '4321'
+                    email: owner@example.com
+                    phone_number: '+12342342345'
+                    address_line_1: 456 Example Street
+                    address_line_2: Suite 456
+                    city: Atlanta
+                    state: GA
+                    postal_code: '30305'
+                    country: US
+                    ownership: 100
+              private_corporation:
+                value:
+                  name: Merchant
+                  legal_name: Merchant, Inc.
+                  merchant_type: PRIVATE_CORPORATION
+                  mcc: '4722'
+                  email: merchant@example.com
+                  website: https://www.merchantwebsite.com
+                  phone_number: '+14041234567'
+                  average_ticket: 1000
+                  high_ticket: 100000
+                  average_monthly_volume: 1000000
+                  billing_contact:
+                    address_line_1: 123 Example Street
+                    address_line_2: Suite 123
+                    city: Atlanta
+                    state: GA
+                    postal_code: '30305'
+                    country: US
+                  encrypted_tax_id: UN9mYszj6KU4svZuzksUoUDzFaMGGq0BYdCjMJvgvOdVQWPCqdnUQ6g4Cgi0av5hsU2FA6M35JcOt9hI26MSrYwJzAEZ1JNt0TR3t2XZnTdz+TTJomSXxhySdIb4TCnoNpA40kdH/4hDMSlZaLs1bs22H12qWwQ04aH0Mox5Rj2n3BDK2kXYcgqR1C+mvWSP3wPy5zhmIfPZIrrbw+lnDlYhdlWf3atbsIog+qNk+iKDmOzx6AeZYNPCWjQugA71EKDoTKlL1sGGPleYwxgOVu8Z97UQeYsxO6NqHd7BMOPzK816WQapzJp0OoRThq0poz4uyqMZNp9AryR6QO4JQAm/ZDjrqT6U76qeN469DkxdHTMI5uSm04WvY2b+ra7WAis1IrSkw2EDgGXX/XJ9lJWRZXHNVXXnASMFsrv0mk9TKUW7MON2lM3uSWUqn/vT9/QWG8RDoDtHwfmBhayjKynEoKe2IVuPSsFcHy7lgTQqFvVLyplbeiGBta2qKzcD4YOWYyhN2g47yaL7hVzcc67x4/N7QncAs1NazoNrPXywQWpLajkuzd360dxRlLJKhCdmomTDU1XtzU26IKJmnWglU3s241Sctd1Zh4roNMAKcYu6WUCOmyIMLdSvfdmfd4zh6o+Dpf60qnXsLTT4aPyPykrMOooCA3lv6lBsc9I=
+                  tax_id_last_4: '6789'
+                  owner_1:
+                    first_name: Jane
+                    last_name: Smith
+                    dob: '1990-10-10'
+                    encrypted_ssn: SUPywcKsExepLYVgbqfHtOXc2NNM8LOTvsACcR5jkKaGr0lMRY/Lf5xflVXAl/9vuNWEnDy/jh7oDC9uH2j3+ha0uUPBSXz09FSSZ4Y2d71zBze6m+xKXJWTvX53dBZjpp6amuW7GnJNw6UAFEjjTe8Z4rm03T9IRd2VOdkyWl5fNTZyC7hXQpvfO/TjzzBc5T2N5k7KmnQovdQovGQhh4niKHIQntmM6lKyXWrFGlY9Erto30rJLJgR2BHhvEVnFo4EQ/pDWqLwjmqTErmDu4nGtNgpOJMBwQ7xl1Y+vLlT8ZzvPJebzntM/6r9f5TiHCty4Age3M7P6Cu0/Anmg7LrLP19lZf9n0j4cdXPl0sb1l7tjjnlcBUS7wPdrHl+tXGfOojGPB4tXgDzS6qY+cvns+ybEK/T3HU8tCUiPXgN6IpZ2b0GEpfh6BvG+q1Hov68UOkeUmF3keeKMuk1PLL5FcveXSifRnn+fyuAP4D4pBw8itMXsJ5SfkaLOuSXm95m+CP4vOUDAlkG0t0RJckSmG+Ttq2Lu9ZOREWkwDNZ2WyJtvlGa5mOPl7Vlf65U3LJYsZLEzNaeZoV1M6fp3RHZ3t6M3uXmpHDgsHwMSL8z9/ICwpXhBtj7PDeiOv34+dgF5YbLGaHtTkzUPsK8tadzAEyl5yhvVnJ26+Ysho=
+                    ssn_last_4: '4321'
+                    email: owner@example.com
+                    phone_number: '+12342342345'
+                    address_line_1: 456 Example Street
+                    address_line_2: Suite 456
+                    city: Atlanta
+                    state: GA
+                    postal_code: '30305'
+                    country: US
+              public_corporation:
+                value:
+                  name: Merchant
+                  legal_name: Merchant, Inc.
+                  merchant_type: PUBLIC_CORPORATION
+                  mcc: '4722'
+                  email: merchant@example.com
+                  website: https://www.merchantwebsite.com
+                  phone_number: '+14041234567'
+                  average_ticket: 1000
+                  high_ticket: 100000
+                  average_monthly_volume: 1000000
+                  billing_contact:
+                    address_line_1: 123 Example Street
+                    address_line_2: Suite 123
+                    city: Atlanta
+                    state: GA
+                    postal_code: '30305'
+                    country: US
+                  encrypted_tax_id: UN9mYszj6KU4svZuzksUoUDzFaMGGq0BYdCjMJvgvOdVQWPCqdnUQ6g4Cgi0av5hsU2FA6M35JcOt9hI26MSrYwJzAEZ1JNt0TR3t2XZnTdz+TTJomSXxhySdIb4TCnoNpA40kdH/4hDMSlZaLs1bs22H12qWwQ04aH0Mox5Rj2n3BDK2kXYcgqR1C+mvWSP3wPy5zhmIfPZIrrbw+lnDlYhdlWf3atbsIog+qNk+iKDmOzx6AeZYNPCWjQugA71EKDoTKlL1sGGPleYwxgOVu8Z97UQeYsxO6NqHd7BMOPzK816WQapzJp0OoRThq0poz4uyqMZNp9AryR6QO4JQAm/ZDjrqT6U76qeN469DkxdHTMI5uSm04WvY2b+ra7WAis1IrSkw2EDgGXX/XJ9lJWRZXHNVXXnASMFsrv0mk9TKUW7MON2lM3uSWUqn/vT9/QWG8RDoDtHwfmBhayjKynEoKe2IVuPSsFcHy7lgTQqFvVLyplbeiGBta2qKzcD4YOWYyhN2g47yaL7hVzcc67x4/N7QncAs1NazoNrPXywQWpLajkuzd360dxRlLJKhCdmomTDU1XtzU26IKJmnWglU3s241Sctd1Zh4roNMAKcYu6WUCOmyIMLdSvfdmfd4zh6o+Dpf60qnXsLTT4aPyPykrMOooCA3lv6lBsc9I=
+                  tax_id_last_4: '6789'
+                  owner_1:
+                    first_name: Jane
+                    last_name: Smith
+                    dob: '1990-10-10'
+                    encrypted_ssn: SUPywcKsExepLYVgbqfHtOXc2NNM8LOTvsACcR5jkKaGr0lMRY/Lf5xflVXAl/9vuNWEnDy/jh7oDC9uH2j3+ha0uUPBSXz09FSSZ4Y2d71zBze6m+xKXJWTvX53dBZjpp6amuW7GnJNw6UAFEjjTe8Z4rm03T9IRd2VOdkyWl5fNTZyC7hXQpvfO/TjzzBc5T2N5k7KmnQovdQovGQhh4niKHIQntmM6lKyXWrFGlY9Erto30rJLJgR2BHhvEVnFo4EQ/pDWqLwjmqTErmDu4nGtNgpOJMBwQ7xl1Y+vLlT8ZzvPJebzntM/6r9f5TiHCty4Age3M7P6Cu0/Anmg7LrLP19lZf9n0j4cdXPl0sb1l7tjjnlcBUS7wPdrHl+tXGfOojGPB4tXgDzS6qY+cvns+ybEK/T3HU8tCUiPXgN6IpZ2b0GEpfh6BvG+q1Hov68UOkeUmF3keeKMuk1PLL5FcveXSifRnn+fyuAP4D4pBw8itMXsJ5SfkaLOuSXm95m+CP4vOUDAlkG0t0RJckSmG+Ttq2Lu9ZOREWkwDNZ2WyJtvlGa5mOPl7Vlf65U3LJYsZLEzNaeZoV1M6fp3RHZ3t6M3uXmpHDgsHwMSL8z9/ICwpXhBtj7PDeiOv34+dgF5YbLGaHtTkzUPsK8tadzAEyl5yhvVnJ26+Ysho=
+                    ssn_last_4: '4321'
+                    email: owner@example.com
+                    phone_number: '+12342342345'
+                    address_line_1: 456 Example Street
+                    address_line_2: Suite 456
+                    city: Atlanta
+                    state: GA
+                    postal_code: '30305'
+                    country: US
+              non_profit_org:
+                value:
+                  name: Merchant
+                  legal_name: Merchant, Inc.
+                  merchant_type: NON_PROFIT_ORG
+                  mcc: '4722'
+                  email: merchant@example.com
+                  website: https://www.merchantwebsite.com
+                  phone_number: '+14041234567'
+                  average_ticket: 1000
+                  high_ticket: 100000
+                  average_monthly_volume: 1000000
+                  billing_contact:
+                    address_line_1: 123 Example Street
+                    address_line_2: Suite 123
+                    city: Atlanta
+                    state: GA
+                    postal_code: '30305'
+                    country: US
+                  encrypted_tax_id: UN9mYszj6KU4svZuzksUoUDzFaMGGq0BYdCjMJvgvOdVQWPCqdnUQ6g4Cgi0av5hsU2FA6M35JcOt9hI26MSrYwJzAEZ1JNt0TR3t2XZnTdz+TTJomSXxhySdIb4TCnoNpA40kdH/4hDMSlZaLs1bs22H12qWwQ04aH0Mox5Rj2n3BDK2kXYcgqR1C+mvWSP3wPy5zhmIfPZIrrbw+lnDlYhdlWf3atbsIog+qNk+iKDmOzx6AeZYNPCWjQugA71EKDoTKlL1sGGPleYwxgOVu8Z97UQeYsxO6NqHd7BMOPzK816WQapzJp0OoRThq0poz4uyqMZNp9AryR6QO4JQAm/ZDjrqT6U76qeN469DkxdHTMI5uSm04WvY2b+ra7WAis1IrSkw2EDgGXX/XJ9lJWRZXHNVXXnASMFsrv0mk9TKUW7MON2lM3uSWUqn/vT9/QWG8RDoDtHwfmBhayjKynEoKe2IVuPSsFcHy7lgTQqFvVLyplbeiGBta2qKzcD4YOWYyhN2g47yaL7hVzcc67x4/N7QncAs1NazoNrPXywQWpLajkuzd360dxRlLJKhCdmomTDU1XtzU26IKJmnWglU3s241Sctd1Zh4roNMAKcYu6WUCOmyIMLdSvfdmfd4zh6o+Dpf60qnXsLTT4aPyPykrMOooCA3lv6lBsc9I=
+                  tax_id_last_4: '6789'
+                  owner_1:
+                    first_name: Jane
+                    last_name: Smith
+                    dob: '1990-10-10'
+                    encrypted_ssn: SUPywcKsExepLYVgbqfHtOXc2NNM8LOTvsACcR5jkKaGr0lMRY/Lf5xflVXAl/9vuNWEnDy/jh7oDC9uH2j3+ha0uUPBSXz09FSSZ4Y2d71zBze6m+xKXJWTvX53dBZjpp6amuW7GnJNw6UAFEjjTe8Z4rm03T9IRd2VOdkyWl5fNTZyC7hXQpvfO/TjzzBc5T2N5k7KmnQovdQovGQhh4niKHIQntmM6lKyXWrFGlY9Erto30rJLJgR2BHhvEVnFo4EQ/pDWqLwjmqTErmDu4nGtNgpOJMBwQ7xl1Y+vLlT8ZzvPJebzntM/6r9f5TiHCty4Age3M7P6Cu0/Anmg7LrLP19lZf9n0j4cdXPl0sb1l7tjjnlcBUS7wPdrHl+tXGfOojGPB4tXgDzS6qY+cvns+ybEK/T3HU8tCUiPXgN6IpZ2b0GEpfh6BvG+q1Hov68UOkeUmF3keeKMuk1PLL5FcveXSifRnn+fyuAP4D4pBw8itMXsJ5SfkaLOuSXm95m+CP4vOUDAlkG0t0RJckSmG+Ttq2Lu9ZOREWkwDNZ2WyJtvlGa5mOPl7Vlf65U3LJYsZLEzNaeZoV1M6fp3RHZ3t6M3uXmpHDgsHwMSL8z9/ICwpXhBtj7PDeiOv34+dgF5YbLGaHtTkzUPsK8tadzAEyl5yhvVnJ26+Ysho=
+                    ssn_last_4: '4321'
+                    email: owner@example.com
+                    phone_number: '+12342342345'
+                    address_line_1: 456 Example Street
+                    address_line_2: Suite 456
+                    city: Atlanta
+                    state: GA
+                    postal_code: '30305'
+                    country: US
+              government:
+                value:
+                  name: Merchant
+                  legal_name: Merchant, Gov.
+                  merchant_type: GOVERNMENT
+                  mcc: '4722'
+                  email: merchant@example.com
+                  website: https://www.merchantwebsite.com
+                  phone_number: '+14041234567'
+                  average_ticket: 1000
+                  high_ticket: 100000
+                  average_monthly_volume: 1000000
+                  billing_contact:
+                    address_line_1: 123 Example Street
+                    address_line_2: Suite 123
+                    city: Atlanta
+                    state: GA
+                    postal_code: '30305'
+                    country: US
+                  encrypted_tax_id: UN9mYszj6KU4svZuzksUoUDzFaMGGq0BYdCjMJvgvOdVQWPCqdnUQ6g4Cgi0av5hsU2FA6M35JcOt9hI26MSrYwJzAEZ1JNt0TR3t2XZnTdz+TTJomSXxhySdIb4TCnoNpA40kdH/4hDMSlZaLs1bs22H12qWwQ04aH0Mox5Rj2n3BDK2kXYcgqR1C+mvWSP3wPy5zhmIfPZIrrbw+lnDlYhdlWf3atbsIog+qNk+iKDmOzx6AeZYNPCWjQugA71EKDoTKlL1sGGPleYwxgOVu8Z97UQeYsxO6NqHd7BMOPzK816WQapzJp0OoRThq0poz4uyqMZNp9AryR6QO4JQAm/ZDjrqT6U76qeN469DkxdHTMI5uSm04WvY2b+ra7WAis1IrSkw2EDgGXX/XJ9lJWRZXHNVXXnASMFsrv0mk9TKUW7MON2lM3uSWUqn/vT9/QWG8RDoDtHwfmBhayjKynEoKe2IVuPSsFcHy7lgTQqFvVLyplbeiGBta2qKzcD4YOWYyhN2g47yaL7hVzcc67x4/N7QncAs1NazoNrPXywQWpLajkuzd360dxRlLJKhCdmomTDU1XtzU26IKJmnWglU3s241Sctd1Zh4roNMAKcYu6WUCOmyIMLdSvfdmfd4zh6o+Dpf60qnXsLTT4aPyPykrMOooCA3lv6lBsc9I=
+                  tax_id_last_4: '6789'
+                  owner_1:
+                    first_name: Jane
+                    last_name: Smith
+                    dob: '1990-10-10'
+                    encrypted_ssn: SUPywcKsExepLYVgbqfHtOXc2NNM8LOTvsACcR5jkKaGr0lMRY/Lf5xflVXAl/9vuNWEnDy/jh7oDC9uH2j3+ha0uUPBSXz09FSSZ4Y2d71zBze6m+xKXJWTvX53dBZjpp6amuW7GnJNw6UAFEjjTe8Z4rm03T9IRd2VOdkyWl5fNTZyC7hXQpvfO/TjzzBc5T2N5k7KmnQovdQovGQhh4niKHIQntmM6lKyXWrFGlY9Erto30rJLJgR2BHhvEVnFo4EQ/pDWqLwjmqTErmDu4nGtNgpOJMBwQ7xl1Y+vLlT8ZzvPJebzntM/6r9f5TiHCty4Age3M7P6Cu0/Anmg7LrLP19lZf9n0j4cdXPl0sb1l7tjjnlcBUS7wPdrHl+tXGfOojGPB4tXgDzS6qY+cvns+ybEK/T3HU8tCUiPXgN6IpZ2b0GEpfh6BvG+q1Hov68UOkeUmF3keeKMuk1PLL5FcveXSifRnn+fyuAP4D4pBw8itMXsJ5SfkaLOuSXm95m+CP4vOUDAlkG0t0RJckSmG+Ttq2Lu9ZOREWkwDNZ2WyJtvlGa5mOPl7Vlf65U3LJYsZLEzNaeZoV1M6fp3RHZ3t6M3uXmpHDgsHwMSL8z9/ICwpXhBtj7PDeiOv34+dgF5YbLGaHtTkzUPsK8tadzAEyl5yhvVnJ26+Ysho=
+                    ssn_last_4: '4321'
+                    email: owner@example.com
+                    phone_number: '+12342342345'
+                    address_line_1: 456 Example Street
+                    address_line_2: Suite 456
+                    city: Atlanta
+                    state: GA
+                    postal_code: '30305'
+                    country: US
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    type: object
+                    properties:
+                      merchant_id:
+                        readOnly: true
+                        description: "The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                        type: string
+                        example: mid_2DrDFJPutxE5AIbJSopAnqniEbr
+                      merchant_status:
+                        description: The status of the merchant.
+                        type: string
+                        enum:
+                        - PENDING
+                      merchant_application_id:
+                        description: "The unique merchant application identifier. \n\nPrefix is \"app\" in production and \"sbx_app\" in sandbox."
+                        type: string
+                        example: app_2DrD4yH7fH8aLIA7ZCnyVPcL9V9
+                      merchant_application_status:
+                        description: The status of the merchant application.
+                        type: string
+                        enum:
+                        - CREATED
+                      additional_underwriting_data:
+                        description: Additional underwriting data for the platform to send merchant specific information. Reach out to your Platform Success Manager or Support to utilize this data to decision the merchant for payment processing.
+                        type: object
+                        properties:
+                          merchant:
+                            type: object
+                            properties:
+                              start_date:
+                                description: The merchant start date on the platform.
+                                type: string
+                                format: date
+                                example: '2022-01-01'
+                          historic_payment_volume:
+                            type: object
+                            properties:
+                              last_30_days:
+                                type: integer
+                                description: 'The total payment volume processed in the last 30 days (1 month), in minor units.
+
+
+                                  For example, 1000 is 10.00 USD.'
+                                example: 100000
+                              last_180_days:
+                                type: integer
+                                description: 'The total payment volume processed in the last 180 days (6 months), in minor units.
+
+
+                                  For example, 1000 is 10.00 USD.'
+                                example: 600000
+                              currency_code:
+                                $ref: '#/paths/~1v1~1billing_profiles/post/requestBody/content/application~1json/schema/allOf/1/properties/currency_code'
+                          subscription:
+                            type: object
+                            properties:
+                              amount:
+                                type: integer
+                                description: 'The merchant''s subscription cost to the platform, dependent on the frequency, in minor units.
+
+
+                                  For example, 1000 is 10.00 USD.'
+                                example: 10000
+                              currency_code:
+                                $ref: '#/paths/~1v1~1billing_profiles/post/requestBody/content/application~1json/schema/allOf/1/properties/currency_code'
+                              frequency:
+                                description: The frequency the merchant's subscription amount is paid to the platform.
+                                type: string
+                                enum:
+                                - ONE_TIME
+                                - WEEKLY
+                                - MONTHLY
+                                - ANNUALLY
+                                - OTHER
+                  errors:
+                    $ref: '#/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1merchants/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1merchants/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1merchants/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1merchants/get/responses/404'
+        '412':
+          description: Precondition failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1merchants/get/responses/400/content/application~1json/schema'
+              example:
+                status: ERROR
+                data: null
+                errors:
+                - field: string
+                  code: RequestBody
+                  message: Context on the precondition failure
+        5XX:
+          $ref: '#/paths/~1v1~1merchants/get/responses/5XX'
+      tags:
+      - Merchants
+    get:
+      operationId: list_merchants
+      summary: List merchants
+      description: Query a list of merchants given optional search criteria.
+      parameters:
+      - in: header
+        name: Rainforest-Api-Version
+        schema:
+          type: string
+          default: '2024-10-16'
+          enum:
+          - '2024-10-16'
+          - '2023-12-01'
+      - in: query
+        name: platform_id
+        schema:
+          type: string
+        description: "The unique platform identifier. \n\nPrefix is \"plt\" in production and \"sbx_plt\" in sandbox."
+        examples:
+          production:
+            value: plt_2DrDRpyAdp5MPUJnrJmoZcMmtfF
+          sandbox:
+            value: plt_2DrDRpyAdp5MPUJnrJmoZcMmtfF
+      - name: merchant_id
+        in: query
+        schema:
+          type: string
+        description: "The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+        examples:
+          production:
+            value: mid_2DrDFJPutxE5AIbJSopAnqniEbr
+          sandbox:
+            value: sbx_mid_2DrDFJPutxE5AIbJSopAnqniEbr
+      - name: name
+        in: query
+        description: Optional merchant name by which to search merchants.
+        schema:
+          type: string
+        examples:
+          partial:
+            value: Merchant
+            summary: Match a partial merchant name value.
+          full:
+            value: Merchant LLC
+            summary: Match a full merchant name value.
+      - name: status
+        in: query
+        description: "One or more merchant statuses to filter by. Provide parameter multiple times to filter by multiple merchant status types. \n\n`ACTIVE` `DEACTIVATED` `ONBOARDING` `PENDING` `SUSPENDED`"
+        schema:
+          type: array
+          items:
+            description: Status of the merchant.
+            type: string
+            enum:
+            - PENDING
+            - ONBOARDING
+            - CANCELED
+            - ACTIVE
+            - SUSPENDED
+            - DEACTIVATED
+      - description: Optional billing profile ID by which to search merchants.
+        in: query
+        name: billing_profile_id
+        schema:
+          type: array
+          items:
+            type: string
+        examples:
+          production:
+            value: bpf_2WcvaFMMWVHbuHZW4kAFZZfTyQL
+          sandbox:
+            value: sbx_bpf_2WcvaFMMWVHbuHZW4kAFZZfTyQL
+      - in: query
+        name: created_at.start
+        description: Created on or after in UTC RFC 3339 format.
+        schema:
+          type: string
+          format: date-time
+        example: '2022-01-01T12:00:00Z'
+      - in: query
+        name: created_at.end
+        description: Created on or before in UTC RFC 3339 format.
+        schema:
+          type: string
+          format: date-time
+        example: '2022-01-01T12:00:00Z'
+      - in: query
+        name: updated_at.start
+        description: Last updated on or after in UTC RFC 3339 format.
+        schema:
+          type: string
+          format: date-time
+        example: '2022-01-01T12:00:00Z'
+      - in: query
+        name: updated_at.end
+        description: Last updated on or before in UTC RFC 3339 format.
+        schema:
+          type: string
+          format: date-time
+        example: '2022-01-01T12:00:00Z'
+      - name: latest_merchant_application_status
+        in: query
+        description: One or more merchant application statuses to filter by. Provide parameter multiple times to filter by multiple merchant application status types.
+        schema:
+          type: array
+          items:
+            description: Status of the merchant application.
+            type: string
+            enum:
+            - COMPLETED
+            - CREATED
+            - DECLINED
+            - IN_REVIEW
+            - IN_PROGRESS
+            - NEEDS_INFORMATION
+            - PROCESSING
+            example: CREATED
+      - name: latest_merchant_application_updated_at.start
+        in: query
+        $ref: '#/paths/~1v1~1merchants/get/parameters/8'
+      - name: latest_merchant_application_updated_at.end
+        in: query
+        $ref: '#/paths/~1v1~1merchants/get/parameters/9'
+      - name: sort_by
+        in: query
+        description: Optional value by which to sort the result set. Default sort by is created_at.
+        schema:
+          type: string
+          enum:
+          - merchant_id
+          - name
+          - status
+          - created_at
+          - updated_at
+      - in: query
+        name: sort_order
+        description: Order in which to return the sorted results; ascending or descending. Default sort order is descending.
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      - in: query
+        schema:
+          type: number
+          default: 1000
+          maximum: 2000
+        name: limit
+        description: The maximum number of results to return.
+      - in: query
+        name: offset
+        schema:
+          type: number
+          default: 0
+          minimum: 0
+        description: The offset of the first result to return; zero-based.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    description: 'Status of the request.
+
+
+                      If the request status code is 2XX, then the `status` will be `SUCCESS`. If the request status code is 4XX or 5XX, then the `status` will be `ERROR`.'
+                    type: string
+                    enum:
+                    - SUCCESS
+                    - ERROR
+                    example: SUCCESS
+                  data:
+                    allOf:
+                    - type: object
+                      properties:
+                        total_results:
+                          type: integer
+                          description: Total number of results available. This value will be -1 if the query parameter `omit_total_results` is set to true.
+                    - type: object
+                      properties:
+                        results:
+                          description: List of merchants.
+                          type: array
+                          items:
+                            $ref: '#/paths/~1v1~1merchants/post/requestBody/content/application~1json/schema/allOf/0'
+                  errors:
+                    description: List of errors, if applicable.
+                    type: array
+                    items:
+                      type: object
+                      description: Details of the error.
+                      properties:
+                        field:
+                          description: The field in the request that had an error, if applicable.
+                          type: string
+                        code:
+                          description: The code describing the error.
+                          type: string
+                        message:
+                          description: The description of the error related to the field.
+                          type: string
+                    example: null
+        '400':
+          description: Bad request, check for validation errors.
+          content:
+            application/json:
+              schema:
+                description: Default response object.
+                type: object
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    description: Generic data object specified per resource, null if there are request errors.
+                    type: object
+                    example: null
+                    nullable: true
+                    readOnly: true
+                  errors:
+                    $ref: '#/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/errors'
+              example:
+                status: ERROR
+                data: null
+                errors:
+                - field: string
+                  code: RequestBody
+                  message: Invalid request payload
+        '401':
+          description: Authorization missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1merchants/get/responses/400/content/application~1json/schema'
+              example:
+                status: ERROR
+                data: null
+                errors:
+                - field: string
+                  code: AuthUnauthorized
+                  message: Unauthorized
+        '403':
+          description: Authorization insufficient for requested action.
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1merchants/get/responses/400/content/application~1json/schema'
+              example:
+                status: ERROR
+                data: null
+                errors:
+                - field: string
+                  code: AuthForbidden
+                  message: Forbidden
+        '404':
+          description: Resource not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1merchants/get/responses/400/content/application~1json/schema'
+              example:
+                status: ERROR
+                data: null
+                errors:
+                - field: string
+                  code: EntityNotFound
+                  message: Resource not found
+        5XX:
+          description: Unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1v1~1merchants/get/responses/400/content/application~1json/schema'
+              example:
+                status: ERROR
+                data: null
+                errors:
+                - field: string
+                  code: string
+                  message: Internal Server Error
+      tags:
+      - Merchants
+  /v1/merchants/{merchant_id}:
+    get:
+      operationId: get_merchant
+      summary: Get merchant
+      description: Get merchant details by the merchant ID.
+      parameters:
+      - $ref: '#/paths/~1v1~1merchants/get/parameters/0'
+      - in: path
+        required: true
+        name: merchant_id
+        schema:
+          type: string
+        description: "The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+        examples:
+          production:
+            value: mid_2DrDFJPutxE5AIbJSopAnqniEbr
+          sandbox:
+            value: sbx_mid_2DrDFJPutxE5AIbJSopAnqniEbr
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1merchants/post/requestBody/content/application~1json/schema/allOf/0'
+                  errors:
+                    $ref: '#/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1merchants/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1merchants/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1merchants/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1merchants/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1merchants/get/responses/5XX'
+      tags:
+      - Merchants
+    patch:
+      operationId: update_merchant
+      summary: Update merchant
+      description: Update supported fields on a merchant. Only fields included in the payload will be updated. Omitted fields will not be updated. Merchant status must be `ACTIVE`.
+      parameters:
+      - $ref: '#/paths/~1v1~1merchants/get/parameters/0'
+      - $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D/get/parameters/1'
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: The fields that can be updated on a merchant.
+              type: object
+              properties:
+                deposit_frequency:
+                  $ref: '#/paths/~1v1~1merchants/post/requestBody/content/application~1json/schema/allOf/0/properties/deposit_frequency'
+                  description: 'The merchant deposit frequency for funding deposits. Supported values are `DAILY`, `WEEKLY`, or `MONTHLY`.
+
+
+                    Platform must be configured for the specified deposit frequency, please reach out to Support or your Platform Success Manager if not configured for a deposit frequency.'
+                card_release_delay_days:
+                  description: 'The number of business days after processing until Card payments are made available to the merchant in a deposit.
+
+
+                    For example, 1 is T+1 and 2 is T+2'
+                  type: integer
+                ach_release_delay_days:
+                  description: 'The number of business days after processing until ACH payments are made available to the merchant in a deposit.
+
+
+                    For example, 1 is T+1 and 2 is T+2'
+                  type: integer
+                validated_ach_release_delay_days:
+                  description: 'The number of business days after processing until Validated ACH payments are made available to the merchant in a deposit.
+
+
+                    For example, 1 is T+1 and 2 is T+2'
+                  type: integer
+                balance_checked_ach_release_delay_days:
+                  description: 'The number of business days after processing until Balance-Checked Validated ACH payments are made available to the merchant in a deposit.
+
+
+                    For example, 1 is T+1 and 2 is T+2'
+                  type: integer
+                paypal_wallet_release_delay_days:
+                  description: 'The number of business days after processing until PayPal Wallet payments are made available to the merchant in a deposit.
+
+
+                    For example, 1 is T+1 and 2 is T+2'
+                  type: integer
+                venmo_release_delay_days:
+                  description: 'The number of business days after processing until Venmo payments are made available to the merchant in a deposit.
+
+
+                    For example, 1 is T+1 and 2 is T+2'
+                  type: integer
+                paypal_paylater_release_delay_days:
+                  description: 'The number of business days after processing until PayPal Pay Later payments are made available to the merchant in a deposit.
+
+
+                    For example, 1 is T+1 and 2 is T+2'
+                  type: integer
+                card_account_updater_enabled:
+                  description: Boolean indicating if card account updater is enabled.
+                  type: boolean
+                accelerated_ach_mode:
+                  description: 'The Accelerated ACH status for this merchant.
+
+
+                    Options:
+
+                    * `ENABLED` - ACH payins will be accelerated, if applicable.
+
+                    * `DISABLED` - ACH payins will not be accelerated.'
+                  type: string
+                  enum:
+                  - ENABLED
+                  - DISABLED
+                reverse_payin_billing_fees_on_full_refund_enabled:
+                  description: Boolean indicating if payin billing fees are reversed to the merchant when a refund for the full amount is processed.
+                  type: boolean
+                reverse_payin_billing_fees_on_ach_return_enabled:
+                  description: Boolean indicating if payin billing fees are reversed to the merchant when an ACH return is processed.
+                  type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1merchants/post/requestBody/content/application~1json/schema/allOf/0'
+                  errors:
+                    $ref: '#/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1merchants/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1merchants/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1merchants/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1merchants/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1merchants/get/responses/5XX'
+      tags:
+      - Merchants
+  /v1/merchants/{merchant_id}/cancel:
+    post:
+      operationId: cancel_merchant
+      summary: Cancel merchant
+      description: Cancel a pending merchant. Merchant status must be `PENDING`.
+      parameters:
+      - $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D/get/parameters/1'
+        in: path
+      responses:
+        '204':
+          description: No Content
+        '400':
+          $ref: '#/paths/~1v1~1merchants/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1merchants/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1merchants/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1merchants/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1merchants/get/responses/5XX'
+      tags:
+      - Merchants
+  /v1/merchants/{merchant_id}/update_billing_profile:
+    post:
+      operationId: update_merchant_billing_profile
+      summary: Update merchant billing profile
+      description: Update the billing profile assigned to a merchant.
+      parameters:
+      - $ref: '#/paths/~1v1~1merchants/get/parameters/0'
+      - $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D/get/parameters/1'
+        in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: The fields that can be updated on a merchant.
+              type: object
+              properties:
+                billing_profile_id:
+                  required: true
+                  description: 'The unique billing profile identifier.
+
+
+                    Prefix is "bpf" in production and "sbx_bpf" in sandbox.'
+                  type: string
+                  example: bpf_2DrDFJPutxE5AIbJSopAnqniEbr
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    $ref: '#/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/status'
+                  data:
+                    $ref: '#/paths/~1v1~1merchants/post/requestBody/content/application~1json/schema/allOf/0'
+                  errors:
+                    $ref: '#/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/errors'
+        '400':
+          $ref: '#/paths/~1v1~1merchants/get/responses/400'
+        '401':
+          $ref: '#/paths/~1v1~1merchants/get/responses/401'
+        '403':
+          $ref: '#/paths/~1v1~1merchants/get/responses/403'
+        '404':
+          $ref: '#/paths/~1v1~1merchants/get/responses/404'
+        5XX:
+          $ref: '#/paths/~1v1~1merchants/get/responses/5XX'
+      tags:
+      - Merchants
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: APIKey

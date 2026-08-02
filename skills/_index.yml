@@ -1,0 +1,20 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/rainforest-payments-openapi.yaml, openapi/rainforest-merchants-openapi.yaml
+skills:
+- file: rainforest-onboard-merchant.md
+  name: Onboard a merchant with Rainforest
+  api: openapi/rainforest-merchants-openapi.yaml
+  operations: [create_merchant, get_merchant_application, update_merchant_application, submit_merchant_application, verify_merchant_application, get_merchant]
+- file: rainforest-collect-payment.md
+  name: Collect a payment (payin) with Rainforest
+  api: openapi/rainforest-payments-openapi.yaml
+  operations: [create_payin_config, create_session, create_payin, get_payin, capture_payin]
+- file: rainforest-refund-payin.md
+  name: Void or refund a payin with Rainforest
+  api: openapi/rainforest-payments-openapi.yaml
+  operations: [get_payin, void_or_refund_payin, get_refund, void_refund]
+- file: rainforest-handle-chargeback.md
+  name: Respond to a chargeback with Rainforest
+  api: openapi/rainforest-payments-openapi.yaml
+  operations: [get_chargeback, update_chargeback_evidence, submit_chargeback, accept_chargeback]
