@@ -1,0 +1,786 @@
+{
+  "item": [
+    {
+      "id": "df798cad-c4a7-4d7a-89de-af8fde7dfbc0",
+      "name": "File Upload Configs",
+      "description": {
+        "content": "Resources for file upload config functions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "742ac1ac-c260-4995-ac75-220063f74565",
+          "name": "Create file upload config",
+          "request": {
+            "name": "Create file upload config",
+            "description": {
+              "content": "Create the configuration for a file upload request. The configuration contains basic information about the file such as the merchant, idempotency key, and the type of file. Type is the requirement the file is intended to satisfy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "file_upload_configs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Rainforest-Api-Version",
+                "value": "2024-10-16",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"merchant_id\": \"<string>\",\n  \"chargeback_id\": \"<string>\",\n  \"idempotency_key\": \"<string>\",\n  \"filename\": {\n    \"value\": \"reference #/paths/~1v1~1file_uploads~1%7Bfile_upload_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/filename not found in the OpenAPI spec\"\n  },\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a79fc827-21fb-4937-af35-ac1a74604d6c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "file_upload_configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chargeback_id\": \"chb_2DrDFAPutxE5AIbJSApAnqniEQ57\",\n  \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\",\n  \"filename\": \"chargeback_evidence.jpg\",\n  \"type\": \"CHARGEBACK_EVIDENCE\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {\n    \"file_upload_config_id\": {\n      \"value\": \"reference #/paths/~1v1~1file_uploads~1%7Bfile_upload_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/file_upload_config_id not found in the OpenAPI spec\"\n    },\n    \"file_upload_id\": {\n      \"value\": \"reference #/paths/~1v1~1file_uploads~1%7Bfile_upload_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/file_upload_id not found in the OpenAPI spec\"\n    },\n    \"merchant_id\": \"mid_2DrDFJPutxE5AIbJSopAnqniEbr\",\n    \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\",\n    \"type\": \"<string>\",\n    \"presign_post_data\": {\n      \"key_0\": \"string\"\n    },\n    \"created_at\": \"2022-01-01T12:00:00Z\",\n    \"updated_at\": \"2022-01-01T12:00:00Z\"\n  },\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "06be22f1-0461-4ee2-8e4e-9b830adb09cd",
+              "name": "Bad request, check for validation errors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "file_upload_configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chargeback_id\": \"chb_2DrDFAPutxE5AIbJSApAnqniEQ57\",\n  \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\",\n  \"filename\": \"chargeback_evidence.jpg\",\n  \"type\": \"CHARGEBACK_EVIDENCE\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"RequestBody\",\n      \"message\": \"Invalid request payload\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb3f2812-4edc-40bc-a2d8-f4e790716c71",
+              "name": "Authorization missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "file_upload_configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chargeback_id\": \"chb_2DrDFAPutxE5AIbJSApAnqniEQ57\",\n  \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\",\n  \"filename\": \"chargeback_evidence.jpg\",\n  \"type\": \"CHARGEBACK_EVIDENCE\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthUnauthorized\",\n      \"message\": \"Unauthorized\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "233a46ff-a4d1-4a38-bbb2-a5eaa38f413a",
+              "name": "Authorization insufficient for requested action.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "file_upload_configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chargeback_id\": \"chb_2DrDFAPutxE5AIbJSApAnqniEQ57\",\n  \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\",\n  \"filename\": \"chargeback_evidence.jpg\",\n  \"type\": \"CHARGEBACK_EVIDENCE\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthForbidden\",\n      \"message\": \"Forbidden\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c190e1b6-30ac-4d49-abff-60d2e5d37022",
+              "name": "Unexpected error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "file_upload_configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chargeback_id\": \"chb_2DrDFAPutxE5AIbJSApAnqniEQ57\",\n  \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\",\n  \"filename\": \"chargeback_evidence.jpg\",\n  \"type\": \"CHARGEBACK_EVIDENCE\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"Internal Server Error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d60f374f-9598-42b7-ad54-3493d6954e88",
+          "name": "Get file upload config",
+          "request": {
+            "name": "Get file upload config",
+            "description": {
+              "content": "Get the configuration for a file upload by the file upload config ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "file_upload_configs",
+                ":file_upload_config_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "file_upload_config_id",
+                  "description": "(Required) The unique file upload config identifier. \n\nPrefix is \"fic\" in production and \"sbx_fic\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Rainforest-Api-Version",
+                "value": "2024-10-16",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c13c7b64-b6f9-4be6-ab49-d9f0c346cfce",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "file_upload_configs",
+                    ":file_upload_config_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "file_upload_config_id",
+                      "description": "(Required) The unique file upload config identifier. \n\nPrefix is \"fic\" in production and \"sbx_fic\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {\n    \"file_upload_config_id\": {\n      \"value\": \"reference #/paths/~1v1~1file_uploads~1%7Bfile_upload_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/file_upload_config_id not found in the OpenAPI spec\"\n    },\n    \"file_upload_id\": {\n      \"value\": \"reference #/paths/~1v1~1file_uploads~1%7Bfile_upload_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/file_upload_id not found in the OpenAPI spec\"\n    },\n    \"merchant_id\": \"mid_2DrDFJPutxE5AIbJSopAnqniEbr\",\n    \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\",\n    \"type\": \"<string>\",\n    \"presign_post_data\": {\n      \"key_0\": \"string\"\n    },\n    \"created_at\": \"2022-01-01T12:00:00Z\",\n    \"updated_at\": \"2022-01-01T12:00:00Z\"\n  },\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04302f80-7418-4308-8b68-6d4bd5b66baf",
+              "name": "Bad request, check for validation errors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "file_upload_configs",
+                    ":file_upload_config_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "file_upload_config_id",
+                      "description": "(Required) The unique file upload config identifier. \n\nPrefix is \"fic\" in production and \"sbx_fic\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"RequestBody\",\n      \"message\": \"Invalid request payload\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bfb2fc49-f784-4b4a-8085-cd701e657fd8",
+              "name": "Authorization missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "file_upload_configs",
+                    ":file_upload_config_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "file_upload_config_id",
+                      "description": "(Required) The unique file upload config identifier. \n\nPrefix is \"fic\" in production and \"sbx_fic\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthUnauthorized\",\n      \"message\": \"Unauthorized\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89e39c3d-3976-40d0-a54a-c8570d71f56b",
+              "name": "Authorization insufficient for requested action.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "file_upload_configs",
+                    ":file_upload_config_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "file_upload_config_id",
+                      "description": "(Required) The unique file upload config identifier. \n\nPrefix is \"fic\" in production and \"sbx_fic\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthForbidden\",\n      \"message\": \"Forbidden\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3aad959f-0f8c-4475-9f5a-0969ef60594b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "file_upload_configs",
+                    ":file_upload_config_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "file_upload_config_id",
+                      "description": "(Required) The unique file upload config identifier. \n\nPrefix is \"fic\" in production and \"sbx_fic\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9460a9f8-5425-41b1-ba12-c92f08516e60",
+              "name": "Unexpected error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "file_upload_configs",
+                    ":file_upload_config_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "file_upload_config_id",
+                      "description": "(Required) The unique file upload config identifier. \n\nPrefix is \"fic\" in production and \"sbx_fic\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"Internal Server Error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.rainforestpay.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "88256159-c18f-46d4-b812-e5eaed8d4451",
+    "name": "Authentication ACH Returns File Upload Configs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This resource is used for authentication actions\n\nContact Support:\n Name: Rainforest\n Email: support@rainforestpay.com",
+      "type": "text/plain"
+    }
+  }
+}

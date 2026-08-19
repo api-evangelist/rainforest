@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Authentication ACH Returns File Upload Configs API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "File Upload Configs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create file upload config",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/file_upload_configs",
+            "headers": [
+              {
+                "name": "Rainforest-Api-Version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create the configuration for a file upload request. The configuration contains basic information about the file such as the merchant, idempotency key, and the type of file. Type is the requirement the file is intended to satisfy."
+        },
+        {
+          "info": {
+            "name": "Get file upload config",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.rainforestpay.com/v1/file_upload_configs/:file_upload_config_id",
+            "headers": [
+              {
+                "name": "Rainforest-Api-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "file_upload_config_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique file upload config identifier. \n\nPrefix is \"fic\" in production and \"sbx_fic\" in sandbox."
+              }
+            ]
+          },
+          "docs": "Get the configuration for a file upload by the file upload config ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

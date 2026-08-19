@@ -254,3 +254,9 @@ tools:
 - name: void_refund
   description: Void refund
   source_operation: openapi/rainforest-payments-openapi.yaml#void_refund
+deployment:
+  mode: none
+  verified: derived
+  tools: 82
+  checked: '2026-08-12'
+  source: catalog MCP census

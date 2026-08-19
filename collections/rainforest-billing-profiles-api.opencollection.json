@@ -1,0 +1,115 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Authentication ACH Returns Billing Profiles API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Billing Profiles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List billing profiles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.rainforestpay.com/v1/billing_profiles",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Optional billing profile name by which to search billing profiles."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Billing profile statuses to filter by.\n\n`ACTIVE` `DEACTIVATED`"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Optional value by which to sort the result set. Default sort by is created_at."
+              }
+            ]
+          },
+          "docs": "Query a list of platform billing profiles."
+        },
+        {
+          "info": {
+            "name": "Create a billing profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/billing_profiles",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a billing profile\n\nThe first billing profile created will be assigned as the platform's default billing profile for new merchants."
+        },
+        {
+          "info": {
+            "name": "Get billing profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.rainforestpay.com/v1/billing_profiles/:billing_profile_id",
+            "params": [
+              {
+                "name": "billing_profile_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique billing profile identifiers.\n\nPrefix is \"bpf\" in production and \"sbx_bpf\" in sandbox."
+              }
+            ]
+          },
+          "docs": "Get billing profile details by the billing profile ID."
+        },
+        {
+          "info": {
+            "name": "Deactivate a billing profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/billing_profiles/:billing_profile_id/deactivate"
+          },
+          "docs": "Deactivate a billing profile.\n\nA billing profile can be deactivated if it is not assigned to any active merchants, or is not assigned as the platform's default billing profile."
+        },
+        {
+          "info": {
+            "name": "Update merchant billing profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/merchants/:merchant_id/update_billing_profile",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the billing profile assigned to a merchant."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

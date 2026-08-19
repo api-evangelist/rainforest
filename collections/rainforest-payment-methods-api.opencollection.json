@@ -1,0 +1,180 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Authentication ACH Returns Payment Methods API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payment Methods",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List payment methods",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.rainforestpay.com/v1/payment_methods",
+            "params": [
+              {
+                "name": "billable_merchant_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique merchant identifier for the billable merchant, utilized in processes such as BIN Lookup and Card Account Updater.\n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+              },
+              {
+                "name": "fingerprint",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of a payment method across all platform merchants."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "One or more payment method statuses to filter by. Provide parameter multiple times to filter by multiple payin status types.\n\n`ACTIVE` `CANCELED` `CREATED` `DEACTIVATED` `FAILED` `PRESENTING` `REPLACED`"
+              },
+              {
+                "name": "updated_at.start",
+                "value": "2022-01-01T12:00:00Z",
+                "type": "query",
+                "description": "Last updated on or after in UTC RFC 3339 format."
+              },
+              {
+                "name": "updated_at.end",
+                "value": "2022-01-01T12:00:00Z",
+                "type": "query",
+                "description": "Last updated on or before in UTC RFC 3339 format."
+              },
+              {
+                "name": "replaced_at.start",
+                "value": "",
+                "type": "query",
+                "description": "Replaced on or after in UTC RFC 3339 format."
+              },
+              {
+                "name": "replaced_at.end",
+                "value": "",
+                "type": "query",
+                "description": "Replaced on or before in UTC RFC 3339 format."
+              },
+              {
+                "name": "replacement_disabled.start",
+                "value": "",
+                "type": "query",
+                "description": "Replacement disabled on or after in UTC RFC 3339 format."
+              },
+              {
+                "name": "replacement_disabled.end",
+                "value": "",
+                "type": "query",
+                "description": "Replacement disabled on or before in UTC RFC 3339 format."
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Optional value by which to sort the result set. Default sort by is created_at."
+              }
+            ]
+          },
+          "docs": "Query a list of payment methods given optional search criteria."
+        },
+        {
+          "info": {
+            "name": "Create payment method",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/payment_methods",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a saved payment method.\n\nTo duplicate a saved payment method, set the payment_method_id of the payment method to be duplicated. Billing contact and metadata is not persisted from the duplicated payment method and must be defined on the [Payment Method Config](ref:create_payment_method_config) or on the request. Only the stored sensitive payment method details (i.e full card or bank account number) will persist to the duplicated payment method.\n\nIf the method_type is set, then this endpoin"
+        },
+        {
+          "info": {
+            "name": "Get payment method",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.rainforestpay.com/v1/payment_methods/:payment_method_id",
+            "params": [
+              {
+                "name": "payment_method_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique payment method identifier. \n\nPrefix is \"mtd\" in production and \"sbx_mtd\" in sandbox."
+              }
+            ]
+          },
+          "docs": "Get payment method details by the payment method ID."
+        },
+        {
+          "info": {
+            "name": "Update payment method",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.sandbox.rainforestpay.com/v1/payment_methods/:payment_method_id",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update supported fields on a payment method. Only fields included in the payload will be updated. Omitted fields will not be updated."
+        },
+        {
+          "info": {
+            "name": "Create payin from stored payment method",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/payment_methods/:payment_method_id/payin",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create and process a payin using a payin configuration and a stored payment method. The merchant status must be `ACTIVE` to create a payin."
+        },
+        {
+          "info": {
+            "name": "Deactivate payment method",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/payment_methods/:payment_method_id/deactivate",
+            "params": [
+              {
+                "name": "payment_method_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique payment method identifier. \n\nPrefix is \"mtd\" in production and \"sbx_mtd\" in sandbox."
+              }
+            ]
+          },
+          "docs": "Deactivate payment method. Deactivated payment methods cannot be used to process payins. The payment method status must be `ACTIVE` to be deactivated."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

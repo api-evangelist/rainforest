@@ -1,0 +1,267 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Authentication ACH Returns Deposits API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Deposits",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List deposits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.rainforestpay.com/v1/deposits",
+            "headers": [
+              {
+                "name": "Rainforest-Api-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "deposit_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox."
+              },
+              {
+                "name": "platform_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique platform identifier. \n\nPrefix is \"plt\" in production and \"sbx_plt\" in sandbox."
+              },
+              {
+                "name": "merchant_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "One or more deposit statuses to filter by. Provide parameter multiple times to filter by multiple deposit status types. \n\n`PROCESSING` `SUCCEEDED` `IN_REVIEW` `FAILED`"
+              },
+              {
+                "name": "deposit_type",
+                "value": "",
+                "type": "query",
+                "description": "Deposit type to filter by. Provide parameter multiple times to filter by multiple deposit types.\n\n* `BILLING`: deposit for the payment processing fees, applicable only for merchants on gross billing.\n* `FUNDING`: deposit for the payment volume, if the merchant is on net billing, then the FUNDING deposit will be net any payment processing fees."
+              },
+              {
+                "name": "metadata",
+                "value": "",
+                "type": "query",
+                "description": "Filter by metadata stored on the entity by passing a map of key-value pairs to filter on. The `key` should be valid JSONPath to a corresponding metadata key.\n\nFor example, an entity created with the following metadata\n```\n\"account\": {\n  \"id\": \"acct_123\"\n}\n```\ncould have the following metadata filter to find entities with the metadata account id: \n```\n?metadata[$.account.id]=acct_123\n```"
+              },
+              {
+                "name": "created_at.start",
+                "value": "2022-01-01T12:00:00Z",
+                "type": "query",
+                "description": "Created on or after in UTC RFC 3339 format."
+              },
+              {
+                "name": "created_at.end",
+                "value": "2022-01-01T12:00:00Z",
+                "type": "query",
+                "description": "Created on or before in UTC RFC 3339 format."
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Optional value by which to sort the result set. Default sort by is created_at."
+              },
+              {
+                "name": "sort_order",
+                "value": "",
+                "type": "query",
+                "description": "Order in which to return the sorted results; ascending or descending. Default sort order is descending."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The offset of the first result to return; zero-based."
+              }
+            ]
+          },
+          "docs": "Query a list of deposits given a primary filter of platform or merchant id, then additional optional search criteria."
+        },
+        {
+          "info": {
+            "name": "Get deposit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.rainforestpay.com/v1/deposits/:deposit_id",
+            "headers": [
+              {
+                "name": "Rainforest-Api-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "deposit_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox."
+              }
+            ]
+          },
+          "docs": "Get a deposit's details by the deposit ID."
+        },
+        {
+          "info": {
+            "name": "Get deposit activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.rainforestpay.com/v1/deposits/:deposit_id/activity",
+            "headers": [
+              {
+                "name": "Rainforest-Api-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "deposit_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox."
+              },
+              {
+                "name": "payment_type",
+                "value": "",
+                "type": "query",
+                "description": "One or more payment types to filter by. Provide parameter multiples times to filter by multiple payment types. \n\n`ACH_RETURN` `CHARGEBACK` `PAYIN` `REFUND`"
+              },
+              {
+                "name": "memo",
+                "value": "",
+                "type": "query",
+                "description": "Additional information about the activity, applicable for an adjustment."
+              },
+              {
+                "name": "billing_contact_name",
+                "value": "",
+                "type": "query",
+                "description": "Optional billing contact name by which to filter."
+              },
+              {
+                "name": "metadata",
+                "value": "",
+                "type": "query",
+                "description": "Filter by metadata stored on the entity by passing a map of key-value pairs to filter on. The `key` should be valid JSONPath to a corresponding metadata key.\n\nFor example, an entity created with the following metadata\n```\n\"account\": {\n  \"id\": \"acct_123\"\n}\n```\ncould have the following metadata filter to find entities with the metadata account id: \n```\n?metadata[$.account.id]=acct_123\n```"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Optional value by which to sort the result set. Default sort by is created_at."
+              },
+              {
+                "name": "sort_order",
+                "value": "",
+                "type": "query",
+                "description": "Order in which to return the sorted results; ascending or descending. Default sort order is descending."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The offset of the first result to return; zero-based."
+              }
+            ]
+          },
+          "docs": "Get the activity within a deposit by the deposit ID."
+        },
+        {
+          "info": {
+            "name": "Simulate deposit status change",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/deposits/:deposit_id/simulate",
+            "headers": [
+              {
+                "name": "Rainforest-Api-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "deposit_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Only available in the Rainforest sandbox environment.\n\nSimulate a deposit status change. The deposit status must be in PROCESSING. The expected webhooks will be sent for the deposit on status change."
+        },
+        {
+          "info": {
+            "name": "Simulate merchant deposit creation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/merchants/:merchant_id/simulate_deposit",
+            "headers": [
+              {
+                "name": "Rainforest-Api-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "merchant_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+              }
+            ]
+          },
+          "docs": "Only available in the Rainforest sandbox environment.\n\nSimulate processing a deposit on a merchant. Any payins or refunds with the status of `PROCESSING` will be transitioned to the status of `SUCCEEDED`.\n\nThe expected webhooks will be sent for all payins and refunds while the deposit is processing. The `deposit.processing` webhook will be sent when the deposit has been processed and the deposit status is `PROCESSING`.\n\nOn a merchant with a Daily Net billing configuration, a deposit will be proc"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

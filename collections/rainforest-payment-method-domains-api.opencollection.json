@@ -1,0 +1,95 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Authentication ACH Returns Payment Method Domains API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payment Method Domains",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List payment method domains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.rainforestpay.com/v1/payment_method_domains"
+          },
+          "docs": "List payment method domains"
+        },
+        {
+          "info": {
+            "name": "Create payment method domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/payment_method_domains",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create payment method domain to verify your domain for payment processing with Apple Pay.\n\nA platform can have up to 99 domains.\n\nIf your integration requires a domain per merchant, then register the domain by providing a merchant_id in the request. Each merchant can have up to 99 domains."
+        },
+        {
+          "info": {
+            "name": "Get payment method domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.rainforestpay.com/v1/payment_method_domains/:payment_method_domain_id",
+            "params": [
+              {
+                "name": "payment_method_domain_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique payment method domain identifier. \n\nPrefix is \"pmd\" in production and \"sbx_pmd\" in sandbox."
+              }
+            ]
+          },
+          "docs": "Get payment method domain"
+        },
+        {
+          "info": {
+            "name": "Delete payment method domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.sandbox.rainforestpay.com/v1/payment_method_domains/:payment_method_domain_id"
+          },
+          "docs": "Delete payment method domain"
+        },
+        {
+          "info": {
+            "name": "Verify payment method domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/payment_method_domains/:payment_method_domain_id/verify",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify payment method domain"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

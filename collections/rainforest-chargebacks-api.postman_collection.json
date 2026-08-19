@@ -1,0 +1,2698 @@
+{
+  "item": [
+    {
+      "id": "d8a69fb8-ace3-488d-89ea-068e56129151",
+      "name": "Chargebacks",
+      "description": {
+        "content": "Resources for chargeback functions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a69dc3bd-1f2a-48e0-87ed-6b7f5a4c8e7a",
+          "name": "Get chargeback",
+          "request": {
+            "name": "Get chargeback",
+            "description": {
+              "content": "Get chargeback details by the chargeback ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "chargebacks",
+                ":chargeback_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chargeback_id",
+                  "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "996b4360-dc6b-46a3-b6da-688fcc31403a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"chargeback_id\": \"chb_2TndahOgm9XTiidLB7csk0IsR9b\",\n    \"payin_id\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payin_id not found in the OpenAPI spec\"\n    },\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"amount\": 9864,\n    \"currency_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n    },\n    \"status\": \"WON\",\n    \"metadata\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    \"merchant_fees\": {\n      \"total_amount\": {\n        \"amount\": 2500,\n        \"currency_code\": \"USD\"\n      }\n    },\n    \"method_type\": \"VENMO\",\n    \"card\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/card not found in the OpenAPI spec\"\n    },\n    \"apple_pay\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/apple_pay not found in the OpenAPI spec\"\n    },\n    \"paypal_wallet\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_wallet not found in the OpenAPI spec\"\n    },\n    \"venmo\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/venmo not found in the OpenAPI spec\"\n    },\n    \"paypal_paylater\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_paylater not found in the OpenAPI spec\"\n    },\n    \"reason_code\": \"SUBSCRIPTION_CANCELED\",\n    \"reason_desc\": \"string\",\n    \"acquirer_ref\": \"string\",\n    \"due_date\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date not found in the OpenAPI spec\"\n    },\n    \"chargeback_evidence\": [\n      {\n        \"chargeback_evidence_id\": \"cbe_2DrDU206kzAhclm1WrZbuwDERRk\",\n        \"chargeback_id\": \"chb_2TndahOgm9XTiidLB7csk0IsR9b\",\n        \"is_required\": true,\n        \"type\": \"ADDITIONAL_AUTHORIZED_SIGNER\",\n        \"type_desc\": \"string\",\n        \"file_upload_mode\": \"REQUIRED\",\n        \"file_upload_ids\": [\n          \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\",\n          \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\"\n        ],\n        \"response_mode\": \"ALLOWED\",\n        \"response\": \"string\",\n        \"created_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        },\n        \"updated_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        }\n      },\n      {\n        \"chargeback_evidence_id\": \"cbe_2DrDU206kzAhclm1WrZbuwDERRk\",\n        \"chargeback_id\": \"chb_2TndahOgm9XTiidLB7csk0IsR9b\",\n        \"is_required\": false,\n        \"type\": \"ITEM_CONDITION\",\n        \"type_desc\": \"string\",\n        \"file_upload_mode\": \"ALLOWED\",\n        \"file_upload_ids\": [\n          \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\",\n          \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\"\n        ],\n        \"response_mode\": \"ALLOWED\",\n        \"response\": \"string\",\n        \"created_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        },\n        \"updated_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        }\n      }\n    ],\n    \"validation_errors\": [\n      {\n        \"field\": \"string\",\n        \"code\": \"string\",\n        \"message\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"code\": \"string\",\n        \"message\": \"string\"\n      }\n    ],\n    \"expected_deposit_date\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date not found in the OpenAPI spec\"\n    },\n    \"source\": \"SYSTEM\",\n    \"source_desc\": \"string\",\n    \"created_at\": {\n      \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n    },\n    \"updated_at\": {\n      \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n    }\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "486384ae-4fb7-4f94-98e6-bbc070cc4712",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "06214b38-03d5-4050-b673-130620f1a1d5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d33596eb-0a5f-4c16-9236-0360fe73e933",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2d9fbf2d-900b-495e-ac8a-a94d5f0f0fdf",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d09ea283-6179-427d-8d09-244ca3c45cae",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ae9b94b2-30ae-46a5-9062-5f6d908049b7",
+          "name": "Accept chargeback",
+          "request": {
+            "name": "Accept chargeback",
+            "description": {
+              "content": "Accept a chargeback as a loss.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "chargebacks",
+                ":chargeback_id",
+                "accept"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chargeback_id",
+                  "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "082f3c9f-26e8-495e-9b2c-4a939592e43c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "accept"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"chargeback_id\": \"chb_2TndahOgm9XTiidLB7csk0IsR9b\",\n    \"payin_id\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payin_id not found in the OpenAPI spec\"\n    },\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"amount\": 194,\n    \"currency_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n    },\n    \"status\": \"WON\",\n    \"metadata\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    \"merchant_fees\": {\n      \"total_amount\": {\n        \"amount\": 2500,\n        \"currency_code\": \"USD\"\n      }\n    },\n    \"method_type\": \"CARD\",\n    \"card\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/card not found in the OpenAPI spec\"\n    },\n    \"apple_pay\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/apple_pay not found in the OpenAPI spec\"\n    },\n    \"paypal_wallet\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_wallet not found in the OpenAPI spec\"\n    },\n    \"venmo\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/venmo not found in the OpenAPI spec\"\n    },\n    \"paypal_paylater\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_paylater not found in the OpenAPI spec\"\n    },\n    \"reason_code\": \"UNCATEGORIZED\",\n    \"reason_desc\": \"string\",\n    \"acquirer_ref\": \"string\",\n    \"due_date\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date not found in the OpenAPI spec\"\n    },\n    \"chargeback_evidence\": [\n      {\n        \"chargeback_evidence_id\": \"cbe_2DrDU206kzAhclm1WrZbuwDERRk\",\n        \"chargeback_id\": \"chb_2TndahOgm9XTiidLB7csk0IsR9b\",\n        \"is_required\": true,\n        \"type\": \"RECEIPT\",\n        \"type_desc\": \"string\",\n        \"file_upload_mode\": \"REQUIRED\",\n        \"file_upload_ids\": [\n          \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\",\n          \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\"\n        ],\n        \"response_mode\": \"REQUIRED\",\n        \"response\": \"string\",\n        \"created_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        },\n        \"updated_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        }\n      },\n      {\n        \"chargeback_evidence_id\": \"cbe_2DrDU206kzAhclm1WrZbuwDERRk\",\n        \"chargeback_id\": \"chb_2TndahOgm9XTiidLB7csk0IsR9b\",\n        \"is_required\": false,\n        \"type\": \"OTHER\",\n        \"type_desc\": \"string\",\n        \"file_upload_mode\": \"REQUIRED\",\n        \"file_upload_ids\": [\n          \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\",\n          \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\"\n        ],\n        \"response_mode\": \"REQUIRED\",\n        \"response\": \"string\",\n        \"created_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        },\n        \"updated_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        }\n      }\n    ],\n    \"validation_errors\": [\n      {\n        \"field\": \"string\",\n        \"code\": \"string\",\n        \"message\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"code\": \"string\",\n        \"message\": \"string\"\n      }\n    ],\n    \"expected_deposit_date\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date not found in the OpenAPI spec\"\n    },\n    \"source\": \"SYSTEM\",\n    \"source_desc\": \"string\",\n    \"created_at\": {\n      \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n    },\n    \"updated_at\": {\n      \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n    }\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "648b8561-228a-4424-b461-60504d25a46f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "accept"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "385cfb5c-b034-4c34-9790-850d6e94a16e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "accept"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "99227d6c-b0d8-44fd-a059-590c77119579",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "accept"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7ea86df0-ccf2-47eb-9545-2feefcb067aa",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "accept"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "733c422c-072a-4031-97ee-c27e081f627d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "accept"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "346b0d86-02c6-49f9-a7b8-705fb667461a",
+          "name": "Submit chargeback",
+          "request": {
+            "name": "Submit chargeback",
+            "description": {
+              "content": "Respond to a chargeback by providing evidence.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "chargebacks",
+                ":chargeback_id",
+                "submit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chargeback_id",
+                  "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "940781c7-9e56-48cf-92b9-794d32356b1f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"chargeback_id\": \"chb_2TndahOgm9XTiidLB7csk0IsR9b\",\n    \"payin_id\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payin_id not found in the OpenAPI spec\"\n    },\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"amount\": 194,\n    \"currency_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n    },\n    \"status\": \"WON\",\n    \"metadata\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    \"merchant_fees\": {\n      \"total_amount\": {\n        \"amount\": 2500,\n        \"currency_code\": \"USD\"\n      }\n    },\n    \"method_type\": \"CARD\",\n    \"card\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/card not found in the OpenAPI spec\"\n    },\n    \"apple_pay\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/apple_pay not found in the OpenAPI spec\"\n    },\n    \"paypal_wallet\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_wallet not found in the OpenAPI spec\"\n    },\n    \"venmo\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/venmo not found in the OpenAPI spec\"\n    },\n    \"paypal_paylater\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_paylater not found in the OpenAPI spec\"\n    },\n    \"reason_code\": \"UNCATEGORIZED\",\n    \"reason_desc\": \"string\",\n    \"acquirer_ref\": \"string\",\n    \"due_date\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date not found in the OpenAPI spec\"\n    },\n    \"chargeback_evidence\": [\n      {\n        \"chargeback_evidence_id\": \"cbe_2DrDU206kzAhclm1WrZbuwDERRk\",\n        \"chargeback_id\": \"chb_2TndahOgm9XTiidLB7csk0IsR9b\",\n        \"is_required\": true,\n        \"type\": \"RECEIPT\",\n        \"type_desc\": \"string\",\n        \"file_upload_mode\": \"REQUIRED\",\n        \"file_upload_ids\": [\n          \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\",\n          \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\"\n        ],\n        \"response_mode\": \"REQUIRED\",\n        \"response\": \"string\",\n        \"created_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        },\n        \"updated_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        }\n      },\n      {\n        \"chargeback_evidence_id\": \"cbe_2DrDU206kzAhclm1WrZbuwDERRk\",\n        \"chargeback_id\": \"chb_2TndahOgm9XTiidLB7csk0IsR9b\",\n        \"is_required\": false,\n        \"type\": \"OTHER\",\n        \"type_desc\": \"string\",\n        \"file_upload_mode\": \"REQUIRED\",\n        \"file_upload_ids\": [\n          \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\",\n          \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\"\n        ],\n        \"response_mode\": \"REQUIRED\",\n        \"response\": \"string\",\n        \"created_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        },\n        \"updated_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        }\n      }\n    ],\n    \"validation_errors\": [\n      {\n        \"field\": \"string\",\n        \"code\": \"string\",\n        \"message\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"code\": \"string\",\n        \"message\": \"string\"\n      }\n    ],\n    \"expected_deposit_date\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date not found in the OpenAPI spec\"\n    },\n    \"source\": \"SYSTEM\",\n    \"source_desc\": \"string\",\n    \"created_at\": {\n      \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n    },\n    \"updated_at\": {\n      \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n    }\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a840091-f464-4a8a-a4cb-48c3b679832f",
+              "name": "Bad request, check for validation errors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"chargeback_id\": \"chb_2TndahOgm9XTiidLB7csk0IsR9b\",\n    \"payin_id\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payin_id not found in the OpenAPI spec\"\n    },\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"amount\": 194,\n    \"currency_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n    },\n    \"status\": \"WON\",\n    \"metadata\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    \"merchant_fees\": {\n      \"total_amount\": {\n        \"amount\": 2500,\n        \"currency_code\": \"USD\"\n      }\n    },\n    \"method_type\": \"CARD\",\n    \"card\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/card not found in the OpenAPI spec\"\n    },\n    \"apple_pay\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/apple_pay not found in the OpenAPI spec\"\n    },\n    \"paypal_wallet\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_wallet not found in the OpenAPI spec\"\n    },\n    \"venmo\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/venmo not found in the OpenAPI spec\"\n    },\n    \"paypal_paylater\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_paylater not found in the OpenAPI spec\"\n    },\n    \"reason_code\": \"UNCATEGORIZED\",\n    \"reason_desc\": \"string\",\n    \"acquirer_ref\": \"string\",\n    \"due_date\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date not found in the OpenAPI spec\"\n    },\n    \"chargeback_evidence\": [\n      {\n        \"chargeback_evidence_id\": \"cbe_2DrDU206kzAhclm1WrZbuwDERRk\",\n        \"chargeback_id\": \"chb_2TndahOgm9XTiidLB7csk0IsR9b\",\n        \"is_required\": true,\n        \"type\": \"RECEIPT\",\n        \"type_desc\": \"string\",\n        \"file_upload_mode\": \"REQUIRED\",\n        \"file_upload_ids\": [\n          \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\",\n          \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\"\n        ],\n        \"response_mode\": \"REQUIRED\",\n        \"response\": \"string\",\n        \"created_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        },\n        \"updated_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        }\n      },\n      {\n        \"chargeback_evidence_id\": \"cbe_2DrDU206kzAhclm1WrZbuwDERRk\",\n        \"chargeback_id\": \"chb_2TndahOgm9XTiidLB7csk0IsR9b\",\n        \"is_required\": false,\n        \"type\": \"OTHER\",\n        \"type_desc\": \"string\",\n        \"file_upload_mode\": \"REQUIRED\",\n        \"file_upload_ids\": [\n          \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\",\n          \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\"\n        ],\n        \"response_mode\": \"REQUIRED\",\n        \"response\": \"string\",\n        \"created_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        },\n        \"updated_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        }\n      }\n    ],\n    \"validation_errors\": [\n      {\n        \"field\": \"string\",\n        \"code\": \"string\",\n        \"message\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"code\": \"string\",\n        \"message\": \"string\"\n      }\n    ],\n    \"expected_deposit_date\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date not found in the OpenAPI spec\"\n    },\n    \"source\": \"SYSTEM\",\n    \"source_desc\": \"string\",\n    \"created_at\": {\n      \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n    },\n    \"updated_at\": {\n      \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n    }\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "59466049-fac2-4a50-9f75-163aadcc5995",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bdee3118-f0f3-43f4-b2ba-9c205719d659",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1e8f7d1c-ba43-4bca-84b6-bde585051152",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9815afce-6fc3-42ad-8685-55bfc8be88a6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "98732f17-4fe0-49be-afcb-055c9972eba5",
+          "name": "Update chargeback evidence",
+          "request": {
+            "name": "Update chargeback evidence",
+            "description": {
+              "content": "Update a chargeback's evidence. Only fields included in the payload will be updated. Omitted fields will be removed. To remove a field, set the value to `null`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "chargebacks",
+                ":chargeback_id",
+                "evidence",
+                ":chargeback_evidence_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chargeback_id",
+                  "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chargeback_evidence_id",
+                  "description": "(Required) The unique chargeback evidence identifier. \n\nPrefix is \"cbe\" in production and \"sbx_cbe\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"file_upload_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"response\": \"<string>\",\n  \"description\": {}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9a7b5fe3-a095-4eac-a402-44f1aeebc335",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "evidence",
+                    ":chargeback_evidence_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_evidence_id",
+                      "description": "(Required) The unique chargeback evidence identifier. \n\nPrefix is \"cbe\" in production and \"sbx_cbe\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"file_upload_ids\": [\n    \"fiu_2A4d6U0tMyovzTbVT1ktmRzdRaD\"\n  ],\n  \"response\": \"Customer signed proof of delivery document on 9/1\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"chargeback_evidence_id\": \"cbe_2DrDU206kzAhclm1WrZbuwDERRk\",\n    \"chargeback_id\": \"chb_2TndahOgm9XTiidLB7csk0IsR9b\",\n    \"is_required\": true,\n    \"type\": \"ADDITIONAL_AUTHORIZED_SIGNER\",\n    \"type_desc\": \"string\",\n    \"file_upload_mode\": \"REQUIRED\",\n    \"file_upload_ids\": [\n      \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\",\n      \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\"\n    ],\n    \"response_mode\": \"ALLOWED\",\n    \"response\": \"<string>\",\n    \"created_at\": {\n      \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n    },\n    \"updated_at\": {\n      \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n    }\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b09ee501-ee5d-4302-95bb-ccbc9e177605",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "evidence",
+                    ":chargeback_evidence_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_evidence_id",
+                      "description": "(Required) The unique chargeback evidence identifier. \n\nPrefix is \"cbe\" in production and \"sbx_cbe\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"file_upload_ids\": [\n    \"fiu_2A4d6U0tMyovzTbVT1ktmRzdRaD\"\n  ],\n  \"response\": \"Customer signed proof of delivery document on 9/1\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d8a7169e-8620-45e9-bd7b-6859aeb08873",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "evidence",
+                    ":chargeback_evidence_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_evidence_id",
+                      "description": "(Required) The unique chargeback evidence identifier. \n\nPrefix is \"cbe\" in production and \"sbx_cbe\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"file_upload_ids\": [\n    \"fiu_2A4d6U0tMyovzTbVT1ktmRzdRaD\"\n  ],\n  \"response\": \"Customer signed proof of delivery document on 9/1\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ff15dae0-f972-46e4-baa0-a7c937ec6a92",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "evidence",
+                    ":chargeback_evidence_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_evidence_id",
+                      "description": "(Required) The unique chargeback evidence identifier. \n\nPrefix is \"cbe\" in production and \"sbx_cbe\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"file_upload_ids\": [\n    \"fiu_2A4d6U0tMyovzTbVT1ktmRzdRaD\"\n  ],\n  \"response\": \"Customer signed proof of delivery document on 9/1\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f7c29bdd-9075-4e33-83a8-1d23c58f05d9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "evidence",
+                    ":chargeback_evidence_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_evidence_id",
+                      "description": "(Required) The unique chargeback evidence identifier. \n\nPrefix is \"cbe\" in production and \"sbx_cbe\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"file_upload_ids\": [\n    \"fiu_2A4d6U0tMyovzTbVT1ktmRzdRaD\"\n  ],\n  \"response\": \"Customer signed proof of delivery document on 9/1\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ae0d4ab1-af83-462a-b2ec-a03150c37aad",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "evidence",
+                    ":chargeback_evidence_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_evidence_id",
+                      "description": "(Required) The unique chargeback evidence identifier. \n\nPrefix is \"cbe\" in production and \"sbx_cbe\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"file_upload_ids\": [\n    \"fiu_2A4d6U0tMyovzTbVT1ktmRzdRaD\"\n  ],\n  \"response\": \"Customer signed proof of delivery document on 9/1\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6f850a4e-c37b-49db-915d-cfbf89c62d7a",
+          "name": "Update chargeback metadata",
+          "request": {
+            "name": "Update chargeback metadata",
+            "description": {
+              "content": "The body of the request is the JSON key-value metadata to patch to the chargeback. Do not use the metadata field to store sensitive or confidential data. \n\nUpdating metadata will merge with the existing metadata stored on the chargeback by the top-level key. If the same top-level key is passed in this request, it will overwrite the value stored on the chargeback. Only keys included in the payload will be updated. To remove a key, set the key's value to null. To remove all metadata pass null for the metadata value.\n\nChargeback metadata must be less than 8 KB in size.\n\nChargeback metadata can only be updated using an API key. This request should not be made by your frontend and should only be done by backend logic that only the platform can complete.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "chargebacks",
+                ":chargeback_id",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chargeback_id",
+                  "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3be325b6-290a-44d0-8b99-0d9c4bbd9c7d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"chargeback_id\": \"chb_2TndahOgm9XTiidLB7csk0IsR9b\",\n    \"payin_id\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payin_id not found in the OpenAPI spec\"\n    },\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"amount\": 4880,\n    \"currency_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n    },\n    \"status\": \"WON\",\n    \"metadata\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    \"merchant_fees\": {\n      \"total_amount\": {\n        \"amount\": 2500,\n        \"currency_code\": \"USD\"\n      }\n    },\n    \"method_type\": \"PAYPAL_WALLET\",\n    \"card\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/card not found in the OpenAPI spec\"\n    },\n    \"apple_pay\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/apple_pay not found in the OpenAPI spec\"\n    },\n    \"paypal_wallet\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_wallet not found in the OpenAPI spec\"\n    },\n    \"venmo\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/venmo not found in the OpenAPI spec\"\n    },\n    \"paypal_paylater\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_paylater not found in the OpenAPI spec\"\n    },\n    \"reason_code\": \"SUBSCRIPTION_CANCELED\",\n    \"reason_desc\": \"string\",\n    \"acquirer_ref\": \"string\",\n    \"due_date\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date not found in the OpenAPI spec\"\n    },\n    \"chargeback_evidence\": [\n      {\n        \"chargeback_evidence_id\": \"cbe_2DrDU206kzAhclm1WrZbuwDERRk\",\n        \"chargeback_id\": \"chb_2TndahOgm9XTiidLB7csk0IsR9b\",\n        \"is_required\": false,\n        \"type\": \"PRODUCT_OR_SERVICE_USAGE\",\n        \"type_desc\": \"string\",\n        \"file_upload_mode\": \"ALLOWED\",\n        \"file_upload_ids\": [\n          \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\",\n          \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\"\n        ],\n        \"response_mode\": \"ALLOWED\",\n        \"response\": \"<string>\",\n        \"created_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        },\n        \"updated_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        }\n      },\n      {\n        \"chargeback_evidence_id\": \"cbe_2DrDU206kzAhclm1WrZbuwDERRk\",\n        \"chargeback_id\": \"chb_2TndahOgm9XTiidLB7csk0IsR9b\",\n        \"is_required\": true,\n        \"type\": \"AUTHORIZATION\",\n        \"type_desc\": \"string\",\n        \"file_upload_mode\": \"NOT_ALLOWED\",\n        \"file_upload_ids\": [\n          \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\",\n          \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\"\n        ],\n        \"response_mode\": \"REQUIRED\",\n        \"response\": \"<string>\",\n        \"created_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        },\n        \"updated_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        }\n      }\n    ],\n    \"validation_errors\": [\n      {\n        \"field\": \"string\",\n        \"code\": \"string\",\n        \"message\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"code\": \"string\",\n        \"message\": \"string\"\n      }\n    ],\n    \"expected_deposit_date\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date not found in the OpenAPI spec\"\n    },\n    \"source\": \"SYSTEM\",\n    \"source_desc\": \"string\",\n    \"created_at\": {\n      \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n    },\n    \"updated_at\": {\n      \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n    }\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "57bc54b7-0c1b-4d90-97fb-a236ccf31109",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0fddb693-fc9c-44f0-8f42-40c4b6ba395d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8f54a918-50e9-4702-a308-f55cef01fafa",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b9740039-5c1f-4221-a0ad-c635ba21cf9a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ed8f7320-cdda-4e4c-8280-92339a24dc01",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de0d607c-9352-4e71-a3ae-65768c5f4b74",
+          "name": "Simulate a chargeback against a payin",
+          "request": {
+            "name": "Simulate a chargeback against a payin",
+            "description": {
+              "content": "Only available in the Rainforest sandbox environment.\n\nThe expected webhooks will be sent as the as the chargeback is created.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payins",
+                ":payin_id",
+                "simulate_chargeback"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "41e6ccd1-27ff-4758-98bb-db4c4ef5d3e3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "simulate_chargeback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"chargeback_id\": \"chb_2TndahOgm9XTiidLB7csk0IsR9b\",\n    \"payin_id\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payin_id not found in the OpenAPI spec\"\n    },\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"amount\": 4880,\n    \"currency_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n    },\n    \"status\": \"WON\",\n    \"metadata\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    \"merchant_fees\": {\n      \"total_amount\": {\n        \"amount\": 2500,\n        \"currency_code\": \"USD\"\n      }\n    },\n    \"method_type\": \"PAYPAL_WALLET\",\n    \"card\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/card not found in the OpenAPI spec\"\n    },\n    \"apple_pay\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/apple_pay not found in the OpenAPI spec\"\n    },\n    \"paypal_wallet\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_wallet not found in the OpenAPI spec\"\n    },\n    \"venmo\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/venmo not found in the OpenAPI spec\"\n    },\n    \"paypal_paylater\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_paylater not found in the OpenAPI spec\"\n    },\n    \"reason_code\": \"SUBSCRIPTION_CANCELED\",\n    \"reason_desc\": \"string\",\n    \"acquirer_ref\": \"string\",\n    \"due_date\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date not found in the OpenAPI spec\"\n    },\n    \"chargeback_evidence\": [\n      {\n        \"chargeback_evidence_id\": \"cbe_2DrDU206kzAhclm1WrZbuwDERRk\",\n        \"chargeback_id\": \"chb_2TndahOgm9XTiidLB7csk0IsR9b\",\n        \"is_required\": false,\n        \"type\": \"PRODUCT_OR_SERVICE_USAGE\",\n        \"type_desc\": \"string\",\n        \"file_upload_mode\": \"ALLOWED\",\n        \"file_upload_ids\": [\n          \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\",\n          \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\"\n        ],\n        \"response_mode\": \"ALLOWED\",\n        \"response\": \"<string>\",\n        \"created_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        },\n        \"updated_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        }\n      },\n      {\n        \"chargeback_evidence_id\": \"cbe_2DrDU206kzAhclm1WrZbuwDERRk\",\n        \"chargeback_id\": \"chb_2TndahOgm9XTiidLB7csk0IsR9b\",\n        \"is_required\": true,\n        \"type\": \"AUTHORIZATION\",\n        \"type_desc\": \"string\",\n        \"file_upload_mode\": \"NOT_ALLOWED\",\n        \"file_upload_ids\": [\n          \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\",\n          \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\"\n        ],\n        \"response_mode\": \"REQUIRED\",\n        \"response\": \"<string>\",\n        \"created_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        },\n        \"updated_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        }\n      }\n    ],\n    \"validation_errors\": [\n      {\n        \"field\": \"string\",\n        \"code\": \"string\",\n        \"message\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"code\": \"string\",\n        \"message\": \"string\"\n      }\n    ],\n    \"expected_deposit_date\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date not found in the OpenAPI spec\"\n    },\n    \"source\": \"SYSTEM\",\n    \"source_desc\": \"string\",\n    \"created_at\": {\n      \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n    },\n    \"updated_at\": {\n      \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n    }\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b23042e0-ad60-4e03-a08a-c51c5a3d783b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "simulate_chargeback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cf20ee2f-9768-40c8-8df2-49f2120624bb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "simulate_chargeback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9efb6db9-fbf1-4910-afe7-df6ec649315f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "simulate_chargeback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "95aa7a62-1bb3-4952-b4f4-817337e0e35d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "simulate_chargeback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b1bb2e20-1a23-4fa8-a8ff-cc9189b5a000",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "simulate_chargeback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6e1bb015-2674-470e-80d3-74e0daab2996",
+          "name": "Simulate chargeback status change",
+          "request": {
+            "name": "Simulate chargeback status change",
+            "description": {
+              "content": "Only available in the Rainforest sandbox environment.\n\nSimulate the decision of the chargeback. The expected webhooks will be sent for the chargeback on status change.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "chargebacks",
+                ":chargeback_id",
+                "simulate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chargeback_id",
+                  "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4fbde7b9-f5af-41d5-8c2c-069c0213f203",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "simulate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"chargeback_id\": \"chb_2TndahOgm9XTiidLB7csk0IsR9b\",\n    \"payin_id\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payin_id not found in the OpenAPI spec\"\n    },\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"amount\": 4880,\n    \"currency_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n    },\n    \"status\": \"WON\",\n    \"metadata\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    \"merchant_fees\": {\n      \"total_amount\": {\n        \"amount\": 2500,\n        \"currency_code\": \"USD\"\n      }\n    },\n    \"method_type\": \"PAYPAL_WALLET\",\n    \"card\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/card not found in the OpenAPI spec\"\n    },\n    \"apple_pay\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/apple_pay not found in the OpenAPI spec\"\n    },\n    \"paypal_wallet\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_wallet not found in the OpenAPI spec\"\n    },\n    \"venmo\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/venmo not found in the OpenAPI spec\"\n    },\n    \"paypal_paylater\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/paypal_paylater not found in the OpenAPI spec\"\n    },\n    \"reason_code\": \"SUBSCRIPTION_CANCELED\",\n    \"reason_desc\": \"string\",\n    \"acquirer_ref\": \"string\",\n    \"due_date\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date not found in the OpenAPI spec\"\n    },\n    \"chargeback_evidence\": [\n      {\n        \"chargeback_evidence_id\": \"cbe_2DrDU206kzAhclm1WrZbuwDERRk\",\n        \"chargeback_id\": \"chb_2TndahOgm9XTiidLB7csk0IsR9b\",\n        \"is_required\": false,\n        \"type\": \"PRODUCT_OR_SERVICE_USAGE\",\n        \"type_desc\": \"string\",\n        \"file_upload_mode\": \"ALLOWED\",\n        \"file_upload_ids\": [\n          \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\",\n          \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\"\n        ],\n        \"response_mode\": \"ALLOWED\",\n        \"response\": \"<string>\",\n        \"created_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        },\n        \"updated_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        }\n      },\n      {\n        \"chargeback_evidence_id\": \"cbe_2DrDU206kzAhclm1WrZbuwDERRk\",\n        \"chargeback_id\": \"chb_2TndahOgm9XTiidLB7csk0IsR9b\",\n        \"is_required\": true,\n        \"type\": \"AUTHORIZATION\",\n        \"type_desc\": \"string\",\n        \"file_upload_mode\": \"NOT_ALLOWED\",\n        \"file_upload_ids\": [\n          \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\",\n          \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\"\n        ],\n        \"response_mode\": \"REQUIRED\",\n        \"response\": \"<string>\",\n        \"created_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        },\n        \"updated_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        }\n      }\n    ],\n    \"validation_errors\": [\n      {\n        \"field\": \"string\",\n        \"code\": \"string\",\n        \"message\": \"string\"\n      },\n      {\n        \"field\": \"string\",\n        \"code\": \"string\",\n        \"message\": \"string\"\n      }\n    ],\n    \"expected_deposit_date\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date not found in the OpenAPI spec\"\n    },\n    \"source\": \"SYSTEM\",\n    \"source_desc\": \"string\",\n    \"created_at\": {\n      \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n    },\n    \"updated_at\": {\n      \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n    }\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7c16735c-1b90-4d08-98ad-0ec9f0f9c4dd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "simulate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "35a41699-a20e-403a-baa4-ce2453323789",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "simulate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "03e9be86-e274-4cf1-ba4f-dffa0bb62f28",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "simulate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bd2738ed-d97a-4876-930a-2148ce1bfe40",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "simulate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5681749d-fb18-4ed7-932f-6bee86eb2c39",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chargebacks",
+                    ":chargeback_id",
+                    "simulate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chargeback_id",
+                      "description": "(Required) The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.rainforestpay.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "51daf6ab-fd4a-4488-8acc-967436cfa621",
+    "name": "Authentication ACH Returns Chargebacks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This resource is used for authentication actions\n\nContact Support:\n Name: Rainforest\n Email: support@rainforestpay.com",
+      "type": "text/plain"
+    }
+  }
+}

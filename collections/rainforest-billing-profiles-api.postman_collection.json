@@ -1,0 +1,1756 @@
+{
+  "item": [
+    {
+      "id": "5fd2fd73-0a1c-4420-8029-276724ea9855",
+      "name": "Billing Profiles",
+      "description": {
+        "content": "Resources for billing profile functions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f8a07d79-4a94-4af7-89eb-8c2c1111de08",
+          "name": "Create a billing profile",
+          "request": {
+            "name": "Create a billing profile",
+            "description": {
+              "content": "Create a billing profile\n\nThe first billing profile created will be assigned as the platform's default billing profile for new merchants.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "billing_profiles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "50d9a319-d97f-42a2-889b-ae2b9484005a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "billing_profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"platform_id\": \"plt_2WaOekua4ZUEgUFCxNBsASulZMa\",\n  \"name\": \"Billing Profile 1\",\n  \"card_rate_type\": \"FLAT_RATE\",\n  \"card_rate\": 3000,\n  \"card_amex_rate_surcharge\": 500,\n  \"card_fee\": 20,\n  \"card_refund_rate\": 0,\n  \"card_refund_fee\": 20,\n  \"card_dispute_fee\": 2500,\n  \"card_device_rate\": 3000,\n  \"card_device_amex_rate_surcharge\": 500,\n  \"card_device_fee\": 20,\n  \"card_device_refund_rate\": 0,\n  \"card_device_refund_fee\": 20,\n  \"ach_rate\": 0,\n  \"ach_rate_cap\": 0,\n  \"ach_fee\": 30,\n  \"ach_balance_check_fee\": 30,\n  \"ach_refund_rate\": 0,\n  \"ach_refund_fee\": 30,\n  \"ach_return_fee\": 2500,\n  \"ach_dispute_fee\": 2500,\n  \"ach_validation_fee\": 0,\n  \"standard_deposit_fee\": 20,\n  \"threeds_attempt_fee\": 30,\n  \"currency_code\": \"USD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"billing_profile_id\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/billing_profile_id not found in the OpenAPI spec\"\n    },\n    \"platform_id\": \"plt_2DrDypu8n6IX7EVTjAnEd1dkTBa\",\n    \"name\": \"<string>\",\n    \"card_rate_type\": \"<string>\",\n    \"card_rate\": \"<integer>\",\n    \"card_amex_rate_surcharge\": \"<integer>\",\n    \"card_business_rate_surcharge\": \"<integer>\",\n    \"card_international_rate_surcharge\": \"<integer>\",\n    \"card_fee\": \"<integer>\",\n    \"card_refund_rate\": \"<integer>\",\n    \"card_refund_fee\": \"<integer>\",\n    \"card_auth_fee\": \"<integer>\",\n    \"card_auth_void_fee\": \"<integer>\",\n    \"card_dispute_fee\": \"<integer>\",\n    \"card_device_rate\": \"<integer>\",\n    \"card_device_amex_rate_surcharge\": \"<integer>\",\n    \"card_device_business_rate_surcharge\": \"<integer>\",\n    \"card_device_international_rate_surcharge\": \"<integer>\",\n    \"card_device_fee\": \"<integer>\",\n    \"card_device_refund_rate\": \"<integer>\",\n    \"card_device_refund_fee\": \"<integer>\",\n    \"card_device_auth_fee\": \"<integer>\",\n    \"card_device_auth_void_fee\": \"<integer>\",\n    \"ach_rate\": \"<integer>\",\n    \"ach_rate_cap\": \"<integer>\",\n    \"ach_fee\": \"<integer>\",\n    \"ach_balance_check_fee\": \"<integer>\",\n    \"ach_refund_rate\": \"<integer>\",\n    \"ach_refund_fee\": \"<integer>\",\n    \"ach_return_fee\": \"<integer>\",\n    \"ach_dispute_fee\": \"<integer>\",\n    \"ach_validation_fee\": \"<integer>\",\n    \"accelerated_ach_rate\": \"<integer>\",\n    \"accelerated_ach_rate_cap\": \"<integer>\",\n    \"accelerated_ach_fee\": \"<integer>\",\n    \"ach_frictionless_validation_fee\": \"<integer>\",\n    \"standard_deposit_fee\": \"<integer>\",\n    \"threeds_attempt_fee\": \"<integer>\",\n    \"card_account_updater_fee\": \"<integer>\",\n    \"bin_lookup_fee\": \"<integer>\",\n    \"tap_to_phone_fee\": \"<integer>\",\n    \"paypal_wallet_rate\": \"<integer>\",\n    \"paypal_wallet_fee\": \"<integer>\",\n    \"paypal_wallet_refund_rate\": \"<integer>\",\n    \"paypal_wallet_refund_fee\": \"<integer>\",\n    \"paypal_wallet_dispute_fee\": \"<integer>\",\n    \"paypal_wallet_auth_fee\": \"<integer>\",\n    \"paypal_wallet_auth_void_fee\": \"<integer>\",\n    \"venmo_rate\": \"<integer>\",\n    \"venmo_fee\": \"<integer>\",\n    \"venmo_refund_rate\": \"<integer>\",\n    \"venmo_refund_fee\": \"<integer>\",\n    \"venmo_dispute_fee\": \"<integer>\",\n    \"venmo_auth_fee\": \"<integer>\",\n    \"venmo_auth_void_fee\": \"<integer>\",\n    \"paypal_paylater_rate\": \"<integer>\",\n    \"paypal_paylater_fee\": \"<integer>\",\n    \"paypal_paylater_refund_rate\": \"<integer>\",\n    \"paypal_paylater_refund_fee\": \"<integer>\",\n    \"paypal_paylater_dispute_fee\": \"<integer>\",\n    \"paypal_paylater_auth_fee\": \"<integer>\",\n    \"paypal_paylater_auth_void_fee\": \"<integer>\",\n    \"interchange_plus\": \"<boolean>\",\n    \"currency_code\": \"USD\",\n    \"num_active_merchants\": \"string\",\n    \"is_platform_default\": true,\n    \"created_at\": \"2022-01-01T12:00:00Z\",\n    \"deactivated_at\": \"2022-01-01T12:00:00Z\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "25def475-71a7-4954-9e67-060d71b21bfa",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "billing_profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"platform_id\": \"plt_2WaOekua4ZUEgUFCxNBsASulZMa\",\n  \"name\": \"Billing Profile 1\",\n  \"card_rate_type\": \"FLAT_RATE\",\n  \"card_rate\": 3000,\n  \"card_amex_rate_surcharge\": 500,\n  \"card_fee\": 20,\n  \"card_refund_rate\": 0,\n  \"card_refund_fee\": 20,\n  \"card_dispute_fee\": 2500,\n  \"card_device_rate\": 3000,\n  \"card_device_amex_rate_surcharge\": 500,\n  \"card_device_fee\": 20,\n  \"card_device_refund_rate\": 0,\n  \"card_device_refund_fee\": 20,\n  \"ach_rate\": 0,\n  \"ach_rate_cap\": 0,\n  \"ach_fee\": 30,\n  \"ach_balance_check_fee\": 30,\n  \"ach_refund_rate\": 0,\n  \"ach_refund_fee\": 30,\n  \"ach_return_fee\": 2500,\n  \"ach_dispute_fee\": 2500,\n  \"ach_validation_fee\": 0,\n  \"standard_deposit_fee\": 20,\n  \"threeds_attempt_fee\": 30,\n  \"currency_code\": \"USD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8feae413-5710-4ec5-8618-377e0eda6102",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "billing_profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"platform_id\": \"plt_2WaOekua4ZUEgUFCxNBsASulZMa\",\n  \"name\": \"Billing Profile 1\",\n  \"card_rate_type\": \"FLAT_RATE\",\n  \"card_rate\": 3000,\n  \"card_amex_rate_surcharge\": 500,\n  \"card_fee\": 20,\n  \"card_refund_rate\": 0,\n  \"card_refund_fee\": 20,\n  \"card_dispute_fee\": 2500,\n  \"card_device_rate\": 3000,\n  \"card_device_amex_rate_surcharge\": 500,\n  \"card_device_fee\": 20,\n  \"card_device_refund_rate\": 0,\n  \"card_device_refund_fee\": 20,\n  \"ach_rate\": 0,\n  \"ach_rate_cap\": 0,\n  \"ach_fee\": 30,\n  \"ach_balance_check_fee\": 30,\n  \"ach_refund_rate\": 0,\n  \"ach_refund_fee\": 30,\n  \"ach_return_fee\": 2500,\n  \"ach_dispute_fee\": 2500,\n  \"ach_validation_fee\": 0,\n  \"standard_deposit_fee\": 20,\n  \"threeds_attempt_fee\": 30,\n  \"currency_code\": \"USD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8e517629-a0a4-4452-a285-6fed2999f967",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "billing_profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"platform_id\": \"plt_2WaOekua4ZUEgUFCxNBsASulZMa\",\n  \"name\": \"Billing Profile 1\",\n  \"card_rate_type\": \"FLAT_RATE\",\n  \"card_rate\": 3000,\n  \"card_amex_rate_surcharge\": 500,\n  \"card_fee\": 20,\n  \"card_refund_rate\": 0,\n  \"card_refund_fee\": 20,\n  \"card_dispute_fee\": 2500,\n  \"card_device_rate\": 3000,\n  \"card_device_amex_rate_surcharge\": 500,\n  \"card_device_fee\": 20,\n  \"card_device_refund_rate\": 0,\n  \"card_device_refund_fee\": 20,\n  \"ach_rate\": 0,\n  \"ach_rate_cap\": 0,\n  \"ach_fee\": 30,\n  \"ach_balance_check_fee\": 30,\n  \"ach_refund_rate\": 0,\n  \"ach_refund_fee\": 30,\n  \"ach_return_fee\": 2500,\n  \"ach_dispute_fee\": 2500,\n  \"ach_validation_fee\": 0,\n  \"standard_deposit_fee\": 20,\n  \"threeds_attempt_fee\": 30,\n  \"currency_code\": \"USD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "61f595fc-db0c-436c-bac4-d9df76ab2c84",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "billing_profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"platform_id\": \"plt_2WaOekua4ZUEgUFCxNBsASulZMa\",\n  \"name\": \"Billing Profile 1\",\n  \"card_rate_type\": \"FLAT_RATE\",\n  \"card_rate\": 3000,\n  \"card_amex_rate_surcharge\": 500,\n  \"card_fee\": 20,\n  \"card_refund_rate\": 0,\n  \"card_refund_fee\": 20,\n  \"card_dispute_fee\": 2500,\n  \"card_device_rate\": 3000,\n  \"card_device_amex_rate_surcharge\": 500,\n  \"card_device_fee\": 20,\n  \"card_device_refund_rate\": 0,\n  \"card_device_refund_fee\": 20,\n  \"ach_rate\": 0,\n  \"ach_rate_cap\": 0,\n  \"ach_fee\": 30,\n  \"ach_balance_check_fee\": 30,\n  \"ach_refund_rate\": 0,\n  \"ach_refund_fee\": 30,\n  \"ach_return_fee\": 2500,\n  \"ach_dispute_fee\": 2500,\n  \"ach_validation_fee\": 0,\n  \"standard_deposit_fee\": 20,\n  \"threeds_attempt_fee\": 30,\n  \"currency_code\": \"USD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "94ca3e49-2f52-49cb-bb4e-6f83d1a45b2d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "billing_profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"platform_id\": \"plt_2WaOekua4ZUEgUFCxNBsASulZMa\",\n  \"name\": \"Billing Profile 1\",\n  \"card_rate_type\": \"FLAT_RATE\",\n  \"card_rate\": 3000,\n  \"card_amex_rate_surcharge\": 500,\n  \"card_fee\": 20,\n  \"card_refund_rate\": 0,\n  \"card_refund_fee\": 20,\n  \"card_dispute_fee\": 2500,\n  \"card_device_rate\": 3000,\n  \"card_device_amex_rate_surcharge\": 500,\n  \"card_device_fee\": 20,\n  \"card_device_refund_rate\": 0,\n  \"card_device_refund_fee\": 20,\n  \"ach_rate\": 0,\n  \"ach_rate_cap\": 0,\n  \"ach_fee\": 30,\n  \"ach_balance_check_fee\": 30,\n  \"ach_refund_rate\": 0,\n  \"ach_refund_fee\": 30,\n  \"ach_return_fee\": 2500,\n  \"ach_dispute_fee\": 2500,\n  \"ach_validation_fee\": 0,\n  \"standard_deposit_fee\": 20,\n  \"threeds_attempt_fee\": 30,\n  \"currency_code\": \"USD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0fe88cc2-cd87-4b1c-ad58-1bbdeb907366",
+          "name": "List billing profiles",
+          "request": {
+            "name": "List billing profiles",
+            "description": {
+              "content": "Query a list of platform billing profiles.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "billing_profiles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Optional billing profile name by which to search billing profiles."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Billing profile statuses to filter by.\n\n`ACTIVE` `DEACTIVATED`"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Billing profile statuses to filter by.\n\n`ACTIVE` `DEACTIVATED`"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "Optional value by which to sort the result set. Default sort by is created_at."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b06b45c0-77a4-4306-9f56-5a43bb7c2bbc",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "billing_profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"results\": [\n      {\n        \"billing_profile_id\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/billing_profile_id not found in the OpenAPI spec\"\n        },\n        \"platform_id\": \"plt_2DrDypu8n6IX7EVTjAnEd1dkTBa\",\n        \"name\": \"<string>\",\n        \"card_rate_type\": \"<string>\",\n        \"card_rate\": \"<integer>\",\n        \"card_amex_rate_surcharge\": \"<integer>\",\n        \"card_business_rate_surcharge\": \"<integer>\",\n        \"card_international_rate_surcharge\": \"<integer>\",\n        \"card_fee\": \"<integer>\",\n        \"card_refund_rate\": \"<integer>\",\n        \"card_refund_fee\": \"<integer>\",\n        \"card_auth_fee\": \"<integer>\",\n        \"card_auth_void_fee\": \"<integer>\",\n        \"card_dispute_fee\": \"<integer>\",\n        \"card_device_rate\": \"<integer>\",\n        \"card_device_amex_rate_surcharge\": \"<integer>\",\n        \"card_device_business_rate_surcharge\": \"<integer>\",\n        \"card_device_international_rate_surcharge\": \"<integer>\",\n        \"card_device_fee\": \"<integer>\",\n        \"card_device_refund_rate\": \"<integer>\",\n        \"card_device_refund_fee\": \"<integer>\",\n        \"card_device_auth_fee\": \"<integer>\",\n        \"card_device_auth_void_fee\": \"<integer>\",\n        \"ach_rate\": \"<integer>\",\n        \"ach_rate_cap\": \"<integer>\",\n        \"ach_fee\": \"<integer>\",\n        \"ach_balance_check_fee\": \"<integer>\",\n        \"ach_refund_rate\": \"<integer>\",\n        \"ach_refund_fee\": \"<integer>\",\n        \"ach_return_fee\": \"<integer>\",\n        \"ach_dispute_fee\": \"<integer>\",\n        \"ach_validation_fee\": \"<integer>\",\n        \"accelerated_ach_rate\": \"<integer>\",\n        \"accelerated_ach_rate_cap\": \"<integer>\",\n        \"accelerated_ach_fee\": \"<integer>\",\n        \"ach_frictionless_validation_fee\": \"<integer>\",\n        \"standard_deposit_fee\": \"<integer>\",\n        \"threeds_attempt_fee\": \"<integer>\",\n        \"card_account_updater_fee\": \"<integer>\",\n        \"bin_lookup_fee\": \"<integer>\",\n        \"tap_to_phone_fee\": \"<integer>\",\n        \"paypal_wallet_rate\": \"<integer>\",\n        \"paypal_wallet_fee\": \"<integer>\",\n        \"paypal_wallet_refund_rate\": \"<integer>\",\n        \"paypal_wallet_refund_fee\": \"<integer>\",\n        \"paypal_wallet_dispute_fee\": \"<integer>\",\n        \"paypal_wallet_auth_fee\": \"<integer>\",\n        \"paypal_wallet_auth_void_fee\": \"<integer>\",\n        \"venmo_rate\": \"<integer>\",\n        \"venmo_fee\": \"<integer>\",\n        \"venmo_refund_rate\": \"<integer>\",\n        \"venmo_refund_fee\": \"<integer>\",\n        \"venmo_dispute_fee\": \"<integer>\",\n        \"venmo_auth_fee\": \"<integer>\",\n        \"venmo_auth_void_fee\": \"<integer>\",\n        \"paypal_paylater_rate\": \"<integer>\",\n        \"paypal_paylater_fee\": \"<integer>\",\n        \"paypal_paylater_refund_rate\": \"<integer>\",\n        \"paypal_paylater_refund_fee\": \"<integer>\",\n        \"paypal_paylater_dispute_fee\": \"<integer>\",\n        \"paypal_paylater_auth_fee\": \"<integer>\",\n        \"paypal_paylater_auth_void_fee\": \"<integer>\",\n        \"interchange_plus\": \"<boolean>\",\n        \"currency_code\": \"USD\",\n        \"num_active_merchants\": \"string\",\n        \"is_platform_default\": false,\n        \"created_at\": \"2022-01-01T12:00:00Z\",\n        \"deactivated_at\": \"2022-01-01T12:00:00Z\"\n      },\n      {\n        \"billing_profile_id\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/billing_profile_id not found in the OpenAPI spec\"\n        },\n        \"platform_id\": \"plt_2DrDypu8n6IX7EVTjAnEd1dkTBa\",\n        \"name\": \"<string>\",\n        \"card_rate_type\": \"<string>\",\n        \"card_rate\": \"<integer>\",\n        \"card_amex_rate_surcharge\": \"<integer>\",\n        \"card_business_rate_surcharge\": \"<integer>\",\n        \"card_international_rate_surcharge\": \"<integer>\",\n        \"card_fee\": \"<integer>\",\n        \"card_refund_rate\": \"<integer>\",\n        \"card_refund_fee\": \"<integer>\",\n        \"card_auth_fee\": \"<integer>\",\n        \"card_auth_void_fee\": \"<integer>\",\n        \"card_dispute_fee\": \"<integer>\",\n        \"card_device_rate\": \"<integer>\",\n        \"card_device_amex_rate_surcharge\": \"<integer>\",\n        \"card_device_business_rate_surcharge\": \"<integer>\",\n        \"card_device_international_rate_surcharge\": \"<integer>\",\n        \"card_device_fee\": \"<integer>\",\n        \"card_device_refund_rate\": \"<integer>\",\n        \"card_device_refund_fee\": \"<integer>\",\n        \"card_device_auth_fee\": \"<integer>\",\n        \"card_device_auth_void_fee\": \"<integer>\",\n        \"ach_rate\": \"<integer>\",\n        \"ach_rate_cap\": \"<integer>\",\n        \"ach_fee\": \"<integer>\",\n        \"ach_balance_check_fee\": \"<integer>\",\n        \"ach_refund_rate\": \"<integer>\",\n        \"ach_refund_fee\": \"<integer>\",\n        \"ach_return_fee\": \"<integer>\",\n        \"ach_dispute_fee\": \"<integer>\",\n        \"ach_validation_fee\": \"<integer>\",\n        \"accelerated_ach_rate\": \"<integer>\",\n        \"accelerated_ach_rate_cap\": \"<integer>\",\n        \"accelerated_ach_fee\": \"<integer>\",\n        \"ach_frictionless_validation_fee\": \"<integer>\",\n        \"standard_deposit_fee\": \"<integer>\",\n        \"threeds_attempt_fee\": \"<integer>\",\n        \"card_account_updater_fee\": \"<integer>\",\n        \"bin_lookup_fee\": \"<integer>\",\n        \"tap_to_phone_fee\": \"<integer>\",\n        \"paypal_wallet_rate\": \"<integer>\",\n        \"paypal_wallet_fee\": \"<integer>\",\n        \"paypal_wallet_refund_rate\": \"<integer>\",\n        \"paypal_wallet_refund_fee\": \"<integer>\",\n        \"paypal_wallet_dispute_fee\": \"<integer>\",\n        \"paypal_wallet_auth_fee\": \"<integer>\",\n        \"paypal_wallet_auth_void_fee\": \"<integer>\",\n        \"venmo_rate\": \"<integer>\",\n        \"venmo_fee\": \"<integer>\",\n        \"venmo_refund_rate\": \"<integer>\",\n        \"venmo_refund_fee\": \"<integer>\",\n        \"venmo_dispute_fee\": \"<integer>\",\n        \"venmo_auth_fee\": \"<integer>\",\n        \"venmo_auth_void_fee\": \"<integer>\",\n        \"paypal_paylater_rate\": \"<integer>\",\n        \"paypal_paylater_fee\": \"<integer>\",\n        \"paypal_paylater_refund_rate\": \"<integer>\",\n        \"paypal_paylater_refund_fee\": \"<integer>\",\n        \"paypal_paylater_dispute_fee\": \"<integer>\",\n        \"paypal_paylater_auth_fee\": \"<integer>\",\n        \"paypal_paylater_auth_void_fee\": \"<integer>\",\n        \"interchange_plus\": \"<boolean>\",\n        \"currency_code\": \"USD\",\n        \"num_active_merchants\": \"string\",\n        \"is_platform_default\": true,\n        \"created_at\": \"2022-01-01T12:00:00Z\",\n        \"deactivated_at\": \"2022-01-01T12:00:00Z\"\n      }\n    ]\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42f26002-23fc-4deb-a485-02ec9720d1b7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "billing_profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "27b0c3e8-26ed-41ba-bb22-51eb73b7fa0a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "billing_profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7dce5956-b8e3-4c42-a1f2-d988f002d864",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "billing_profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f78a8096-8235-4827-b8c0-16ec9234dccd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "billing_profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e27308c-369e-44fe-978a-64b04630b669",
+          "name": "Get billing profile",
+          "request": {
+            "name": "Get billing profile",
+            "description": {
+              "content": "Get billing profile details by the billing profile ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "billing_profiles",
+                ":billing_profile_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>,<string>",
+                  "key": "billing_profile_id",
+                  "description": "(Required) The unique billing profile identifiers.\n\nPrefix is \"bpf\" in production and \"sbx_bpf\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cbd87ade-437e-40df-9f26-11719c164a4d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "billing_profiles",
+                    ":billing_profile_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>,<string>",
+                      "key": "billing_profile_id",
+                      "description": "(Required) The unique billing profile identifiers.\n\nPrefix is \"bpf\" in production and \"sbx_bpf\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"billing_profile_id\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/billing_profile_id not found in the OpenAPI spec\"\n    },\n    \"platform_id\": \"plt_2DrDypu8n6IX7EVTjAnEd1dkTBa\",\n    \"name\": \"<string>\",\n    \"card_rate_type\": \"<string>\",\n    \"card_rate\": \"<integer>\",\n    \"card_amex_rate_surcharge\": \"<integer>\",\n    \"card_business_rate_surcharge\": \"<integer>\",\n    \"card_international_rate_surcharge\": \"<integer>\",\n    \"card_fee\": \"<integer>\",\n    \"card_refund_rate\": \"<integer>\",\n    \"card_refund_fee\": \"<integer>\",\n    \"card_auth_fee\": \"<integer>\",\n    \"card_auth_void_fee\": \"<integer>\",\n    \"card_dispute_fee\": \"<integer>\",\n    \"card_device_rate\": \"<integer>\",\n    \"card_device_amex_rate_surcharge\": \"<integer>\",\n    \"card_device_business_rate_surcharge\": \"<integer>\",\n    \"card_device_international_rate_surcharge\": \"<integer>\",\n    \"card_device_fee\": \"<integer>\",\n    \"card_device_refund_rate\": \"<integer>\",\n    \"card_device_refund_fee\": \"<integer>\",\n    \"card_device_auth_fee\": \"<integer>\",\n    \"card_device_auth_void_fee\": \"<integer>\",\n    \"ach_rate\": \"<integer>\",\n    \"ach_rate_cap\": \"<integer>\",\n    \"ach_fee\": \"<integer>\",\n    \"ach_balance_check_fee\": \"<integer>\",\n    \"ach_refund_rate\": \"<integer>\",\n    \"ach_refund_fee\": \"<integer>\",\n    \"ach_return_fee\": \"<integer>\",\n    \"ach_dispute_fee\": \"<integer>\",\n    \"ach_validation_fee\": \"<integer>\",\n    \"accelerated_ach_rate\": \"<integer>\",\n    \"accelerated_ach_rate_cap\": \"<integer>\",\n    \"accelerated_ach_fee\": \"<integer>\",\n    \"ach_frictionless_validation_fee\": \"<integer>\",\n    \"standard_deposit_fee\": \"<integer>\",\n    \"threeds_attempt_fee\": \"<integer>\",\n    \"card_account_updater_fee\": \"<integer>\",\n    \"bin_lookup_fee\": \"<integer>\",\n    \"tap_to_phone_fee\": \"<integer>\",\n    \"paypal_wallet_rate\": \"<integer>\",\n    \"paypal_wallet_fee\": \"<integer>\",\n    \"paypal_wallet_refund_rate\": \"<integer>\",\n    \"paypal_wallet_refund_fee\": \"<integer>\",\n    \"paypal_wallet_dispute_fee\": \"<integer>\",\n    \"paypal_wallet_auth_fee\": \"<integer>\",\n    \"paypal_wallet_auth_void_fee\": \"<integer>\",\n    \"venmo_rate\": \"<integer>\",\n    \"venmo_fee\": \"<integer>\",\n    \"venmo_refund_rate\": \"<integer>\",\n    \"venmo_refund_fee\": \"<integer>\",\n    \"venmo_dispute_fee\": \"<integer>\",\n    \"venmo_auth_fee\": \"<integer>\",\n    \"venmo_auth_void_fee\": \"<integer>\",\n    \"paypal_paylater_rate\": \"<integer>\",\n    \"paypal_paylater_fee\": \"<integer>\",\n    \"paypal_paylater_refund_rate\": \"<integer>\",\n    \"paypal_paylater_refund_fee\": \"<integer>\",\n    \"paypal_paylater_dispute_fee\": \"<integer>\",\n    \"paypal_paylater_auth_fee\": \"<integer>\",\n    \"paypal_paylater_auth_void_fee\": \"<integer>\",\n    \"interchange_plus\": \"<boolean>\",\n    \"currency_code\": \"USD\",\n    \"num_active_merchants\": \"string\",\n    \"is_platform_default\": true,\n    \"created_at\": \"2022-01-01T12:00:00Z\",\n    \"deactivated_at\": \"2022-01-01T12:00:00Z\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12bbf430-fbd3-4b41-b678-afa2ed68ca3b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "billing_profiles",
+                    ":billing_profile_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>,<string>",
+                      "key": "billing_profile_id",
+                      "description": "(Required) The unique billing profile identifiers.\n\nPrefix is \"bpf\" in production and \"sbx_bpf\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "89ab5c67-a630-4021-ad67-e5e487d74e11",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "billing_profiles",
+                    ":billing_profile_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>,<string>",
+                      "key": "billing_profile_id",
+                      "description": "(Required) The unique billing profile identifiers.\n\nPrefix is \"bpf\" in production and \"sbx_bpf\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8aaf72ff-332d-4358-9007-bede095a833a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "billing_profiles",
+                    ":billing_profile_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>,<string>",
+                      "key": "billing_profile_id",
+                      "description": "(Required) The unique billing profile identifiers.\n\nPrefix is \"bpf\" in production and \"sbx_bpf\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4be848fe-2ef6-48ca-808d-4c612260f649",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "billing_profiles",
+                    ":billing_profile_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>,<string>",
+                      "key": "billing_profile_id",
+                      "description": "(Required) The unique billing profile identifiers.\n\nPrefix is \"bpf\" in production and \"sbx_bpf\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dd7fff71-5f11-4e5a-a1df-ea75ad8a473d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "billing_profiles",
+                    ":billing_profile_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>,<string>",
+                      "key": "billing_profile_id",
+                      "description": "(Required) The unique billing profile identifiers.\n\nPrefix is \"bpf\" in production and \"sbx_bpf\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b568570e-236c-4f6c-b11a-0ca5c95a2020",
+          "name": "Deactivate a billing profile",
+          "request": {
+            "name": "Deactivate a billing profile",
+            "description": {
+              "content": "Deactivate a billing profile.\n\nA billing profile can be deactivated if it is not assigned to any active merchants, or is not assigned as the platform's default billing profile.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "billing_profiles",
+                ":billing_profile_id",
+                "deactivate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>,<string>",
+                  "key": "billing_profile_id",
+                  "description": "(Required) The unique billing profile identifiers.\n\nPrefix is \"bpf\" in production and \"sbx_bpf\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "64925418-c26b-45ee-a8b6-fb21def2c124",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "billing_profiles",
+                    ":billing_profile_id",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>,<string>",
+                      "key": "billing_profile_id",
+                      "description": "(Required) The unique billing profile identifiers.\n\nPrefix is \"bpf\" in production and \"sbx_bpf\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"billing_profile_id\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/billing_profile_id not found in the OpenAPI spec\"\n    },\n    \"platform_id\": \"plt_2DrDypu8n6IX7EVTjAnEd1dkTBa\",\n    \"name\": \"<string>\",\n    \"card_rate_type\": \"<string>\",\n    \"card_rate\": \"<integer>\",\n    \"card_amex_rate_surcharge\": \"<integer>\",\n    \"card_business_rate_surcharge\": \"<integer>\",\n    \"card_international_rate_surcharge\": \"<integer>\",\n    \"card_fee\": \"<integer>\",\n    \"card_refund_rate\": \"<integer>\",\n    \"card_refund_fee\": \"<integer>\",\n    \"card_auth_fee\": \"<integer>\",\n    \"card_auth_void_fee\": \"<integer>\",\n    \"card_dispute_fee\": \"<integer>\",\n    \"card_device_rate\": \"<integer>\",\n    \"card_device_amex_rate_surcharge\": \"<integer>\",\n    \"card_device_business_rate_surcharge\": \"<integer>\",\n    \"card_device_international_rate_surcharge\": \"<integer>\",\n    \"card_device_fee\": \"<integer>\",\n    \"card_device_refund_rate\": \"<integer>\",\n    \"card_device_refund_fee\": \"<integer>\",\n    \"card_device_auth_fee\": \"<integer>\",\n    \"card_device_auth_void_fee\": \"<integer>\",\n    \"ach_rate\": \"<integer>\",\n    \"ach_rate_cap\": \"<integer>\",\n    \"ach_fee\": \"<integer>\",\n    \"ach_balance_check_fee\": \"<integer>\",\n    \"ach_refund_rate\": \"<integer>\",\n    \"ach_refund_fee\": \"<integer>\",\n    \"ach_return_fee\": \"<integer>\",\n    \"ach_dispute_fee\": \"<integer>\",\n    \"ach_validation_fee\": \"<integer>\",\n    \"accelerated_ach_rate\": \"<integer>\",\n    \"accelerated_ach_rate_cap\": \"<integer>\",\n    \"accelerated_ach_fee\": \"<integer>\",\n    \"ach_frictionless_validation_fee\": \"<integer>\",\n    \"standard_deposit_fee\": \"<integer>\",\n    \"threeds_attempt_fee\": \"<integer>\",\n    \"card_account_updater_fee\": \"<integer>\",\n    \"bin_lookup_fee\": \"<integer>\",\n    \"tap_to_phone_fee\": \"<integer>\",\n    \"paypal_wallet_rate\": \"<integer>\",\n    \"paypal_wallet_fee\": \"<integer>\",\n    \"paypal_wallet_refund_rate\": \"<integer>\",\n    \"paypal_wallet_refund_fee\": \"<integer>\",\n    \"paypal_wallet_dispute_fee\": \"<integer>\",\n    \"paypal_wallet_auth_fee\": \"<integer>\",\n    \"paypal_wallet_auth_void_fee\": \"<integer>\",\n    \"venmo_rate\": \"<integer>\",\n    \"venmo_fee\": \"<integer>\",\n    \"venmo_refund_rate\": \"<integer>\",\n    \"venmo_refund_fee\": \"<integer>\",\n    \"venmo_dispute_fee\": \"<integer>\",\n    \"venmo_auth_fee\": \"<integer>\",\n    \"venmo_auth_void_fee\": \"<integer>\",\n    \"paypal_paylater_rate\": \"<integer>\",\n    \"paypal_paylater_fee\": \"<integer>\",\n    \"paypal_paylater_refund_rate\": \"<integer>\",\n    \"paypal_paylater_refund_fee\": \"<integer>\",\n    \"paypal_paylater_dispute_fee\": \"<integer>\",\n    \"paypal_paylater_auth_fee\": \"<integer>\",\n    \"paypal_paylater_auth_void_fee\": \"<integer>\",\n    \"interchange_plus\": \"<boolean>\",\n    \"currency_code\": \"USD\",\n    \"num_active_merchants\": \"string\",\n    \"is_platform_default\": true,\n    \"created_at\": \"2022-01-01T12:00:00Z\",\n    \"deactivated_at\": \"2022-01-01T12:00:00Z\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c860eec5-7998-4eb6-881d-76337c24bbc2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "billing_profiles",
+                    ":billing_profile_id",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>,<string>",
+                      "key": "billing_profile_id",
+                      "description": "(Required) The unique billing profile identifiers.\n\nPrefix is \"bpf\" in production and \"sbx_bpf\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ba014dba-1fd4-4bfd-bc81-a8d1cb4ca346",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "billing_profiles",
+                    ":billing_profile_id",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>,<string>",
+                      "key": "billing_profile_id",
+                      "description": "(Required) The unique billing profile identifiers.\n\nPrefix is \"bpf\" in production and \"sbx_bpf\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "09812461-8b1f-4e12-a41d-62e3a0c4ac5e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "billing_profiles",
+                    ":billing_profile_id",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>,<string>",
+                      "key": "billing_profile_id",
+                      "description": "(Required) The unique billing profile identifiers.\n\nPrefix is \"bpf\" in production and \"sbx_bpf\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4d2f9ed7-2209-4489-8268-fa766e26a978",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "billing_profiles",
+                    ":billing_profile_id",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>,<string>",
+                      "key": "billing_profile_id",
+                      "description": "(Required) The unique billing profile identifiers.\n\nPrefix is \"bpf\" in production and \"sbx_bpf\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0389ca1a-7ba8-414d-a016-3a96510839f9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "billing_profiles",
+                    ":billing_profile_id",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>,<string>",
+                      "key": "billing_profile_id",
+                      "description": "(Required) The unique billing profile identifiers.\n\nPrefix is \"bpf\" in production and \"sbx_bpf\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "33b9acc4-2797-40f0-b205-e7efd6d4e447",
+          "name": "Update merchant billing profile",
+          "request": {
+            "name": "Update merchant billing profile",
+            "description": {
+              "content": "Update the billing profile assigned to a merchant.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "merchants",
+                ":merchant_id",
+                "update_billing_profile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"billing_profile_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "52d5990e-a964-4e48-8892-76bc2b3002c4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id",
+                    "update_billing_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billing_profile_id\": \"bpf_2DrDFJPutxE5AIbJSopAnqniEbr\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"value\": \"reference #/paths/~1v1~1merchants/post/requestBody/content/application~1json/schema/allOf/0 not found in the OpenAPI spec\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1merchants/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "056f348c-60a8-49ae-a19e-cbab8e6b9fae",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id",
+                    "update_billing_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billing_profile_id\": \"bpf_2DrDFJPutxE5AIbJSopAnqniEbr\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1466ee1e-6698-4531-9a76-9ba1595eccaa",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id",
+                    "update_billing_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billing_profile_id\": \"bpf_2DrDFJPutxE5AIbJSopAnqniEbr\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "765a9fd2-f726-4a27-a24d-4debac7c8dff",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id",
+                    "update_billing_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billing_profile_id\": \"bpf_2DrDFJPutxE5AIbJSopAnqniEbr\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d1161c63-c45b-49dd-840e-2f7998dbe921",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id",
+                    "update_billing_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billing_profile_id\": \"bpf_2DrDFJPutxE5AIbJSopAnqniEbr\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "78edc25c-f584-40b2-b9f2-9c635acdaac6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id",
+                    "update_billing_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billing_profile_id\": \"bpf_2DrDFJPutxE5AIbJSopAnqniEbr\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.rainforestpay.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "dfcc92cd-e3ee-4033-98df-6ed747909962",
+    "name": "Authentication ACH Returns Billing Profiles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This resource is used for authentication actions\n\nContact Support:\n Name: Rainforest\n Email: support@rainforestpay.com",
+      "type": "text/plain"
+    }
+  }
+}

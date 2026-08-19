@@ -1,0 +1,330 @@
+{
+  "item": [
+    {
+      "id": "0a20505a-0b1b-47cb-81d7-5c1239193416",
+      "name": "BIN Lookups",
+      "description": {
+        "content": "Resources for BIN lookup functions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "13bfc462-756d-4606-aff0-ee1a3aefa460",
+          "name": "Create BIN lookup",
+          "request": {
+            "name": "Create BIN lookup",
+            "description": {
+              "content": "Retrieve information from the card's BIN, such as the card brand, card type, country, and other details.\n\nThis endpoint requires Rainforest approval. Platforms that meet all [requirements](doc:send-sensitive-data-via-api#requirements) and are approved by Rainforest can send the full card numbers to Rainforest via a server-to-serve direct API integration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "bin_lookup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"billable_merchant_id\": {\n    \"value\": \"reference #/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data/properties/billable_merchant_id not found in the OpenAPI spec\"\n  },\n  \"card_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eb6e7a34-bbee-491a-82f4-8f271913edab",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "bin_lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billable_merchant_id\": {\n    \"value\": \"reference #/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data/properties/billable_merchant_id not found in the OpenAPI spec\"\n  },\n  \"card_number\": \"4111111111111111\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"bin_lookup_id\": \"bin_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n    \"billable_merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data/properties/billable_merchant_id not found in the OpenAPI spec\"\n    },\n    \"bin\": \"string\",\n    \"brand\": \"MASTERCARD\",\n    \"type\": \"CREDIT\",\n    \"last_4\": \"string\",\n    \"country\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/country not found in the OpenAPI spec\"\n    },\n    \"is_business\": false,\n    \"is_healthcare\": false\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "423acab2-a561-4e6c-b6c8-9ea0b2502115",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "bin_lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billable_merchant_id\": {\n    \"value\": \"reference #/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data/properties/billable_merchant_id not found in the OpenAPI spec\"\n  },\n  \"card_number\": \"4111111111111111\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b04153db-bd6e-4be1-9619-9264bd26dca0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "bin_lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billable_merchant_id\": {\n    \"value\": \"reference #/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data/properties/billable_merchant_id not found in the OpenAPI spec\"\n  },\n  \"card_number\": \"4111111111111111\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "db791d9a-1bf7-4804-adf0-8b0b3d2dbac7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "bin_lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billable_merchant_id\": {\n    \"value\": \"reference #/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data/properties/billable_merchant_id not found in the OpenAPI spec\"\n  },\n  \"card_number\": \"4111111111111111\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c2ea8e21-a4b9-4603-bf7c-68ac780f5aed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "bin_lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billable_merchant_id\": {\n    \"value\": \"reference #/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data/properties/billable_merchant_id not found in the OpenAPI spec\"\n  },\n  \"card_number\": \"4111111111111111\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.rainforestpay.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f686d372-174e-45de-81fc-d6d1e2716e10",
+    "name": "Authentication ACH Returns BIN Lookups API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This resource is used for authentication actions\n\nContact Support:\n Name: Rainforest\n Email: support@rainforestpay.com",
+      "type": "text/plain"
+    }
+  }
+}

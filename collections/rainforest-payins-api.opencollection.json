@@ -1,0 +1,242 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Authentication ACH Returns Payins API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payins",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List payins",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.rainforestpay.com/v1/payins",
+            "headers": [
+              {
+                "name": "Rainforest-Api-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "merchant_name",
+                "value": "",
+                "type": "query",
+                "description": "Optional merchant name by which to filter."
+              },
+              {
+                "name": "method_type",
+                "value": "",
+                "type": "query",
+                "description": "Payment method type to filter by. Provide parameter multiple times to filter by multiple payment method types."
+              },
+              {
+                "name": "billing_contact_name",
+                "value": "",
+                "type": "query",
+                "description": "Optional billing contact name by which to filter."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "One or more payin statuses to filter by. Provide parameter multiple times to filter by multiple payin status types.\n\n`AUTHORIZED` `CANCELED` `CREATED` `FAILED` `IN_REVIEW` `PRESENTING` `PROCESSING` `RETURNED` `SUCCEEDED`"
+              },
+              {
+                "name": "source",
+                "value": "",
+                "type": "query",
+                "description": "One or more payin sources to filter by. Provide parameter multiple times to filter by multiple payin sources. "
+              },
+              {
+                "name": "metadata",
+                "value": "",
+                "type": "query",
+                "description": "Filter by metadata stored on the entity by passing a map of key-value pairs to filter on. The `key` should be valid JSONPath to a corresponding metadata key.\n\nFor example, an entity created with the following metadata\n```\n\"account\": {\n  \"id\": \"acct_123\"\n}\n```\ncould have the following metadata filter to find entities with the metadata account id: \n```\n?metadata[$.account.id]=acct_123\n```"
+              },
+              {
+                "name": "created_at.start",
+                "value": "2022-01-01T12:00:00Z",
+                "type": "query",
+                "description": "Created on or after in UTC RFC 3339 format."
+              },
+              {
+                "name": "created_at.end",
+                "value": "2022-01-01T12:00:00Z",
+                "type": "query",
+                "description": "Created on or before in UTC RFC 3339 format."
+              },
+              {
+                "name": "expected_deposit_date.start",
+                "value": "2022-01-01",
+                "type": "query",
+                "description": "Expected to be deposited on or after in UTC RFC 3339 format."
+              },
+              {
+                "name": "expected_deposit_date.end",
+                "value": "2022-01-01",
+                "type": "query",
+                "description": "Expected to be deposited on or before in UTC RFC 3339 format."
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Optional value by which to sort the result set. Default sort by is created_at."
+              },
+              {
+                "name": "sort_order",
+                "value": "",
+                "type": "query",
+                "description": "Order in which to return the sorted results; ascending or descending. Default sort order is descending."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return."
+              },
+              {
+                "name": "start_key",
+                "value": "",
+                "type": "query",
+                "description": "A key used to indicate the starting point for the next page of results. This value should be set to the last_key returned by the previous paginated request."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset has been deprecated. Utilize start_key and last_key for pagination.\n\nThe offset of the first result to return; zero-based."
+              }
+            ]
+          },
+          "docs": "Query a list of payins given optional search criteria."
+        },
+        {
+          "info": {
+            "name": "Create payin",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/payins",
+            "headers": [
+              {
+                "name": "Rainforest-Api-Version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create and process a payin with sensitive PCI data using a payin configuration. The merchant status must be `ACTIVE` to create a payin.\n\nThis endpoint requires Rainforest approval. Platforms that meet all [requirements](doc:send-sensitive-data-via-api#requirements) and are approved by Rainforest can send the full card and bank account numbers to Rainforest via a server-to-serve direct API integration."
+        },
+        {
+          "info": {
+            "name": "Get payin",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.rainforestpay.com/v1/payins/:payin_id",
+            "headers": [
+              {
+                "name": "Rainforest-Api-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "payin_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+              }
+            ]
+          },
+          "docs": "Get payin details by the payin ID."
+        },
+        {
+          "info": {
+            "name": "Update payin metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.sandbox.rainforestpay.com/v1/payins/:payin_id/metadata",
+            "headers": [
+              {
+                "name": "Rainforest-Api-Version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The body of the request is the JSON key-value metadata to patch to the payin. Do not use the metadata field to store sensitive or confidential data. \n\nUpdating metadata will merge with the existing metadata stored on the chargeback by the top-level key. If the same top-level key is passed in this request, it will overwrite the value stored on the chargeback. Only keys included in the payload will be updated. To remove a key, set the key's value to null. To remove all metadata pass null for the m"
+        },
+        {
+          "info": {
+            "name": "Capture payin",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/payins/:payin_id/capture",
+            "headers": [
+              {
+                "name": "Rainforest-Api-Version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Capture an authorized payin. The payin status must be Authorized to capture."
+        },
+        {
+          "info": {
+            "name": "Void or refund payin",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/payins/:payin_id/void_or_refund",
+            "headers": [
+              {
+                "name": "Rainforest-Api-Version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Void or refund a payin by the payin ID.\n\nIf the payin status is `Processing`, then the full payin amount can be voided. A payin cannot be partially voided. If the payin status is `Succeeded`, then the payin can be fully or partially refunded. See the payin `refundable_amount` and `non_refundable_reason_code` for details on if the payin is eligible for a void or refund."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

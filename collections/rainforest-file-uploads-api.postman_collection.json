@@ -1,0 +1,384 @@
+{
+  "item": [
+    {
+      "id": "7e5996fb-8b8c-4726-8bdc-27b872673414",
+      "name": "File Uploads",
+      "description": {
+        "content": "Resources for file upload functions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9b7defd0-f503-49a8-ac21-73d3e2c1507c",
+          "name": "Get file upload",
+          "request": {
+            "name": "Get file upload",
+            "description": {
+              "content": "Get file upload by the file upload ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "file_uploads",
+                ":file_upload_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "file_upload_id",
+                  "description": "(Required) The unique file upload identifier. \n\nPrefix is \"fiu\" in production and \"sbx_fiu\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b042a789-ac21-4d01-a295-93d6397323a3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "file_uploads",
+                    ":file_upload_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "file_upload_id",
+                      "description": "(Required) The unique file upload identifier. \n\nPrefix is \"fiu\" in production and \"sbx_fiu\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1file_upload_configs/post/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"file_upload_id\": \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\",\n    \"file_upload_config_id\": \"fic_2DrDU206kzAhclm1WrZbuwDERRk\",\n    \"filename\": \"file.png\",\n    \"type\": {\n      \"value\": \"reference #/paths/~1v1~1file_upload_configs/post/requestBody/content/application~1json/schema/properties/type not found in the OpenAPI spec\"\n    },\n    \"status\": \"FAILED\",\n    \"failure_reason_code\": \"INVALID_FILE_TYPE\",\n    \"created_at\": {\n      \"value\": \"reference #/paths/~1v1~1file_upload_configs/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n    },\n    \"updated_at\": {\n      \"value\": \"reference #/paths/~1v1~1file_upload_configs/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n    }\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1file_upload_configs/post/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47c5365f-1086-405c-9ba2-e34fb4a0da1c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "file_uploads",
+                    ":file_upload_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "file_upload_id",
+                      "description": "(Required) The unique file upload identifier. \n\nPrefix is \"fiu\" in production and \"sbx_fiu\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "61b22fb7-3325-4935-b1f0-1b09db134df6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "file_uploads",
+                    ":file_upload_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "file_upload_id",
+                      "description": "(Required) The unique file upload identifier. \n\nPrefix is \"fiu\" in production and \"sbx_fiu\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "69abd3c7-b8d1-4e2a-9e83-ec751b897e58",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "file_uploads",
+                    ":file_upload_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "file_upload_id",
+                      "description": "(Required) The unique file upload identifier. \n\nPrefix is \"fiu\" in production and \"sbx_fiu\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f52b581c-2222-4aca-8998-58fdb470e874",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "file_uploads",
+                    ":file_upload_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "file_upload_id",
+                      "description": "(Required) The unique file upload identifier. \n\nPrefix is \"fiu\" in production and \"sbx_fiu\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"EntityNotFound\",\n      \"message\": \"Resource not found\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae63f280-463d-4a02-b164-bad2533f7a51",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "file_uploads",
+                    ":file_upload_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "file_upload_id",
+                      "description": "(Required) The unique file upload identifier. \n\nPrefix is \"fiu\" in production and \"sbx_fiu\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.rainforestpay.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7cc5aba9-11d7-408e-b3d9-0f84b342610c",
+    "name": "Authentication ACH Returns File Uploads API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This resource is used for authentication actions\n\nContact Support:\n Name: Rainforest\n Email: support@rainforestpay.com",
+      "type": "text/plain"
+    }
+  }
+}

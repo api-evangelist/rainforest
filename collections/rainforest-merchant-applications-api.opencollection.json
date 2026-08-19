@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Authentication ACH Returns Merchant Applications API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Merchant Applications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List merchant applications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.rainforestpay.com/v1/merchants/:merchant_id/applications",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "One or more merchant application statuses to filter by. Provide parameter multiple times to filter by multiple payment status types.\n\n`COMPLETED` `CREATED` `DECLINED` `IN_REVIEW` `IN_PROGRESS` `NEEDS_INFORMATION` `PROCESSING`"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Optional value by which to sort the result set. Default sort by is created_at."
+              }
+            ]
+          },
+          "docs": "Query a list of a merchant's applications with optional search criteria.\n\nNote that the `data` object is structured to reserve future support for pagination.\n\nHowever, pagination of merchant applications is not supported at this time."
+        },
+        {
+          "info": {
+            "name": "Get merchant application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.rainforestpay.com/v1/merchants/:merchant_id/applications/:merchant_application_id",
+            "params": [
+              {
+                "name": "merchant_application_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique merchant application identifier. \n\nPrefix is \"app\" in production and \"sbx_app\" in sandbox."
+              }
+            ]
+          },
+          "docs": "Get merchant application details by the merchant application ID."
+        },
+        {
+          "info": {
+            "name": "Update merchant application",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.sandbox.rainforestpay.com/v1/merchants/:merchant_id/applications/:merchant_application_id",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a merchant application. Only fields included in the payload will be updated. Omitted fields will not be updated. To remove a field, set the value to `null`."
+        },
+        {
+          "info": {
+            "name": "Verify merchant application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/merchants/:merchant_id/applications/:merchant_application_id/verify",
+            "params": [
+              {
+                "name": "merchant_application_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique merchant application identifier. \n\nPrefix is \"app\" in production and \"sbx_app\" in sandbox."
+              }
+            ]
+          },
+          "docs": "Run [real-time underwriting verifications](doc:real-time-underwriting-verifications#direct-api-integration) on a merchant application."
+        },
+        {
+          "info": {
+            "name": "Submit merchant application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/merchants/:merchant_id/applications/:merchant_application_id/submit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit a merchant application for approval."
+        },
+        {
+          "info": {
+            "name": "Simulate merchant application status change",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/merchants/:merchant_id/applications/:merchant_application_id/simulate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Only available in the Rainforest sandbox environment.\n\nOnce the merchant application is submitted, in sandbox Rainforest does not decision the merchant for risk review. This endpoint can be utilized to simulate the decisioning. The merchant application must be in the status `PROCESSING`.\n\nThe expected webhooks will be sent for both the merchant and merchant application on the status change of the merchant application."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

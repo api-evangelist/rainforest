@@ -1,0 +1,138 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Authentication ACH Returns API Keys API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "API Keys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List API keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.rainforestpay.com/v1/api_keys",
+            "headers": [
+              {
+                "name": "Rainforest-Api-Version",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Query a list of API keys."
+        },
+        {
+          "info": {
+            "name": "Create API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/api_keys",
+            "headers": [
+              {
+                "name": "Rainforest-Api-Version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an API key."
+        },
+        {
+          "info": {
+            "name": "Get API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.rainforestpay.com/v1/api_keys/:api_key_id",
+            "headers": [
+              {
+                "name": "Rainforest-Api-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "api_key_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique API key identifier. \n\nPrefix is \"api\" in production and \"sbx_api\" in sandbox."
+              }
+            ]
+          },
+          "docs": "Get API key details by the API key ID."
+        },
+        {
+          "info": {
+            "name": "Delete API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.sandbox.rainforestpay.com/v1/api_keys/:api_key_id",
+            "headers": [
+              {
+                "name": "Rainforest-Api-Version",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Delete an API key, permanently invalidating it."
+        },
+        {
+          "info": {
+            "name": "Disable API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/api_keys/:api_key_id/disable",
+            "headers": [
+              {
+                "name": "Rainforest-Api-Version",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Disable an API key."
+        },
+        {
+          "info": {
+            "name": "Enable API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/api_keys/:api_key_id/enable",
+            "headers": [
+              {
+                "name": "Rainforest-Api-Version",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Enable an API key."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

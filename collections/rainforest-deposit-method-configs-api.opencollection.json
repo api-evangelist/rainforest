@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Authentication ACH Returns Deposit Method Configs API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Deposit Method Configs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create deposit method config",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/deposit_method_configs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create the configuration to store a deposit method. The configuration contains basic information about the deposit method such as an idempotency key and optional information such as billing contact and metadata. If the billing contact is provided in the deposit method config, then the web component will not prompt for this data. These fields include name for an ACH deposit method. This allows a deposit method to be set up before collecting the sensitive deposit method details (i.e the account nu"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,226 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Authentication ACH Returns Merchants API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Merchants",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List merchants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.rainforestpay.com/v1/merchants",
+            "headers": [
+              {
+                "name": "Rainforest-Api-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "platform_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique platform identifier. \n\nPrefix is \"plt\" in production and \"sbx_plt\" in sandbox."
+              },
+              {
+                "name": "merchant_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Optional merchant name by which to search merchants."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "One or more merchant statuses to filter by. Provide parameter multiple times to filter by multiple merchant status types. \n\n`ACTIVE` `DEACTIVATED` `ONBOARDING` `PENDING` `SUSPENDED`"
+              },
+              {
+                "name": "billing_profile_id",
+                "value": "",
+                "type": "query",
+                "description": "Optional billing profile ID by which to search merchants."
+              },
+              {
+                "name": "created_at.start",
+                "value": "2022-01-01T12:00:00Z",
+                "type": "query",
+                "description": "Created on or after in UTC RFC 3339 format."
+              },
+              {
+                "name": "created_at.end",
+                "value": "2022-01-01T12:00:00Z",
+                "type": "query",
+                "description": "Created on or before in UTC RFC 3339 format."
+              },
+              {
+                "name": "updated_at.start",
+                "value": "2022-01-01T12:00:00Z",
+                "type": "query",
+                "description": "Last updated on or after in UTC RFC 3339 format."
+              },
+              {
+                "name": "updated_at.end",
+                "value": "2022-01-01T12:00:00Z",
+                "type": "query",
+                "description": "Last updated on or before in UTC RFC 3339 format."
+              },
+              {
+                "name": "latest_merchant_application_status",
+                "value": "",
+                "type": "query",
+                "description": "One or more merchant application statuses to filter by. Provide parameter multiple times to filter by multiple merchant application status types."
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Optional value by which to sort the result set. Default sort by is created_at."
+              },
+              {
+                "name": "sort_order",
+                "value": "",
+                "type": "query",
+                "description": "Order in which to return the sorted results; ascending or descending. Default sort order is descending."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The offset of the first result to return; zero-based."
+              }
+            ]
+          },
+          "docs": "Query a list of merchants given optional search criteria."
+        },
+        {
+          "info": {
+            "name": "Create merchant",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/merchants",
+            "headers": [
+              {
+                "name": "Rainforest-Api-Version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a merchant with an initial merchant application."
+        },
+        {
+          "info": {
+            "name": "Get merchant",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.rainforestpay.com/v1/merchants/:merchant_id",
+            "headers": [
+              {
+                "name": "Rainforest-Api-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "merchant_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+              }
+            ]
+          },
+          "docs": "Get merchant details by the merchant ID."
+        },
+        {
+          "info": {
+            "name": "Update merchant",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.sandbox.rainforestpay.com/v1/merchants/:merchant_id",
+            "headers": [
+              {
+                "name": "Rainforest-Api-Version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update supported fields on a merchant. Only fields included in the payload will be updated. Omitted fields will not be updated. Merchant status must be `ACTIVE`."
+        },
+        {
+          "info": {
+            "name": "Cancel merchant",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/merchants/:merchant_id/cancel"
+          },
+          "docs": "Cancel a pending merchant. Merchant status must be `PENDING`."
+        },
+        {
+          "info": {
+            "name": "Update merchant billing profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/merchants/:merchant_id/update_billing_profile",
+            "headers": [
+              {
+                "name": "Rainforest-Api-Version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the billing profile assigned to a merchant."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

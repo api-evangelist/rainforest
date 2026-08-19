@@ -1,0 +1,330 @@
+{
+  "item": [
+    {
+      "id": "739a8153-f240-43eb-b1dc-2ff492e971d8",
+      "name": "Deposit Method Configs",
+      "description": {
+        "content": "Resources for deposit method config functions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "18093db0-a2b4-48e1-bf89-63e1d5608208",
+          "name": "Create deposit method config",
+          "request": {
+            "name": "Create deposit method config",
+            "description": {
+              "content": "Create the configuration to store a deposit method. The configuration contains basic information about the deposit method such as an idempotency key and optional information such as billing contact and metadata. If the billing contact is provided in the deposit method config, then the web component will not prompt for this data. These fields include name for an ACH deposit method. This allows a deposit method to be set up before collecting the sensitive deposit method details (i.e the account number) via the web component.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "deposit_method_configs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"platform_id\": \"<string>\",\n  \"idempotency_key\": \"<string>\",\n  \"billing_contact\": {\n    \"value\": \"reference #/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n  },\n  \"allowed_sources\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"metadata\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8dd5520b-051a-4191-b9c3-e0a5ae24e62c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposit_method_configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\",\n  \"platform_id\": \"plt_2WaOekua4ZUEgUFCxNBsASulZMa\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"deposit_method_config_id\": \"dmc_2DrDPKzdQypRudLd8DhQKZX27dA\",\n    \"platform_id\": \"plt_2DrDypu8n6IX7EVTjAnEd1dkTBa\",\n    \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\",\n    \"billing_contact\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n    },\n    \"allowed_sources\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"metadata\": {\n      \"key1\": \"value1\",\n      \"key2\": {\n        \"inner_key1\": \"inner_value1\"\n      }\n    },\n    \"created_at\": \"2022-01-01T12:00:00Z\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a865f93-3098-4fc0-91e4-13b9c8c3e408",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposit_method_configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\",\n  \"platform_id\": \"plt_2WaOekua4ZUEgUFCxNBsASulZMa\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8fe58e6e-925d-468c-ac24-eadcfdb5dd41",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposit_method_configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\",\n  \"platform_id\": \"plt_2WaOekua4ZUEgUFCxNBsASulZMa\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1d7d0dba-01da-404d-aad8-1d060dc9f480",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposit_method_configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\",\n  \"platform_id\": \"plt_2WaOekua4ZUEgUFCxNBsASulZMa\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0218f53a-d06c-4afa-bd3a-3ad8d5e8f356",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposit_method_configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\",\n  \"platform_id\": \"plt_2WaOekua4ZUEgUFCxNBsASulZMa\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.rainforestpay.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a636f7ed-39b2-4d16-9a25-1b2f3e915ec8",
+    "name": "Authentication ACH Returns Deposit Method Configs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This resource is used for authentication actions\n\nContact Support:\n Name: Rainforest\n Email: support@rainforestpay.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,1485 @@
+{
+  "item": [
+    {
+      "id": "698ffa70-2520-4c43-9b65-bf953be748ff",
+      "name": "Payment Method Domains",
+      "description": {
+        "content": "Resources for payment method domain functions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "db00ca46-7226-40ff-81b1-5b6332cc39c8",
+          "name": "List payment method domains",
+          "request": {
+            "name": "List payment method domains",
+            "description": {
+              "content": "List payment method domains",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment_method_domains"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "18c176e9-1b7a-44a9-81ad-8b016c11b32c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_domains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"results\": [\n      {\n        \"payment_method_domain_id\": \"pmd_2cm9diJDpnUga0fUFvgSwGlmMHB\",\n        \"merchant_id\": {\n          \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n        },\n        \"domain_name\": \"pay.yourdomain.com\",\n        \"status\": \"CREATED\",\n        \"created_at\": \"2022-01-01T12:00:00Z\",\n        \"updated_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        }\n      },\n      {\n        \"payment_method_domain_id\": \"pmd_2cm9diJDpnUga0fUFvgSwGlmMHB\",\n        \"merchant_id\": {\n          \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n        },\n        \"domain_name\": \"pay.yourdomain.com\",\n        \"status\": \"DELETED\",\n        \"created_at\": \"2022-01-01T12:00:00Z\",\n        \"updated_at\": {\n          \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n        }\n      }\n    ]\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d6bf99e7-65f4-47b7-8211-b47d7126f0b7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_domains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b61eb764-ca3e-4420-a50c-63b1cd3ca36c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_domains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fb7eec3c-ed91-4ee1-934e-887eb12b7379",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_domains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f32e4a5e-3212-436b-816e-a5a32d34d1ef",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_domains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "39adfea3-eabd-4ffb-b354-5004abac50b4",
+          "name": "Create payment method domain",
+          "request": {
+            "name": "Create payment method domain",
+            "description": {
+              "content": "Create payment method domain to verify your domain for payment processing with Apple Pay.\n\nA platform can have up to 99 domains.\n\nIf your integration requires a domain per merchant, then register the domain by providing a merchant_id in the request. Each merchant can have up to 99 domains.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment_method_domains"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"merchant_id\": {\n    \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n  },\n  \"domain_name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4cb9c8e9-ed03-4e88-ba2c-030c1d0e48af",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_domains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"domain_name\": \"rainforestpay.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"payment_method_domain_id\": \"pmd_2cm9diJDpnUga0fUFvgSwGlmMHB\",\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"domain_name\": \"pay.yourdomain.com\",\n    \"status\": \"VERIFIED\",\n    \"created_at\": \"2022-01-01T12:00:00Z\",\n    \"updated_at\": \"2022-01-01T12:00:00Z\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c465c896-01e5-443d-8506-322e481304ce",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_domains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"domain_name\": \"rainforestpay.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bd63ecdf-e476-45bd-9de1-4e3b73f89afb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_domains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"domain_name\": \"rainforestpay.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "17aca8f6-863e-44c1-955b-74ddc1a5b1e4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_domains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"domain_name\": \"rainforestpay.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e1ec5f79-6362-4ca9-a5c3-26103376ef60",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_domains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"domain_name\": \"rainforestpay.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3905fd73-cdcf-4518-958d-3e889ef4024a",
+          "name": "Get payment method domain",
+          "request": {
+            "name": "Get payment method domain",
+            "description": {
+              "content": "Get payment method domain",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment_method_domains",
+                ":payment_method_domain_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "payment_method_domain_id",
+                  "description": "(Required) The unique payment method domain identifier. \n\nPrefix is \"pmd\" in production and \"sbx_pmd\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ca8aa429-e303-403f-8e10-5356f2270c62",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_domains",
+                    ":payment_method_domain_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payment_method_domain_id",
+                      "description": "(Required) The unique payment method domain identifier. \n\nPrefix is \"pmd\" in production and \"sbx_pmd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"payment_method_domain_id\": \"pmd_2cm9diJDpnUga0fUFvgSwGlmMHB\",\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"domain_name\": \"pay.yourdomain.com\",\n    \"status\": \"VERIFIED\",\n    \"created_at\": \"2022-01-01T12:00:00Z\",\n    \"updated_at\": \"2022-01-01T12:00:00Z\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "18cb89c4-e994-45d9-914b-c4ff4cffdb4c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_domains",
+                    ":payment_method_domain_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payment_method_domain_id",
+                      "description": "(Required) The unique payment method domain identifier. \n\nPrefix is \"pmd\" in production and \"sbx_pmd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cab681f5-b7de-420a-b87a-397b2cc9b5dd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_domains",
+                    ":payment_method_domain_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payment_method_domain_id",
+                      "description": "(Required) The unique payment method domain identifier. \n\nPrefix is \"pmd\" in production and \"sbx_pmd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "06295d9a-6578-45e0-8c4d-d8a28484541f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_domains",
+                    ":payment_method_domain_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payment_method_domain_id",
+                      "description": "(Required) The unique payment method domain identifier. \n\nPrefix is \"pmd\" in production and \"sbx_pmd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fb317d90-0a38-4636-8281-1e4c31a6eba3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_domains",
+                    ":payment_method_domain_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payment_method_domain_id",
+                      "description": "(Required) The unique payment method domain identifier. \n\nPrefix is \"pmd\" in production and \"sbx_pmd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "72b372a4-aa88-403e-a35c-1e184423ddac",
+          "name": "Delete payment method domain",
+          "request": {
+            "name": "Delete payment method domain",
+            "description": {
+              "content": "Delete payment method domain",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment_method_domains",
+                ":payment_method_domain_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "payment_method_domain_id",
+                  "description": "(Required) The unique payment method domain identifier. \n\nPrefix is \"pmd\" in production and \"sbx_pmd\" in sandbox."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f1c370e1-aca6-4bcc-8f95-3a819c6f3436",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_domains",
+                    ":payment_method_domain_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payment_method_domain_id",
+                      "description": "(Required) The unique payment method domain identifier. \n\nPrefix is \"pmd\" in production and \"sbx_pmd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c1453fff-3c79-42ce-b7f2-720d40e31152",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_domains",
+                    ":payment_method_domain_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payment_method_domain_id",
+                      "description": "(Required) The unique payment method domain identifier. \n\nPrefix is \"pmd\" in production and \"sbx_pmd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ff63ffb2-5130-4980-b602-a42dfb0ba851",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_domains",
+                    ":payment_method_domain_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payment_method_domain_id",
+                      "description": "(Required) The unique payment method domain identifier. \n\nPrefix is \"pmd\" in production and \"sbx_pmd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bb4ee4dd-d5ca-4ff5-9cc1-8f37a5b697e1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_domains",
+                    ":payment_method_domain_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payment_method_domain_id",
+                      "description": "(Required) The unique payment method domain identifier. \n\nPrefix is \"pmd\" in production and \"sbx_pmd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f121232d-cef7-4c96-a2cd-58d37d4b3c22",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_domains",
+                    ":payment_method_domain_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payment_method_domain_id",
+                      "description": "(Required) The unique payment method domain identifier. \n\nPrefix is \"pmd\" in production and \"sbx_pmd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "66078fd5-7ebf-48af-9f61-93e08ca969e0",
+          "name": "Verify payment method domain",
+          "request": {
+            "name": "Verify payment method domain",
+            "description": {
+              "content": "Verify payment method domain",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment_method_domains",
+                ":payment_method_domain_id",
+                "verify"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "payment_method_domain_id",
+                  "description": "(Required) The unique payment method domain identifier. \n\nPrefix is \"pmd\" in production and \"sbx_pmd\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "22ba9a74-e8e0-4dfc-a2a2-5e7a63c9c298",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_domains",
+                    ":payment_method_domain_id",
+                    "verify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payment_method_domain_id",
+                      "description": "(Required) The unique payment method domain identifier. \n\nPrefix is \"pmd\" in production and \"sbx_pmd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"payment_method_domain_id\": \"pmd_2cm9diJDpnUga0fUFvgSwGlmMHB\",\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"domain_name\": \"pay.yourdomain.com\",\n    \"status\": \"VERIFIED\",\n    \"created_at\": \"2022-01-01T12:00:00Z\",\n    \"updated_at\": \"2022-01-01T12:00:00Z\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e6451082-f243-4d75-a6c7-52c53f1e8c62",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_domains",
+                    ":payment_method_domain_id",
+                    "verify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payment_method_domain_id",
+                      "description": "(Required) The unique payment method domain identifier. \n\nPrefix is \"pmd\" in production and \"sbx_pmd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "16123c28-242a-4b37-932c-16d3260662f2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_domains",
+                    ":payment_method_domain_id",
+                    "verify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payment_method_domain_id",
+                      "description": "(Required) The unique payment method domain identifier. \n\nPrefix is \"pmd\" in production and \"sbx_pmd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2d106397-b3c7-4c57-b773-d2fc3c78fe94",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_domains",
+                    ":payment_method_domain_id",
+                    "verify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payment_method_domain_id",
+                      "description": "(Required) The unique payment method domain identifier. \n\nPrefix is \"pmd\" in production and \"sbx_pmd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "da5efd62-1cc0-4e36-afe0-b8513dae91c6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_domains",
+                    ":payment_method_domain_id",
+                    "verify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payment_method_domain_id",
+                      "description": "(Required) The unique payment method domain identifier. \n\nPrefix is \"pmd\" in production and \"sbx_pmd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.rainforestpay.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bf2fccbf-e02b-4aa5-89db-15c6e687513f",
+    "name": "Authentication ACH Returns Payment Method Domains API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This resource is used for authentication actions\n\nContact Support:\n Name: Rainforest\n Email: support@rainforestpay.com",
+      "type": "text/plain"
+    }
+  }
+}

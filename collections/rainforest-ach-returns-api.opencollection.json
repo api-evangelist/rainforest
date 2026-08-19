@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Authentication ACH Returns API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ACH Returns",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get ACH return",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.rainforestpay.com/v1/ach_returns/:ach_return_id",
+            "params": [
+              {
+                "name": "ach_return_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique ACH return identifier. \n\nPrefix is \"ret\" in production and \"sbx_ret\" in sandbox."
+              }
+            ]
+          },
+          "docs": "Get ACH return details by the ach return ID."
+        },
+        {
+          "info": {
+            "name": "Update ACH return metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.sandbox.rainforestpay.com/v1/ach_returns/:ach_return_id/metadata",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The body of the request is the JSON key-value metadata to patch to the ACH return. Do not use the metadata field to store sensitive or confidential data. \n\nUpdating metadata will merge with the existing metadata stored on the ACH return by the top-level key. If the same top-level key is passed in this request, it will overwrite the value stored on the ACH return. Only keys included in the payload will be updated. To remove a key, set the key's value to null. To remove all metadata pass null for "
+        },
+        {
+          "info": {
+            "name": "Simulate payin ACH return",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/payins/:payin_id/simulate_ach_return"
+          },
+          "docs": "Only available in the Rainforest sandbox environment.\n\nMay only be called on an ACH payin in `PROCESSING` or `SUCCEEDED` statuses. An ACH return must not have already been created for the payin.\n\nThe expected webhooks will be sent as the payin's status is advanced and when the ACH return is created."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

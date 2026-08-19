@@ -1,0 +1,53 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Authentication ACH Returns Forward Requests API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Forward Requests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Forward payment method",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/payment_methods/:payment_method_id/forward",
+            "headers": [
+              {
+                "name": "Rainforest-Api-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "payment_method_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique payment method identifier. \n\nPrefix is \"mtd\" in production and \"sbx_mtd\" in sandbox."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Forward payment method details to an approved 3rd party. This endpoint requires Rainforest approval."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Authentication ACH Returns Payment Method Configs API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payment Method Configs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create payment method config",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/payment_method_configs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create the configuration to store a payment method. The configuration contains basic information about the payment method such as an idempotency key and optional information such as billing contact and metadata. If the billing contact is provided in the payment method config, then the web component will not prompt for this data. These fields include country and postal code for a CARD payment method and name for an ACH payment method. This allows a payment method to be set up before collecting th"
+        },
+        {
+          "info": {
+            "name": "Get payment method config",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.rainforestpay.com/v1/payment_method_configs/:payment_method_config_id",
+            "params": [
+              {
+                "name": "payment_method_config_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique payment method config identifier.\n\nPrefix is \"pmc\" in production and \"sbx_pmc\" in sandbox."
+              }
+            ]
+          },
+          "docs": "Get the configuration for a payment method by the payment method config ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

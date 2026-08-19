@@ -1,0 +1,668 @@
+{
+  "item": [
+    {
+      "id": "46cb3828-08ed-4d85-b2b0-db883666daca",
+      "name": "Payin Configs",
+      "description": {
+        "content": "Resources for payin configs functions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d0cd2f39-9d6f-4435-87cd-f0e346716032",
+          "name": "Create payin config",
+          "request": {
+            "name": "Create payin config",
+            "description": {
+              "content": "Create the configuration for a payin request. The configuration contains basic information about the payin such as the merchant, idempotency key, payin amount, currency, and optional information such as billing contact, level 2 and 3, and metadata. If the billing contact is provided in the payin config, then the web component will not prompt for this data. These fields include country and postal code for a CARD payment method and name for an ACH payment method. This allows a payin to be set up before collecting the sensitive payin details (i.e the card number) via the web component. The merchant status must be `ACTIVE` to create a payin config.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payin_configs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"merchant_id\": {\n    \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n  },\n  \"merchant\": {},\n  \"idempotency_key\": {\n    \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D~1void/post/requestBody/content/application~1json/schema/properties/idempotency_key not found in the OpenAPI spec\"\n  },\n  \"amount\": \"<integer>\",\n  \"currency_code\": {\n    \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n  },\n  \"amount_splits\": [\n    {\n      \"amount\": \"<integer>\",\n      \"currency_code\": {\n        \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n      },\n      \"type\": \"<string>\",\n      \"rate\": \"<integer>\",\n      \"rate_cap\": \"<integer>\",\n      \"merchant_id\": \"<string>\",\n      \"amount_split_reversal_config\": {\n        \"on_full_refund\": false,\n        \"on_ach_return\": false\n      }\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"currency_code\": {\n        \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n      },\n      \"type\": \"<string>\",\n      \"rate\": \"<integer>\",\n      \"rate_cap\": \"<integer>\",\n      \"merchant_id\": \"<string>\",\n      \"amount_split_reversal_config\": {\n        \"on_full_refund\": false,\n        \"on_ach_return\": false\n      }\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"currency_code\": {\n        \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n      },\n      \"type\": \"<string>\",\n      \"rate\": \"<integer>\",\n      \"rate_cap\": \"<integer>\",\n      \"merchant_id\": \"<string>\",\n      \"amount_split_reversal_config\": {\n        \"on_full_refund\": false,\n        \"on_ach_return\": false\n      }\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"currency_code\": {\n        \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n      },\n      \"type\": \"<string>\",\n      \"rate\": \"<integer>\",\n      \"rate_cap\": \"<integer>\",\n      \"merchant_id\": \"<string>\",\n      \"amount_split_reversal_config\": {\n        \"on_full_refund\": false,\n        \"on_ach_return\": false\n      }\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"currency_code\": {\n        \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n      },\n      \"type\": \"<string>\",\n      \"rate\": \"<integer>\",\n      \"rate_cap\": \"<integer>\",\n      \"merchant_id\": \"<string>\",\n      \"amount_split_reversal_config\": {\n        \"on_full_refund\": false,\n        \"on_ach_return\": false\n      }\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"currency_code\": {\n        \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n      },\n      \"type\": \"<string>\",\n      \"rate\": \"<integer>\",\n      \"rate_cap\": \"<integer>\",\n      \"merchant_id\": \"<string>\",\n      \"amount_split_reversal_config\": {\n        \"on_full_refund\": false,\n        \"on_ach_return\": false\n      }\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"currency_code\": {\n        \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n      },\n      \"type\": \"<string>\",\n      \"rate\": \"<integer>\",\n      \"rate_cap\": \"<integer>\",\n      \"merchant_id\": \"<string>\",\n      \"amount_split_reversal_config\": {\n        \"on_full_refund\": false,\n        \"on_ach_return\": false\n      }\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"currency_code\": {\n        \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n      },\n      \"type\": \"<string>\",\n      \"rate\": \"<integer>\",\n      \"rate_cap\": \"<integer>\",\n      \"merchant_id\": \"<string>\",\n      \"amount_split_reversal_config\": {\n        \"on_full_refund\": false,\n        \"on_ach_return\": false\n      }\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"currency_code\": {\n        \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n      },\n      \"type\": \"<string>\",\n      \"rate\": \"<integer>\",\n      \"rate_cap\": \"<integer>\",\n      \"merchant_id\": \"<string>\",\n      \"amount_split_reversal_config\": {\n        \"on_full_refund\": false,\n        \"on_ach_return\": false\n      }\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"currency_code\": {\n        \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n      },\n      \"type\": \"<string>\",\n      \"rate\": \"<integer>\",\n      \"rate_cap\": \"<integer>\",\n      \"merchant_id\": \"<string>\",\n      \"amount_split_reversal_config\": {\n        \"on_full_refund\": false,\n        \"on_ach_return\": false\n      }\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"currency_code\": {\n        \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n      },\n      \"type\": \"<string>\",\n      \"rate\": \"<integer>\",\n      \"rate_cap\": \"<integer>\",\n      \"merchant_id\": \"<string>\",\n      \"amount_split_reversal_config\": {\n        \"on_full_refund\": false,\n        \"on_ach_return\": false\n      }\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"currency_code\": {\n        \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n      },\n      \"type\": \"<string>\",\n      \"rate\": \"<integer>\",\n      \"rate_cap\": \"<integer>\",\n      \"merchant_id\": \"<string>\",\n      \"amount_split_reversal_config\": {\n        \"on_full_refund\": false,\n        \"on_ach_return\": false\n      }\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"currency_code\": {\n        \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n      },\n      \"type\": \"<string>\",\n      \"rate\": \"<integer>\",\n      \"rate_cap\": \"<integer>\",\n      \"merchant_id\": \"<string>\",\n      \"amount_split_reversal_config\": {\n        \"on_full_refund\": false,\n        \"on_ach_return\": false\n      }\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"currency_code\": {\n        \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n      },\n      \"type\": \"<string>\",\n      \"rate\": \"<integer>\",\n      \"rate_cap\": \"<integer>\",\n      \"merchant_id\": \"<string>\",\n      \"amount_split_reversal_config\": {\n        \"on_full_refund\": false,\n        \"on_ach_return\": false\n      }\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"currency_code\": {\n        \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n      },\n      \"type\": \"<string>\",\n      \"rate\": \"<integer>\",\n      \"rate_cap\": \"<integer>\",\n      \"merchant_id\": \"<string>\",\n      \"amount_split_reversal_config\": {\n        \"on_full_refund\": false,\n        \"on_ach_return\": false\n      }\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"currency_code\": {\n        \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n      },\n      \"type\": \"<string>\",\n      \"rate\": \"<integer>\",\n      \"rate_cap\": \"<integer>\",\n      \"merchant_id\": \"<string>\",\n      \"amount_split_reversal_config\": {\n        \"on_full_refund\": false,\n        \"on_ach_return\": false\n      }\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"currency_code\": {\n        \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n      },\n      \"type\": \"<string>\",\n      \"rate\": \"<integer>\",\n      \"rate_cap\": \"<integer>\",\n      \"merchant_id\": \"<string>\",\n      \"amount_split_reversal_config\": {\n        \"on_full_refund\": false,\n        \"on_ach_return\": false\n      }\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"currency_code\": {\n        \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n      },\n      \"type\": \"<string>\",\n      \"rate\": \"<integer>\",\n      \"rate_cap\": \"<integer>\",\n      \"merchant_id\": \"<string>\",\n      \"amount_split_reversal_config\": {\n        \"on_full_refund\": false,\n        \"on_ach_return\": false\n      }\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"currency_code\": {\n        \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n      },\n      \"type\": \"<string>\",\n      \"rate\": \"<integer>\",\n      \"rate_cap\": \"<integer>\",\n      \"merchant_id\": \"<string>\",\n      \"amount_split_reversal_config\": {\n        \"on_full_refund\": false,\n        \"on_ach_return\": false\n      }\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"currency_code\": {\n        \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n      },\n      \"type\": \"<string>\",\n      \"rate\": \"<integer>\",\n      \"rate_cap\": \"<integer>\",\n      \"merchant_id\": \"<string>\",\n      \"amount_split_reversal_config\": {\n        \"on_full_refund\": false,\n        \"on_ach_return\": false\n      }\n    }\n  ],\n  \"billing_fees_reversal_config\": {\n    \"on_full_refund\": false,\n    \"on_ach_return\": false\n  },\n  \"merchant_billing\": {\n    \"rate\": \"<integer>\",\n    \"rate_cap\": \"<integer>\",\n    \"fee\": \"<integer>\",\n    \"currency_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n    }\n  },\n  \"allow_bin_lookup\": false,\n  \"allow_partial_authorization\": \"<boolean>\",\n  \"billing_contact\": {\n    \"name\": \"<string>\",\n    \"address_line_1\": \"<string>\",\n    \"address_line_2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"country\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\"\n  },\n  \"shipping_address\": {\n    \"name\": \"<string>\",\n    \"address_line_1\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/address_line_1 not found in the OpenAPI spec\"\n    },\n    \"address_line_2\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/address_line_2 not found in the OpenAPI spec\"\n    },\n    \"city\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/city not found in the OpenAPI spec\"\n    },\n    \"state\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/state not found in the OpenAPI spec\"\n    },\n    \"postal_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/postal_code not found in the OpenAPI spec\"\n    },\n    \"country\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/country not found in the OpenAPI spec\"\n    }\n  },\n  \"risk_data\": {\n    \"external_ref\": \"<string>\",\n    \"end_user_ref\": \"<string>\"\n  },\n  \"level_2_3\": {\n    \"tax_amount\": \"<integer>\",\n    \"shipping_amount\": \"<integer>\",\n    \"order_number\": \"<string>\",\n    \"shipping_country\": \"<string>\",\n    \"shipping_postal_code\": \"<string>\",\n    \"shipping_from_postal_code\": \"<string>\",\n    \"commodity_code\": \"<string>\",\n    \"line_items\": [\n      {\n        \"product_code\": \"<string>\",\n        \"commodity_code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"unit_amount\": 0,\n        \"unit_of_measure\": \"EACH\",\n        \"quantity\": \"<integer>\",\n        \"total_amount\": \"<integer>\",\n        \"tax_amount\": 0,\n        \"tax_rate\": 0,\n        \"discount_amount\": 0,\n        \"discount_rate\": 0\n      },\n      {\n        \"product_code\": \"<string>\",\n        \"commodity_code\": \"<string>\",\n        \"description\": \"<string>\",\n        \"unit_amount\": 0,\n        \"unit_of_measure\": \"EACH\",\n        \"quantity\": \"<integer>\",\n        \"total_amount\": \"<integer>\",\n        \"tax_amount\": 0,\n        \"tax_rate\": 0,\n        \"discount_amount\": 0,\n        \"discount_rate\": 0\n      }\n    ]\n  },\n  \"metadata\": {\n    \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n  },\n  \"method_metadata\": \"<object>\",\n  \"processing_mode\": \"AUTHORIZE_AND_CAPTURE\",\n  \"threeds_mode\": \"NONE\",\n  \"device_signature_mode\": \"NONE\",\n  \"ach_balance_check_mode\": \"NONE\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e54f2f41-da0d-4457-ba6d-8e6d42aaa920",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payin_configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"merchant_id\": \"mid_2DrDFJPutxE5AIbJSopAnqniEbr\",\n  \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\",\n  \"amount\": 100,\n  \"currency_code\": \"USD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"payin_config_id\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/threeds_attempt/properties/payin_config_id not found in the OpenAPI spec\"\n    },\n    \"payment_method_config_id\": \"pmc_2DrDPKzdQypRudLd8DhQKZX27dA\",\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"merchant\": {\n      \"id\": {\n        \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n      },\n      \"name\": \"Merchant\",\n      \"dba_name\": \"Merchant\"\n    },\n    \"idempotency_key\": {\n      \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D~1void/post/requestBody/content/application~1json/schema/properties/idempotency_key not found in the OpenAPI spec\"\n    },\n    \"amount\": 100,\n    \"currency_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n    },\n    \"amount_splits\": [\n      {\n        \"amount\": 3,\n        \"currency_code\": \"USD\",\n        \"type\": \"PLATFORM\"\n      }\n    ],\n    \"billing_fees_reversal_config\": {\n      \"on_full_refund\": false,\n      \"on_ach_return\": false\n    },\n    \"merchant_billing\": {\n      \"rate\": \"<integer>\",\n      \"rate_cap\": \"<integer>\",\n      \"fee\": \"<integer>\",\n      \"currency_code\": {\n        \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n      }\n    },\n    \"allow_bin_lookup\": false,\n    \"allow_partial_authorization\": \"<boolean>\",\n    \"billing_contact\": {\n      \"name\": \"Jane Smith\",\n      \"address_line_1\": \"123 Example Street\",\n      \"address_line_2\": \"Suite 123\",\n      \"city\": \"Atlanta\",\n      \"state\": \"GA\",\n      \"postal_code\": \"30305\",\n      \"country\": \"US\",\n      \"email\": \"janesmith@example.com\",\n      \"phone\": \"+14041234567\"\n    },\n    \"shipping_address\": {\n      \"name\": \"Jane Smith\",\n      \"address_line_1\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/address_line_1 not found in the OpenAPI spec\"\n      },\n      \"address_line_2\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/address_line_2 not found in the OpenAPI spec\"\n      },\n      \"city\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/city not found in the OpenAPI spec\"\n      },\n      \"state\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/state not found in the OpenAPI spec\"\n      },\n      \"postal_code\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/postal_code not found in the OpenAPI spec\"\n      },\n      \"country\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/country not found in the OpenAPI spec\"\n      }\n    },\n    \"risk_data\": {\n      \"external_ref\": \"<string>\",\n      \"end_user_ref\": \"<string>\"\n    },\n    \"level_2_3\": {\n      \"tax_amount\": \"<integer>\",\n      \"shipping_amount\": \"<integer>\",\n      \"order_number\": \"<string>\",\n      \"shipping_country\": \"US\",\n      \"shipping_postal_code\": \"30305\",\n      \"shipping_from_postal_code\": \"30305\",\n      \"commodity_code\": \"<string>\",\n      \"line_items\": [\n        {\n          \"product_code\": \"<string>\",\n          \"commodity_code\": \"<string>\",\n          \"description\": \"<string>\",\n          \"unit_amount\": 0,\n          \"unit_of_measure\": \"EACH\",\n          \"quantity\": \"<integer>\",\n          \"total_amount\": \"<integer>\",\n          \"tax_amount\": 0,\n          \"tax_rate\": 0,\n          \"discount_amount\": 0,\n          \"discount_rate\": 0\n        },\n        {\n          \"product_code\": \"<string>\",\n          \"commodity_code\": \"<string>\",\n          \"description\": \"<string>\",\n          \"unit_amount\": 0,\n          \"unit_of_measure\": \"EACH\",\n          \"quantity\": \"<integer>\",\n          \"total_amount\": \"<integer>\",\n          \"tax_amount\": 0,\n          \"tax_rate\": 0,\n          \"discount_amount\": 0,\n          \"discount_rate\": 0\n        }\n      ]\n    },\n    \"metadata\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    \"method_metadata\": {\n      \"key1\": \"value1\",\n      \"key2\": {\n        \"inner_key1\": \"inner_value1\"\n      }\n    },\n    \"processing_mode\": \"AUTHORIZE_AND_CAPTURE\",\n    \"threeds_mode\": \"NONE\",\n    \"device_signature_mode\": \"NONE\",\n    \"ach_balance_check_mode\": \"NONE\",\n    \"payin\": {\n      \"payin_id\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payin_id not found in the OpenAPI spec\"\n      }\n    }\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "302128dd-b00f-448f-a3cc-4f2398a80794",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payin_configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"merchant_id\": \"mid_2DrDFJPutxE5AIbJSopAnqniEbr\",\n  \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\",\n  \"amount\": 100,\n  \"currency_code\": \"USD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "388fe9a9-9b76-40e4-8dfc-92a8d746314b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payin_configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"merchant_id\": \"mid_2DrDFJPutxE5AIbJSopAnqniEbr\",\n  \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\",\n  \"amount\": 100,\n  \"currency_code\": \"USD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f2c29666-685c-4242-b0b7-81a1f49578b1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payin_configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"merchant_id\": \"mid_2DrDFJPutxE5AIbJSopAnqniEbr\",\n  \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\",\n  \"amount\": 100,\n  \"currency_code\": \"USD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "409bfdb4-4419-4183-843d-20fec4ec9fea",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payin_configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"merchant_id\": \"mid_2DrDFJPutxE5AIbJSopAnqniEbr\",\n  \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\",\n  \"amount\": 100,\n  \"currency_code\": \"USD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "df0b9481-0f35-431d-b934-5deedb12e831",
+          "name": "Get payin config",
+          "request": {
+            "name": "Get payin config",
+            "description": {
+              "content": "Get the configuration for a payin by the payin config ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payin_configs",
+                ":payin_config_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "payin_config_id",
+                  "description": "(Required) The unique payin config identifier.\n\nPrefix is \"cfg\" in production and \"sbx_cfg\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2db23e4d-33bc-4975-8f93-132927197376",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payin_configs",
+                    ":payin_config_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_config_id",
+                      "description": "(Required) The unique payin config identifier.\n\nPrefix is \"cfg\" in production and \"sbx_cfg\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"payin_config_id\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/threeds_attempt/properties/payin_config_id not found in the OpenAPI spec\"\n    },\n    \"payment_method_config_id\": \"pmc_2DrDPKzdQypRudLd8DhQKZX27dA\",\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"merchant\": {\n      \"id\": {\n        \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n      },\n      \"name\": \"Merchant\",\n      \"dba_name\": \"Merchant\"\n    },\n    \"idempotency_key\": {\n      \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D~1void/post/requestBody/content/application~1json/schema/properties/idempotency_key not found in the OpenAPI spec\"\n    },\n    \"amount\": 100,\n    \"currency_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n    },\n    \"amount_splits\": [\n      {\n        \"amount\": 3,\n        \"currency_code\": \"USD\",\n        \"type\": \"PLATFORM\"\n      }\n    ],\n    \"billing_fees_reversal_config\": {\n      \"on_full_refund\": false,\n      \"on_ach_return\": false\n    },\n    \"merchant_billing\": {\n      \"rate\": \"<integer>\",\n      \"rate_cap\": \"<integer>\",\n      \"fee\": \"<integer>\",\n      \"currency_code\": {\n        \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n      }\n    },\n    \"allow_bin_lookup\": false,\n    \"allow_partial_authorization\": \"<boolean>\",\n    \"billing_contact\": {\n      \"name\": \"Jane Smith\",\n      \"address_line_1\": \"123 Example Street\",\n      \"address_line_2\": \"Suite 123\",\n      \"city\": \"Atlanta\",\n      \"state\": \"GA\",\n      \"postal_code\": \"30305\",\n      \"country\": \"US\",\n      \"email\": \"janesmith@example.com\",\n      \"phone\": \"+14041234567\"\n    },\n    \"shipping_address\": {\n      \"name\": \"Jane Smith\",\n      \"address_line_1\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/address_line_1 not found in the OpenAPI spec\"\n      },\n      \"address_line_2\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/address_line_2 not found in the OpenAPI spec\"\n      },\n      \"city\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/city not found in the OpenAPI spec\"\n      },\n      \"state\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/state not found in the OpenAPI spec\"\n      },\n      \"postal_code\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/postal_code not found in the OpenAPI spec\"\n      },\n      \"country\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/requestBody/content/application~1json/schema/properties/billing_contact/properties/country not found in the OpenAPI spec\"\n      }\n    },\n    \"risk_data\": {\n      \"external_ref\": \"<string>\",\n      \"end_user_ref\": \"<string>\"\n    },\n    \"level_2_3\": {\n      \"tax_amount\": \"<integer>\",\n      \"shipping_amount\": \"<integer>\",\n      \"order_number\": \"<string>\",\n      \"shipping_country\": \"US\",\n      \"shipping_postal_code\": \"30305\",\n      \"shipping_from_postal_code\": \"30305\",\n      \"commodity_code\": \"<string>\",\n      \"line_items\": [\n        {\n          \"product_code\": \"<string>\",\n          \"commodity_code\": \"<string>\",\n          \"description\": \"<string>\",\n          \"unit_amount\": 0,\n          \"unit_of_measure\": \"EACH\",\n          \"quantity\": \"<integer>\",\n          \"total_amount\": \"<integer>\",\n          \"tax_amount\": 0,\n          \"tax_rate\": 0,\n          \"discount_amount\": 0,\n          \"discount_rate\": 0\n        },\n        {\n          \"product_code\": \"<string>\",\n          \"commodity_code\": \"<string>\",\n          \"description\": \"<string>\",\n          \"unit_amount\": 0,\n          \"unit_of_measure\": \"EACH\",\n          \"quantity\": \"<integer>\",\n          \"total_amount\": \"<integer>\",\n          \"tax_amount\": 0,\n          \"tax_rate\": 0,\n          \"discount_amount\": 0,\n          \"discount_rate\": 0\n        }\n      ]\n    },\n    \"metadata\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    \"method_metadata\": {\n      \"key1\": \"value1\",\n      \"key2\": {\n        \"inner_key1\": \"inner_value1\"\n      }\n    },\n    \"processing_mode\": \"AUTHORIZE_AND_CAPTURE\",\n    \"threeds_mode\": \"NONE\",\n    \"device_signature_mode\": \"NONE\",\n    \"ach_balance_check_mode\": \"NONE\",\n    \"payin\": {\n      \"payin_id\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payin_id not found in the OpenAPI spec\"\n      }\n    }\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d841ab74-9d2d-4271-b083-e39c52d6bdfd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payin_configs",
+                    ":payin_config_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_config_id",
+                      "description": "(Required) The unique payin config identifier.\n\nPrefix is \"cfg\" in production and \"sbx_cfg\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6973c2bf-5074-4849-a40f-c09bc2edb728",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payin_configs",
+                    ":payin_config_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_config_id",
+                      "description": "(Required) The unique payin config identifier.\n\nPrefix is \"cfg\" in production and \"sbx_cfg\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "67ade12d-21bf-415e-bb26-12251de7f3e0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payin_configs",
+                    ":payin_config_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_config_id",
+                      "description": "(Required) The unique payin config identifier.\n\nPrefix is \"cfg\" in production and \"sbx_cfg\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c956b069-7237-4911-8ec7-ca7a0c467da1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payin_configs",
+                    ":payin_config_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_config_id",
+                      "description": "(Required) The unique payin config identifier.\n\nPrefix is \"cfg\" in production and \"sbx_cfg\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7198098f-8d1e-4d30-88ce-3166a147fc71",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payin_configs",
+                    ":payin_config_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_config_id",
+                      "description": "(Required) The unique payin config identifier.\n\nPrefix is \"cfg\" in production and \"sbx_cfg\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.rainforestpay.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c3f93c40-f7c3-4b62-86b5-d08af2710ea9",
+    "name": "Authentication ACH Returns Payin Configs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This resource is used for authentication actions\n\nContact Support:\n Name: Rainforest\n Email: support@rainforestpay.com",
+      "type": "text/plain"
+    }
+  }
+}

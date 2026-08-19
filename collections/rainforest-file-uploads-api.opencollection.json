@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Authentication ACH Returns File Uploads API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "File Uploads",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get file upload",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.rainforestpay.com/v1/file_uploads/:file_upload_id",
+            "params": [
+              {
+                "name": "file_upload_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique file upload identifier. \n\nPrefix is \"fiu\" in production and \"sbx_fiu\" in sandbox."
+              }
+            ]
+          },
+          "docs": "Get file upload by the file upload ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

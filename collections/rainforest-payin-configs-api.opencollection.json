@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Authentication ACH Returns Payin Configs API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payin Configs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create payin config",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/payin_configs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create the configuration for a payin request. The configuration contains basic information about the payin such as the merchant, idempotency key, payin amount, currency, and optional information such as billing contact, level 2 and 3, and metadata. If the billing contact is provided in the payin config, then the web component will not prompt for this data. These fields include country and postal code for a CARD payment method and name for an ACH payment method. This allows a payin to be set up b"
+        },
+        {
+          "info": {
+            "name": "Get payin config",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.rainforestpay.com/v1/payin_configs/:payin_config_id",
+            "params": [
+              {
+                "name": "payin_config_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique payin config identifier.\n\nPrefix is \"cfg\" in production and \"sbx_cfg\" in sandbox."
+              }
+            ]
+          },
+          "docs": "Get the configuration for a payin by the payin config ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

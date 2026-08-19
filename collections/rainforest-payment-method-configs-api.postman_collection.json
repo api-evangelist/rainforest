@@ -1,0 +1,668 @@
+{
+  "item": [
+    {
+      "id": "fb9bae5a-fb68-435e-b29c-4d6eacb33073",
+      "name": "Payment Method Configs",
+      "description": {
+        "content": "Resources for payment method configs functions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "244dc3fd-b969-4ce5-9f94-61f37ccd509f",
+          "name": "Create payment method config",
+          "request": {
+            "name": "Create payment method config",
+            "description": {
+              "content": "Create the configuration to store a payment method. The configuration contains basic information about the payment method such as an idempotency key and optional information such as billing contact and metadata. If the billing contact is provided in the payment method config, then the web component will not prompt for this data. These fields include country and postal code for a CARD payment method and name for an ACH payment method. This allows a payment method to be set up before collecting the sensitive payment method details (i.e the card number) via the web component. The merchant status must be `ACTIVE` to create a payment method config.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment_method_configs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"platform_id\": \"<string>\",\n  \"billable_merchant_id\": {\n    \"value\": \"reference #/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data/properties/billable_merchant_id not found in the OpenAPI spec\"\n  },\n  \"originating_merchant_id\": \"<string>\",\n  \"platform\": {},\n  \"idempotency_key\": {\n    \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D~1void/post/requestBody/content/application~1json/schema/properties/idempotency_key not found in the OpenAPI spec\"\n  },\n  \"billing_contact\": {\n    \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n  },\n  \"metadata\": {\n    \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/method_metadata not found in the OpenAPI spec\"\n  },\n  \"allow_bin_lookup\": {\n    \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/allow_bin_lookup not found in the OpenAPI spec\"\n  },\n  \"device_signature_mode\": {\n    \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/device_signature_mode not found in the OpenAPI spec\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2432cc27-edae-4a80-ab53-66474625b402",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"platform_id\": \"plt_2DrDypu8n6IX7EVTjAnEd1dkTBa\",\n  \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"payment_method_config_id\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/payment_method_config_id not found in the OpenAPI spec\"\n    },\n    \"platform_id\": \"plt_2DrDypu8n6IX7EVTjAnEd1dkTBa\",\n    \"billable_merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data/properties/billable_merchant_id not found in the OpenAPI spec\"\n    },\n    \"originating_merchant_id\": \"mid_2DrDFJPutxE5AIbJSopAnqniEbr\",\n    \"platform\": {\n      \"platform_id\": \"plt_2DrDypu8n6IX7EVTjAnEd1dkTBa\",\n      \"name\": \"Platform Name\"\n    },\n    \"idempotency_key\": {\n      \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D~1void/post/requestBody/content/application~1json/schema/properties/idempotency_key not found in the OpenAPI spec\"\n    },\n    \"billing_contact\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n    },\n    \"metadata\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/method_metadata not found in the OpenAPI spec\"\n    },\n    \"payment_method\": {\n      \"payment_method_id\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id not found in the OpenAPI spec\"\n      }\n    },\n    \"allow_bin_lookup\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/allow_bin_lookup not found in the OpenAPI spec\"\n    },\n    \"device_signature_mode\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/device_signature_mode not found in the OpenAPI spec\"\n    },\n    \"created_at\": \"2022-01-01T12:00:00Z\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "373a9b37-8260-4c77-992b-df1deca36a85",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"platform_id\": \"plt_2DrDypu8n6IX7EVTjAnEd1dkTBa\",\n  \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0d658a74-8c7d-40f7-9e86-e39d824d8350",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"platform_id\": \"plt_2DrDypu8n6IX7EVTjAnEd1dkTBa\",\n  \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "11cbd182-f6b0-4d26-ac5a-6a563a9944f2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"platform_id\": \"plt_2DrDypu8n6IX7EVTjAnEd1dkTBa\",\n  \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4dccba86-b6ec-4966-8b6e-9de8d7fb8feb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"platform_id\": \"plt_2DrDypu8n6IX7EVTjAnEd1dkTBa\",\n  \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cfdfbcf4-1e91-45f9-9d01-220c22fb42ea",
+          "name": "Get payment method config",
+          "request": {
+            "name": "Get payment method config",
+            "description": {
+              "content": "Get the configuration for a payment method by the payment method config ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment_method_configs",
+                ":payment_method_config_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "payment_method_config_id",
+                  "description": "(Required) The unique payment method config identifier.\n\nPrefix is \"pmc\" in production and \"sbx_pmc\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "924a9cc7-3880-4d76-b462-6caa6c41ba55",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_configs",
+                    ":payment_method_config_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payment_method_config_id",
+                      "description": "(Required) The unique payment method config identifier.\n\nPrefix is \"pmc\" in production and \"sbx_pmc\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"payment_method_config_id\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/payment_method_config_id not found in the OpenAPI spec\"\n    },\n    \"platform_id\": \"plt_2DrDypu8n6IX7EVTjAnEd1dkTBa\",\n    \"billable_merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data/properties/billable_merchant_id not found in the OpenAPI spec\"\n    },\n    \"originating_merchant_id\": \"mid_2DrDFJPutxE5AIbJSopAnqniEbr\",\n    \"platform\": {\n      \"platform_id\": \"plt_2DrDypu8n6IX7EVTjAnEd1dkTBa\",\n      \"name\": \"Platform Name\"\n    },\n    \"idempotency_key\": {\n      \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D~1void/post/requestBody/content/application~1json/schema/properties/idempotency_key not found in the OpenAPI spec\"\n    },\n    \"billing_contact\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n    },\n    \"metadata\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/method_metadata not found in the OpenAPI spec\"\n    },\n    \"payment_method\": {\n      \"payment_method_id\": {\n        \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id not found in the OpenAPI spec\"\n      }\n    },\n    \"allow_bin_lookup\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/allow_bin_lookup not found in the OpenAPI spec\"\n    },\n    \"device_signature_mode\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/device_signature_mode not found in the OpenAPI spec\"\n    },\n    \"created_at\": \"2022-01-01T12:00:00Z\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2c17d853-890e-4f0e-8751-9ee816802d6b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_configs",
+                    ":payment_method_config_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payment_method_config_id",
+                      "description": "(Required) The unique payment method config identifier.\n\nPrefix is \"pmc\" in production and \"sbx_pmc\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eb68f303-0727-4cbb-bf6f-0b8ad3149ad7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_configs",
+                    ":payment_method_config_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payment_method_config_id",
+                      "description": "(Required) The unique payment method config identifier.\n\nPrefix is \"pmc\" in production and \"sbx_pmc\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "932b0ba0-d7ad-4189-9124-f88bd11d5e6b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_configs",
+                    ":payment_method_config_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payment_method_config_id",
+                      "description": "(Required) The unique payment method config identifier.\n\nPrefix is \"pmc\" in production and \"sbx_pmc\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "feb989fa-70ec-41a3-8678-290a9fce6dc7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_configs",
+                    ":payment_method_config_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payment_method_config_id",
+                      "description": "(Required) The unique payment method config identifier.\n\nPrefix is \"pmc\" in production and \"sbx_pmc\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2d5baba2-b223-49d8-9ce2-36a40825c255",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_method_configs",
+                    ":payment_method_config_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payment_method_config_id",
+                      "description": "(Required) The unique payment method config identifier.\n\nPrefix is \"pmc\" in production and \"sbx_pmc\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.rainforestpay.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ab1925e6-cb6e-4d9a-8bcd-5dbe0b1b88f6",
+    "name": "Authentication ACH Returns Payment Method Configs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This resource is used for authentication actions\n\nContact Support:\n Name: Rainforest\n Email: support@rainforestpay.com",
+      "type": "text/plain"
+    }
+  }
+}

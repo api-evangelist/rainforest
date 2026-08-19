@@ -1,0 +1,1121 @@
+{
+  "item": [
+    {
+      "id": "56e2b144-718c-4155-a21c-fcf96b74804f",
+      "name": "Deposit Methods",
+      "description": {
+        "content": "Resources for deposit method functions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ec438321-1273-4c4e-8efb-16d6aaa947e9",
+          "name": "Get deposit method",
+          "request": {
+            "name": "Get deposit method",
+            "description": {
+              "content": "Get deposit method details by the deposit method ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "deposit_methods",
+                ":deposit_method_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deposit_method_id",
+                  "description": "(Required) The unique deposit method identifier. \n\nPrefix is \"dmt\" in production and \"sbx_dmt\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "17c4f642-99d7-404b-86e7-bb8c2a77723e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposit_methods",
+                    ":deposit_method_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deposit_method_id",
+                      "description": "(Required) The unique deposit method identifier. \n\nPrefix is \"dmt\" in production and \"sbx_dmt\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"deposit_method_id\": \"dmt_2DrDRpyAdp5MPUJnrJmoZcMmtfF\",\n    \"deposit_method_config_id\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_method_configs/post/requestBody/content/application~1json/schema/properties/deposit_method_config_id not found in the OpenAPI spec\"\n    },\n    \"status\": \"ACTIVE\",\n    \"fingerprint\": \"52q5eKHLvCOfRlYiNZL4hltKmXEnTIT8\",\n    \"method_type\": \"ACH\",\n    \"ach\": {\n      \"account_number_last_4\": \"5678\",\n      \"routing_number\": \"stringstr\",\n      \"bank_name\": \"Wells Fargo Bank\",\n      \"account_type\": \"CHECKING\",\n      \"account_holder_type\": \"PERSONAL\"\n    },\n    \"plaid_ach\": {\n      \"account_number_last_4\": {\n        \"value\": \"reference #/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/ach/properties/account_number_last_4 not found in the OpenAPI spec\"\n      },\n      \"routing_number\": \"stringstr\",\n      \"bank_name\": {\n        \"value\": \"reference #/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/ach/properties/bank_name not found in the OpenAPI spec\"\n      },\n      \"account_type\": \"CHECKING\",\n      \"account_holder_type\": \"PERSONAL\"\n    },\n    \"billing_contact\": {\n      \"name\": \"Jane Smith\",\n      \"address_line_1\": \"123 Example Street\",\n      \"address_line_2\": \"Suite 123\",\n      \"city\": \"Atlanta\",\n      \"state\": \"GA\",\n      \"postal_code\": \"30305\",\n      \"country\": \"US\",\n      \"email\": \"janesmith@example.com\",\n      \"phone\": \"+14041234567\"\n    },\n    \"metadata\": {\n      \"key1\": \"value1\",\n      \"key2\": {\n        \"inner_key1\": \"inner_value1\"\n      }\n    },\n    \"replaces_deposit_method_id\": \"dmt_33FPts9UyEOKq91K2lAg9ZUM2ZS\",\n    \"replaced_by_deposit_method_id\": \"dmt_33FPts9UyEOKq91K2lAg9ZUM2ZS\",\n    \"replaced_at\": \"2022-01-01T12:00:00Z\",\n    \"replaced_reason_code\": \"C01\",\n    \"replaced_reason_desc\": \"string\",\n    \"created_at\": \"2022-01-01T12:00:00Z\",\n    \"updated_at\": \"2022-01-01T12:00:00Z\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "667dd468-6b48-4d72-9aa0-b224b5a657e6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposit_methods",
+                    ":deposit_method_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deposit_method_id",
+                      "description": "(Required) The unique deposit method identifier. \n\nPrefix is \"dmt\" in production and \"sbx_dmt\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "133c20c1-fdb1-456b-9dbd-da57c42d7451",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposit_methods",
+                    ":deposit_method_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deposit_method_id",
+                      "description": "(Required) The unique deposit method identifier. \n\nPrefix is \"dmt\" in production and \"sbx_dmt\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3b559de3-f88a-400e-9d0a-2922bb2271ee",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposit_methods",
+                    ":deposit_method_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deposit_method_id",
+                      "description": "(Required) The unique deposit method identifier. \n\nPrefix is \"dmt\" in production and \"sbx_dmt\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ac695837-fcdd-4fc2-83cb-16df5739f40b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposit_methods",
+                    ":deposit_method_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deposit_method_id",
+                      "description": "(Required) The unique deposit method identifier. \n\nPrefix is \"dmt\" in production and \"sbx_dmt\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "039dad22-8ed0-43ad-b2aa-1388bd2a82af",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposit_methods",
+                    ":deposit_method_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deposit_method_id",
+                      "description": "(Required) The unique deposit method identifier. \n\nPrefix is \"dmt\" in production and \"sbx_dmt\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4dc3896f-fe74-4637-b756-54a4f86635e6",
+          "name": "Create payin from deposit method",
+          "request": {
+            "name": "Create payin from deposit method",
+            "description": {
+              "content": "Create and process a payin using a payin configuration and a deposit method. The merchant status must be ACTIVE to create a payin.\n\nThe deposit method details (i.e bank account number and billing contact) will be duplicated to a payment method and a payin will process against the newly created payment method. Metadata, method metadata, and new billing contact details can be defined on the [Payin Config](ref:create_payin_config).\n\nThis endpoint requires Rainforest approval.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "deposit_methods",
+                ":deposit_method_id",
+                "payin"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deposit_method_id",
+                  "description": "(Required) The unique deposit method identifier. \n\nPrefix is \"dmt\" in production and \"sbx_dmt\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Rainforest-Api-Version",
+                "value": "2024-10-16",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"payin_config_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "103a1df0-aa40-4589-963f-d8f6b7147cc3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposit_methods",
+                    ":deposit_method_id",
+                    "payin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deposit_method_id",
+                      "description": "(Required) The unique deposit method identifier. \n\nPrefix is \"dmt\" in production and \"sbx_dmt\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payin_config_id\": \"cfg_2A4d6U0tMyovzTbVT1ktmRzdRaD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"payin_id\": \"pyi_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n    \"payin_config_id\": \"cfg_2DrDPKzdQypRudLd8DhQKZX27dA\",\n    \"merchant_id\": \"mid_2DrDFJPutxE5AIbJSopAnqniEbr\",\n    \"payment_method_id\": \"mtd_2DrDRpyAdp5MPUJnrJmoZcMmtfF\",\n    \"payment_method_config_id\": \"pmc_2DrDPKzdQypRudLd8DhQKZX27dA\",\n    \"device_registration_id\": \"dvc_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n    \"threeds_attempt_id\": \"tds_2DrDFJPutxE5AIbJSopAnqniEbr\",\n    \"idempotency_key\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_method_configs/post/requestBody/content/application~1json/schema/properties/idempotency_key not found in the OpenAPI spec\"\n    },\n    \"billing_type\": {\n      \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/billing_type not found in the OpenAPI spec\"\n    },\n    \"amount\": 100,\n    \"currency_code\": {\n      \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n    },\n    \"is_partially_authorized\": false,\n    \"authorized_amount\": 100,\n    \"captured_amount\": 100,\n    \"refundable_amount\": 100,\n    \"non_refundable_reason_code\": \"VOIDED\",\n    \"status\": \"PROCESSING\",\n    \"refusal_code\": \"null\",\n    \"refusal_desc\": \"Stolen card\",\n    \"detailed_refusal_code\": \"EXPIRED_CARD\",\n    \"detailed_refusal_desc\": \"Authorization expired\",\n    \"auth_code\": \"12345\",\n    \"avs_result_code\": \"Y\",\n    \"cvc_result_code\": \"M\",\n    \"amount_splits\": [\n      {\n        \"amount\": 3,\n        \"currency_code\": \"USD\",\n        \"type\": \"PLATFORM\"\n      }\n    ],\n    \"merchant_fees\": {\n      \"total_amount\": {\n        \"amount\": 2,\n        \"currency_code\": \"USD\"\n      }\n    },\n    \"method_type\": \"VENMO\",\n    \"card\": {\n      \"type\": \"PREPAID\",\n      \"brand\": \"MASTERCARD\",\n      \"brand_desc\": \"Mastercard\",\n      \"last_4\": \"4444\",\n      \"exp_month\": 12,\n      \"exp_year\": 2027\n    },\n    \"apple_pay\": {\n      \"type\": \"CREDIT\",\n      \"brand\": \"MASTERCARD\",\n      \"brand_desc\": \"Mastercard\",\n      \"description\": \"Visa 1234\"\n    },\n    \"ach\": {\n      \"account_number_last_4\": \"5678\",\n      \"routing_number\": \"stringstr\",\n      \"bank_name\": \"Wells Fargo Bank\",\n      \"account_type\": \"CHECKING\",\n      \"account_holder_type\": \"PERSONAL\"\n    },\n    \"plaid_ach\": {\n      \"account_number_last_4\": {\n        \"value\": \"reference #/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/ach/properties/account_number_last_4 not found in the OpenAPI spec\"\n      },\n      \"routing_number\": \"stringstr\",\n      \"bank_name\": {\n        \"value\": \"reference #/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/ach/properties/bank_name not found in the OpenAPI spec\"\n      },\n      \"account_type\": \"CHECKING\",\n      \"account_holder_type\": \"PERSONAL\"\n    },\n    \"paypal_wallet\": {\n      \"email\": \"janesmith@example.com\"\n    },\n    \"venmo\": {\n      \"email\": \"janesmith@example.com\"\n    },\n    \"paypal_paylater\": {\n      \"email\": \"janesmith@example.com\"\n    },\n    \"billing_contact\": {\n      \"name\": \"Jane Smith\",\n      \"address_line_1\": \"123 Example Street\",\n      \"address_line_2\": \"Suite 123\",\n      \"city\": \"Atlanta\",\n      \"state\": \"GA\",\n      \"postal_code\": \"30305\",\n      \"country\": \"US\",\n      \"email\": \"janesmith@example.com\",\n      \"phone\": \"+14041234567\"\n    },\n    \"device_data\": {\n      \"application_identifier\": \"A0000000031010\",\n      \"application_label\": \"VISA CREDIT\",\n      \"application_preferred_name\": \"VISA CREDIT\",\n      \"transaction_status_information\": \"E800\",\n      \"application_pan_sequence_number\": \"string\",\n      \"entry_type\": \"TAPPED\",\n      \"verification_type\": \"NONE\",\n      \"signature\": \"string\"\n    },\n    \"method_metadata\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_method_configs/post/requestBody/content/application~1json/schema/properties/metadata not found in the OpenAPI spec\"\n    },\n    \"metadata\": {\n      \"key1\": \"value1\",\n      \"key2\": {\n        \"inner_key1\": \"inner_value1\"\n      }\n    },\n    \"refunds\": [\n      {\n        \"refund_id\": \"rfd_2DrDU206kzAhclm1WrZbuwDERRk\",\n        \"payin_id\": \"pyi_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n        \"merchant_id\": \"mid_2DrDFJPutxE5AIbJSopAnqniEbr\",\n        \"billing_type\": {\n          \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/billing_type not found in the OpenAPI spec\"\n        },\n        \"amount\": 100,\n        \"currency_code\": {\n          \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n        },\n        \"merchant_fees\": {\n          \"total_amount\": {\n            \"amount\": 150,\n            \"currency_code\": \"USD\"\n          }\n        },\n        \"reason\": \"Requested by customer\",\n        \"status\": \"CREATED\",\n        \"refusal_code\": \"RISK_DECLINE\",\n        \"refusal_desc\": \"Fraudulent card\",\n        \"detailed_refusal_code\": \"DO_NOT_HONOR\",\n        \"detailed_refusal_desc\": \"Stolen card\",\n        \"non_voidable_reason_code\": \"VOIDED\",\n        \"auth_code\": \"12345\",\n        \"metadata\": {\n          \"key1\": \"value1\",\n          \"key2\": {\n            \"inner_key1\": \"inner_value1\"\n          }\n        },\n        \"amount_splits\": [\n          {\n            \"amount\": 3,\n            \"currency_code\": \"USD\",\n            \"type\": \"PLATFORM\"\n          }\n        ],\n        \"payin_billing_fees_reversal_config\": {\n          \"on_full_refund\": true\n        },\n        \"expected_deposit_date\": \"2022-01-01\",\n        \"ach_return\": {\n          \"ach_return_id\": \"ret_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n          \"merchant_id\": \"mid_2DrDFJPutxE5AIbJSopAnqniEbr\",\n          \"payin_id\": \"pyi_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n          \"refund_id\": \"rfd_2DrDU206kzAhclm1WrZbuwDERRk\",\n          \"status\": \"SUCCEEDED\",\n          \"return_code\": \"R75\",\n          \"return_desc\": \"string\",\n          \"amount\": 100,\n          \"currency_code\": {\n            \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n          },\n          \"amount_splits\": [\n            {\n              \"amount\": 3,\n              \"currency_code\": \"USD\",\n              \"type\": \"PLATFORM\"\n            }\n          ],\n          \"merchant_fees\": {\n            \"total_amount\": {\n              \"amount\": 2,\n              \"currency_code\": \"USD\"\n            }\n          },\n          \"metadata\": {\n            \"key1\": \"value1\",\n            \"key2\": {\n              \"inner_key1\": \"inner_value1\"\n            }\n          },\n          \"expected_deposit_date\": \"2022-01-01\",\n          \"source\": \"SYSTEM\",\n          \"source_desc\": \"string\",\n          \"created_at\": \"2022-01-01T12:00:00Z\",\n          \"updated_at\": \"2022-01-01T12:00:00Z\"\n        },\n        \"has_ach_return\": false,\n        \"source\": \"API_DIRECT\",\n        \"source_desc\": \"string\",\n        \"created_at\": \"2022-01-01T12:00:00Z\",\n        \"updated_at\": \"2022-01-01T12:00:00Z\"\n      },\n      {\n        \"refund_id\": \"rfd_2DrDU206kzAhclm1WrZbuwDERRk\",\n        \"payin_id\": \"pyi_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n        \"merchant_id\": \"mid_2DrDFJPutxE5AIbJSopAnqniEbr\",\n        \"billing_type\": {\n          \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/billing_type not found in the OpenAPI spec\"\n        },\n        \"amount\": 100,\n        \"currency_code\": {\n          \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n        },\n        \"merchant_fees\": {\n          \"total_amount\": {\n            \"amount\": 150,\n            \"currency_code\": \"USD\"\n          }\n        },\n        \"reason\": \"Requested by customer\",\n        \"status\": \"CREATED\",\n        \"refusal_code\": \"OVER_LIMIT\",\n        \"refusal_desc\": \"Unexpected payin token\",\n        \"detailed_refusal_code\": \"PROCESSING_ERROR\",\n        \"detailed_refusal_desc\": \"Invalid card security code\",\n        \"non_voidable_reason_code\": \"PAST_SETTLEMENT\",\n        \"auth_code\": \"12345\",\n        \"metadata\": {\n          \"key1\": \"value1\",\n          \"key2\": {\n            \"inner_key1\": \"inner_value1\"\n          }\n        },\n        \"amount_splits\": [\n          {\n            \"amount\": 3,\n            \"currency_code\": \"USD\",\n            \"type\": \"PLATFORM\"\n          }\n        ],\n        \"payin_billing_fees_reversal_config\": {\n          \"on_full_refund\": false\n        },\n        \"expected_deposit_date\": \"2022-01-01\",\n        \"ach_return\": {\n          \"ach_return_id\": \"ret_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n          \"merchant_id\": \"mid_2DrDFJPutxE5AIbJSopAnqniEbr\",\n          \"payin_id\": \"pyi_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n          \"refund_id\": \"rfd_2DrDU206kzAhclm1WrZbuwDERRk\",\n          \"status\": \"SUCCEEDED\",\n          \"return_code\": \"R12\",\n          \"return_desc\": \"string\",\n          \"amount\": 100,\n          \"currency_code\": {\n            \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n          },\n          \"amount_splits\": [\n            {\n              \"amount\": 3,\n              \"currency_code\": \"USD\",\n              \"type\": \"PLATFORM\"\n            }\n          ],\n          \"merchant_fees\": {\n            \"total_amount\": {\n              \"amount\": 2,\n              \"currency_code\": \"USD\"\n            }\n          },\n          \"metadata\": {\n            \"key1\": \"value1\",\n            \"key2\": {\n              \"inner_key1\": \"inner_value1\"\n            }\n          },\n          \"expected_deposit_date\": \"2022-01-01\",\n          \"source\": \"SYSTEM\",\n          \"source_desc\": \"string\",\n          \"created_at\": \"2022-01-01T12:00:00Z\",\n          \"updated_at\": \"2022-01-01T12:00:00Z\"\n        },\n        \"has_ach_return\": false,\n        \"source\": \"API_DIRECT\",\n        \"source_desc\": \"string\",\n        \"created_at\": \"2022-01-01T12:00:00Z\",\n        \"updated_at\": \"2022-01-01T12:00:00Z\"\n      }\n    ],\n    \"has_refunds\": true,\n    \"chargebacks\": [\n      {\n        \"chargeback_id\": \"chb_2TndahOgm9XTiidLB7csk0IsR9b\",\n        \"payin_id\": \"pyi_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n        \"merchant_id\": \"mid_2DrDFJPutxE5AIbJSopAnqniEbr\",\n        \"amount\": 5968,\n        \"currency_code\": {\n          \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n        },\n        \"status\": \"WON\",\n        \"metadata\": {\n          \"key1\": \"value1\",\n          \"key2\": {\n            \"inner_key1\": \"inner_value1\"\n          }\n        },\n        \"merchant_fees\": {\n          \"total_amount\": {\n            \"amount\": 2500,\n            \"currency_code\": \"USD\"\n          }\n        },\n        \"method_type\": \"PAYPAL_WALLET\",\n        \"card\": {\n          \"type\": \"DEBIT\",\n          \"brand\": \"MASTERCARD\",\n          \"brand_desc\": \"Mastercard\",\n          \"last_4\": \"4444\",\n          \"exp_month\": 12,\n          \"exp_year\": 2027\n        },\n        \"apple_pay\": {\n          \"type\": \"PREPAID\",\n          \"brand\": \"MASTERCARD\",\n          \"brand_desc\": \"Mastercard\",\n          \"description\": \"Visa 1234\"\n        },\n        \"paypal_wallet\": {\n          \"email\": \"janesmith@example.com\"\n        },\n        \"venmo\": {\n          \"email\": \"janesmith@example.com\"\n        },\n        \"paypal_paylater\": {\n          \"email\": \"janesmith@example.com\"\n        },\n        \"reason_code\": \"UNCATEGORIZED\",\n        \"reason_desc\": \"string\",\n        \"acquirer_ref\": \"string\",\n        \"due_date\": \"2022-01-01\",\n        \"chargeback_evidence\": [\n          {\n            \"chargeback_evidence_id\": \"cbe_2DrDU206kzAhclm1WrZbuwDERRk\",\n            \"chargeback_id\": \"chb_2TndahOgm9XTiidLB7csk0IsR9b\",\n            \"is_required\": false,\n            \"type\": \"3DS_VERIFICATION\",\n            \"type_desc\": \"string\",\n            \"file_upload_mode\": \"ALLOWED\",\n            \"file_upload_ids\": [\n              \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\",\n              \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\"\n            ],\n            \"response_mode\": \"NOT_ALLOWED\",\n            \"response\": \"string\",\n            \"created_at\": \"2022-01-01T12:00:00Z\",\n            \"updated_at\": \"2022-01-01T12:00:00Z\"\n          },\n          {\n            \"chargeback_evidence_id\": \"cbe_2DrDU206kzAhclm1WrZbuwDERRk\",\n            \"chargeback_id\": \"chb_2TndahOgm9XTiidLB7csk0IsR9b\",\n            \"is_required\": true,\n            \"type\": \"RECEIPT\",\n            \"type_desc\": \"string\",\n            \"file_upload_mode\": \"ALLOWED\",\n            \"file_upload_ids\": [\n              \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\",\n              \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\"\n            ],\n            \"response_mode\": \"NOT_ALLOWED\",\n            \"response\": \"string\",\n            \"created_at\": \"2022-01-01T12:00:00Z\",\n            \"updated_at\": \"2022-01-01T12:00:00Z\"\n          }\n        ],\n        \"validation_errors\": [\n          {\n            \"field\": \"string\",\n            \"code\": \"string\",\n            \"message\": \"string\"\n          },\n          {\n            \"field\": \"string\",\n            \"code\": \"string\",\n            \"message\": \"string\"\n          }\n        ],\n        \"expected_deposit_date\": \"2022-01-01\",\n        \"source\": \"SYSTEM\",\n        \"source_desc\": \"string\",\n        \"created_at\": \"2022-01-01T12:00:00Z\",\n        \"updated_at\": \"2022-01-01T12:00:00Z\"\n      },\n      {\n        \"chargeback_id\": \"chb_2TndahOgm9XTiidLB7csk0IsR9b\",\n        \"payin_id\": \"pyi_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n        \"merchant_id\": \"mid_2DrDFJPutxE5AIbJSopAnqniEbr\",\n        \"amount\": 4914,\n        \"currency_code\": {\n          \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n        },\n        \"status\": \"WON\",\n        \"metadata\": {\n          \"key1\": \"value1\",\n          \"key2\": {\n            \"inner_key1\": \"inner_value1\"\n          }\n        },\n        \"merchant_fees\": {\n          \"total_amount\": {\n            \"amount\": 2500,\n            \"currency_code\": \"USD\"\n          }\n        },\n        \"method_type\": \"CARD\",\n        \"card\": {\n          \"type\": \"DEBIT\",\n          \"brand\": \"MASTERCARD\",\n          \"brand_desc\": \"Mastercard\",\n          \"last_4\": \"4444\",\n          \"exp_month\": 12,\n          \"exp_year\": 2027\n        },\n        \"apple_pay\": {\n          \"type\": \"DEBIT\",\n          \"brand\": \"MASTERCARD\",\n          \"brand_desc\": \"Mastercard\",\n          \"description\": \"Visa 1234\"\n        },\n        \"paypal_wallet\": {\n          \"email\": \"janesmith@example.com\"\n        },\n        \"venmo\": {\n          \"email\": \"janesmith@example.com\"\n        },\n        \"paypal_paylater\": {\n          \"email\": \"janesmith@example.com\"\n        },\n        \"reason_code\": \"UNCATEGORIZED\",\n        \"reason_desc\": \"string\",\n        \"acquirer_ref\": \"string\",\n        \"due_date\": \"2022-01-01\",\n        \"chargeback_evidence\": [\n          {\n            \"chargeback_evidence_id\": \"cbe_2DrDU206kzAhclm1WrZbuwDERRk\",\n            \"chargeback_id\": \"chb_2TndahOgm9XTiidLB7csk0IsR9b\",\n            \"is_required\": true,\n            \"type\": \"TRANSACTION_HISTORY\",\n            \"type_desc\": \"string\",\n            \"file_upload_mode\": \"REQUIRED\",\n            \"file_upload_ids\": [\n              \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\",\n              \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\"\n            ],\n            \"response_mode\": \"REQUIRED\",\n            \"response\": \"string\",\n            \"created_at\": \"2022-01-01T12:00:00Z\",\n            \"updated_at\": \"2022-01-01T12:00:00Z\"\n          },\n          {\n            \"chargeback_evidence_id\": \"cbe_2DrDU206kzAhclm1WrZbuwDERRk\",\n            \"chargeback_id\": \"chb_2TndahOgm9XTiidLB7csk0IsR9b\",\n            \"is_required\": true,\n            \"type\": \"ADDITIONAL_HOUSEHOLD_SIGNER\",\n            \"type_desc\": \"string\",\n            \"file_upload_mode\": \"NOT_ALLOWED\",\n            \"file_upload_ids\": [\n              \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\",\n              \"fiu_2DrDU206kzAhclm1WrZbuwDERRk\"\n            ],\n            \"response_mode\": \"REQUIRED\",\n            \"response\": \"string\",\n            \"created_at\": \"2022-01-01T12:00:00Z\",\n            \"updated_at\": \"2022-01-01T12:00:00Z\"\n          }\n        ],\n        \"validation_errors\": [\n          {\n            \"field\": \"string\",\n            \"code\": \"string\",\n            \"message\": \"string\"\n          },\n          {\n            \"field\": \"string\",\n            \"code\": \"string\",\n            \"message\": \"string\"\n          }\n        ],\n        \"expected_deposit_date\": \"2022-01-01\",\n        \"source\": \"SYSTEM\",\n        \"source_desc\": \"string\",\n        \"created_at\": \"2022-01-01T12:00:00Z\",\n        \"updated_at\": \"2022-01-01T12:00:00Z\"\n      }\n    ],\n    \"has_chargebacks\": false,\n    \"ach_return\": {\n      \"ach_return_id\": \"ret_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n      \"merchant_id\": \"mid_2DrDFJPutxE5AIbJSopAnqniEbr\",\n      \"payin_id\": \"pyi_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n      \"refund_id\": \"rfd_2DrDU206kzAhclm1WrZbuwDERRk\",\n      \"status\": \"SUCCEEDED\",\n      \"return_code\": \"R80\",\n      \"return_desc\": \"string\",\n      \"amount\": 100,\n      \"currency_code\": {\n        \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n      },\n      \"amount_splits\": [\n        {\n          \"amount\": 3,\n          \"currency_code\": \"USD\",\n          \"type\": \"PLATFORM\"\n        }\n      ],\n      \"merchant_fees\": {\n        \"total_amount\": {\n          \"amount\": 2,\n          \"currency_code\": \"USD\"\n        }\n      },\n      \"metadata\": {\n        \"key1\": \"value1\",\n        \"key2\": {\n          \"inner_key1\": \"inner_value1\"\n        }\n      },\n      \"expected_deposit_date\": \"2022-01-01\",\n      \"source\": \"SYSTEM\",\n      \"source_desc\": \"string\",\n      \"created_at\": \"2022-01-01T12:00:00Z\",\n      \"updated_at\": \"2022-01-01T12:00:00Z\"\n    },\n    \"has_ach_return\": false,\n    \"payin_config\": {\n      \"payin_config_id\": \"cfg_2DrDPKzdQypRudLd8DhQKZX27dA\",\n      \"processing_mode\": \"AUTHORIZE_AND_CAPTURE\",\n      \"amount\": 100,\n      \"currency_code\": {\n        \"value\": \"reference #/paths/~1v1~1deposits~1%7Bdeposit_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/currency_code not found in the OpenAPI spec\"\n      },\n      \"amount_splits\": [\n        {\n          \"amount\": 3,\n          \"currency_code\": \"USD\",\n          \"type\": \"PLATFORM\"\n        }\n      ]\n    },\n    \"threeds_attempt\": {\n      \"threeds_attempt_id\": \"tds_2DrDFJPutxE5AIbJSopAnqniEbr\",\n      \"merchant_id\": \"mid_2DrDFJPutxE5AIbJSopAnqniEbr\",\n      \"payin_config_id\": \"cfg_2DrDPKzdQypRudLd8DhQKZX27dA\",\n      \"status\": \"CREATED\",\n      \"failed_reason_code\": \"MERCHANT_NOT_BOARDED\",\n      \"failed_reason_desc\": \"string\",\n      \"created_at\": \"2022-01-01T12:00:00Z\",\n      \"updated_at\": \"2022-01-01T12:00:00Z\",\n      \"fingerprinted_at\": \"2022-01-01T12:00:00Z\",\n      \"challenged_at\": \"2022-01-01T12:00:00Z\",\n      \"succeeded_at\": \"2022-01-01T12:00:00Z\",\n      \"failed_at\": \"2022-01-01T12:00:00Z\"\n    },\n    \"expected_deposit_date\": \"2022-01-01\",\n    \"source\": \"COMPONENT\",\n    \"source_desc\": \"string\",\n    \"created_at\": \"2022-01-01T12:00:00Z\",\n    \"updated_at\": \"2022-01-01T12:00:00Z\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "45a4db76-ef19-4222-8289-543aa4ea44f7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposit_methods",
+                    ":deposit_method_id",
+                    "payin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deposit_method_id",
+                      "description": "(Required) The unique deposit method identifier. \n\nPrefix is \"dmt\" in production and \"sbx_dmt\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payin_config_id\": \"cfg_2A4d6U0tMyovzTbVT1ktmRzdRaD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f6c4445e-afc4-438c-bc89-a741964dfa72",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposit_methods",
+                    ":deposit_method_id",
+                    "payin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deposit_method_id",
+                      "description": "(Required) The unique deposit method identifier. \n\nPrefix is \"dmt\" in production and \"sbx_dmt\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payin_config_id\": \"cfg_2A4d6U0tMyovzTbVT1ktmRzdRaD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "31bcb32e-ef56-4d26-adbe-b19cef8dedc8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposit_methods",
+                    ":deposit_method_id",
+                    "payin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deposit_method_id",
+                      "description": "(Required) The unique deposit method identifier. \n\nPrefix is \"dmt\" in production and \"sbx_dmt\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payin_config_id\": \"cfg_2A4d6U0tMyovzTbVT1ktmRzdRaD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "657c5636-6f78-4abe-956b-2a487f07ccfb",
+              "name": "Conflict on the requested resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposit_methods",
+                    ":deposit_method_id",
+                    "payin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deposit_method_id",
+                      "description": "(Required) The unique deposit method identifier. \n\nPrefix is \"dmt\" in production and \"sbx_dmt\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payin_config_id\": \"cfg_2A4d6U0tMyovzTbVT1ktmRzdRaD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"Conflict\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "00dfbd44-0ded-4c20-97e6-b187357f0589",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposit_methods",
+                    ":deposit_method_id",
+                    "payin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deposit_method_id",
+                      "description": "(Required) The unique deposit method identifier. \n\nPrefix is \"dmt\" in production and \"sbx_dmt\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payin_config_id\": \"cfg_2A4d6U0tMyovzTbVT1ktmRzdRaD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a90fe21d-4361-4cd8-9dde-a67fc114efdb",
+          "name": "Create deposit method",
+          "request": {
+            "name": "Create deposit method",
+            "description": {
+              "content": "Create a deposit method. A deposit method is assigned to a merchant and is where the merchant's funds for their payment activity will be deposited to.\n\nThis endpoint requires Rainforest approval. Platforms that meet all [requirements](doc:send-sensitive-data-via-api#requirements) and are approved by Rainforest can send the full bank account numbers to Rainforest via a direct API integration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "deposit_methods"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deposit_method_config_id\": \"<string>\",\n  \"method_type\": \"<string>\",\n  \"ach\": {\n    \"account_number\": \"<string>\",\n    \"routing_number\": \"<string>\",\n    \"account_type\": \"<string>\",\n    \"account_holder_type\": \"<string>\"\n  },\n  \"billing_contact\": {\n    \"name\": \"<string>\",\n    \"address_line_1\": \"<string>\",\n    \"address_line_2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"country\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4f6531b1-8075-45e1-b489-3d91dbbcb3c3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposit_methods"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deposit_method_config_id\": \"dmc_2TLhjntzSYJ8BuCaDxY22xP1Xb2\",\n  \"method_type\": \"<string>\",\n  \"ach\": {\n    \"account_number\": \"12345678\",\n    \"routing_number\": \"<string>\",\n    \"account_type\": \"CHECKING\",\n    \"account_holder_type\": \"PERSONAL\"\n  },\n  \"billing_contact\": {\n    \"name\": \"Jane Smith\",\n    \"address_line_1\": \"123 Example Street\",\n    \"address_line_2\": \"Suite 123\",\n    \"city\": \"Atlanta\",\n    \"state\": \"GA\",\n    \"postal_code\": \"30305\",\n    \"country\": \"US\",\n    \"email\": \"janesmith@example.com\",\n    \"phone\": \"+14041234567\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"deposit_method_id\": \"dmt_2DrDRpyAdp5MPUJnrJmoZcMmtfF\",\n    \"deposit_method_config_id\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_method_configs/post/requestBody/content/application~1json/schema/properties/deposit_method_config_id not found in the OpenAPI spec\"\n    },\n    \"status\": \"ACTIVE\",\n    \"fingerprint\": \"52q5eKHLvCOfRlYiNZL4hltKmXEnTIT8\",\n    \"method_type\": \"<string>\",\n    \"ach\": {\n      \"account_number_last_4\": \"5678\",\n      \"routing_number\": \"<string>\",\n      \"bank_name\": \"Wells Fargo Bank\",\n      \"account_type\": \"CHECKING\",\n      \"account_holder_type\": \"PERSONAL\"\n    },\n    \"plaid_ach\": {\n      \"account_number_last_4\": {\n        \"value\": \"reference #/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/ach/properties/account_number_last_4 not found in the OpenAPI spec\"\n      },\n      \"routing_number\": \"<string>\",\n      \"bank_name\": {\n        \"value\": \"reference #/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/ach/properties/bank_name not found in the OpenAPI spec\"\n      },\n      \"account_type\": \"CHECKING\",\n      \"account_holder_type\": \"PERSONAL\"\n    },\n    \"billing_contact\": {\n      \"name\": \"Jane Smith\",\n      \"address_line_1\": \"123 Example Street\",\n      \"address_line_2\": \"Suite 123\",\n      \"city\": \"Atlanta\",\n      \"state\": \"GA\",\n      \"postal_code\": \"30305\",\n      \"country\": \"US\",\n      \"email\": \"janesmith@example.com\",\n      \"phone\": \"+14041234567\"\n    },\n    \"metadata\": {\n      \"key1\": \"value1\",\n      \"key2\": {\n        \"inner_key1\": \"inner_value1\"\n      }\n    },\n    \"replaces_deposit_method_id\": \"dmt_33FPts9UyEOKq91K2lAg9ZUM2ZS\",\n    \"replaced_by_deposit_method_id\": \"dmt_33FPts9UyEOKq91K2lAg9ZUM2ZS\",\n    \"replaced_at\": \"2022-01-01T12:00:00Z\",\n    \"replaced_reason_code\": \"C06\",\n    \"replaced_reason_desc\": \"string\",\n    \"created_at\": \"2022-01-01T12:00:00Z\",\n    \"updated_at\": \"2022-01-01T12:00:00Z\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1deposits/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc27448b-6e73-4cd3-b2bb-67d12adbd842",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposit_methods"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deposit_method_config_id\": \"dmc_2TLhjntzSYJ8BuCaDxY22xP1Xb2\",\n  \"method_type\": \"<string>\",\n  \"ach\": {\n    \"account_number\": \"12345678\",\n    \"routing_number\": \"<string>\",\n    \"account_type\": \"CHECKING\",\n    \"account_holder_type\": \"PERSONAL\"\n  },\n  \"billing_contact\": {\n    \"name\": \"Jane Smith\",\n    \"address_line_1\": \"123 Example Street\",\n    \"address_line_2\": \"Suite 123\",\n    \"city\": \"Atlanta\",\n    \"state\": \"GA\",\n    \"postal_code\": \"30305\",\n    \"country\": \"US\",\n    \"email\": \"janesmith@example.com\",\n    \"phone\": \"+14041234567\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a4e3ca26-2c60-438c-94f0-15f88c6d0304",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposit_methods"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deposit_method_config_id\": \"dmc_2TLhjntzSYJ8BuCaDxY22xP1Xb2\",\n  \"method_type\": \"<string>\",\n  \"ach\": {\n    \"account_number\": \"12345678\",\n    \"routing_number\": \"<string>\",\n    \"account_type\": \"CHECKING\",\n    \"account_holder_type\": \"PERSONAL\"\n  },\n  \"billing_contact\": {\n    \"name\": \"Jane Smith\",\n    \"address_line_1\": \"123 Example Street\",\n    \"address_line_2\": \"Suite 123\",\n    \"city\": \"Atlanta\",\n    \"state\": \"GA\",\n    \"postal_code\": \"30305\",\n    \"country\": \"US\",\n    \"email\": \"janesmith@example.com\",\n    \"phone\": \"+14041234567\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f64a43c0-6cb9-426a-ba21-f2188a4ec00c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposit_methods"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deposit_method_config_id\": \"dmc_2TLhjntzSYJ8BuCaDxY22xP1Xb2\",\n  \"method_type\": \"<string>\",\n  \"ach\": {\n    \"account_number\": \"12345678\",\n    \"routing_number\": \"<string>\",\n    \"account_type\": \"CHECKING\",\n    \"account_holder_type\": \"PERSONAL\"\n  },\n  \"billing_contact\": {\n    \"name\": \"Jane Smith\",\n    \"address_line_1\": \"123 Example Street\",\n    \"address_line_2\": \"Suite 123\",\n    \"city\": \"Atlanta\",\n    \"state\": \"GA\",\n    \"postal_code\": \"30305\",\n    \"country\": \"US\",\n    \"email\": \"janesmith@example.com\",\n    \"phone\": \"+14041234567\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8f4c3b9c-d33b-4331-84c3-32397f12b9ee",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposit_methods"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deposit_method_config_id\": \"dmc_2TLhjntzSYJ8BuCaDxY22xP1Xb2\",\n  \"method_type\": \"<string>\",\n  \"ach\": {\n    \"account_number\": \"12345678\",\n    \"routing_number\": \"<string>\",\n    \"account_type\": \"CHECKING\",\n    \"account_holder_type\": \"PERSONAL\"\n  },\n  \"billing_contact\": {\n    \"name\": \"Jane Smith\",\n    \"address_line_1\": \"123 Example Street\",\n    \"address_line_2\": \"Suite 123\",\n    \"city\": \"Atlanta\",\n    \"state\": \"GA\",\n    \"postal_code\": \"30305\",\n    \"country\": \"US\",\n    \"email\": \"janesmith@example.com\",\n    \"phone\": \"+14041234567\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.rainforestpay.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "27192703-0016-4a98-b56d-0a568e9e8285",
+    "name": "Authentication ACH Returns Deposit Methods API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This resource is used for authentication actions\n\nContact Support:\n Name: Rainforest\n Email: support@rainforestpay.com",
+      "type": "text/plain"
+    }
+  }
+}

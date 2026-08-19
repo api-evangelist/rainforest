@@ -1,0 +1,3131 @@
+{
+  "item": [
+    {
+      "id": "d0d4c8df-fa1b-4d3b-a2b7-827c594a51b7",
+      "name": "Merchants",
+      "description": {
+        "content": "Resources for merchant functions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e4d377e8-f59d-4e9d-bcd7-64e974b9c708",
+          "name": "Create merchant",
+          "request": {
+            "name": "Create merchant",
+            "description": {
+              "content": "Create a merchant with an initial merchant application.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "merchants"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Rainforest-Api-Version",
+                "value": "2024-10-16",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": {\n    \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/name not found in the OpenAPI spec\"\n  },\n  \"billing_profile_id\": \"<string>\",\n  \"dba_name\": {\n    \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/dba_name not found in the OpenAPI spec\"\n  },\n  \"legal_name\": {\n    \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/legal_name not found in the OpenAPI spec\"\n  },\n  \"merchant_type\": {\n    \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/merchant_type not found in the OpenAPI spec\"\n  },\n  \"mcc\": {\n    \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/mcc not found in the OpenAPI spec\"\n  },\n  \"email\": {\n    \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/email not found in the OpenAPI spec\"\n  },\n  \"website\": {\n    \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/website not found in the OpenAPI spec\"\n  },\n  \"phone_number\": {\n    \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/phone_number not found in the OpenAPI spec\"\n  },\n  \"average_ticket\": {\n    \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/average_ticket not found in the OpenAPI spec\"\n  },\n  \"high_ticket\": {\n    \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/high_ticket not found in the OpenAPI spec\"\n  },\n  \"average_monthly_volume\": {\n    \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/average_monthly_volume not found in the OpenAPI spec\"\n  },\n  \"address\": {\n    \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/address not found in the OpenAPI spec\"\n  },\n  \"tax_id\": \"<string>\",\n  \"owner_1\": {\n    \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/owner_1 not found in the OpenAPI spec\"\n  },\n  \"owner_2\": {\n    \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/owner_1 not found in the OpenAPI spec\"\n  },\n  \"owner_3\": {\n    \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/owner_1 not found in the OpenAPI spec\"\n  },\n  \"owner_4\": {\n    \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/owner_1 not found in the OpenAPI spec\"\n  },\n  \"billing_frequency\": \"<string>\",\n  \"billing_type\": \"<string>\",\n  \"deposit_frequency\": \"<string>\",\n  \"card_release_delay_days\": \"<integer>\",\n  \"ach_release_delay_days\": \"<integer>\",\n  \"validated_ach_release_delay_days\": \"<integer>\",\n  \"balance_checked_ach_release_delay_days\": \"<integer>\",\n  \"accelerated_ach_release_delay_days\": \"<integer>\",\n  \"paypal_wallet_release_delay_days\": \"<integer>\",\n  \"venmo_release_delay_days\": \"<integer>\",\n  \"paypal_paylater_release_delay_days\": \"<integer>\",\n  \"available_deposit_method_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"deposit_routes\": {\n    \"key_0\": {\n      \"deposit_method_id\": \"<string>\"\n    },\n    \"key_1\": {\n      \"deposit_method_id\": \"<string>\"\n    },\n    \"key_2\": {\n      \"deposit_method_id\": \"<string>\"\n    },\n    \"key_3\": {\n      \"deposit_method_id\": \"<string>\"\n    }\n  },\n  \"additional_underwriting_data\": {\n    \"merchant\": {\n      \"start_date\": \"<date>\"\n    },\n    \"historic_payment_volume\": {\n      \"last_30_days\": \"<integer>\",\n      \"last_180_days\": \"<integer>\",\n      \"currency_code\": {\n        \"value\": \"reference #/paths/~1v1~1billing_profiles/post/requestBody/content/application~1json/schema/allOf/1/properties/currency_code not found in the OpenAPI spec\"\n      }\n    },\n    \"subscription\": {\n      \"amount\": \"<integer>\",\n      \"currency_code\": {\n        \"value\": \"reference #/paths/~1v1~1billing_profiles/post/requestBody/content/application~1json/schema/allOf/1/properties/currency_code not found in the OpenAPI spec\"\n      },\n      \"frequency\": \"<string>\"\n    }\n  },\n  \"card_account_updater_enabled\": \"<boolean>\",\n  \"reverse_payin_billing_fees_on_full_refund_enabled\": \"<boolean>\",\n  \"reverse_payin_billing_fees_on_ach_return_enabled\": \"<boolean>\",\n  \"no_owner_has_25_percent\": \"<boolean>\",\n  \"accelerated_ach_mode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1cffd318-0d69-457f-b5a4-ea51ffe2e75a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Merchant\",\n  \"legal_name\": \"Merchant, Inc.\",\n  \"merchant_type\": \"INDIVIDUAL\",\n  \"mcc\": \"4722\",\n  \"email\": \"merchant@example.com\",\n  \"website\": \"https://www.merchantwebsite.com\",\n  \"phone_number\": \"+14041234567\",\n  \"average_ticket\": 1000,\n  \"high_ticket\": 100000,\n  \"average_monthly_volume\": 1000000,\n  \"billing_contact\": {\n    \"address_line_1\": \"123 Example Street\",\n    \"address_line_2\": \"Suite 123\",\n    \"city\": \"Atlanta\",\n    \"state\": \"GA\",\n    \"postal_code\": \"30305\",\n    \"country\": \"US\"\n  },\n  \"owner_1\": {\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Smith\",\n    \"dob\": \"1990-10-10\",\n    \"encrypted_ssn\": \"SUPywcKsExepLYVgbqfHtOXc2NNM8LOTvsACcR5jkKaGr0lMRY/Lf5xflVXAl/9vuNWEnDy/jh7oDC9uH2j3+ha0uUPBSXz09FSSZ4Y2d71zBze6m+xKXJWTvX53dBZjpp6amuW7GnJNw6UAFEjjTe8Z4rm03T9IRd2VOdkyWl5fNTZyC7hXQpvfO/TjzzBc5T2N5k7KmnQovdQovGQhh4niKHIQntmM6lKyXWrFGlY9Erto30rJLJgR2BHhvEVnFo4EQ/pDWqLwjmqTErmDu4nGtNgpOJMBwQ7xl1Y+vLlT8ZzvPJebzntM/6r9f5TiHCty4Age3M7P6Cu0/Anmg7LrLP19lZf9n0j4cdXPl0sb1l7tjjnlcBUS7wPdrHl+tXGfOojGPB4tXgDzS6qY+cvns+ybEK/T3HU8tCUiPXgN6IpZ2b0GEpfh6BvG+q1Hov68UOkeUmF3keeKMuk1PLL5FcveXSifRnn+fyuAP4D4pBw8itMXsJ5SfkaLOuSXm95m+CP4vOUDAlkG0t0RJckSmG+Ttq2Lu9ZOREWkwDNZ2WyJtvlGa5mOPl7Vlf65U3LJYsZLEzNaeZoV1M6fp3RHZ3t6M3uXmpHDgsHwMSL8z9/ICwpXhBtj7PDeiOv34+dgF5YbLGaHtTkzUPsK8tadzAEyl5yhvVnJ26+Ysho=\",\n    \"ssn_last_4\": \"4321\",\n    \"email\": \"owner@example.com\",\n    \"phone_number\": \"+12342342345\",\n    \"address_line_1\": \"456 Example Street\",\n    \"address_line_2\": \"Suite 456\",\n    \"city\": \"Atlanta\",\n    \"state\": \"GA\",\n    \"postal_code\": \"30305\",\n    \"country\": \"US\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {\n    \"merchant_id\": \"mid_2DrDFJPutxE5AIbJSopAnqniEbr\",\n    \"merchant_status\": \"PENDING\",\n    \"merchant_application_id\": \"app_2DrD4yH7fH8aLIA7ZCnyVPcL9V9\",\n    \"merchant_application_status\": \"CREATED\",\n    \"additional_underwriting_data\": {\n      \"merchant\": {\n        \"start_date\": \"2022-01-01\"\n      },\n      \"historic_payment_volume\": {\n        \"last_30_days\": 100000,\n        \"last_180_days\": 600000,\n        \"currency_code\": {\n          \"value\": \"reference #/paths/~1v1~1billing_profiles/post/requestBody/content/application~1json/schema/allOf/1/properties/currency_code not found in the OpenAPI spec\"\n        }\n      },\n      \"subscription\": {\n        \"amount\": 10000,\n        \"currency_code\": {\n          \"value\": \"reference #/paths/~1v1~1billing_profiles/post/requestBody/content/application~1json/schema/allOf/1/properties/currency_code not found in the OpenAPI spec\"\n        },\n        \"frequency\": \"<string>\"\n      }\n    }\n  },\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96f1c9d2-8bab-433f-931e-bbbcea9bc10c",
+              "name": "Bad request, check for validation errors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Merchant\",\n  \"legal_name\": \"Merchant, Inc.\",\n  \"merchant_type\": \"INDIVIDUAL\",\n  \"mcc\": \"4722\",\n  \"email\": \"merchant@example.com\",\n  \"website\": \"https://www.merchantwebsite.com\",\n  \"phone_number\": \"+14041234567\",\n  \"average_ticket\": 1000,\n  \"high_ticket\": 100000,\n  \"average_monthly_volume\": 1000000,\n  \"billing_contact\": {\n    \"address_line_1\": \"123 Example Street\",\n    \"address_line_2\": \"Suite 123\",\n    \"city\": \"Atlanta\",\n    \"state\": \"GA\",\n    \"postal_code\": \"30305\",\n    \"country\": \"US\"\n  },\n  \"owner_1\": {\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Smith\",\n    \"dob\": \"1990-10-10\",\n    \"encrypted_ssn\": \"SUPywcKsExepLYVgbqfHtOXc2NNM8LOTvsACcR5jkKaGr0lMRY/Lf5xflVXAl/9vuNWEnDy/jh7oDC9uH2j3+ha0uUPBSXz09FSSZ4Y2d71zBze6m+xKXJWTvX53dBZjpp6amuW7GnJNw6UAFEjjTe8Z4rm03T9IRd2VOdkyWl5fNTZyC7hXQpvfO/TjzzBc5T2N5k7KmnQovdQovGQhh4niKHIQntmM6lKyXWrFGlY9Erto30rJLJgR2BHhvEVnFo4EQ/pDWqLwjmqTErmDu4nGtNgpOJMBwQ7xl1Y+vLlT8ZzvPJebzntM/6r9f5TiHCty4Age3M7P6Cu0/Anmg7LrLP19lZf9n0j4cdXPl0sb1l7tjjnlcBUS7wPdrHl+tXGfOojGPB4tXgDzS6qY+cvns+ybEK/T3HU8tCUiPXgN6IpZ2b0GEpfh6BvG+q1Hov68UOkeUmF3keeKMuk1PLL5FcveXSifRnn+fyuAP4D4pBw8itMXsJ5SfkaLOuSXm95m+CP4vOUDAlkG0t0RJckSmG+Ttq2Lu9ZOREWkwDNZ2WyJtvlGa5mOPl7Vlf65U3LJYsZLEzNaeZoV1M6fp3RHZ3t6M3uXmpHDgsHwMSL8z9/ICwpXhBtj7PDeiOv34+dgF5YbLGaHtTkzUPsK8tadzAEyl5yhvVnJ26+Ysho=\",\n    \"ssn_last_4\": \"4321\",\n    \"email\": \"owner@example.com\",\n    \"phone_number\": \"+12342342345\",\n    \"address_line_1\": \"456 Example Street\",\n    \"address_line_2\": \"Suite 456\",\n    \"city\": \"Atlanta\",\n    \"state\": \"GA\",\n    \"postal_code\": \"30305\",\n    \"country\": \"US\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"RequestBody\",\n      \"message\": \"Invalid request payload\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4439b8a1-bece-468f-b2e8-fa25c319346f",
+              "name": "Authorization missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Merchant\",\n  \"legal_name\": \"Merchant, Inc.\",\n  \"merchant_type\": \"INDIVIDUAL\",\n  \"mcc\": \"4722\",\n  \"email\": \"merchant@example.com\",\n  \"website\": \"https://www.merchantwebsite.com\",\n  \"phone_number\": \"+14041234567\",\n  \"average_ticket\": 1000,\n  \"high_ticket\": 100000,\n  \"average_monthly_volume\": 1000000,\n  \"billing_contact\": {\n    \"address_line_1\": \"123 Example Street\",\n    \"address_line_2\": \"Suite 123\",\n    \"city\": \"Atlanta\",\n    \"state\": \"GA\",\n    \"postal_code\": \"30305\",\n    \"country\": \"US\"\n  },\n  \"owner_1\": {\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Smith\",\n    \"dob\": \"1990-10-10\",\n    \"encrypted_ssn\": \"SUPywcKsExepLYVgbqfHtOXc2NNM8LOTvsACcR5jkKaGr0lMRY/Lf5xflVXAl/9vuNWEnDy/jh7oDC9uH2j3+ha0uUPBSXz09FSSZ4Y2d71zBze6m+xKXJWTvX53dBZjpp6amuW7GnJNw6UAFEjjTe8Z4rm03T9IRd2VOdkyWl5fNTZyC7hXQpvfO/TjzzBc5T2N5k7KmnQovdQovGQhh4niKHIQntmM6lKyXWrFGlY9Erto30rJLJgR2BHhvEVnFo4EQ/pDWqLwjmqTErmDu4nGtNgpOJMBwQ7xl1Y+vLlT8ZzvPJebzntM/6r9f5TiHCty4Age3M7P6Cu0/Anmg7LrLP19lZf9n0j4cdXPl0sb1l7tjjnlcBUS7wPdrHl+tXGfOojGPB4tXgDzS6qY+cvns+ybEK/T3HU8tCUiPXgN6IpZ2b0GEpfh6BvG+q1Hov68UOkeUmF3keeKMuk1PLL5FcveXSifRnn+fyuAP4D4pBw8itMXsJ5SfkaLOuSXm95m+CP4vOUDAlkG0t0RJckSmG+Ttq2Lu9ZOREWkwDNZ2WyJtvlGa5mOPl7Vlf65U3LJYsZLEzNaeZoV1M6fp3RHZ3t6M3uXmpHDgsHwMSL8z9/ICwpXhBtj7PDeiOv34+dgF5YbLGaHtTkzUPsK8tadzAEyl5yhvVnJ26+Ysho=\",\n    \"ssn_last_4\": \"4321\",\n    \"email\": \"owner@example.com\",\n    \"phone_number\": \"+12342342345\",\n    \"address_line_1\": \"456 Example Street\",\n    \"address_line_2\": \"Suite 456\",\n    \"city\": \"Atlanta\",\n    \"state\": \"GA\",\n    \"postal_code\": \"30305\",\n    \"country\": \"US\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthUnauthorized\",\n      \"message\": \"Unauthorized\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ee81ffca-7668-4172-b51f-f3f0cc4bd329",
+              "name": "Authorization insufficient for requested action.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Merchant\",\n  \"legal_name\": \"Merchant, Inc.\",\n  \"merchant_type\": \"INDIVIDUAL\",\n  \"mcc\": \"4722\",\n  \"email\": \"merchant@example.com\",\n  \"website\": \"https://www.merchantwebsite.com\",\n  \"phone_number\": \"+14041234567\",\n  \"average_ticket\": 1000,\n  \"high_ticket\": 100000,\n  \"average_monthly_volume\": 1000000,\n  \"billing_contact\": {\n    \"address_line_1\": \"123 Example Street\",\n    \"address_line_2\": \"Suite 123\",\n    \"city\": \"Atlanta\",\n    \"state\": \"GA\",\n    \"postal_code\": \"30305\",\n    \"country\": \"US\"\n  },\n  \"owner_1\": {\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Smith\",\n    \"dob\": \"1990-10-10\",\n    \"encrypted_ssn\": \"SUPywcKsExepLYVgbqfHtOXc2NNM8LOTvsACcR5jkKaGr0lMRY/Lf5xflVXAl/9vuNWEnDy/jh7oDC9uH2j3+ha0uUPBSXz09FSSZ4Y2d71zBze6m+xKXJWTvX53dBZjpp6amuW7GnJNw6UAFEjjTe8Z4rm03T9IRd2VOdkyWl5fNTZyC7hXQpvfO/TjzzBc5T2N5k7KmnQovdQovGQhh4niKHIQntmM6lKyXWrFGlY9Erto30rJLJgR2BHhvEVnFo4EQ/pDWqLwjmqTErmDu4nGtNgpOJMBwQ7xl1Y+vLlT8ZzvPJebzntM/6r9f5TiHCty4Age3M7P6Cu0/Anmg7LrLP19lZf9n0j4cdXPl0sb1l7tjjnlcBUS7wPdrHl+tXGfOojGPB4tXgDzS6qY+cvns+ybEK/T3HU8tCUiPXgN6IpZ2b0GEpfh6BvG+q1Hov68UOkeUmF3keeKMuk1PLL5FcveXSifRnn+fyuAP4D4pBw8itMXsJ5SfkaLOuSXm95m+CP4vOUDAlkG0t0RJckSmG+Ttq2Lu9ZOREWkwDNZ2WyJtvlGa5mOPl7Vlf65U3LJYsZLEzNaeZoV1M6fp3RHZ3t6M3uXmpHDgsHwMSL8z9/ICwpXhBtj7PDeiOv34+dgF5YbLGaHtTkzUPsK8tadzAEyl5yhvVnJ26+Ysho=\",\n    \"ssn_last_4\": \"4321\",\n    \"email\": \"owner@example.com\",\n    \"phone_number\": \"+12342342345\",\n    \"address_line_1\": \"456 Example Street\",\n    \"address_line_2\": \"Suite 456\",\n    \"city\": \"Atlanta\",\n    \"state\": \"GA\",\n    \"postal_code\": \"30305\",\n    \"country\": \"US\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthForbidden\",\n      \"message\": \"Forbidden\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "97a83ca2-4ee7-40f5-96c1-96dc47593862",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Merchant\",\n  \"legal_name\": \"Merchant, Inc.\",\n  \"merchant_type\": \"INDIVIDUAL\",\n  \"mcc\": \"4722\",\n  \"email\": \"merchant@example.com\",\n  \"website\": \"https://www.merchantwebsite.com\",\n  \"phone_number\": \"+14041234567\",\n  \"average_ticket\": 1000,\n  \"high_ticket\": 100000,\n  \"average_monthly_volume\": 1000000,\n  \"billing_contact\": {\n    \"address_line_1\": \"123 Example Street\",\n    \"address_line_2\": \"Suite 123\",\n    \"city\": \"Atlanta\",\n    \"state\": \"GA\",\n    \"postal_code\": \"30305\",\n    \"country\": \"US\"\n  },\n  \"owner_1\": {\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Smith\",\n    \"dob\": \"1990-10-10\",\n    \"encrypted_ssn\": \"SUPywcKsExepLYVgbqfHtOXc2NNM8LOTvsACcR5jkKaGr0lMRY/Lf5xflVXAl/9vuNWEnDy/jh7oDC9uH2j3+ha0uUPBSXz09FSSZ4Y2d71zBze6m+xKXJWTvX53dBZjpp6amuW7GnJNw6UAFEjjTe8Z4rm03T9IRd2VOdkyWl5fNTZyC7hXQpvfO/TjzzBc5T2N5k7KmnQovdQovGQhh4niKHIQntmM6lKyXWrFGlY9Erto30rJLJgR2BHhvEVnFo4EQ/pDWqLwjmqTErmDu4nGtNgpOJMBwQ7xl1Y+vLlT8ZzvPJebzntM/6r9f5TiHCty4Age3M7P6Cu0/Anmg7LrLP19lZf9n0j4cdXPl0sb1l7tjjnlcBUS7wPdrHl+tXGfOojGPB4tXgDzS6qY+cvns+ybEK/T3HU8tCUiPXgN6IpZ2b0GEpfh6BvG+q1Hov68UOkeUmF3keeKMuk1PLL5FcveXSifRnn+fyuAP4D4pBw8itMXsJ5SfkaLOuSXm95m+CP4vOUDAlkG0t0RJckSmG+Ttq2Lu9ZOREWkwDNZ2WyJtvlGa5mOPl7Vlf65U3LJYsZLEzNaeZoV1M6fp3RHZ3t6M3uXmpHDgsHwMSL8z9/ICwpXhBtj7PDeiOv34+dgF5YbLGaHtTkzUPsK8tadzAEyl5yhvVnJ26+Ysho=\",\n    \"ssn_last_4\": \"4321\",\n    \"email\": \"owner@example.com\",\n    \"phone_number\": \"+12342342345\",\n    \"address_line_1\": \"456 Example Street\",\n    \"address_line_2\": \"Suite 456\",\n    \"city\": \"Atlanta\",\n    \"state\": \"GA\",\n    \"postal_code\": \"30305\",\n    \"country\": \"US\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"EntityNotFound\",\n      \"message\": \"Resource not found\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca826de4-867f-4da3-b3b7-b875e8ba0e52",
+              "name": "Precondition failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Merchant\",\n  \"legal_name\": \"Merchant, Inc.\",\n  \"merchant_type\": \"INDIVIDUAL\",\n  \"mcc\": \"4722\",\n  \"email\": \"merchant@example.com\",\n  \"website\": \"https://www.merchantwebsite.com\",\n  \"phone_number\": \"+14041234567\",\n  \"average_ticket\": 1000,\n  \"high_ticket\": 100000,\n  \"average_monthly_volume\": 1000000,\n  \"billing_contact\": {\n    \"address_line_1\": \"123 Example Street\",\n    \"address_line_2\": \"Suite 123\",\n    \"city\": \"Atlanta\",\n    \"state\": \"GA\",\n    \"postal_code\": \"30305\",\n    \"country\": \"US\"\n  },\n  \"owner_1\": {\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Smith\",\n    \"dob\": \"1990-10-10\",\n    \"encrypted_ssn\": \"SUPywcKsExepLYVgbqfHtOXc2NNM8LOTvsACcR5jkKaGr0lMRY/Lf5xflVXAl/9vuNWEnDy/jh7oDC9uH2j3+ha0uUPBSXz09FSSZ4Y2d71zBze6m+xKXJWTvX53dBZjpp6amuW7GnJNw6UAFEjjTe8Z4rm03T9IRd2VOdkyWl5fNTZyC7hXQpvfO/TjzzBc5T2N5k7KmnQovdQovGQhh4niKHIQntmM6lKyXWrFGlY9Erto30rJLJgR2BHhvEVnFo4EQ/pDWqLwjmqTErmDu4nGtNgpOJMBwQ7xl1Y+vLlT8ZzvPJebzntM/6r9f5TiHCty4Age3M7P6Cu0/Anmg7LrLP19lZf9n0j4cdXPl0sb1l7tjjnlcBUS7wPdrHl+tXGfOojGPB4tXgDzS6qY+cvns+ybEK/T3HU8tCUiPXgN6IpZ2b0GEpfh6BvG+q1Hov68UOkeUmF3keeKMuk1PLL5FcveXSifRnn+fyuAP4D4pBw8itMXsJ5SfkaLOuSXm95m+CP4vOUDAlkG0t0RJckSmG+Ttq2Lu9ZOREWkwDNZ2WyJtvlGa5mOPl7Vlf65U3LJYsZLEzNaeZoV1M6fp3RHZ3t6M3uXmpHDgsHwMSL8z9/ICwpXhBtj7PDeiOv34+dgF5YbLGaHtTkzUPsK8tadzAEyl5yhvVnJ26+Ysho=\",\n    \"ssn_last_4\": \"4321\",\n    \"email\": \"owner@example.com\",\n    \"phone_number\": \"+12342342345\",\n    \"address_line_1\": \"456 Example Street\",\n    \"address_line_2\": \"Suite 456\",\n    \"city\": \"Atlanta\",\n    \"state\": \"GA\",\n    \"postal_code\": \"30305\",\n    \"country\": \"US\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"RequestBody\",\n      \"message\": \"Context on the precondition failure\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab46294e-d46c-4762-b4ac-753add256743",
+              "name": "Unexpected error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Merchant\",\n  \"legal_name\": \"Merchant, Inc.\",\n  \"merchant_type\": \"INDIVIDUAL\",\n  \"mcc\": \"4722\",\n  \"email\": \"merchant@example.com\",\n  \"website\": \"https://www.merchantwebsite.com\",\n  \"phone_number\": \"+14041234567\",\n  \"average_ticket\": 1000,\n  \"high_ticket\": 100000,\n  \"average_monthly_volume\": 1000000,\n  \"billing_contact\": {\n    \"address_line_1\": \"123 Example Street\",\n    \"address_line_2\": \"Suite 123\",\n    \"city\": \"Atlanta\",\n    \"state\": \"GA\",\n    \"postal_code\": \"30305\",\n    \"country\": \"US\"\n  },\n  \"owner_1\": {\n    \"first_name\": \"Jane\",\n    \"last_name\": \"Smith\",\n    \"dob\": \"1990-10-10\",\n    \"encrypted_ssn\": \"SUPywcKsExepLYVgbqfHtOXc2NNM8LOTvsACcR5jkKaGr0lMRY/Lf5xflVXAl/9vuNWEnDy/jh7oDC9uH2j3+ha0uUPBSXz09FSSZ4Y2d71zBze6m+xKXJWTvX53dBZjpp6amuW7GnJNw6UAFEjjTe8Z4rm03T9IRd2VOdkyWl5fNTZyC7hXQpvfO/TjzzBc5T2N5k7KmnQovdQovGQhh4niKHIQntmM6lKyXWrFGlY9Erto30rJLJgR2BHhvEVnFo4EQ/pDWqLwjmqTErmDu4nGtNgpOJMBwQ7xl1Y+vLlT8ZzvPJebzntM/6r9f5TiHCty4Age3M7P6Cu0/Anmg7LrLP19lZf9n0j4cdXPl0sb1l7tjjnlcBUS7wPdrHl+tXGfOojGPB4tXgDzS6qY+cvns+ybEK/T3HU8tCUiPXgN6IpZ2b0GEpfh6BvG+q1Hov68UOkeUmF3keeKMuk1PLL5FcveXSifRnn+fyuAP4D4pBw8itMXsJ5SfkaLOuSXm95m+CP4vOUDAlkG0t0RJckSmG+Ttq2Lu9ZOREWkwDNZ2WyJtvlGa5mOPl7Vlf65U3LJYsZLEzNaeZoV1M6fp3RHZ3t6M3uXmpHDgsHwMSL8z9/ICwpXhBtj7PDeiOv34+dgF5YbLGaHtTkzUPsK8tadzAEyl5yhvVnJ26+Ysho=\",\n    \"ssn_last_4\": \"4321\",\n    \"email\": \"owner@example.com\",\n    \"phone_number\": \"+12342342345\",\n    \"address_line_1\": \"456 Example Street\",\n    \"address_line_2\": \"Suite 456\",\n    \"city\": \"Atlanta\",\n    \"state\": \"GA\",\n    \"postal_code\": \"30305\",\n    \"country\": \"US\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"Internal Server Error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5e04a626-e57c-4d78-9b63-21cc62045384",
+          "name": "List merchants",
+          "request": {
+            "name": "List merchants",
+            "description": {
+              "content": "Query a list of merchants given optional search criteria.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "merchants"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "platform_id",
+                  "value": "<string>",
+                  "description": "The unique platform identifier. \n\nPrefix is \"plt\" in production and \"sbx_plt\" in sandbox."
+                },
+                {
+                  "disabled": false,
+                  "key": "merchant_id",
+                  "value": "<string>",
+                  "description": "The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Optional merchant name by which to search merchants."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "One or more merchant statuses to filter by. Provide parameter multiple times to filter by multiple merchant status types. \n\n`ACTIVE` `DEACTIVATED` `ONBOARDING` `PENDING` `SUSPENDED`"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "One or more merchant statuses to filter by. Provide parameter multiple times to filter by multiple merchant status types. \n\n`ACTIVE` `DEACTIVATED` `ONBOARDING` `PENDING` `SUSPENDED`"
+                },
+                {
+                  "disabled": false,
+                  "key": "billing_profile_id",
+                  "value": "<string>",
+                  "description": "Optional billing profile ID by which to search merchants."
+                },
+                {
+                  "disabled": false,
+                  "key": "billing_profile_id",
+                  "value": "<string>",
+                  "description": "Optional billing profile ID by which to search merchants."
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at.start",
+                  "value": "<dateTime>",
+                  "description": "Created on or after in UTC RFC 3339 format."
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at.end",
+                  "value": "<dateTime>",
+                  "description": "Created on or before in UTC RFC 3339 format."
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_at.start",
+                  "value": "<dateTime>",
+                  "description": "Last updated on or after in UTC RFC 3339 format."
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_at.end",
+                  "value": "<dateTime>",
+                  "description": "Last updated on or before in UTC RFC 3339 format."
+                },
+                {
+                  "disabled": false,
+                  "key": "latest_merchant_application_status",
+                  "value": "<string>",
+                  "description": "One or more merchant application statuses to filter by. Provide parameter multiple times to filter by multiple merchant application status types."
+                },
+                {
+                  "disabled": false,
+                  "key": "latest_merchant_application_status",
+                  "value": "<string>",
+                  "description": "One or more merchant application statuses to filter by. Provide parameter multiple times to filter by multiple merchant application status types."
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_at.start",
+                  "value": "<dateTime>",
+                  "description": "Last updated on or after in UTC RFC 3339 format."
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_at.end",
+                  "value": "<dateTime>",
+                  "description": "Last updated on or before in UTC RFC 3339 format."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "Optional value by which to sort the result set. Default sort by is created_at."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_order",
+                  "value": "<string>",
+                  "description": "Order in which to return the sorted results; ascending or descending. Default sort order is descending."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1000",
+                  "description": "The maximum number of results to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "The offset of the first result to return; zero-based."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Rainforest-Api-Version",
+                "value": "2024-10-16",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "12a900e2-57c6-44a4-9b9a-5270e01096ce",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "platform_id",
+                      "value": "plt_2DrDRpyAdp5MPUJnrJmoZcMmtfF"
+                    },
+                    {
+                      "key": "merchant_id",
+                      "value": "mid_2DrDFJPutxE5AIbJSopAnqniEbr"
+                    },
+                    {
+                      "key": "name",
+                      "value": "Merchant"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billing_profile_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billing_profile_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at.start",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "created_at.end",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "updated_at.start",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "updated_at.end",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "latest_merchant_application_status",
+                      "value": "CREATED"
+                    },
+                    {
+                      "key": "latest_merchant_application_status",
+                      "value": "CREATED"
+                    },
+                    {
+                      "key": "updated_at.start",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "updated_at.end",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {\n    \"total_results\": 7200,\n    \"results\": [\n      {\n        \"merchant_id\": \"mid_2DrDFJPutxE5AIbJSopAnqniEbr\",\n        \"platform_id\": {\n          \"value\": \"reference #/paths/~1v1~1billing_profiles/post/requestBody/content/application~1json/schema/allOf/0/properties/platform_id not found in the OpenAPI spec\"\n        },\n        \"billing_profile_id\": \"bpf_2DrDFJPutxE5AIbJSopAnqniEbr\",\n        \"billing_profile\": {\n          \"id\": {\n            \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/billing_profile_id not found in the OpenAPI spec\"\n          },\n          \"name\": \"Default\"\n        },\n        \"name\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/name not found in the OpenAPI spec\"\n        },\n        \"dba_name\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/dba_name not found in the OpenAPI spec\"\n        },\n        \"legal_name\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/legal_name not found in the OpenAPI spec\"\n        },\n        \"merchant_type\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/merchant_type not found in the OpenAPI spec\"\n        },\n        \"mcc\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/mcc not found in the OpenAPI spec\"\n        },\n        \"mcc_desc\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/mcc_desc not found in the OpenAPI spec\"\n        },\n        \"email\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/email not found in the OpenAPI spec\"\n        },\n        \"website\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/website not found in the OpenAPI spec\"\n        },\n        \"phone_number\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/phone_number not found in the OpenAPI spec\"\n        },\n        \"average_ticket\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/average_ticket not found in the OpenAPI spec\"\n        },\n        \"high_ticket\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/high_ticket not found in the OpenAPI spec\"\n        },\n        \"average_monthly_volume\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/average_monthly_volume not found in the OpenAPI spec\"\n        },\n        \"address\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/address not found in the OpenAPI spec\"\n        },\n        \"tax_id_last_4\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/tax_id_last_4 not found in the OpenAPI spec\"\n        },\n        \"owner_1\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/owner_1 not found in the OpenAPI spec\"\n        },\n        \"owner_2\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/owner_1 not found in the OpenAPI spec\"\n        },\n        \"owner_3\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/owner_1 not found in the OpenAPI spec\"\n        },\n        \"owner_4\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/owner_1 not found in the OpenAPI spec\"\n        },\n        \"billing_frequency\": \"<string>\",\n        \"billing_type\": \"<string>\",\n        \"deposit_frequency\": \"<string>\",\n        \"card_release_delay_days\": \"<integer>\",\n        \"ach_release_delay_days\": \"<integer>\",\n        \"validated_ach_release_delay_days\": \"<integer>\",\n        \"balance_checked_ach_release_delay_days\": \"<integer>\",\n        \"accelerated_ach_release_delay_days\": \"<integer>\",\n        \"paypal_wallet_release_delay_days\": \"<integer>\",\n        \"venmo_release_delay_days\": \"<integer>\",\n        \"paypal_paylater_release_delay_days\": \"<integer>\",\n        \"allowed_payment_method_types\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/allowed_payment_method_types not found in the OpenAPI spec\"\n        },\n        \"available_deposit_method_ids\": [\n          \"dmt_2DrDRpyAdp5MPUJnrJmoZcMmtfF\",\n          \"dmt_2DrDRpyAdp5MPUJnrJmoZcMmtfF\"\n        ],\n        \"deposit_routes\": {\n          \"key_0\": {\n            \"deposit_method_id\": \"dmt_2DrDRpyAdp5MPUJnrJmoZcMmtfF\"\n          },\n          \"key_1\": {\n            \"deposit_method_id\": \"dmt_2DrDRpyAdp5MPUJnrJmoZcMmtfF\"\n          }\n        },\n        \"status\": \"<string>\",\n        \"threeds_onboarding\": {\n          \"american_express\": {\n            \"card_brand\": \"MASTERCARD\",\n            \"card_brand_desc\": \"Mastercard\",\n            \"onboarded_at\": \"2022-01-01T12:00:00Z\",\n            \"verified_at\": \"2022-01-01T12:00:00Z\"\n          },\n          \"discover\": {\n            \"card_brand\": \"MASTERCARD\",\n            \"card_brand_desc\": \"Mastercard\",\n            \"onboarded_at\": \"2022-01-01T12:00:00Z\",\n            \"verified_at\": \"2022-01-01T12:00:00Z\"\n          },\n          \"mastercard\": {\n            \"card_brand\": \"MASTERCARD\",\n            \"card_brand_desc\": \"Mastercard\",\n            \"onboarded_at\": \"2022-01-01T12:00:00Z\",\n            \"verified_at\": \"2022-01-01T12:00:00Z\"\n          },\n          \"visa\": {\n            \"card_brand\": \"MASTERCARD\",\n            \"card_brand_desc\": \"Mastercard\",\n            \"onboarded_at\": \"2022-01-01T12:00:00Z\",\n            \"verified_at\": \"2022-01-01T12:00:00Z\"\n          }\n        },\n        \"card_account_updater_enabled\": \"<boolean>\",\n        \"accelerated_ach_mode\": \"DISABLED_BY_RAINFOREST\",\n        \"reverse_payin_billing_fees_on_full_refund_enabled\": \"<boolean>\",\n        \"reverse_payin_billing_fees_on_ach_return_enabled\": \"<boolean>\",\n        \"created_at\": \"2022-01-01T12:00:00Z\",\n        \"updated_at\": \"2022-01-01T12:00:00Z\",\n        \"latest_merchant_application\": {\n          \"merchant_application_id\": \"app_2DrD4yH7fH8aLIA7ZCnyVPcL9V9\",\n          \"status\": \"CREATED\",\n          \"updated_at\": \"2022-01-01T12:00:00Z\"\n        }\n      },\n      {\n        \"merchant_id\": \"mid_2DrDFJPutxE5AIbJSopAnqniEbr\",\n        \"platform_id\": {\n          \"value\": \"reference #/paths/~1v1~1billing_profiles/post/requestBody/content/application~1json/schema/allOf/0/properties/platform_id not found in the OpenAPI spec\"\n        },\n        \"billing_profile_id\": \"bpf_2DrDFJPutxE5AIbJSopAnqniEbr\",\n        \"billing_profile\": {\n          \"id\": {\n            \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/billing_profile_id not found in the OpenAPI spec\"\n          },\n          \"name\": \"Default\"\n        },\n        \"name\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/name not found in the OpenAPI spec\"\n        },\n        \"dba_name\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/dba_name not found in the OpenAPI spec\"\n        },\n        \"legal_name\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/legal_name not found in the OpenAPI spec\"\n        },\n        \"merchant_type\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/merchant_type not found in the OpenAPI spec\"\n        },\n        \"mcc\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/mcc not found in the OpenAPI spec\"\n        },\n        \"mcc_desc\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/mcc_desc not found in the OpenAPI spec\"\n        },\n        \"email\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/email not found in the OpenAPI spec\"\n        },\n        \"website\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/website not found in the OpenAPI spec\"\n        },\n        \"phone_number\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/phone_number not found in the OpenAPI spec\"\n        },\n        \"average_ticket\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/average_ticket not found in the OpenAPI spec\"\n        },\n        \"high_ticket\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/high_ticket not found in the OpenAPI spec\"\n        },\n        \"average_monthly_volume\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/average_monthly_volume not found in the OpenAPI spec\"\n        },\n        \"address\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/address not found in the OpenAPI spec\"\n        },\n        \"tax_id_last_4\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/tax_id_last_4 not found in the OpenAPI spec\"\n        },\n        \"owner_1\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/owner_1 not found in the OpenAPI spec\"\n        },\n        \"owner_2\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/owner_1 not found in the OpenAPI spec\"\n        },\n        \"owner_3\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/owner_1 not found in the OpenAPI spec\"\n        },\n        \"owner_4\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/owner_1 not found in the OpenAPI spec\"\n        },\n        \"billing_frequency\": \"<string>\",\n        \"billing_type\": \"<string>\",\n        \"deposit_frequency\": \"<string>\",\n        \"card_release_delay_days\": \"<integer>\",\n        \"ach_release_delay_days\": \"<integer>\",\n        \"validated_ach_release_delay_days\": \"<integer>\",\n        \"balance_checked_ach_release_delay_days\": \"<integer>\",\n        \"accelerated_ach_release_delay_days\": \"<integer>\",\n        \"paypal_wallet_release_delay_days\": \"<integer>\",\n        \"venmo_release_delay_days\": \"<integer>\",\n        \"paypal_paylater_release_delay_days\": \"<integer>\",\n        \"allowed_payment_method_types\": {\n          \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/allowed_payment_method_types not found in the OpenAPI spec\"\n        },\n        \"available_deposit_method_ids\": [\n          \"dmt_2DrDRpyAdp5MPUJnrJmoZcMmtfF\",\n          \"dmt_2DrDRpyAdp5MPUJnrJmoZcMmtfF\"\n        ],\n        \"deposit_routes\": {\n          \"key_0\": {\n            \"deposit_method_id\": \"dmt_2DrDRpyAdp5MPUJnrJmoZcMmtfF\"\n          }\n        },\n        \"status\": \"<string>\",\n        \"threeds_onboarding\": {\n          \"american_express\": {\n            \"card_brand\": \"MASTERCARD\",\n            \"card_brand_desc\": \"Mastercard\",\n            \"onboarded_at\": \"2022-01-01T12:00:00Z\",\n            \"verified_at\": \"2022-01-01T12:00:00Z\"\n          },\n          \"discover\": {\n            \"card_brand\": \"MASTERCARD\",\n            \"card_brand_desc\": \"Mastercard\",\n            \"onboarded_at\": \"2022-01-01T12:00:00Z\",\n            \"verified_at\": \"2022-01-01T12:00:00Z\"\n          },\n          \"mastercard\": {\n            \"card_brand\": \"MASTERCARD\",\n            \"card_brand_desc\": \"Mastercard\",\n            \"onboarded_at\": \"2022-01-01T12:00:00Z\",\n            \"verified_at\": \"2022-01-01T12:00:00Z\"\n          },\n          \"visa\": {\n            \"card_brand\": \"MASTERCARD\",\n            \"card_brand_desc\": \"Mastercard\",\n            \"onboarded_at\": \"2022-01-01T12:00:00Z\",\n            \"verified_at\": \"2022-01-01T12:00:00Z\"\n          }\n        },\n        \"card_account_updater_enabled\": \"<boolean>\",\n        \"accelerated_ach_mode\": \"DISABLED_BY_RAINFOREST\",\n        \"reverse_payin_billing_fees_on_full_refund_enabled\": \"<boolean>\",\n        \"reverse_payin_billing_fees_on_ach_return_enabled\": \"<boolean>\",\n        \"created_at\": \"2022-01-01T12:00:00Z\",\n        \"updated_at\": \"2022-01-01T12:00:00Z\",\n        \"latest_merchant_application\": {\n          \"merchant_application_id\": \"app_2DrD4yH7fH8aLIA7ZCnyVPcL9V9\",\n          \"status\": \"CREATED\",\n          \"updated_at\": \"2022-01-01T12:00:00Z\"\n        }\n      }\n    ]\n  },\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4bd9a4fe-ac3e-468b-a29e-e7c0a3719c17",
+              "name": "Bad request, check for validation errors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "platform_id",
+                      "value": "plt_2DrDRpyAdp5MPUJnrJmoZcMmtfF"
+                    },
+                    {
+                      "key": "merchant_id",
+                      "value": "mid_2DrDFJPutxE5AIbJSopAnqniEbr"
+                    },
+                    {
+                      "key": "name",
+                      "value": "Merchant"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billing_profile_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billing_profile_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at.start",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "created_at.end",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "updated_at.start",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "updated_at.end",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "latest_merchant_application_status",
+                      "value": "CREATED"
+                    },
+                    {
+                      "key": "latest_merchant_application_status",
+                      "value": "CREATED"
+                    },
+                    {
+                      "key": "updated_at.start",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "updated_at.end",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"RequestBody\",\n      \"message\": \"Invalid request payload\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e6abb2ea-934c-4599-bfdf-2435c188488f",
+              "name": "Authorization missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "platform_id",
+                      "value": "plt_2DrDRpyAdp5MPUJnrJmoZcMmtfF"
+                    },
+                    {
+                      "key": "merchant_id",
+                      "value": "mid_2DrDFJPutxE5AIbJSopAnqniEbr"
+                    },
+                    {
+                      "key": "name",
+                      "value": "Merchant"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billing_profile_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billing_profile_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at.start",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "created_at.end",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "updated_at.start",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "updated_at.end",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "latest_merchant_application_status",
+                      "value": "CREATED"
+                    },
+                    {
+                      "key": "latest_merchant_application_status",
+                      "value": "CREATED"
+                    },
+                    {
+                      "key": "updated_at.start",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "updated_at.end",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthUnauthorized\",\n      \"message\": \"Unauthorized\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5506a3c7-4295-4bbd-9570-cdbdaba1b1a2",
+              "name": "Authorization insufficient for requested action.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "platform_id",
+                      "value": "plt_2DrDRpyAdp5MPUJnrJmoZcMmtfF"
+                    },
+                    {
+                      "key": "merchant_id",
+                      "value": "mid_2DrDFJPutxE5AIbJSopAnqniEbr"
+                    },
+                    {
+                      "key": "name",
+                      "value": "Merchant"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billing_profile_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billing_profile_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at.start",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "created_at.end",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "updated_at.start",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "updated_at.end",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "latest_merchant_application_status",
+                      "value": "CREATED"
+                    },
+                    {
+                      "key": "latest_merchant_application_status",
+                      "value": "CREATED"
+                    },
+                    {
+                      "key": "updated_at.start",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "updated_at.end",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthForbidden\",\n      \"message\": \"Forbidden\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e2d09e9-802f-4e0f-baa9-41fa8b81b820",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "platform_id",
+                      "value": "plt_2DrDRpyAdp5MPUJnrJmoZcMmtfF"
+                    },
+                    {
+                      "key": "merchant_id",
+                      "value": "mid_2DrDFJPutxE5AIbJSopAnqniEbr"
+                    },
+                    {
+                      "key": "name",
+                      "value": "Merchant"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billing_profile_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billing_profile_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at.start",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "created_at.end",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "updated_at.start",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "updated_at.end",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "latest_merchant_application_status",
+                      "value": "CREATED"
+                    },
+                    {
+                      "key": "latest_merchant_application_status",
+                      "value": "CREATED"
+                    },
+                    {
+                      "key": "updated_at.start",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "updated_at.end",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"EntityNotFound\",\n      \"message\": \"Resource not found\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c040bd5-4716-4832-9667-534fcea33537",
+              "name": "Unexpected error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "platform_id",
+                      "value": "plt_2DrDRpyAdp5MPUJnrJmoZcMmtfF"
+                    },
+                    {
+                      "key": "merchant_id",
+                      "value": "mid_2DrDFJPutxE5AIbJSopAnqniEbr"
+                    },
+                    {
+                      "key": "name",
+                      "value": "Merchant"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billing_profile_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billing_profile_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at.start",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "created_at.end",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "updated_at.start",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "updated_at.end",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "latest_merchant_application_status",
+                      "value": "CREATED"
+                    },
+                    {
+                      "key": "latest_merchant_application_status",
+                      "value": "CREATED"
+                    },
+                    {
+                      "key": "updated_at.start",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "updated_at.end",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"Internal Server Error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "baf52530-edd2-4389-b4f6-786e7e663450",
+          "name": "Get merchant",
+          "request": {
+            "name": "Get merchant",
+            "description": {
+              "content": "Get merchant details by the merchant ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "merchants",
+                ":merchant_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Rainforest-Api-Version",
+                "value": "2024-10-16",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eca1c9f4-67f9-4818-8c06-6e3575082a74",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {\n    \"merchant_id\": \"mid_2DrDFJPutxE5AIbJSopAnqniEbr\",\n    \"platform_id\": {\n      \"value\": \"reference #/paths/~1v1~1billing_profiles/post/requestBody/content/application~1json/schema/allOf/0/properties/platform_id not found in the OpenAPI spec\"\n    },\n    \"billing_profile_id\": \"bpf_2DrDFJPutxE5AIbJSopAnqniEbr\",\n    \"billing_profile\": {\n      \"id\": {\n        \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/billing_profile_id not found in the OpenAPI spec\"\n      },\n      \"name\": \"Default\"\n    },\n    \"name\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/name not found in the OpenAPI spec\"\n    },\n    \"dba_name\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/dba_name not found in the OpenAPI spec\"\n    },\n    \"legal_name\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/legal_name not found in the OpenAPI spec\"\n    },\n    \"merchant_type\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/merchant_type not found in the OpenAPI spec\"\n    },\n    \"mcc\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/mcc not found in the OpenAPI spec\"\n    },\n    \"mcc_desc\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/mcc_desc not found in the OpenAPI spec\"\n    },\n    \"email\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/email not found in the OpenAPI spec\"\n    },\n    \"website\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/website not found in the OpenAPI spec\"\n    },\n    \"phone_number\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/phone_number not found in the OpenAPI spec\"\n    },\n    \"average_ticket\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/average_ticket not found in the OpenAPI spec\"\n    },\n    \"high_ticket\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/high_ticket not found in the OpenAPI spec\"\n    },\n    \"average_monthly_volume\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/average_monthly_volume not found in the OpenAPI spec\"\n    },\n    \"address\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/address not found in the OpenAPI spec\"\n    },\n    \"tax_id_last_4\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/tax_id_last_4 not found in the OpenAPI spec\"\n    },\n    \"owner_1\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/owner_1 not found in the OpenAPI spec\"\n    },\n    \"owner_2\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/owner_1 not found in the OpenAPI spec\"\n    },\n    \"owner_3\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/owner_1 not found in the OpenAPI spec\"\n    },\n    \"owner_4\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/owner_1 not found in the OpenAPI spec\"\n    },\n    \"billing_frequency\": \"<string>\",\n    \"billing_type\": \"<string>\",\n    \"deposit_frequency\": \"<string>\",\n    \"card_release_delay_days\": \"<integer>\",\n    \"ach_release_delay_days\": \"<integer>\",\n    \"validated_ach_release_delay_days\": \"<integer>\",\n    \"balance_checked_ach_release_delay_days\": \"<integer>\",\n    \"accelerated_ach_release_delay_days\": \"<integer>\",\n    \"paypal_wallet_release_delay_days\": \"<integer>\",\n    \"venmo_release_delay_days\": \"<integer>\",\n    \"paypal_paylater_release_delay_days\": \"<integer>\",\n    \"allowed_payment_method_types\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/allowed_payment_method_types not found in the OpenAPI spec\"\n    },\n    \"available_deposit_method_ids\": [\n      \"dmt_2DrDRpyAdp5MPUJnrJmoZcMmtfF\",\n      \"dmt_2DrDRpyAdp5MPUJnrJmoZcMmtfF\"\n    ],\n    \"deposit_routes\": {\n      \"key_0\": {\n        \"deposit_method_id\": \"dmt_2DrDRpyAdp5MPUJnrJmoZcMmtfF\"\n      },\n      \"key_1\": {\n        \"deposit_method_id\": \"dmt_2DrDRpyAdp5MPUJnrJmoZcMmtfF\"\n      }\n    },\n    \"status\": \"<string>\",\n    \"threeds_onboarding\": {\n      \"american_express\": {\n        \"card_brand\": \"MASTERCARD\",\n        \"card_brand_desc\": \"Mastercard\",\n        \"onboarded_at\": \"2022-01-01T12:00:00Z\",\n        \"verified_at\": \"2022-01-01T12:00:00Z\"\n      },\n      \"discover\": {\n        \"card_brand\": \"MASTERCARD\",\n        \"card_brand_desc\": \"Mastercard\",\n        \"onboarded_at\": \"2022-01-01T12:00:00Z\",\n        \"verified_at\": \"2022-01-01T12:00:00Z\"\n      },\n      \"mastercard\": {\n        \"card_brand\": \"MASTERCARD\",\n        \"card_brand_desc\": \"Mastercard\",\n        \"onboarded_at\": \"2022-01-01T12:00:00Z\",\n        \"verified_at\": \"2022-01-01T12:00:00Z\"\n      },\n      \"visa\": {\n        \"card_brand\": \"MASTERCARD\",\n        \"card_brand_desc\": \"Mastercard\",\n        \"onboarded_at\": \"2022-01-01T12:00:00Z\",\n        \"verified_at\": \"2022-01-01T12:00:00Z\"\n      }\n    },\n    \"card_account_updater_enabled\": \"<boolean>\",\n    \"accelerated_ach_mode\": \"DISABLED\",\n    \"reverse_payin_billing_fees_on_full_refund_enabled\": \"<boolean>\",\n    \"reverse_payin_billing_fees_on_ach_return_enabled\": \"<boolean>\",\n    \"created_at\": \"2022-01-01T12:00:00Z\",\n    \"updated_at\": \"2022-01-01T12:00:00Z\",\n    \"latest_merchant_application\": {\n      \"merchant_application_id\": \"app_2DrD4yH7fH8aLIA7ZCnyVPcL9V9\",\n      \"status\": \"CREATED\",\n      \"updated_at\": \"2022-01-01T12:00:00Z\"\n    }\n  },\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4de0fc47-8c9b-4148-ad2a-b48ffd49c392",
+              "name": "Bad request, check for validation errors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"RequestBody\",\n      \"message\": \"Invalid request payload\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0509dcd4-f0cc-4691-b382-45add985d360",
+              "name": "Authorization missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthUnauthorized\",\n      \"message\": \"Unauthorized\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9e2430ed-b670-46a3-9689-a5f38aa15248",
+              "name": "Authorization insufficient for requested action.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthForbidden\",\n      \"message\": \"Forbidden\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a13f4d0d-7d30-4ce7-9870-26df3ea64923",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"EntityNotFound\",\n      \"message\": \"Resource not found\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b3e1c49-f40c-48d3-8906-c1ddd36a4192",
+              "name": "Unexpected error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"Internal Server Error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fedb61de-ef91-4675-936d-116d6132c04e",
+          "name": "Update merchant",
+          "request": {
+            "name": "Update merchant",
+            "description": {
+              "content": "Update supported fields on a merchant. Only fields included in the payload will be updated. Omitted fields will not be updated. Merchant status must be `ACTIVE`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "merchants",
+                ":merchant_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Rainforest-Api-Version",
+                "value": "2024-10-16",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deposit_frequency\": \"<string>\",\n  \"card_release_delay_days\": \"<integer>\",\n  \"ach_release_delay_days\": \"<integer>\",\n  \"validated_ach_release_delay_days\": \"<integer>\",\n  \"balance_checked_ach_release_delay_days\": \"<integer>\",\n  \"paypal_wallet_release_delay_days\": \"<integer>\",\n  \"venmo_release_delay_days\": \"<integer>\",\n  \"paypal_paylater_release_delay_days\": \"<integer>\",\n  \"card_account_updater_enabled\": \"<boolean>\",\n  \"accelerated_ach_mode\": \"<string>\",\n  \"reverse_payin_billing_fees_on_full_refund_enabled\": \"<boolean>\",\n  \"reverse_payin_billing_fees_on_ach_return_enabled\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "58c0c50d-76e4-4603-95ff-6b2f3b888e63",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deposit_frequency\": \"<string>\",\n  \"card_release_delay_days\": \"<integer>\",\n  \"ach_release_delay_days\": \"<integer>\",\n  \"validated_ach_release_delay_days\": \"<integer>\",\n  \"balance_checked_ach_release_delay_days\": \"<integer>\",\n  \"paypal_wallet_release_delay_days\": \"<integer>\",\n  \"venmo_release_delay_days\": \"<integer>\",\n  \"paypal_paylater_release_delay_days\": \"<integer>\",\n  \"card_account_updater_enabled\": \"<boolean>\",\n  \"accelerated_ach_mode\": \"<string>\",\n  \"reverse_payin_billing_fees_on_full_refund_enabled\": \"<boolean>\",\n  \"reverse_payin_billing_fees_on_ach_return_enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {\n    \"merchant_id\": \"mid_2DrDFJPutxE5AIbJSopAnqniEbr\",\n    \"platform_id\": {\n      \"value\": \"reference #/paths/~1v1~1billing_profiles/post/requestBody/content/application~1json/schema/allOf/0/properties/platform_id not found in the OpenAPI spec\"\n    },\n    \"billing_profile_id\": \"bpf_2DrDFJPutxE5AIbJSopAnqniEbr\",\n    \"billing_profile\": {\n      \"id\": {\n        \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/billing_profile_id not found in the OpenAPI spec\"\n      },\n      \"name\": \"Default\"\n    },\n    \"name\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/name not found in the OpenAPI spec\"\n    },\n    \"dba_name\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/dba_name not found in the OpenAPI spec\"\n    },\n    \"legal_name\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/legal_name not found in the OpenAPI spec\"\n    },\n    \"merchant_type\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/merchant_type not found in the OpenAPI spec\"\n    },\n    \"mcc\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/mcc not found in the OpenAPI spec\"\n    },\n    \"mcc_desc\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/mcc_desc not found in the OpenAPI spec\"\n    },\n    \"email\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/email not found in the OpenAPI spec\"\n    },\n    \"website\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/website not found in the OpenAPI spec\"\n    },\n    \"phone_number\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/phone_number not found in the OpenAPI spec\"\n    },\n    \"average_ticket\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/average_ticket not found in the OpenAPI spec\"\n    },\n    \"high_ticket\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/high_ticket not found in the OpenAPI spec\"\n    },\n    \"average_monthly_volume\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/average_monthly_volume not found in the OpenAPI spec\"\n    },\n    \"address\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/address not found in the OpenAPI spec\"\n    },\n    \"tax_id_last_4\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/tax_id_last_4 not found in the OpenAPI spec\"\n    },\n    \"owner_1\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/owner_1 not found in the OpenAPI spec\"\n    },\n    \"owner_2\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/owner_1 not found in the OpenAPI spec\"\n    },\n    \"owner_3\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/owner_1 not found in the OpenAPI spec\"\n    },\n    \"owner_4\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/owner_1 not found in the OpenAPI spec\"\n    },\n    \"billing_frequency\": \"<string>\",\n    \"billing_type\": \"<string>\",\n    \"deposit_frequency\": \"<string>\",\n    \"card_release_delay_days\": \"<integer>\",\n    \"ach_release_delay_days\": \"<integer>\",\n    \"validated_ach_release_delay_days\": \"<integer>\",\n    \"balance_checked_ach_release_delay_days\": \"<integer>\",\n    \"accelerated_ach_release_delay_days\": \"<integer>\",\n    \"paypal_wallet_release_delay_days\": \"<integer>\",\n    \"venmo_release_delay_days\": \"<integer>\",\n    \"paypal_paylater_release_delay_days\": \"<integer>\",\n    \"allowed_payment_method_types\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/allowed_payment_method_types not found in the OpenAPI spec\"\n    },\n    \"available_deposit_method_ids\": [\n      \"dmt_2DrDRpyAdp5MPUJnrJmoZcMmtfF\",\n      \"dmt_2DrDRpyAdp5MPUJnrJmoZcMmtfF\"\n    ],\n    \"deposit_routes\": {\n      \"key_0\": {\n        \"deposit_method_id\": \"dmt_2DrDRpyAdp5MPUJnrJmoZcMmtfF\"\n      },\n      \"key_1\": {\n        \"deposit_method_id\": \"dmt_2DrDRpyAdp5MPUJnrJmoZcMmtfF\"\n      }\n    },\n    \"status\": \"<string>\",\n    \"threeds_onboarding\": {\n      \"american_express\": {\n        \"card_brand\": \"MASTERCARD\",\n        \"card_brand_desc\": \"Mastercard\",\n        \"onboarded_at\": \"2022-01-01T12:00:00Z\",\n        \"verified_at\": \"2022-01-01T12:00:00Z\"\n      },\n      \"discover\": {\n        \"card_brand\": \"MASTERCARD\",\n        \"card_brand_desc\": \"Mastercard\",\n        \"onboarded_at\": \"2022-01-01T12:00:00Z\",\n        \"verified_at\": \"2022-01-01T12:00:00Z\"\n      },\n      \"mastercard\": {\n        \"card_brand\": \"MASTERCARD\",\n        \"card_brand_desc\": \"Mastercard\",\n        \"onboarded_at\": \"2022-01-01T12:00:00Z\",\n        \"verified_at\": \"2022-01-01T12:00:00Z\"\n      },\n      \"visa\": {\n        \"card_brand\": \"MASTERCARD\",\n        \"card_brand_desc\": \"Mastercard\",\n        \"onboarded_at\": \"2022-01-01T12:00:00Z\",\n        \"verified_at\": \"2022-01-01T12:00:00Z\"\n      }\n    },\n    \"card_account_updater_enabled\": \"<boolean>\",\n    \"accelerated_ach_mode\": \"DISABLED\",\n    \"reverse_payin_billing_fees_on_full_refund_enabled\": \"<boolean>\",\n    \"reverse_payin_billing_fees_on_ach_return_enabled\": \"<boolean>\",\n    \"created_at\": \"2022-01-01T12:00:00Z\",\n    \"updated_at\": \"2022-01-01T12:00:00Z\",\n    \"latest_merchant_application\": {\n      \"merchant_application_id\": \"app_2DrD4yH7fH8aLIA7ZCnyVPcL9V9\",\n      \"status\": \"CREATED\",\n      \"updated_at\": \"2022-01-01T12:00:00Z\"\n    }\n  },\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "925d3190-388e-4c8f-a360-c390c34cd410",
+              "name": "Bad request, check for validation errors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deposit_frequency\": \"<string>\",\n  \"card_release_delay_days\": \"<integer>\",\n  \"ach_release_delay_days\": \"<integer>\",\n  \"validated_ach_release_delay_days\": \"<integer>\",\n  \"balance_checked_ach_release_delay_days\": \"<integer>\",\n  \"paypal_wallet_release_delay_days\": \"<integer>\",\n  \"venmo_release_delay_days\": \"<integer>\",\n  \"paypal_paylater_release_delay_days\": \"<integer>\",\n  \"card_account_updater_enabled\": \"<boolean>\",\n  \"accelerated_ach_mode\": \"<string>\",\n  \"reverse_payin_billing_fees_on_full_refund_enabled\": \"<boolean>\",\n  \"reverse_payin_billing_fees_on_ach_return_enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"RequestBody\",\n      \"message\": \"Invalid request payload\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e9f3ab1-2999-4108-b488-6e2780f743e5",
+              "name": "Authorization missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deposit_frequency\": \"<string>\",\n  \"card_release_delay_days\": \"<integer>\",\n  \"ach_release_delay_days\": \"<integer>\",\n  \"validated_ach_release_delay_days\": \"<integer>\",\n  \"balance_checked_ach_release_delay_days\": \"<integer>\",\n  \"paypal_wallet_release_delay_days\": \"<integer>\",\n  \"venmo_release_delay_days\": \"<integer>\",\n  \"paypal_paylater_release_delay_days\": \"<integer>\",\n  \"card_account_updater_enabled\": \"<boolean>\",\n  \"accelerated_ach_mode\": \"<string>\",\n  \"reverse_payin_billing_fees_on_full_refund_enabled\": \"<boolean>\",\n  \"reverse_payin_billing_fees_on_ach_return_enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthUnauthorized\",\n      \"message\": \"Unauthorized\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09516eb4-d9c5-4279-862b-521e5fa4f766",
+              "name": "Authorization insufficient for requested action.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deposit_frequency\": \"<string>\",\n  \"card_release_delay_days\": \"<integer>\",\n  \"ach_release_delay_days\": \"<integer>\",\n  \"validated_ach_release_delay_days\": \"<integer>\",\n  \"balance_checked_ach_release_delay_days\": \"<integer>\",\n  \"paypal_wallet_release_delay_days\": \"<integer>\",\n  \"venmo_release_delay_days\": \"<integer>\",\n  \"paypal_paylater_release_delay_days\": \"<integer>\",\n  \"card_account_updater_enabled\": \"<boolean>\",\n  \"accelerated_ach_mode\": \"<string>\",\n  \"reverse_payin_billing_fees_on_full_refund_enabled\": \"<boolean>\",\n  \"reverse_payin_billing_fees_on_ach_return_enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthForbidden\",\n      \"message\": \"Forbidden\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce2f2a9f-2088-4c5d-beec-503b22634426",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deposit_frequency\": \"<string>\",\n  \"card_release_delay_days\": \"<integer>\",\n  \"ach_release_delay_days\": \"<integer>\",\n  \"validated_ach_release_delay_days\": \"<integer>\",\n  \"balance_checked_ach_release_delay_days\": \"<integer>\",\n  \"paypal_wallet_release_delay_days\": \"<integer>\",\n  \"venmo_release_delay_days\": \"<integer>\",\n  \"paypal_paylater_release_delay_days\": \"<integer>\",\n  \"card_account_updater_enabled\": \"<boolean>\",\n  \"accelerated_ach_mode\": \"<string>\",\n  \"reverse_payin_billing_fees_on_full_refund_enabled\": \"<boolean>\",\n  \"reverse_payin_billing_fees_on_ach_return_enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"EntityNotFound\",\n      \"message\": \"Resource not found\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "16cd773d-db21-4f11-8a48-7bca4f659e73",
+              "name": "Unexpected error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deposit_frequency\": \"<string>\",\n  \"card_release_delay_days\": \"<integer>\",\n  \"ach_release_delay_days\": \"<integer>\",\n  \"validated_ach_release_delay_days\": \"<integer>\",\n  \"balance_checked_ach_release_delay_days\": \"<integer>\",\n  \"paypal_wallet_release_delay_days\": \"<integer>\",\n  \"venmo_release_delay_days\": \"<integer>\",\n  \"paypal_paylater_release_delay_days\": \"<integer>\",\n  \"card_account_updater_enabled\": \"<boolean>\",\n  \"accelerated_ach_mode\": \"<string>\",\n  \"reverse_payin_billing_fees_on_full_refund_enabled\": \"<boolean>\",\n  \"reverse_payin_billing_fees_on_ach_return_enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"Internal Server Error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4c09bea-318a-4837-a4bf-c84eeff4f665",
+          "name": "Cancel merchant",
+          "request": {
+            "name": "Cancel merchant",
+            "description": {
+              "content": "Cancel a pending merchant. Merchant status must be `PENDING`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "merchants",
+                ":merchant_id",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0b78885d-c0b9-4e37-b32e-c9c96d3f0819",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b31beb9a-2576-46a1-870c-c4ae456f726a",
+              "name": "Bad request, check for validation errors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"RequestBody\",\n      \"message\": \"Invalid request payload\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d6a8d1f2-9518-4110-be7a-f2e9df9b48cf",
+              "name": "Authorization missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthUnauthorized\",\n      \"message\": \"Unauthorized\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8494ca50-1d77-4201-af95-3188221ee868",
+              "name": "Authorization insufficient for requested action.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthForbidden\",\n      \"message\": \"Forbidden\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fca1a54b-587f-4073-a972-993e0dc2e7e5",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"EntityNotFound\",\n      \"message\": \"Resource not found\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "88df068d-7753-44d0-9072-c745031aa6c0",
+              "name": "Unexpected error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"Internal Server Error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ab0ec020-1490-410a-8c7f-53b4a037dd84",
+          "name": "Update merchant billing profile",
+          "request": {
+            "name": "Update merchant billing profile",
+            "description": {
+              "content": "Update the billing profile assigned to a merchant.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "merchants",
+                ":merchant_id",
+                "update_billing_profile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Rainforest-Api-Version",
+                "value": "2024-10-16",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"billing_profile_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "65edc08a-c450-4960-9762-e42b5f8e08ca",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id",
+                    "update_billing_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billing_profile_id\": \"bpf_2DrDFJPutxE5AIbJSopAnqniEbr\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {\n    \"merchant_id\": \"mid_2DrDFJPutxE5AIbJSopAnqniEbr\",\n    \"platform_id\": {\n      \"value\": \"reference #/paths/~1v1~1billing_profiles/post/requestBody/content/application~1json/schema/allOf/0/properties/platform_id not found in the OpenAPI spec\"\n    },\n    \"billing_profile_id\": \"bpf_2DrDFJPutxE5AIbJSopAnqniEbr\",\n    \"billing_profile\": {\n      \"id\": {\n        \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/billing_profile_id not found in the OpenAPI spec\"\n      },\n      \"name\": \"Default\"\n    },\n    \"name\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/name not found in the OpenAPI spec\"\n    },\n    \"dba_name\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/dba_name not found in the OpenAPI spec\"\n    },\n    \"legal_name\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/legal_name not found in the OpenAPI spec\"\n    },\n    \"merchant_type\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/merchant_type not found in the OpenAPI spec\"\n    },\n    \"mcc\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/mcc not found in the OpenAPI spec\"\n    },\n    \"mcc_desc\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/mcc_desc not found in the OpenAPI spec\"\n    },\n    \"email\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/email not found in the OpenAPI spec\"\n    },\n    \"website\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/website not found in the OpenAPI spec\"\n    },\n    \"phone_number\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/phone_number not found in the OpenAPI spec\"\n    },\n    \"average_ticket\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/average_ticket not found in the OpenAPI spec\"\n    },\n    \"high_ticket\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/high_ticket not found in the OpenAPI spec\"\n    },\n    \"average_monthly_volume\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/average_monthly_volume not found in the OpenAPI spec\"\n    },\n    \"address\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/address not found in the OpenAPI spec\"\n    },\n    \"tax_id_last_4\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/tax_id_last_4 not found in the OpenAPI spec\"\n    },\n    \"owner_1\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/owner_1 not found in the OpenAPI spec\"\n    },\n    \"owner_2\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/owner_1 not found in the OpenAPI spec\"\n    },\n    \"owner_3\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/owner_1 not found in the OpenAPI spec\"\n    },\n    \"owner_4\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/owner_1 not found in the OpenAPI spec\"\n    },\n    \"billing_frequency\": \"<string>\",\n    \"billing_type\": \"<string>\",\n    \"deposit_frequency\": \"<string>\",\n    \"card_release_delay_days\": \"<integer>\",\n    \"ach_release_delay_days\": \"<integer>\",\n    \"validated_ach_release_delay_days\": \"<integer>\",\n    \"balance_checked_ach_release_delay_days\": \"<integer>\",\n    \"accelerated_ach_release_delay_days\": \"<integer>\",\n    \"paypal_wallet_release_delay_days\": \"<integer>\",\n    \"venmo_release_delay_days\": \"<integer>\",\n    \"paypal_paylater_release_delay_days\": \"<integer>\",\n    \"allowed_payment_method_types\": {\n      \"value\": \"reference #/paths/~1v1~1merchants~1%7Bmerchant_id%7D~1applications~1%7Bmerchant_application_id%7D/patch/requestBody/content/application~1json/schema/properties/allowed_payment_method_types not found in the OpenAPI spec\"\n    },\n    \"available_deposit_method_ids\": [\n      \"dmt_2DrDRpyAdp5MPUJnrJmoZcMmtfF\",\n      \"dmt_2DrDRpyAdp5MPUJnrJmoZcMmtfF\"\n    ],\n    \"deposit_routes\": {\n      \"key_0\": {\n        \"deposit_method_id\": \"dmt_2DrDRpyAdp5MPUJnrJmoZcMmtfF\"\n      },\n      \"key_1\": {\n        \"deposit_method_id\": \"dmt_2DrDRpyAdp5MPUJnrJmoZcMmtfF\"\n      }\n    },\n    \"status\": \"<string>\",\n    \"threeds_onboarding\": {\n      \"american_express\": {\n        \"card_brand\": \"MASTERCARD\",\n        \"card_brand_desc\": \"Mastercard\",\n        \"onboarded_at\": \"2022-01-01T12:00:00Z\",\n        \"verified_at\": \"2022-01-01T12:00:00Z\"\n      },\n      \"discover\": {\n        \"card_brand\": \"MASTERCARD\",\n        \"card_brand_desc\": \"Mastercard\",\n        \"onboarded_at\": \"2022-01-01T12:00:00Z\",\n        \"verified_at\": \"2022-01-01T12:00:00Z\"\n      },\n      \"mastercard\": {\n        \"card_brand\": \"MASTERCARD\",\n        \"card_brand_desc\": \"Mastercard\",\n        \"onboarded_at\": \"2022-01-01T12:00:00Z\",\n        \"verified_at\": \"2022-01-01T12:00:00Z\"\n      },\n      \"visa\": {\n        \"card_brand\": \"MASTERCARD\",\n        \"card_brand_desc\": \"Mastercard\",\n        \"onboarded_at\": \"2022-01-01T12:00:00Z\",\n        \"verified_at\": \"2022-01-01T12:00:00Z\"\n      }\n    },\n    \"card_account_updater_enabled\": \"<boolean>\",\n    \"accelerated_ach_mode\": \"DISABLED\",\n    \"reverse_payin_billing_fees_on_full_refund_enabled\": \"<boolean>\",\n    \"reverse_payin_billing_fees_on_ach_return_enabled\": \"<boolean>\",\n    \"created_at\": \"2022-01-01T12:00:00Z\",\n    \"updated_at\": \"2022-01-01T12:00:00Z\",\n    \"latest_merchant_application\": {\n      \"merchant_application_id\": \"app_2DrD4yH7fH8aLIA7ZCnyVPcL9V9\",\n      \"status\": \"CREATED\",\n      \"updated_at\": \"2022-01-01T12:00:00Z\"\n    }\n  },\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03185c77-2d52-497f-b8aa-b8aa439c2f38",
+              "name": "Bad request, check for validation errors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id",
+                    "update_billing_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billing_profile_id\": \"bpf_2DrDFJPutxE5AIbJSopAnqniEbr\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"RequestBody\",\n      \"message\": \"Invalid request payload\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8fa0e3b4-393c-4607-bd91-a9105db6d5bf",
+              "name": "Authorization missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id",
+                    "update_billing_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billing_profile_id\": \"bpf_2DrDFJPutxE5AIbJSopAnqniEbr\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthUnauthorized\",\n      \"message\": \"Unauthorized\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "848ac441-cbe8-4ca7-b960-d002de2e6754",
+              "name": "Authorization insufficient for requested action.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id",
+                    "update_billing_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billing_profile_id\": \"bpf_2DrDFJPutxE5AIbJSopAnqniEbr\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthForbidden\",\n      \"message\": \"Forbidden\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49b845d2-6c5c-4cef-a5d8-d00b280ab0e8",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id",
+                    "update_billing_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billing_profile_id\": \"bpf_2DrDFJPutxE5AIbJSopAnqniEbr\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"EntityNotFound\",\n      \"message\": \"Resource not found\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "39dab705-86e4-44b8-88cc-bcca512bf6e4",
+              "name": "Unexpected error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id",
+                    "update_billing_profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"billing_profile_id\": \"bpf_2DrDFJPutxE5AIbJSopAnqniEbr\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"Internal Server Error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.rainforestpay.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3070f5fb-ebbf-4f88-b181-2479af3a6b0d",
+    "name": "Authentication ACH Returns Merchants API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This resource is used for authentication actions\n\nContact Support:\n Name: Rainforest\n Email: support@rainforestpay.com",
+      "type": "text/plain"
+    }
+  }
+}

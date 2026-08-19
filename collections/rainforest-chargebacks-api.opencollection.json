@@ -1,0 +1,133 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Authentication ACH Returns Chargebacks API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Chargebacks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get chargeback",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.rainforestpay.com/v1/chargebacks/:chargeback_id",
+            "params": [
+              {
+                "name": "chargeback_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique chargeback identifier. \n\nPrefix is \"chb\" in production and \"sbx_chb\" in sandbox."
+              }
+            ]
+          },
+          "docs": "Get chargeback details by the chargeback ID."
+        },
+        {
+          "info": {
+            "name": "Accept chargeback",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/chargebacks/:chargeback_id/accept"
+          },
+          "docs": "Accept a chargeback as a loss."
+        },
+        {
+          "info": {
+            "name": "Submit chargeback",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/chargebacks/:chargeback_id/submit"
+          },
+          "docs": "Respond to a chargeback by providing evidence."
+        },
+        {
+          "info": {
+            "name": "Update chargeback evidence",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.sandbox.rainforestpay.com/v1/chargebacks/:chargeback_id/evidence/:chargeback_evidence_id",
+            "params": [
+              {
+                "name": "chargeback_evidence_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique chargeback evidence identifier. \n\nPrefix is \"cbe\" in production and \"sbx_cbe\" in sandbox."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a chargeback's evidence. Only fields included in the payload will be updated. Omitted fields will be removed. To remove a field, set the value to `null`."
+        },
+        {
+          "info": {
+            "name": "Update chargeback metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.sandbox.rainforestpay.com/v1/chargebacks/:chargeback_id/metadata",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The body of the request is the JSON key-value metadata to patch to the chargeback. Do not use the metadata field to store sensitive or confidential data. \n\nUpdating metadata will merge with the existing metadata stored on the chargeback by the top-level key. If the same top-level key is passed in this request, it will overwrite the value stored on the chargeback. Only keys included in the payload will be updated. To remove a key, set the key's value to null. To remove all metadata pass null for "
+        },
+        {
+          "info": {
+            "name": "Simulate a chargeback against a payin",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/payins/:payin_id/simulate_chargeback",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Only available in the Rainforest sandbox environment.\n\nThe expected webhooks will be sent as the as the chargeback is created."
+        },
+        {
+          "info": {
+            "name": "Simulate chargeback status change",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/chargebacks/:chargeback_id/simulate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Only available in the Rainforest sandbox environment.\n\nSimulate the decision of the chargeback. The expected webhooks will be sent for the chargeback on status change."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

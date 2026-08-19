@@ -1,0 +1,2633 @@
+{
+  "item": [
+    {
+      "id": "410523da-0f56-4a9d-8891-8b6a271e0cb5",
+      "name": "Deposits",
+      "description": {
+        "content": "Resources for deposit functions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "97dca017-199c-43b0-ad0e-d424d767d3fe",
+          "name": "List deposits",
+          "request": {
+            "name": "List deposits",
+            "description": {
+              "content": "Query a list of deposits given a primary filter of platform or merchant id, then additional optional search criteria.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "deposits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "deposit_id",
+                  "value": "<string>",
+                  "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox."
+                },
+                {
+                  "disabled": false,
+                  "key": "platform_id",
+                  "value": "<string>",
+                  "description": "The unique platform identifier. \n\nPrefix is \"plt\" in production and \"sbx_plt\" in sandbox."
+                },
+                {
+                  "disabled": false,
+                  "key": "merchant_id",
+                  "value": "<string>",
+                  "description": "The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "One or more deposit statuses to filter by. Provide parameter multiple times to filter by multiple deposit status types. \n\n`PROCESSING` `SUCCEEDED` `IN_REVIEW` `FAILED`"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "One or more deposit statuses to filter by. Provide parameter multiple times to filter by multiple deposit status types. \n\n`PROCESSING` `SUCCEEDED` `IN_REVIEW` `FAILED`"
+                },
+                {
+                  "disabled": false,
+                  "key": "deposit_type",
+                  "value": "<string>",
+                  "description": "Deposit type to filter by. Provide parameter multiple times to filter by multiple deposit types.\n\n* `BILLING`: deposit for the payment processing fees, applicable only for merchants on gross billing.\n* `FUNDING`: deposit for the payment volume, if the merchant is on net billing, then the FUNDING deposit will be net any payment processing fees."
+                },
+                {
+                  "disabled": false,
+                  "key": "deposit_type",
+                  "value": "<string>",
+                  "description": "Deposit type to filter by. Provide parameter multiple times to filter by multiple deposit types.\n\n* `BILLING`: deposit for the payment processing fees, applicable only for merchants on gross billing.\n* `FUNDING`: deposit for the payment volume, if the merchant is on net billing, then the FUNDING deposit will be net any payment processing fees."
+                },
+                {
+                  "disabled": false,
+                  "key": "metadata",
+                  "value": "<string>",
+                  "description": "Filter by metadata stored on the entity by passing a map of key-value pairs to filter on. The `key` should be valid JSONPath to a corresponding metadata key.\n\nFor example, an entity created with the following metadata\n```\n\"account\": {\n  \"id\": \"acct_123\"\n}\n```\ncould have the following metadata filter to find entities with the metadata account id: \n```\n?metadata[$.account.id]=acct_123\n```"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at.start",
+                  "value": "<dateTime>",
+                  "description": "Created on or after in UTC RFC 3339 format."
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at.end",
+                  "value": "<dateTime>",
+                  "description": "Created on or before in UTC RFC 3339 format."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "Optional value by which to sort the result set. Default sort by is created_at."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_order",
+                  "value": "<string>",
+                  "description": "Order in which to return the sorted results; ascending or descending. Default sort order is descending."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1000",
+                  "description": "The maximum number of results to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "The offset of the first result to return; zero-based."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Rainforest-Api-Version",
+                "value": "2024-10-16",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4f7fee2b-6a5e-49e8-8030-f7b125dcf1e5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deposit_id",
+                      "value": "dep_2DrDKk5NIMbpuNGqm109SkpGDHh"
+                    },
+                    {
+                      "key": "platform_id",
+                      "value": "plt_2DrDRpyAdp5MPUJnrJmoZcMmtfF"
+                    },
+                    {
+                      "key": "merchant_id",
+                      "value": "mid_2DrDFJPutxE5AIbJSopAnqniEbr"
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSING"
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSING"
+                    },
+                    {
+                      "key": "deposit_type",
+                      "value": "FUNDING"
+                    },
+                    {
+                      "key": "deposit_type",
+                      "value": "FUNDING"
+                    },
+                    {
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at.start",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "created_at.end",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {\n    \"total_results\": 8949,\n    \"results\": [\n      {\n        \"deposit_id\": \"dep_2DrDU206kzAhclm1WrZbuwDERRk\",\n        \"platform_id\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_method_configs/post/requestBody/content/application~1json/schema/properties/platform_id not found in the OpenAPI spec\"\n        },\n        \"merchant_id\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_id not found in the OpenAPI spec\"\n        },\n        \"status\": \"PROCESSING\",\n        \"deposit_type\": \"FUNDING\",\n        \"billing_type\": \"NET\",\n        \"amount\": 2867,\n        \"currency_code\": \"USD\",\n        \"deposit_fee_amount\": {\n          \"amount\": 6328,\n          \"currency_code\": \"USD\"\n        },\n        \"total_payment_billing_fees_amount\": {\n          \"amount\": 2948,\n          \"currency_code\": \"USD\"\n        },\n        \"total_split_remainder_amount\": {\n          \"amount\": 4020,\n          \"currency_code\": \"USD\"\n        },\n        \"total_fees_amount\": {\n          \"amount\": 3849,\n          \"currency_code\": \"USD\"\n        },\n        \"gross_amount\": {\n          \"amount\": 8961,\n          \"currency_code\": \"USD\"\n        },\n        \"payment_totals\": {\n          \"payins\": {\n            \"count\": 3996,\n            \"gross_amount\": {\n              \"amount\": 6276,\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"billing_fees_amount\": {\n              \"amount\": 2953,\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"split_remainder_amount\": {\n              \"amount\": 4002,\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"net_amount\": {\n              \"amount\": 8780,\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"refunds\": {\n            \"count\": 8689,\n            \"gross_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"billing_fees_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"split_remainder_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"net_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"chargebacks\": {\n            \"count\": 1781,\n            \"gross_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"billing_fees_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"split_remainder_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"net_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"ach_returns\": {\n            \"count\": 3147,\n            \"gross_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"billing_fees_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"split_remainder_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"net_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"adjustments\": {\n            \"count\": 4953,\n            \"gross_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"billing_fees_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"split_remainder_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"net_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"deposits\": {\n            \"count\": 668,\n            \"gross_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"billing_fees_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"split_remainder_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"net_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        },\n        \"method_type\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/method_type not found in the OpenAPI spec\"\n        },\n        \"ach\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/ach not found in the OpenAPI spec\"\n        },\n        \"plaid_ach\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/plaid_ach not found in the OpenAPI spec\"\n        },\n        \"metadata\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/metadata not found in the OpenAPI spec\"\n        },\n        \"created_at\": \"2022-01-01T12:00:00Z\"\n      },\n      {\n        \"deposit_id\": \"dep_2DrDU206kzAhclm1WrZbuwDERRk\",\n        \"platform_id\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_method_configs/post/requestBody/content/application~1json/schema/properties/platform_id not found in the OpenAPI spec\"\n        },\n        \"merchant_id\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_id not found in the OpenAPI spec\"\n        },\n        \"status\": \"PROCESSING\",\n        \"deposit_type\": \"FUNDING\",\n        \"billing_type\": \"GROSS\",\n        \"amount\": 3142,\n        \"currency_code\": \"USD\",\n        \"deposit_fee_amount\": {\n          \"amount\": 1065,\n          \"currency_code\": \"USD\"\n        },\n        \"total_payment_billing_fees_amount\": {\n          \"amount\": 5954,\n          \"currency_code\": \"USD\"\n        },\n        \"total_split_remainder_amount\": {\n          \"amount\": 3559,\n          \"currency_code\": \"USD\"\n        },\n        \"total_fees_amount\": {\n          \"amount\": 5904,\n          \"currency_code\": \"USD\"\n        },\n        \"gross_amount\": {\n          \"amount\": 4336,\n          \"currency_code\": \"USD\"\n        },\n        \"payment_totals\": {\n          \"payins\": {\n            \"count\": 7879,\n            \"gross_amount\": {\n              \"amount\": 6339,\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"billing_fees_amount\": {\n              \"amount\": 9020,\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"split_remainder_amount\": {\n              \"amount\": 2449,\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"net_amount\": {\n              \"amount\": 341,\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"refunds\": {\n            \"count\": 5548,\n            \"gross_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"billing_fees_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"split_remainder_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"net_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"chargebacks\": {\n            \"count\": 6105,\n            \"gross_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"billing_fees_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"split_remainder_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"net_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"ach_returns\": {\n            \"count\": 1825,\n            \"gross_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"billing_fees_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"split_remainder_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"net_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"adjustments\": {\n            \"count\": 7617,\n            \"gross_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"billing_fees_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"split_remainder_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"net_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"deposits\": {\n            \"count\": 3286,\n            \"gross_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"billing_fees_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"split_remainder_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"net_amount\": {\n              \"amount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"currency_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        },\n        \"method_type\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/method_type not found in the OpenAPI spec\"\n        },\n        \"ach\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/ach not found in the OpenAPI spec\"\n        },\n        \"plaid_ach\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/plaid_ach not found in the OpenAPI spec\"\n        },\n        \"metadata\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/metadata not found in the OpenAPI spec\"\n        },\n        \"created_at\": \"2022-01-01T12:00:00Z\"\n      }\n    ]\n  },\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b18fa1c-3b1a-4457-9abe-a4e22c8193ae",
+              "name": "Bad request, check for validation errors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deposit_id",
+                      "value": "dep_2DrDKk5NIMbpuNGqm109SkpGDHh"
+                    },
+                    {
+                      "key": "platform_id",
+                      "value": "plt_2DrDRpyAdp5MPUJnrJmoZcMmtfF"
+                    },
+                    {
+                      "key": "merchant_id",
+                      "value": "mid_2DrDFJPutxE5AIbJSopAnqniEbr"
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSING"
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSING"
+                    },
+                    {
+                      "key": "deposit_type",
+                      "value": "FUNDING"
+                    },
+                    {
+                      "key": "deposit_type",
+                      "value": "FUNDING"
+                    },
+                    {
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at.start",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "created_at.end",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"RequestBody\",\n      \"message\": \"Invalid request payload\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "533edb1d-d1b3-428a-8be0-8e1b71a30897",
+              "name": "Authorization missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deposit_id",
+                      "value": "dep_2DrDKk5NIMbpuNGqm109SkpGDHh"
+                    },
+                    {
+                      "key": "platform_id",
+                      "value": "plt_2DrDRpyAdp5MPUJnrJmoZcMmtfF"
+                    },
+                    {
+                      "key": "merchant_id",
+                      "value": "mid_2DrDFJPutxE5AIbJSopAnqniEbr"
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSING"
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSING"
+                    },
+                    {
+                      "key": "deposit_type",
+                      "value": "FUNDING"
+                    },
+                    {
+                      "key": "deposit_type",
+                      "value": "FUNDING"
+                    },
+                    {
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at.start",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "created_at.end",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthUnauthorized\",\n      \"message\": \"Unauthorized\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd15dcde-f751-4c01-8d24-d7aaf4d9c4fe",
+              "name": "Authorization insufficient for requested action.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deposit_id",
+                      "value": "dep_2DrDKk5NIMbpuNGqm109SkpGDHh"
+                    },
+                    {
+                      "key": "platform_id",
+                      "value": "plt_2DrDRpyAdp5MPUJnrJmoZcMmtfF"
+                    },
+                    {
+                      "key": "merchant_id",
+                      "value": "mid_2DrDFJPutxE5AIbJSopAnqniEbr"
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSING"
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSING"
+                    },
+                    {
+                      "key": "deposit_type",
+                      "value": "FUNDING"
+                    },
+                    {
+                      "key": "deposit_type",
+                      "value": "FUNDING"
+                    },
+                    {
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at.start",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "created_at.end",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthForbidden\",\n      \"message\": \"Forbidden\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24a658db-1015-44bc-b9c7-09f965f10505",
+              "name": "Unexpected error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deposit_id",
+                      "value": "dep_2DrDKk5NIMbpuNGqm109SkpGDHh"
+                    },
+                    {
+                      "key": "platform_id",
+                      "value": "plt_2DrDRpyAdp5MPUJnrJmoZcMmtfF"
+                    },
+                    {
+                      "key": "merchant_id",
+                      "value": "mid_2DrDFJPutxE5AIbJSopAnqniEbr"
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSING"
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSING"
+                    },
+                    {
+                      "key": "deposit_type",
+                      "value": "FUNDING"
+                    },
+                    {
+                      "key": "deposit_type",
+                      "value": "FUNDING"
+                    },
+                    {
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at.start",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "created_at.end",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"Internal Server Error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe1054f8-1eff-4432-994f-e0c212d9700d",
+          "name": "Get deposit",
+          "request": {
+            "name": "Get deposit",
+            "description": {
+              "content": "Get a deposit's details by the deposit ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "deposits",
+                ":deposit_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deposit_id",
+                  "description": "(Required) The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Rainforest-Api-Version",
+                "value": "2024-10-16",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a8bfc485-aa89-47ae-897b-47382b181ffb",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposits",
+                    ":deposit_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deposit_id",
+                      "description": "(Required) The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {\n    \"deposit_id\": \"dep_2DrDU206kzAhclm1WrZbuwDERRk\",\n    \"platform_id\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_method_configs/post/requestBody/content/application~1json/schema/properties/platform_id not found in the OpenAPI spec\"\n    },\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"status\": \"PROCESSING\",\n    \"deposit_type\": \"FUNDING\",\n    \"billing_type\": \"GROSS\",\n    \"amount\": 8643,\n    \"currency_code\": \"USD\",\n    \"deposit_fee_amount\": {\n      \"amount\": 6603,\n      \"currency_code\": \"USD\"\n    },\n    \"total_payment_billing_fees_amount\": {\n      \"amount\": 7366,\n      \"currency_code\": \"USD\"\n    },\n    \"total_split_remainder_amount\": {\n      \"amount\": 9927,\n      \"currency_code\": \"USD\"\n    },\n    \"total_fees_amount\": {\n      \"amount\": 88,\n      \"currency_code\": \"USD\"\n    },\n    \"gross_amount\": {\n      \"amount\": 3007,\n      \"currency_code\": \"USD\"\n    },\n    \"payment_totals\": {\n      \"payins\": {\n        \"count\": 5059,\n        \"gross_amount\": {\n          \"amount\": 7343,\n          \"currency_code\": \"USD\"\n        },\n        \"billing_fees_amount\": {\n          \"amount\": 9392,\n          \"currency_code\": \"USD\"\n        },\n        \"split_remainder_amount\": {\n          \"amount\": 1417,\n          \"currency_code\": \"USD\"\n        },\n        \"net_amount\": {\n          \"amount\": 3717,\n          \"currency_code\": \"USD\"\n        }\n      },\n      \"refunds\": {\n        \"count\": 9351,\n        \"gross_amount\": {\n          \"amount\": 1119,\n          \"currency_code\": \"USD\"\n        },\n        \"billing_fees_amount\": {\n          \"amount\": 704,\n          \"currency_code\": \"USD\"\n        },\n        \"split_remainder_amount\": {\n          \"amount\": 9821,\n          \"currency_code\": \"USD\"\n        },\n        \"net_amount\": {\n          \"amount\": 3006,\n          \"currency_code\": \"USD\"\n        }\n      },\n      \"chargebacks\": {\n        \"count\": 7316,\n        \"gross_amount\": {\n          \"amount\": 1924,\n          \"currency_code\": \"USD\"\n        },\n        \"billing_fees_amount\": {\n          \"amount\": 2259,\n          \"currency_code\": \"USD\"\n        },\n        \"split_remainder_amount\": {\n          \"amount\": 1613,\n          \"currency_code\": \"USD\"\n        },\n        \"net_amount\": {\n          \"amount\": 7519,\n          \"currency_code\": \"USD\"\n        }\n      },\n      \"ach_returns\": {\n        \"count\": 1616,\n        \"gross_amount\": {\n          \"amount\": 455,\n          \"currency_code\": \"USD\"\n        },\n        \"billing_fees_amount\": {\n          \"amount\": 9298,\n          \"currency_code\": \"USD\"\n        },\n        \"split_remainder_amount\": {\n          \"amount\": 5971,\n          \"currency_code\": \"USD\"\n        },\n        \"net_amount\": {\n          \"amount\": 7601,\n          \"currency_code\": \"USD\"\n        }\n      },\n      \"adjustments\": {\n        \"count\": 7846,\n        \"gross_amount\": {\n          \"amount\": 3416,\n          \"currency_code\": \"USD\"\n        },\n        \"billing_fees_amount\": {\n          \"amount\": 7343,\n          \"currency_code\": \"USD\"\n        },\n        \"split_remainder_amount\": {\n          \"amount\": 8917,\n          \"currency_code\": \"USD\"\n        },\n        \"net_amount\": {\n          \"amount\": 2575,\n          \"currency_code\": \"USD\"\n        }\n      },\n      \"deposits\": {\n        \"count\": 4001,\n        \"gross_amount\": {\n          \"amount\": 300,\n          \"currency_code\": \"USD\"\n        },\n        \"billing_fees_amount\": {\n          \"amount\": 7054,\n          \"currency_code\": \"USD\"\n        },\n        \"split_remainder_amount\": {\n          \"amount\": 8648,\n          \"currency_code\": \"USD\"\n        },\n        \"net_amount\": {\n          \"amount\": 1296,\n          \"currency_code\": \"USD\"\n        }\n      }\n    },\n    \"method_type\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/method_type not found in the OpenAPI spec\"\n    },\n    \"ach\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/ach not found in the OpenAPI spec\"\n    },\n    \"plaid_ach\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/plaid_ach not found in the OpenAPI spec\"\n    },\n    \"metadata\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/metadata not found in the OpenAPI spec\"\n    },\n    \"created_at\": \"2022-01-01T12:00:00Z\"\n  },\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "857c1a35-5682-4b29-8569-79414d927b14",
+              "name": "Bad request, check for validation errors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposits",
+                    ":deposit_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deposit_id",
+                      "description": "(Required) The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"RequestBody\",\n      \"message\": \"Invalid request payload\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ee525e18-9039-4058-98c2-1b5d398e22d1",
+              "name": "Authorization missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposits",
+                    ":deposit_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deposit_id",
+                      "description": "(Required) The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthUnauthorized\",\n      \"message\": \"Unauthorized\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6762361b-2de5-4283-882c-3b00a67c46a5",
+              "name": "Authorization insufficient for requested action.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposits",
+                    ":deposit_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deposit_id",
+                      "description": "(Required) The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthForbidden\",\n      \"message\": \"Forbidden\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc38591c-0b1c-434d-9045-bc2a04e084e8",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposits",
+                    ":deposit_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deposit_id",
+                      "description": "(Required) The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"EntityNotFound\",\n      \"message\": \"Resource not found\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "651d6322-7fdd-4947-92ac-e6d00bff2699",
+              "name": "Unexpected error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposits",
+                    ":deposit_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deposit_id",
+                      "description": "(Required) The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"Internal Server Error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "89729fc4-f5b8-4d91-a7e1-12ba0ad0393a",
+          "name": "Get deposit activity",
+          "request": {
+            "name": "Get deposit activity",
+            "description": {
+              "content": "Get the activity within a deposit by the deposit ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "deposits",
+                ":deposit_id",
+                "activity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "deposit_id",
+                  "value": "<string>",
+                  "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox."
+                },
+                {
+                  "disabled": false,
+                  "key": "payment_type",
+                  "value": "<string>",
+                  "description": "One or more payment types to filter by. Provide parameter multiples times to filter by multiple payment types. \n\n`ACH_RETURN` `CHARGEBACK` `PAYIN` `REFUND`"
+                },
+                {
+                  "disabled": false,
+                  "key": "payment_type",
+                  "value": "<string>",
+                  "description": "One or more payment types to filter by. Provide parameter multiples times to filter by multiple payment types. \n\n`ACH_RETURN` `CHARGEBACK` `PAYIN` `REFUND`"
+                },
+                {
+                  "disabled": false,
+                  "key": "memo",
+                  "value": "<string>",
+                  "description": "Additional information about the activity, applicable for an adjustment."
+                },
+                {
+                  "disabled": false,
+                  "key": "billing_contact_name",
+                  "value": "<string>",
+                  "description": "Optional billing contact name by which to filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "metadata",
+                  "value": "<string>",
+                  "description": "Filter by metadata stored on the entity by passing a map of key-value pairs to filter on. The `key` should be valid JSONPath to a corresponding metadata key.\n\nFor example, an entity created with the following metadata\n```\n\"account\": {\n  \"id\": \"acct_123\"\n}\n```\ncould have the following metadata filter to find entities with the metadata account id: \n```\n?metadata[$.account.id]=acct_123\n```"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "Optional value by which to sort the result set. Default sort by is created_at."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_order",
+                  "value": "<string>",
+                  "description": "Order in which to return the sorted results; ascending or descending. Default sort order is descending."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1000",
+                  "description": "The maximum number of results to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "The offset of the first result to return; zero-based."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Rainforest-Api-Version",
+                "value": "2024-10-16",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af730b64-d5ef-4056-aeee-72dc2c602101",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposits",
+                    ":deposit_id",
+                    "activity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deposit_id",
+                      "value": "dep_2DrDKk5NIMbpuNGqm109SkpGDHh"
+                    },
+                    {
+                      "key": "payment_type",
+                      "value": "PAYIN"
+                    },
+                    {
+                      "key": "payment_type",
+                      "value": "PAYIN"
+                    },
+                    {
+                      "key": "memo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billing_contact_name",
+                      "value": "Doe"
+                    },
+                    {
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {\n    \"net_amount\": {\n      \"amount\": 4526,\n      \"currency_code\": \"USD\"\n    },\n    \"gross_amount\": {\n      \"amount\": 1256,\n      \"currency_code\": \"USD\"\n    },\n    \"deposit_fee_amount\": {\n      \"amount\": 1066,\n      \"currency_code\": \"USD\"\n    },\n    \"activities\": [\n      {\n        \"id\": \"pyi_2DrDU206kzAhclm1WrZbuwDERRk\",\n        \"type\": \"DEPOSIT\",\n        \"parent_id\": \"string\",\n        \"merchant_id\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_id not found in the OpenAPI spec\"\n        },\n        \"payment_method_id\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id not found in the OpenAPI spec\"\n        },\n        \"gross_amount\": {\n          \"amount\": 1124,\n          \"currency_code\": \"USD\"\n        },\n        \"billing_fees_amount\": {\n          \"amount\": 9682,\n          \"currency_code\": \"USD\"\n        },\n        \"split_remainder_amount\": {\n          \"amount\": 3081,\n          \"currency_code\": \"USD\"\n        },\n        \"net_amount\": {\n          \"amount\": 6887,\n          \"currency_code\": \"USD\"\n        },\n        \"metadata\": {},\n        \"billing_contact\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n        },\n        \"memo\": \"string\",\n        \"merchant\": {\n          \"id\": {\n            \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_id not found in the OpenAPI spec\"\n          },\n          \"name\": \"Merchant\",\n          \"dba_name\": \"Merchant\"\n        },\n        \"payment_method\": {\n          \"payment_method_id\": {\n            \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id not found in the OpenAPI spec\"\n          },\n          \"method_type\": {\n            \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/method_type not found in the OpenAPI spec\"\n          },\n          \"card\": {\n            \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/card not found in the OpenAPI spec\"\n          },\n          \"ach\": {\n            \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/ach not found in the OpenAPI spec\"\n          },\n          \"apple_pay\": {\n            \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/apple_pay not found in the OpenAPI spec\"\n          }\n        },\n        \"created_at\": \"2022-01-01T12:00:00Z\"\n      },\n      {\n        \"id\": \"pyi_2DrDU206kzAhclm1WrZbuwDERRk\",\n        \"type\": \"ACH_RETURN\",\n        \"parent_id\": \"string\",\n        \"merchant_id\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_id not found in the OpenAPI spec\"\n        },\n        \"payment_method_id\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id not found in the OpenAPI spec\"\n        },\n        \"gross_amount\": {\n          \"amount\": 2302,\n          \"currency_code\": \"USD\"\n        },\n        \"billing_fees_amount\": {\n          \"amount\": 2109,\n          \"currency_code\": \"USD\"\n        },\n        \"split_remainder_amount\": {\n          \"amount\": 5936,\n          \"currency_code\": \"USD\"\n        },\n        \"net_amount\": {\n          \"amount\": 1388,\n          \"currency_code\": \"USD\"\n        },\n        \"metadata\": {},\n        \"billing_contact\": {\n          \"value\": \"reference #/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n        },\n        \"memo\": \"string\",\n        \"merchant\": {\n          \"id\": {\n            \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_id not found in the OpenAPI spec\"\n          },\n          \"name\": \"Merchant\",\n          \"dba_name\": \"Merchant\"\n        },\n        \"payment_method\": {\n          \"payment_method_id\": {\n            \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/payment_method_id not found in the OpenAPI spec\"\n          },\n          \"method_type\": {\n            \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/method_type not found in the OpenAPI spec\"\n          },\n          \"card\": {\n            \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/card not found in the OpenAPI spec\"\n          },\n          \"ach\": {\n            \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/ach not found in the OpenAPI spec\"\n          },\n          \"apple_pay\": {\n            \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/apple_pay not found in the OpenAPI spec\"\n          }\n        },\n        \"created_at\": \"2022-01-01T12:00:00Z\"\n      }\n    ]\n  },\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "16ee0ba4-eb5e-42b0-9fe7-5c2e7c3cd0fd",
+              "name": "Bad request, check for validation errors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposits",
+                    ":deposit_id",
+                    "activity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deposit_id",
+                      "value": "dep_2DrDKk5NIMbpuNGqm109SkpGDHh"
+                    },
+                    {
+                      "key": "payment_type",
+                      "value": "PAYIN"
+                    },
+                    {
+                      "key": "payment_type",
+                      "value": "PAYIN"
+                    },
+                    {
+                      "key": "memo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billing_contact_name",
+                      "value": "Doe"
+                    },
+                    {
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"RequestBody\",\n      \"message\": \"Invalid request payload\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed48884a-9c2b-48cf-9b5b-4b0cd2589191",
+              "name": "Authorization missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposits",
+                    ":deposit_id",
+                    "activity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deposit_id",
+                      "value": "dep_2DrDKk5NIMbpuNGqm109SkpGDHh"
+                    },
+                    {
+                      "key": "payment_type",
+                      "value": "PAYIN"
+                    },
+                    {
+                      "key": "payment_type",
+                      "value": "PAYIN"
+                    },
+                    {
+                      "key": "memo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billing_contact_name",
+                      "value": "Doe"
+                    },
+                    {
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthUnauthorized\",\n      \"message\": \"Unauthorized\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0bfb29be-cc98-46db-8bc7-ae70c7dde565",
+              "name": "Authorization insufficient for requested action.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposits",
+                    ":deposit_id",
+                    "activity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deposit_id",
+                      "value": "dep_2DrDKk5NIMbpuNGqm109SkpGDHh"
+                    },
+                    {
+                      "key": "payment_type",
+                      "value": "PAYIN"
+                    },
+                    {
+                      "key": "payment_type",
+                      "value": "PAYIN"
+                    },
+                    {
+                      "key": "memo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billing_contact_name",
+                      "value": "Doe"
+                    },
+                    {
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthForbidden\",\n      \"message\": \"Forbidden\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e386235f-a558-4b02-b7b4-c5902c042dc6",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposits",
+                    ":deposit_id",
+                    "activity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deposit_id",
+                      "value": "dep_2DrDKk5NIMbpuNGqm109SkpGDHh"
+                    },
+                    {
+                      "key": "payment_type",
+                      "value": "PAYIN"
+                    },
+                    {
+                      "key": "payment_type",
+                      "value": "PAYIN"
+                    },
+                    {
+                      "key": "memo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billing_contact_name",
+                      "value": "Doe"
+                    },
+                    {
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"EntityNotFound\",\n      \"message\": \"Resource not found\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5cb8c9f6-9375-48db-b6de-af2b697759e2",
+              "name": "Unexpected error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposits",
+                    ":deposit_id",
+                    "activity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deposit_id",
+                      "value": "dep_2DrDKk5NIMbpuNGqm109SkpGDHh"
+                    },
+                    {
+                      "key": "payment_type",
+                      "value": "PAYIN"
+                    },
+                    {
+                      "key": "payment_type",
+                      "value": "PAYIN"
+                    },
+                    {
+                      "key": "memo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billing_contact_name",
+                      "value": "Doe"
+                    },
+                    {
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"Internal Server Error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e9b8f83d-1aa3-45d1-9f64-660840362db1",
+          "name": "Simulate deposit status change",
+          "request": {
+            "name": "Simulate deposit status change",
+            "description": {
+              "content": "Only available in the Rainforest sandbox environment.\n\nSimulate a deposit status change. The deposit status must be in PROCESSING. The expected webhooks will be sent for the deposit on status change.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "deposits",
+                ":deposit_id",
+                "simulate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "deposit_id",
+                  "value": "<string>",
+                  "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Rainforest-Api-Version",
+                "value": "2024-10-16",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b1fd577c-4782-40b2-aa38-0641c9c866d0",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposits",
+                    ":deposit_id",
+                    "simulate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deposit_id",
+                      "value": "dep_2DrDKk5NIMbpuNGqm109SkpGDHh"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {\n    \"deposit_id\": \"dep_2DrDU206kzAhclm1WrZbuwDERRk\",\n    \"platform_id\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_method_configs/post/requestBody/content/application~1json/schema/properties/platform_id not found in the OpenAPI spec\"\n    },\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"status\": \"PROCESSING\",\n    \"deposit_type\": \"FUNDING\",\n    \"billing_type\": \"GROSS\",\n    \"amount\": 8643,\n    \"currency_code\": \"USD\",\n    \"deposit_fee_amount\": {\n      \"amount\": 6603,\n      \"currency_code\": \"USD\"\n    },\n    \"total_payment_billing_fees_amount\": {\n      \"amount\": 7366,\n      \"currency_code\": \"USD\"\n    },\n    \"total_split_remainder_amount\": {\n      \"amount\": 9927,\n      \"currency_code\": \"USD\"\n    },\n    \"total_fees_amount\": {\n      \"amount\": 88,\n      \"currency_code\": \"USD\"\n    },\n    \"gross_amount\": {\n      \"amount\": 3007,\n      \"currency_code\": \"USD\"\n    },\n    \"payment_totals\": {\n      \"payins\": {\n        \"count\": 5059,\n        \"gross_amount\": {\n          \"amount\": 7343,\n          \"currency_code\": \"USD\"\n        },\n        \"billing_fees_amount\": {\n          \"amount\": 9392,\n          \"currency_code\": \"USD\"\n        },\n        \"split_remainder_amount\": {\n          \"amount\": 1417,\n          \"currency_code\": \"USD\"\n        },\n        \"net_amount\": {\n          \"amount\": 3717,\n          \"currency_code\": \"USD\"\n        }\n      },\n      \"refunds\": {\n        \"count\": 9351,\n        \"gross_amount\": {\n          \"amount\": 1119,\n          \"currency_code\": \"USD\"\n        },\n        \"billing_fees_amount\": {\n          \"amount\": 704,\n          \"currency_code\": \"USD\"\n        },\n        \"split_remainder_amount\": {\n          \"amount\": 9821,\n          \"currency_code\": \"USD\"\n        },\n        \"net_amount\": {\n          \"amount\": 3006,\n          \"currency_code\": \"USD\"\n        }\n      },\n      \"chargebacks\": {\n        \"count\": 7316,\n        \"gross_amount\": {\n          \"amount\": 1924,\n          \"currency_code\": \"USD\"\n        },\n        \"billing_fees_amount\": {\n          \"amount\": 2259,\n          \"currency_code\": \"USD\"\n        },\n        \"split_remainder_amount\": {\n          \"amount\": 1613,\n          \"currency_code\": \"USD\"\n        },\n        \"net_amount\": {\n          \"amount\": 7519,\n          \"currency_code\": \"USD\"\n        }\n      },\n      \"ach_returns\": {\n        \"count\": 1616,\n        \"gross_amount\": {\n          \"amount\": 455,\n          \"currency_code\": \"USD\"\n        },\n        \"billing_fees_amount\": {\n          \"amount\": 9298,\n          \"currency_code\": \"USD\"\n        },\n        \"split_remainder_amount\": {\n          \"amount\": 5971,\n          \"currency_code\": \"USD\"\n        },\n        \"net_amount\": {\n          \"amount\": 7601,\n          \"currency_code\": \"USD\"\n        }\n      },\n      \"adjustments\": {\n        \"count\": 7846,\n        \"gross_amount\": {\n          \"amount\": 3416,\n          \"currency_code\": \"USD\"\n        },\n        \"billing_fees_amount\": {\n          \"amount\": 7343,\n          \"currency_code\": \"USD\"\n        },\n        \"split_remainder_amount\": {\n          \"amount\": 8917,\n          \"currency_code\": \"USD\"\n        },\n        \"net_amount\": {\n          \"amount\": 2575,\n          \"currency_code\": \"USD\"\n        }\n      },\n      \"deposits\": {\n        \"count\": 4001,\n        \"gross_amount\": {\n          \"amount\": 300,\n          \"currency_code\": \"USD\"\n        },\n        \"billing_fees_amount\": {\n          \"amount\": 7054,\n          \"currency_code\": \"USD\"\n        },\n        \"split_remainder_amount\": {\n          \"amount\": 8648,\n          \"currency_code\": \"USD\"\n        },\n        \"net_amount\": {\n          \"amount\": 1296,\n          \"currency_code\": \"USD\"\n        }\n      }\n    },\n    \"method_type\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_methods/post/requestBody/content/application~1json/schema/properties/method_type not found in the OpenAPI spec\"\n    },\n    \"ach\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_methods~1%7Bdeposit_method_id%7D~1payin/post/responses/200/content/application~1json/schema/properties/data/properties/ach not found in the OpenAPI spec\"\n    },\n    \"plaid_ach\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/plaid_ach not found in the OpenAPI spec\"\n    },\n    \"metadata\": {\n      \"value\": \"reference #/paths/~1v1~1deposit_methods/post/responses/200/content/application~1json/schema/properties/data/properties/metadata not found in the OpenAPI spec\"\n    },\n    \"created_at\": \"2022-01-01T12:00:00Z\"\n  },\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "431fe8be-9386-4174-b287-e08aedaad698",
+              "name": "Bad request, check for validation errors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposits",
+                    ":deposit_id",
+                    "simulate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deposit_id",
+                      "value": "dep_2DrDKk5NIMbpuNGqm109SkpGDHh"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"RequestBody\",\n      \"message\": \"Invalid request payload\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f2f49223-59f8-4632-b2e1-db96219e3603",
+              "name": "Authorization missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposits",
+                    ":deposit_id",
+                    "simulate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deposit_id",
+                      "value": "dep_2DrDKk5NIMbpuNGqm109SkpGDHh"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthUnauthorized\",\n      \"message\": \"Unauthorized\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "be14a589-e1c1-4eae-ae60-3e2ad75dc428",
+              "name": "Authorization insufficient for requested action.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposits",
+                    ":deposit_id",
+                    "simulate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deposit_id",
+                      "value": "dep_2DrDKk5NIMbpuNGqm109SkpGDHh"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthForbidden\",\n      \"message\": \"Forbidden\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d499a881-7c6f-4e8e-a922-cc67232e55f6",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposits",
+                    ":deposit_id",
+                    "simulate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deposit_id",
+                      "value": "dep_2DrDKk5NIMbpuNGqm109SkpGDHh"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"EntityNotFound\",\n      \"message\": \"Resource not found\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48a9e22e-ae49-4ca6-bc8e-a256651a809b",
+              "name": "Unexpected error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "deposits",
+                    ":deposit_id",
+                    "simulate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deposit_id",
+                      "value": "dep_2DrDKk5NIMbpuNGqm109SkpGDHh"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"Internal Server Error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d18cb841-ea49-49e8-b2cf-30d4f78fbf69",
+          "name": "Simulate merchant deposit creation",
+          "request": {
+            "name": "Simulate merchant deposit creation",
+            "description": {
+              "content": "Only available in the Rainforest sandbox environment.\n\nSimulate processing a deposit on a merchant. Any payins or refunds with the status of `PROCESSING` will be transitioned to the status of `SUCCEEDED`.\n\nThe expected webhooks will be sent for all payins and refunds while the deposit is processing. The `deposit.processing` webhook will be sent when the deposit has been processed and the deposit status is `PROCESSING`.\n\nOn a merchant with a Daily Net billing configuration, a deposit will be processed with an amount that corresponds to the payment activity, less any applicable fees.\n\nOn a merchant with a Daily Gross billing configuration, two deposits will be processed:\n  1. A funding deposit with an amount that corresponds to the gross amount of the payment activity.\n  2. A billing deposit with an amount that corresponds to the applicable billing fees of the payment activity.\n\nOn a merchant with a Monthly Gross billing configuration, only the funding deposit will be processed with an amount that corresponds to the gross amount of the payment activity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "merchants",
+                ":merchant_id",
+                "simulate_deposit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchant_id",
+                  "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Rainforest-Api-Version",
+                "value": "2024-10-16",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5b704743-c304-4e09-b8f1-7389c682bc24",
+              "name": "No Content.\n\nThe merchant deposit(s) have been processed with a deposit status of `PROCESSING`.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id",
+                    "simulate_deposit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bdd998ef-2151-495e-a178-3f7dfbab829e",
+              "name": "Bad request, check for validation errors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id",
+                    "simulate_deposit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"RequestBody\",\n      \"message\": \"Invalid request payload\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b9f2c0ae-723e-41a2-8b64-41bad80d8523",
+              "name": "Authorization missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id",
+                    "simulate_deposit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthUnauthorized\",\n      \"message\": \"Unauthorized\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bfd06a5b-6f2e-4951-b394-aa97bf0fc464",
+              "name": "Authorization insufficient for requested action.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id",
+                    "simulate_deposit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthForbidden\",\n      \"message\": \"Forbidden\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d5622b8f-2fc7-45e7-80a2-8c350b6075f2",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id",
+                    "simulate_deposit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"EntityNotFound\",\n      \"message\": \"Resource not found\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1f6c5390-3f20-4eb5-8ab5-9aee3125f14e",
+              "name": "Unexpected error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "merchants",
+                    ":merchant_id",
+                    "simulate_deposit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchant_id",
+                      "description": "(Required) The unique merchant identifier. \n\nPrefix is \"mid\" in production and \"sbx_mid\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"Internal Server Error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.rainforestpay.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0a9eae47-3b60-4b01-8bca-f0b75fed5f1a",
+    "name": "Authentication ACH Returns Deposits API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This resource is used for authentication actions\n\nContact Support:\n Name: Rainforest\n Email: support@rainforestpay.com",
+      "type": "text/plain"
+    }
+  }
+}

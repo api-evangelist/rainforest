@@ -521,6 +521,31 @@
     "rainforest-sessions-api-openapi.yml: dangling $ref: #/paths/~1v1~1api_keys/get/responses/5XX"
   ],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "rainforest-ach-returns-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "rainforest-api-keys-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "rainforest-billing-profiles-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "rainforest-bin-lookups-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "rainforest-chargebacks-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "rainforest-deposit-method-configs-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "rainforest-deposit-methods-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "rainforest-deposits-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "rainforest-devices-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "rainforest-file-upload-configs-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "rainforest-file-uploads-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "rainforest-forward-requests-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "rainforest-health-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "rainforest-merchant-applications-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "rainforest-merchants-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "rainforest-payin-configs-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "rainforest-payins-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "rainforest-payment-method-configs-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "rainforest-payment-method-domains-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "rainforest-payment-methods-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "rainforest-payments-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "rainforest-refunds-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "rainforest-sessions-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }

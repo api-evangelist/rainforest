@@ -1,0 +1,3013 @@
+{
+  "item": [
+    {
+      "id": "b2b99d85-8d50-43c3-a403-081fa84eabea",
+      "name": "Payins",
+      "description": {
+        "content": "Resources for payin functions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4a0f3d7c-7143-4dda-8e06-a4ab4058a504",
+          "name": "List payins",
+          "request": {
+            "name": "List payins",
+            "description": {
+              "content": "Query a list of payins given optional search criteria.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payins"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "merchant_name",
+                  "value": "<string>",
+                  "description": "Optional merchant name by which to filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "method_type",
+                  "value": "<string>",
+                  "description": "Payment method type to filter by. Provide parameter multiple times to filter by multiple payment method types."
+                },
+                {
+                  "disabled": false,
+                  "key": "billing_contact_name",
+                  "value": "<string>",
+                  "description": "Optional billing contact name by which to filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "One or more payin statuses to filter by. Provide parameter multiple times to filter by multiple payin status types.\n\n`AUTHORIZED` `CANCELED` `CREATED` `FAILED` `IN_REVIEW` `PRESENTING` `PROCESSING` `RETURNED` `SUCCEEDED`"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "One or more payin statuses to filter by. Provide parameter multiple times to filter by multiple payin status types.\n\n`AUTHORIZED` `CANCELED` `CREATED` `FAILED` `IN_REVIEW` `PRESENTING` `PROCESSING` `RETURNED` `SUCCEEDED`"
+                },
+                {
+                  "disabled": false,
+                  "key": "source",
+                  "value": "<string>",
+                  "description": "One or more payin sources to filter by. Provide parameter multiple times to filter by multiple payin sources. "
+                },
+                {
+                  "disabled": false,
+                  "key": "source",
+                  "value": "<string>",
+                  "description": "One or more payin sources to filter by. Provide parameter multiple times to filter by multiple payin sources. "
+                },
+                {
+                  "disabled": false,
+                  "key": "metadata",
+                  "value": "<string>",
+                  "description": "Filter by metadata stored on the entity by passing a map of key-value pairs to filter on. The `key` should be valid JSONPath to a corresponding metadata key.\n\nFor example, an entity created with the following metadata\n```\n\"account\": {\n  \"id\": \"acct_123\"\n}\n```\ncould have the following metadata filter to find entities with the metadata account id: \n```\n?metadata[$.account.id]=acct_123\n```"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at.start",
+                  "value": "<dateTime>",
+                  "description": "Created on or after in UTC RFC 3339 format."
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at.end",
+                  "value": "<dateTime>",
+                  "description": "Created on or before in UTC RFC 3339 format."
+                },
+                {
+                  "disabled": false,
+                  "key": "expected_deposit_date.start",
+                  "value": "<date>",
+                  "description": "Expected to be deposited on or after in UTC RFC 3339 format."
+                },
+                {
+                  "disabled": false,
+                  "key": "expected_deposit_date.end",
+                  "value": "<date>",
+                  "description": "Expected to be deposited on or before in UTC RFC 3339 format."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "Optional value by which to sort the result set. Default sort by is created_at."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_order",
+                  "value": "<string>",
+                  "description": "Order in which to return the sorted results; ascending or descending. Default sort order is descending."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1000",
+                  "description": "The maximum number of results to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "start_key",
+                  "value": "<string>",
+                  "description": "A key used to indicate the starting point for the next page of results. This value should be set to the last_key returned by the previous paginated request."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Offset has been deprecated. Utilize start_key and last_key for pagination.\n\nThe offset of the first result to return; zero-based."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Rainforest-Api-Version",
+                "value": "2024-10-16",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2e9eacd7-3742-4efa-96e9-d25adb2d06cc",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "merchant_name",
+                      "value": "Merchant"
+                    },
+                    {
+                      "key": "method_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billing_contact_name",
+                      "value": "Doe"
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSING"
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSING"
+                    },
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at.start",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "created_at.end",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "expected_deposit_date.start",
+                      "value": "2022-01-01"
+                    },
+                    {
+                      "key": "expected_deposit_date.end",
+                      "value": "2022-01-01"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "start_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {\n    \"total_results\": 7370,\n    \"last_key\": {},\n    \"results\": [\n      {\n        \"payin_id\": \"pyi_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n        \"payin_config_id\": \"cfg_2DrDPKzdQypRudLd8DhQKZX27dA\",\n        \"merchant_id\": {\n          \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n        },\n        \"payment_method_id\": \"mtd_2DrDRpyAdp5MPUJnrJmoZcMmtfF\",\n        \"payment_method_config_id\": {\n          \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/payment_method_config_id not found in the OpenAPI spec\"\n        },\n        \"device_registration_id\": \"dvc_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n        \"threeds_attempt_id\": \"tds_2DrDFJPutxE5AIbJSopAnqniEbr\",\n        \"idempotency_key\": {\n          \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D~1void/post/requestBody/content/application~1json/schema/properties/idempotency_key not found in the OpenAPI spec\"\n        },\n        \"billing_type\": \"GROSS\",\n        \"amount\": 100,\n        \"currency_code\": \"USD\",\n        \"is_partially_authorized\": true,\n        \"authorized_amount\": 100,\n        \"captured_amount\": 100,\n        \"refundable_amount\": 100,\n        \"non_refundable_reason_code\": \"HAS_ACH_RETURN\",\n        \"status\": \"PROCESSING\",\n        \"refusal_code\": \"DO_NOT_HONOR\",\n        \"refusal_desc\": \"Lost card\",\n        \"detailed_refusal_code\": \"AUTHORIZATION_EXPIRED\",\n        \"detailed_refusal_desc\": \"Declined\",\n        \"auth_code\": \"12345\",\n        \"avs_result_code\": \"Y\",\n        \"cvc_result_code\": \"M\",\n        \"amount_splits\": [\n          {\n            \"amount\": 3,\n            \"currency_code\": \"USD\",\n            \"type\": \"PLATFORM\"\n          }\n        ],\n        \"merchant_fees\": {\n          \"total_amount\": {\n            \"amount\": 2,\n            \"currency_code\": \"USD\"\n          }\n        },\n        \"method_type\": \"CARD\",\n        \"card\": {\n          \"type\": \"PREPAID\",\n          \"brand\": {\n            \"value\": \"reference #/paths/~1v1~1bin_lookup/post/responses/200/content/application~1json/schema/properties/data/properties/brand not found in the OpenAPI spec\"\n          },\n          \"brand_desc\": \"Mastercard\",\n          \"last_4\": \"4444\",\n          \"exp_month\": 12,\n          \"exp_year\": 2027\n        },\n        \"apple_pay\": {\n          \"type\": \"PREPAID\",\n          \"brand\": {\n            \"value\": \"reference #/paths/~1v1~1bin_lookup/post/responses/200/content/application~1json/schema/properties/data/properties/brand not found in the OpenAPI spec\"\n          },\n          \"brand_desc\": \"Mastercard\",\n          \"description\": \"Visa 1234\"\n        },\n        \"ach\": {\n          \"account_number_last_4\": \"5678\",\n          \"routing_number\": \"stringstr\",\n          \"bank_name\": \"Wells Fargo Bank\",\n          \"account_type\": \"CHECKING\",\n          \"account_holder_type\": \"PERSONAL\"\n        },\n        \"plaid_ach\": {\n          \"value\": \"reference #/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data/properties/plaid_ach not found in the OpenAPI spec\"\n        },\n        \"paypal_wallet\": {\n          \"email\": \"janesmith@example.com\"\n        },\n        \"venmo\": {\n          \"email\": \"janesmith@example.com\"\n        },\n        \"paypal_paylater\": {\n          \"email\": \"janesmith@example.com\"\n        },\n        \"billing_contact\": {\n          \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n        },\n        \"device_data\": {\n          \"application_identifier\": \"A0000000031010\",\n          \"application_label\": \"VISA CREDIT\",\n          \"application_preferred_name\": \"VISA CREDIT\",\n          \"transaction_status_information\": \"E800\",\n          \"application_pan_sequence_number\": \"string\",\n          \"entry_type\": \"TAPPED\",\n          \"verification_type\": \"OFFLINE_PIN\",\n          \"signature\": \"string\"\n        },\n        \"method_metadata\": {\n          \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/method_metadata not found in the OpenAPI spec\"\n        },\n        \"metadata\": {\n          \"key1\": \"value1\",\n          \"key2\": {\n            \"inner_key1\": \"inner_value1\"\n          }\n        },\n        \"refunds\": [\n          {\n            \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n          },\n          {\n            \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n          }\n        ],\n        \"has_refunds\": true,\n        \"chargebacks\": [\n          {\n            \"value\": \"reference #/paths/~1v1~1chargebacks~1%7Bchargeback_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n          },\n          {\n            \"value\": \"reference #/paths/~1v1~1chargebacks~1%7Bchargeback_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n          }\n        ],\n        \"has_chargebacks\": true,\n        \"ach_return\": {\n          \"value\": \"reference #/paths/~1v1~1ach_returns~1%7Bach_return_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n        },\n        \"has_ach_return\": true,\n        \"payin_config\": {\n          \"payin_config_id\": \"cfg_2DrDPKzdQypRudLd8DhQKZX27dA\",\n          \"processing_mode\": {\n            \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/processing_mode not found in the OpenAPI spec\"\n          },\n          \"amount\": 100,\n          \"currency_code\": \"USD\",\n          \"amount_splits\": {\n            \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/amount_splits not found in the OpenAPI spec\"\n          }\n        },\n        \"threeds_attempt\": {\n          \"threeds_attempt_id\": \"tds_2DrDFJPutxE5AIbJSopAnqniEbr\",\n          \"merchant_id\": {\n            \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n          },\n          \"payin_config_id\": \"cfg_2DrDPKzdQypRudLd8DhQKZX27dA\",\n          \"status\": \"CREATED\",\n          \"failed_reason_code\": \"UNSUPPORTED_PAYMENT_DATA\",\n          \"failed_reason_desc\": \"string\",\n          \"created_at\": {\n            \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n          },\n          \"updated_at\": {\n            \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n          },\n          \"fingerprinted_at\": {\n            \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n          },\n          \"challenged_at\": {\n            \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n          },\n          \"succeeded_at\": {\n            \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n          },\n          \"failed_at\": {\n            \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n          }\n        },\n        \"expected_deposit_date\": \"2022-01-01\",\n        \"source\": \"<string>\",\n        \"source_desc\": \"string\",\n        \"created_at\": \"2022-01-01T12:00:00Z\",\n        \"updated_at\": \"2022-01-01T12:00:00Z\"\n      },\n      {\n        \"payin_id\": \"pyi_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n        \"payin_config_id\": \"cfg_2DrDPKzdQypRudLd8DhQKZX27dA\",\n        \"merchant_id\": {\n          \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n        },\n        \"payment_method_id\": \"mtd_2DrDRpyAdp5MPUJnrJmoZcMmtfF\",\n        \"payment_method_config_id\": {\n          \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/payment_method_config_id not found in the OpenAPI spec\"\n        },\n        \"device_registration_id\": \"dvc_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n        \"threeds_attempt_id\": \"tds_2DrDFJPutxE5AIbJSopAnqniEbr\",\n        \"idempotency_key\": {\n          \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D~1void/post/requestBody/content/application~1json/schema/properties/idempotency_key not found in the OpenAPI spec\"\n        },\n        \"billing_type\": \"GROSS\",\n        \"amount\": 100,\n        \"currency_code\": \"USD\",\n        \"is_partially_authorized\": false,\n        \"authorized_amount\": 100,\n        \"captured_amount\": 100,\n        \"refundable_amount\": 100,\n        \"non_refundable_reason_code\": \"HAS_CHARGEBACKS\",\n        \"status\": \"PROCESSING\",\n        \"refusal_code\": \"null\",\n        \"refusal_desc\": \"Do not honor\",\n        \"detailed_refusal_code\": \"INVALID_EXPIRATION_DATE\",\n        \"detailed_refusal_desc\": \"Incorrect payment information\",\n        \"auth_code\": \"12345\",\n        \"avs_result_code\": \"Y\",\n        \"cvc_result_code\": \"M\",\n        \"amount_splits\": [\n          {\n            \"amount\": 3,\n            \"currency_code\": \"USD\",\n            \"type\": \"PLATFORM\"\n          }\n        ],\n        \"merchant_fees\": {\n          \"total_amount\": {\n            \"amount\": 2,\n            \"currency_code\": \"USD\"\n          }\n        },\n        \"method_type\": \"PAYPAL_PAYLATER\",\n        \"card\": {\n          \"type\": \"DEBIT\",\n          \"brand\": {\n            \"value\": \"reference #/paths/~1v1~1bin_lookup/post/responses/200/content/application~1json/schema/properties/data/properties/brand not found in the OpenAPI spec\"\n          },\n          \"brand_desc\": \"Mastercard\",\n          \"last_4\": \"4444\",\n          \"exp_month\": 12,\n          \"exp_year\": 2027\n        },\n        \"apple_pay\": {\n          \"type\": \"CREDIT\",\n          \"brand\": {\n            \"value\": \"reference #/paths/~1v1~1bin_lookup/post/responses/200/content/application~1json/schema/properties/data/properties/brand not found in the OpenAPI spec\"\n          },\n          \"brand_desc\": \"Mastercard\",\n          \"description\": \"Visa 1234\"\n        },\n        \"ach\": {\n          \"account_number_last_4\": \"5678\",\n          \"routing_number\": \"stringstr\",\n          \"bank_name\": \"Wells Fargo Bank\",\n          \"account_type\": \"CHECKING\",\n          \"account_holder_type\": \"PERSONAL\"\n        },\n        \"plaid_ach\": {\n          \"value\": \"reference #/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data/properties/plaid_ach not found in the OpenAPI spec\"\n        },\n        \"paypal_wallet\": {\n          \"email\": \"janesmith@example.com\"\n        },\n        \"venmo\": {\n          \"email\": \"janesmith@example.com\"\n        },\n        \"paypal_paylater\": {\n          \"email\": \"janesmith@example.com\"\n        },\n        \"billing_contact\": {\n          \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n        },\n        \"device_data\": {\n          \"application_identifier\": \"A0000000031010\",\n          \"application_label\": \"VISA CREDIT\",\n          \"application_preferred_name\": \"VISA CREDIT\",\n          \"transaction_status_information\": \"E800\",\n          \"application_pan_sequence_number\": \"string\",\n          \"entry_type\": \"TAPPED\",\n          \"verification_type\": \"NONE\",\n          \"signature\": \"string\"\n        },\n        \"method_metadata\": {\n          \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/method_metadata not found in the OpenAPI spec\"\n        },\n        \"metadata\": {\n          \"key1\": \"value1\",\n          \"key2\": {\n            \"inner_key1\": \"inner_value1\"\n          }\n        },\n        \"refunds\": [\n          {\n            \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n          },\n          {\n            \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n          }\n        ],\n        \"has_refunds\": true,\n        \"chargebacks\": [\n          {\n            \"value\": \"reference #/paths/~1v1~1chargebacks~1%7Bchargeback_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n          },\n          {\n            \"value\": \"reference #/paths/~1v1~1chargebacks~1%7Bchargeback_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n          }\n        ],\n        \"has_chargebacks\": true,\n        \"ach_return\": {\n          \"value\": \"reference #/paths/~1v1~1ach_returns~1%7Bach_return_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n        },\n        \"has_ach_return\": false,\n        \"payin_config\": {\n          \"payin_config_id\": \"cfg_2DrDPKzdQypRudLd8DhQKZX27dA\",\n          \"processing_mode\": {\n            \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/processing_mode not found in the OpenAPI spec\"\n          },\n          \"amount\": 100,\n          \"currency_code\": \"USD\",\n          \"amount_splits\": {\n            \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/amount_splits not found in the OpenAPI spec\"\n          }\n        },\n        \"threeds_attempt\": {\n          \"threeds_attempt_id\": \"tds_2DrDFJPutxE5AIbJSopAnqniEbr\",\n          \"merchant_id\": {\n            \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n          },\n          \"payin_config_id\": \"cfg_2DrDPKzdQypRudLd8DhQKZX27dA\",\n          \"status\": \"CREATED\",\n          \"failed_reason_code\": \"MERCHANT_NOT_BOARDED\",\n          \"failed_reason_desc\": \"string\",\n          \"created_at\": {\n            \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n          },\n          \"updated_at\": {\n            \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n          },\n          \"fingerprinted_at\": {\n            \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n          },\n          \"challenged_at\": {\n            \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n          },\n          \"succeeded_at\": {\n            \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n          },\n          \"failed_at\": {\n            \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n          }\n        },\n        \"expected_deposit_date\": \"2022-01-01\",\n        \"source\": \"<string>\",\n        \"source_desc\": \"string\",\n        \"created_at\": \"2022-01-01T12:00:00Z\",\n        \"updated_at\": \"2022-01-01T12:00:00Z\"\n      }\n    ]\n  },\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "20ef46ea-cda1-46c6-b6c8-d8b4115c27fa",
+              "name": "Bad request, check for validation errors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "merchant_name",
+                      "value": "Merchant"
+                    },
+                    {
+                      "key": "method_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billing_contact_name",
+                      "value": "Doe"
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSING"
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSING"
+                    },
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at.start",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "created_at.end",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "expected_deposit_date.start",
+                      "value": "2022-01-01"
+                    },
+                    {
+                      "key": "expected_deposit_date.end",
+                      "value": "2022-01-01"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "start_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"RequestBody\",\n      \"message\": \"Invalid request payload\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "34f26313-1c04-4c76-b1fa-2a9315786ace",
+              "name": "Authorization missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "merchant_name",
+                      "value": "Merchant"
+                    },
+                    {
+                      "key": "method_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billing_contact_name",
+                      "value": "Doe"
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSING"
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSING"
+                    },
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at.start",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "created_at.end",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "expected_deposit_date.start",
+                      "value": "2022-01-01"
+                    },
+                    {
+                      "key": "expected_deposit_date.end",
+                      "value": "2022-01-01"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "start_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthUnauthorized\",\n      \"message\": \"Unauthorized\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed9dd05e-b52d-4479-bdc8-092d92b9763e",
+              "name": "Authorization insufficient for requested action.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "merchant_name",
+                      "value": "Merchant"
+                    },
+                    {
+                      "key": "method_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billing_contact_name",
+                      "value": "Doe"
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSING"
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSING"
+                    },
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at.start",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "created_at.end",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "expected_deposit_date.start",
+                      "value": "2022-01-01"
+                    },
+                    {
+                      "key": "expected_deposit_date.end",
+                      "value": "2022-01-01"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "start_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthForbidden\",\n      \"message\": \"Forbidden\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "97f4b4df-6452-4360-9517-5e099d757f8a",
+              "name": "Unexpected error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "merchant_name",
+                      "value": "Merchant"
+                    },
+                    {
+                      "key": "method_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billing_contact_name",
+                      "value": "Doe"
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSING"
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSING"
+                    },
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "metadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at.start",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "created_at.end",
+                      "value": "2022-01-01T12:00:00Z"
+                    },
+                    {
+                      "key": "expected_deposit_date.start",
+                      "value": "2022-01-01"
+                    },
+                    {
+                      "key": "expected_deposit_date.end",
+                      "value": "2022-01-01"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "start_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"Internal Server Error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0bdd9b8f-c673-459b-a7d8-b638b9cfcde9",
+          "name": "Create payin",
+          "request": {
+            "name": "Create payin",
+            "description": {
+              "content": "Create and process a payin with sensitive PCI data using a payin configuration. The merchant status must be `ACTIVE` to create a payin.\n\nThis endpoint requires Rainforest approval. Platforms that meet all [requirements](doc:send-sensitive-data-via-api#requirements) and are approved by Rainforest can send the full card and bank account numbers to Rainforest via a server-to-serve direct API integration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payins"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Rainforest-Api-Version",
+                "value": "2024-10-16",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"payin_config_id\": \"<string>\",\n  \"method_type\": \"<string>\",\n  \"card\": {\n    \"card_number\": \"<string>\",\n    \"exp_month\": \"<integer>\",\n    \"exp_year\": \"<integer>\",\n    \"cvc\": \"<integer>\"\n  },\n  \"ach\": {\n    \"account_number\": \"<string>\",\n    \"routing_number\": \"<string>\",\n    \"account_type\": \"<string>\",\n    \"account_holder_type\": \"<string>\"\n  },\n  \"billing_contact\": {\n    \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c6f00dd3-50ad-40fc-a844-5bf3eb518359",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payin_config_id\": \"cfg_2A4d6U0tMyovzTbVT1ktmRzdRaD\",\n  \"method_type\": \"CARD\",\n  \"card\": {\n    \"card_number\": \"4111111111111111\",\n    \"exp_month\": 12,\n    \"exp_year\": 2027,\n    \"cvc\": \"123\"\n  },\n  \"billing_contact\": {\n    \"name\": \"Jane Smith\",\n    \"address_line_1\": \"3423 Piedmont Rd\",\n    \"address_line_2\": \"Suite 123\",\n    \"city\": \"Atlanta\",\n    \"state\": \"GA\",\n    \"postal_code\": \"30305\",\n    \"country\": \"US\",\n    \"email\": \"janesmith@example.com\",\n    \"phone\": \"4041234567\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {\n    \"payin_id\": \"pyi_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n    \"payin_config_id\": \"cfg_2DrDPKzdQypRudLd8DhQKZX27dA\",\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"payment_method_id\": \"mtd_2DrDRpyAdp5MPUJnrJmoZcMmtfF\",\n    \"payment_method_config_id\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/payment_method_config_id not found in the OpenAPI spec\"\n    },\n    \"device_registration_id\": \"dvc_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n    \"threeds_attempt_id\": \"tds_2DrDFJPutxE5AIbJSopAnqniEbr\",\n    \"idempotency_key\": {\n      \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D~1void/post/requestBody/content/application~1json/schema/properties/idempotency_key not found in the OpenAPI spec\"\n    },\n    \"billing_type\": \"NET\",\n    \"amount\": 100,\n    \"currency_code\": \"USD\",\n    \"is_partially_authorized\": true,\n    \"authorized_amount\": 100,\n    \"captured_amount\": 100,\n    \"refundable_amount\": 100,\n    \"non_refundable_reason_code\": \"HAS_CHARGEBACKS\",\n    \"status\": \"PROCESSING\",\n    \"refusal_code\": \"NO_CARD_NUMBER_ON_FILE_WITH_ISSUER\",\n    \"refusal_desc\": \"Retry with 3DS\",\n    \"detailed_refusal_code\": \"INVALID_CARD_SECURITY_CODE\",\n    \"detailed_refusal_desc\": \"Risk decline\",\n    \"auth_code\": \"12345\",\n    \"avs_result_code\": \"Y\",\n    \"cvc_result_code\": \"M\",\n    \"amount_splits\": [\n      {\n        \"amount\": 3,\n        \"currency_code\": \"USD\",\n        \"type\": \"PLATFORM\"\n      }\n    ],\n    \"merchant_fees\": {\n      \"total_amount\": {\n        \"amount\": 2,\n        \"currency_code\": \"USD\"\n      }\n    },\n    \"method_type\": \"ACH\",\n    \"card\": {\n      \"type\": \"CREDIT\",\n      \"brand\": {\n        \"value\": \"reference #/paths/~1v1~1bin_lookup/post/responses/200/content/application~1json/schema/properties/data/properties/brand not found in the OpenAPI spec\"\n      },\n      \"brand_desc\": \"Mastercard\",\n      \"last_4\": \"4444\",\n      \"exp_month\": 12,\n      \"exp_year\": 2027\n    },\n    \"apple_pay\": {\n      \"type\": \"PREPAID\",\n      \"brand\": {\n        \"value\": \"reference #/paths/~1v1~1bin_lookup/post/responses/200/content/application~1json/schema/properties/data/properties/brand not found in the OpenAPI spec\"\n      },\n      \"brand_desc\": \"Mastercard\",\n      \"description\": \"Visa 1234\"\n    },\n    \"ach\": {\n      \"account_number_last_4\": \"5678\",\n      \"routing_number\": \"<string>\",\n      \"bank_name\": \"Wells Fargo Bank\",\n      \"account_type\": \"CHECKING\",\n      \"account_holder_type\": \"PERSONAL\"\n    },\n    \"plaid_ach\": {\n      \"value\": \"reference #/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data/properties/plaid_ach not found in the OpenAPI spec\"\n    },\n    \"paypal_wallet\": {\n      \"email\": \"janesmith@example.com\"\n    },\n    \"venmo\": {\n      \"email\": \"janesmith@example.com\"\n    },\n    \"paypal_paylater\": {\n      \"email\": \"janesmith@example.com\"\n    },\n    \"billing_contact\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n    },\n    \"device_data\": {\n      \"application_identifier\": \"A0000000031010\",\n      \"application_label\": \"VISA CREDIT\",\n      \"application_preferred_name\": \"VISA CREDIT\",\n      \"transaction_status_information\": \"E800\",\n      \"application_pan_sequence_number\": \"string\",\n      \"entry_type\": \"TAPPED\",\n      \"verification_type\": \"NONE\",\n      \"signature\": \"string\"\n    },\n    \"method_metadata\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/method_metadata not found in the OpenAPI spec\"\n    },\n    \"metadata\": {\n      \"key1\": \"value1\",\n      \"key2\": {\n        \"inner_key1\": \"inner_value1\"\n      }\n    },\n    \"refunds\": [\n      {\n        \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n      },\n      {\n        \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n      }\n    ],\n    \"has_refunds\": false,\n    \"chargebacks\": [\n      {\n        \"value\": \"reference #/paths/~1v1~1chargebacks~1%7Bchargeback_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n      },\n      {\n        \"value\": \"reference #/paths/~1v1~1chargebacks~1%7Bchargeback_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n      }\n    ],\n    \"has_chargebacks\": true,\n    \"ach_return\": {\n      \"value\": \"reference #/paths/~1v1~1ach_returns~1%7Bach_return_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n    },\n    \"has_ach_return\": true,\n    \"payin_config\": {\n      \"payin_config_id\": \"cfg_2DrDPKzdQypRudLd8DhQKZX27dA\",\n      \"processing_mode\": {\n        \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/processing_mode not found in the OpenAPI spec\"\n      },\n      \"amount\": 100,\n      \"currency_code\": \"USD\",\n      \"amount_splits\": {\n        \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/amount_splits not found in the OpenAPI spec\"\n      }\n    },\n    \"threeds_attempt\": {\n      \"threeds_attempt_id\": \"tds_2DrDFJPutxE5AIbJSopAnqniEbr\",\n      \"merchant_id\": {\n        \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n      },\n      \"payin_config_id\": \"cfg_2DrDPKzdQypRudLd8DhQKZX27dA\",\n      \"status\": \"CREATED\",\n      \"failed_reason_code\": \"UNSUPPORTED_PAYMENT_DATA\",\n      \"failed_reason_desc\": \"string\",\n      \"created_at\": {\n        \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n      },\n      \"updated_at\": {\n        \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n      },\n      \"fingerprinted_at\": {\n        \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n      },\n      \"challenged_at\": {\n        \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n      },\n      \"succeeded_at\": {\n        \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n      },\n      \"failed_at\": {\n        \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n      }\n    },\n    \"expected_deposit_date\": \"2022-01-01\",\n    \"source\": \"<string>\",\n    \"source_desc\": \"string\",\n    \"created_at\": \"2022-01-01T12:00:00Z\",\n    \"updated_at\": \"2022-01-01T12:00:00Z\"\n  },\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "22143577-2265-4b8f-9e82-8779dde490c6",
+              "name": "Bad request, check for validation errors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payin_config_id\": \"cfg_2A4d6U0tMyovzTbVT1ktmRzdRaD\",\n  \"method_type\": \"CARD\",\n  \"card\": {\n    \"card_number\": \"4111111111111111\",\n    \"exp_month\": 12,\n    \"exp_year\": 2027,\n    \"cvc\": \"123\"\n  },\n  \"billing_contact\": {\n    \"name\": \"Jane Smith\",\n    \"address_line_1\": \"3423 Piedmont Rd\",\n    \"address_line_2\": \"Suite 123\",\n    \"city\": \"Atlanta\",\n    \"state\": \"GA\",\n    \"postal_code\": \"30305\",\n    \"country\": \"US\",\n    \"email\": \"janesmith@example.com\",\n    \"phone\": \"4041234567\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"RequestBody\",\n      \"message\": \"Invalid request payload\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5a04ea4-ad0e-433b-ad3a-c68e40213163",
+              "name": "Authorization missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payin_config_id\": \"cfg_2A4d6U0tMyovzTbVT1ktmRzdRaD\",\n  \"method_type\": \"CARD\",\n  \"card\": {\n    \"card_number\": \"4111111111111111\",\n    \"exp_month\": 12,\n    \"exp_year\": 2027,\n    \"cvc\": \"123\"\n  },\n  \"billing_contact\": {\n    \"name\": \"Jane Smith\",\n    \"address_line_1\": \"3423 Piedmont Rd\",\n    \"address_line_2\": \"Suite 123\",\n    \"city\": \"Atlanta\",\n    \"state\": \"GA\",\n    \"postal_code\": \"30305\",\n    \"country\": \"US\",\n    \"email\": \"janesmith@example.com\",\n    \"phone\": \"4041234567\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthUnauthorized\",\n      \"message\": \"Unauthorized\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac7e8e6a-1874-4422-b8c6-46e0e8f397f6",
+              "name": "Authorization insufficient for requested action.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payin_config_id\": \"cfg_2A4d6U0tMyovzTbVT1ktmRzdRaD\",\n  \"method_type\": \"CARD\",\n  \"card\": {\n    \"card_number\": \"4111111111111111\",\n    \"exp_month\": 12,\n    \"exp_year\": 2027,\n    \"cvc\": \"123\"\n  },\n  \"billing_contact\": {\n    \"name\": \"Jane Smith\",\n    \"address_line_1\": \"3423 Piedmont Rd\",\n    \"address_line_2\": \"Suite 123\",\n    \"city\": \"Atlanta\",\n    \"state\": \"GA\",\n    \"postal_code\": \"30305\",\n    \"country\": \"US\",\n    \"email\": \"janesmith@example.com\",\n    \"phone\": \"4041234567\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthForbidden\",\n      \"message\": \"Forbidden\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "accd2dd6-db17-4058-8e13-7f58eb518b29",
+              "name": "Unexpected error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payin_config_id\": \"cfg_2A4d6U0tMyovzTbVT1ktmRzdRaD\",\n  \"method_type\": \"CARD\",\n  \"card\": {\n    \"card_number\": \"4111111111111111\",\n    \"exp_month\": 12,\n    \"exp_year\": 2027,\n    \"cvc\": \"123\"\n  },\n  \"billing_contact\": {\n    \"name\": \"Jane Smith\",\n    \"address_line_1\": \"3423 Piedmont Rd\",\n    \"address_line_2\": \"Suite 123\",\n    \"city\": \"Atlanta\",\n    \"state\": \"GA\",\n    \"postal_code\": \"30305\",\n    \"country\": \"US\",\n    \"email\": \"janesmith@example.com\",\n    \"phone\": \"4041234567\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"Internal Server Error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8470fdd7-a996-473c-bf21-5dc3730cce7e",
+          "name": "Get payin",
+          "request": {
+            "name": "Get payin",
+            "description": {
+              "content": "Get payin details by the payin ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payins",
+                ":payin_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "payin_id",
+                  "description": "(Required) The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Rainforest-Api-Version",
+                "value": "2024-10-16",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "52961b85-f297-46e1-a2ff-d4961ea2b971",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_id",
+                      "description": "(Required) The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {\n    \"payin_id\": \"pyi_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n    \"payin_config_id\": \"cfg_2DrDPKzdQypRudLd8DhQKZX27dA\",\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"payment_method_id\": \"mtd_2DrDRpyAdp5MPUJnrJmoZcMmtfF\",\n    \"payment_method_config_id\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/payment_method_config_id not found in the OpenAPI spec\"\n    },\n    \"device_registration_id\": \"dvc_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n    \"threeds_attempt_id\": \"tds_2DrDFJPutxE5AIbJSopAnqniEbr\",\n    \"idempotency_key\": {\n      \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D~1void/post/requestBody/content/application~1json/schema/properties/idempotency_key not found in the OpenAPI spec\"\n    },\n    \"billing_type\": \"NET\",\n    \"amount\": 100,\n    \"currency_code\": \"USD\",\n    \"is_partially_authorized\": true,\n    \"authorized_amount\": 100,\n    \"captured_amount\": 100,\n    \"refundable_amount\": 100,\n    \"non_refundable_reason_code\": \"HAS_CHARGEBACKS\",\n    \"status\": \"PROCESSING\",\n    \"refusal_code\": \"NO_CARD_NUMBER_ON_FILE_WITH_ISSUER\",\n    \"refusal_desc\": \"Retry with 3DS\",\n    \"detailed_refusal_code\": \"INVALID_CARD_SECURITY_CODE\",\n    \"detailed_refusal_desc\": \"Risk decline\",\n    \"auth_code\": \"12345\",\n    \"avs_result_code\": \"Y\",\n    \"cvc_result_code\": \"M\",\n    \"amount_splits\": [\n      {\n        \"amount\": 3,\n        \"currency_code\": \"USD\",\n        \"type\": \"PLATFORM\"\n      }\n    ],\n    \"merchant_fees\": {\n      \"total_amount\": {\n        \"amount\": 2,\n        \"currency_code\": \"USD\"\n      }\n    },\n    \"method_type\": \"ACH\",\n    \"card\": {\n      \"type\": \"CREDIT\",\n      \"brand\": {\n        \"value\": \"reference #/paths/~1v1~1bin_lookup/post/responses/200/content/application~1json/schema/properties/data/properties/brand not found in the OpenAPI spec\"\n      },\n      \"brand_desc\": \"Mastercard\",\n      \"last_4\": \"4444\",\n      \"exp_month\": 12,\n      \"exp_year\": 2027\n    },\n    \"apple_pay\": {\n      \"type\": \"PREPAID\",\n      \"brand\": {\n        \"value\": \"reference #/paths/~1v1~1bin_lookup/post/responses/200/content/application~1json/schema/properties/data/properties/brand not found in the OpenAPI spec\"\n      },\n      \"brand_desc\": \"Mastercard\",\n      \"description\": \"Visa 1234\"\n    },\n    \"ach\": {\n      \"account_number_last_4\": \"5678\",\n      \"routing_number\": \"<string>\",\n      \"bank_name\": \"Wells Fargo Bank\",\n      \"account_type\": \"CHECKING\",\n      \"account_holder_type\": \"PERSONAL\"\n    },\n    \"plaid_ach\": {\n      \"value\": \"reference #/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data/properties/plaid_ach not found in the OpenAPI spec\"\n    },\n    \"paypal_wallet\": {\n      \"email\": \"janesmith@example.com\"\n    },\n    \"venmo\": {\n      \"email\": \"janesmith@example.com\"\n    },\n    \"paypal_paylater\": {\n      \"email\": \"janesmith@example.com\"\n    },\n    \"billing_contact\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n    },\n    \"device_data\": {\n      \"application_identifier\": \"A0000000031010\",\n      \"application_label\": \"VISA CREDIT\",\n      \"application_preferred_name\": \"VISA CREDIT\",\n      \"transaction_status_information\": \"E800\",\n      \"application_pan_sequence_number\": \"string\",\n      \"entry_type\": \"TAPPED\",\n      \"verification_type\": \"NONE\",\n      \"signature\": \"string\"\n    },\n    \"method_metadata\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/method_metadata not found in the OpenAPI spec\"\n    },\n    \"metadata\": {\n      \"key1\": \"value1\",\n      \"key2\": {\n        \"inner_key1\": \"inner_value1\"\n      }\n    },\n    \"refunds\": [\n      {\n        \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n      },\n      {\n        \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n      }\n    ],\n    \"has_refunds\": false,\n    \"chargebacks\": [\n      {\n        \"value\": \"reference #/paths/~1v1~1chargebacks~1%7Bchargeback_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n      },\n      {\n        \"value\": \"reference #/paths/~1v1~1chargebacks~1%7Bchargeback_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n      }\n    ],\n    \"has_chargebacks\": true,\n    \"ach_return\": {\n      \"value\": \"reference #/paths/~1v1~1ach_returns~1%7Bach_return_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n    },\n    \"has_ach_return\": true,\n    \"payin_config\": {\n      \"payin_config_id\": \"cfg_2DrDPKzdQypRudLd8DhQKZX27dA\",\n      \"processing_mode\": {\n        \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/processing_mode not found in the OpenAPI spec\"\n      },\n      \"amount\": 100,\n      \"currency_code\": \"USD\",\n      \"amount_splits\": {\n        \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/amount_splits not found in the OpenAPI spec\"\n      }\n    },\n    \"threeds_attempt\": {\n      \"threeds_attempt_id\": \"tds_2DrDFJPutxE5AIbJSopAnqniEbr\",\n      \"merchant_id\": {\n        \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n      },\n      \"payin_config_id\": \"cfg_2DrDPKzdQypRudLd8DhQKZX27dA\",\n      \"status\": \"CREATED\",\n      \"failed_reason_code\": \"UNSUPPORTED_PAYMENT_DATA\",\n      \"failed_reason_desc\": \"string\",\n      \"created_at\": {\n        \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n      },\n      \"updated_at\": {\n        \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n      },\n      \"fingerprinted_at\": {\n        \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n      },\n      \"challenged_at\": {\n        \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n      },\n      \"succeeded_at\": {\n        \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n      },\n      \"failed_at\": {\n        \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n      }\n    },\n    \"expected_deposit_date\": \"2022-01-01\",\n    \"source\": \"<string>\",\n    \"source_desc\": \"string\",\n    \"created_at\": \"2022-01-01T12:00:00Z\",\n    \"updated_at\": \"2022-01-01T12:00:00Z\"\n  },\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d6e551c6-cbea-474f-b8c4-c47a2b0be77c",
+              "name": "Bad request, check for validation errors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_id",
+                      "description": "(Required) The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"RequestBody\",\n      \"message\": \"Invalid request payload\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "46f37015-6a0b-4e22-87d9-20edde32e6d7",
+              "name": "Authorization missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_id",
+                      "description": "(Required) The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthUnauthorized\",\n      \"message\": \"Unauthorized\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f0f7f2c8-06b2-4fd0-89ce-9355d6752fce",
+              "name": "Authorization insufficient for requested action.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_id",
+                      "description": "(Required) The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthForbidden\",\n      \"message\": \"Forbidden\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "432ec371-907e-4b1c-a91c-2edaea909b42",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_id",
+                      "description": "(Required) The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"EntityNotFound\",\n      \"message\": \"Resource not found\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "feb54a0f-648e-42a8-b170-385a1a3802f6",
+              "name": "Unexpected error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_id",
+                      "description": "(Required) The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"Internal Server Error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f2a741f8-b5e2-41f9-9420-b334e5ab206d",
+          "name": "Update payin metadata",
+          "request": {
+            "name": "Update payin metadata",
+            "description": {
+              "content": "The body of the request is the JSON key-value metadata to patch to the payin. Do not use the metadata field to store sensitive or confidential data. \n\nUpdating metadata will merge with the existing metadata stored on the chargeback by the top-level key. If the same top-level key is passed in this request, it will overwrite the value stored on the chargeback. Only keys included in the payload will be updated. To remove a key, set the key's value to null. To remove all metadata pass null for the metadata value.\n\nPayin metadata must be less than 8 KB in size.\n\nPayin metadata can only be updated using an API key. This request should not be made by your frontend and should only be done by backend logic that only the platform can complete.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payins",
+                ":payin_id",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "payin_id",
+                  "description": "(Required) The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Rainforest-Api-Version",
+                "value": "2024-10-16",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "298477ac-7153-4a95-9a22-3520fdcb643f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_id",
+                      "description": "(Required) The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key1\": \"value1\",\n  \"key2\": {\n    \"inner_key1\": \"inner_value1\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {\n    \"payin_id\": \"pyi_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n    \"payin_config_id\": \"cfg_2DrDPKzdQypRudLd8DhQKZX27dA\",\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"payment_method_id\": \"mtd_2DrDRpyAdp5MPUJnrJmoZcMmtfF\",\n    \"payment_method_config_id\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/payment_method_config_id not found in the OpenAPI spec\"\n    },\n    \"device_registration_id\": \"dvc_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n    \"threeds_attempt_id\": \"tds_2DrDFJPutxE5AIbJSopAnqniEbr\",\n    \"idempotency_key\": {\n      \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D~1void/post/requestBody/content/application~1json/schema/properties/idempotency_key not found in the OpenAPI spec\"\n    },\n    \"billing_type\": \"GROSS\",\n    \"amount\": 100,\n    \"currency_code\": \"USD\",\n    \"is_partially_authorized\": false,\n    \"authorized_amount\": 100,\n    \"captured_amount\": 100,\n    \"refundable_amount\": 100,\n    \"non_refundable_reason_code\": \"HAS_ACH_RETURN\",\n    \"status\": \"PROCESSING\",\n    \"refusal_code\": \"RETRY\",\n    \"refusal_desc\": \"Incorrect payment information\",\n    \"detailed_refusal_code\": \"AUTHORIZATION_EXPIRED\",\n    \"detailed_refusal_desc\": \"Invalid expiration date\",\n    \"auth_code\": \"12345\",\n    \"avs_result_code\": \"Y\",\n    \"cvc_result_code\": \"M\",\n    \"amount_splits\": [\n      {\n        \"amount\": 3,\n        \"currency_code\": \"USD\",\n        \"type\": \"PLATFORM\"\n      }\n    ],\n    \"merchant_fees\": {\n      \"total_amount\": {\n        \"amount\": 2,\n        \"currency_code\": \"USD\"\n      }\n    },\n    \"method_type\": \"PLAID_ACH\",\n    \"card\": {\n      \"type\": \"CREDIT\",\n      \"brand\": {\n        \"value\": \"reference #/paths/~1v1~1bin_lookup/post/responses/200/content/application~1json/schema/properties/data/properties/brand not found in the OpenAPI spec\"\n      },\n      \"brand_desc\": \"Mastercard\",\n      \"last_4\": \"4444\",\n      \"exp_month\": 12,\n      \"exp_year\": 2027\n    },\n    \"apple_pay\": {\n      \"type\": \"CREDIT\",\n      \"brand\": {\n        \"value\": \"reference #/paths/~1v1~1bin_lookup/post/responses/200/content/application~1json/schema/properties/data/properties/brand not found in the OpenAPI spec\"\n      },\n      \"brand_desc\": \"Mastercard\",\n      \"description\": \"Visa 1234\"\n    },\n    \"ach\": {\n      \"account_number_last_4\": \"5678\",\n      \"routing_number\": \"<string>\",\n      \"bank_name\": \"Wells Fargo Bank\",\n      \"account_type\": \"CHECKING\",\n      \"account_holder_type\": \"PERSONAL\"\n    },\n    \"plaid_ach\": {\n      \"value\": \"reference #/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data/properties/plaid_ach not found in the OpenAPI spec\"\n    },\n    \"paypal_wallet\": {\n      \"email\": \"janesmith@example.com\"\n    },\n    \"venmo\": {\n      \"email\": \"janesmith@example.com\"\n    },\n    \"paypal_paylater\": {\n      \"email\": \"janesmith@example.com\"\n    },\n    \"billing_contact\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n    },\n    \"device_data\": {\n      \"application_identifier\": \"A0000000031010\",\n      \"application_label\": \"VISA CREDIT\",\n      \"application_preferred_name\": \"VISA CREDIT\",\n      \"transaction_status_information\": \"E800\",\n      \"application_pan_sequence_number\": \"string\",\n      \"entry_type\": \"TAPPED\",\n      \"verification_type\": \"OFFLINE_PIN_SIGNATURE\",\n      \"signature\": \"string\"\n    },\n    \"method_metadata\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/method_metadata not found in the OpenAPI spec\"\n    },\n    \"metadata\": {\n      \"key1\": \"value1\",\n      \"key2\": {\n        \"inner_key1\": \"inner_value1\"\n      }\n    },\n    \"refunds\": [\n      {\n        \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n      },\n      {\n        \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n      }\n    ],\n    \"has_refunds\": true,\n    \"chargebacks\": [\n      {\n        \"value\": \"reference #/paths/~1v1~1chargebacks~1%7Bchargeback_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n      },\n      {\n        \"value\": \"reference #/paths/~1v1~1chargebacks~1%7Bchargeback_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n      }\n    ],\n    \"has_chargebacks\": false,\n    \"ach_return\": {\n      \"value\": \"reference #/paths/~1v1~1ach_returns~1%7Bach_return_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n    },\n    \"has_ach_return\": false,\n    \"payin_config\": {\n      \"payin_config_id\": \"cfg_2DrDPKzdQypRudLd8DhQKZX27dA\",\n      \"processing_mode\": {\n        \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/processing_mode not found in the OpenAPI spec\"\n      },\n      \"amount\": 100,\n      \"currency_code\": \"USD\",\n      \"amount_splits\": {\n        \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/amount_splits not found in the OpenAPI spec\"\n      }\n    },\n    \"threeds_attempt\": {\n      \"threeds_attempt_id\": \"tds_2DrDFJPutxE5AIbJSopAnqniEbr\",\n      \"merchant_id\": {\n        \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n      },\n      \"payin_config_id\": \"cfg_2DrDPKzdQypRudLd8DhQKZX27dA\",\n      \"status\": \"CREATED\",\n      \"failed_reason_code\": \"CHALLENGE_FAILED\",\n      \"failed_reason_desc\": \"string\",\n      \"created_at\": {\n        \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n      },\n      \"updated_at\": {\n        \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n      },\n      \"fingerprinted_at\": {\n        \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n      },\n      \"challenged_at\": {\n        \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n      },\n      \"succeeded_at\": {\n        \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n      },\n      \"failed_at\": {\n        \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n      }\n    },\n    \"expected_deposit_date\": \"2022-01-01\",\n    \"source\": \"<string>\",\n    \"source_desc\": \"string\",\n    \"created_at\": \"2022-01-01T12:00:00Z\",\n    \"updated_at\": \"2022-01-01T12:00:00Z\"\n  },\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9cf58dc4-56ef-4585-9f9c-e707d0983b4c",
+              "name": "Bad request, check for validation errors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_id",
+                      "description": "(Required) The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key1\": \"value1\",\n  \"key2\": {\n    \"inner_key1\": \"inner_value1\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"RequestBody\",\n      \"message\": \"Invalid request payload\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "afcf4fa9-7252-4278-b885-9b68e688fb00",
+              "name": "Authorization missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_id",
+                      "description": "(Required) The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key1\": \"value1\",\n  \"key2\": {\n    \"inner_key1\": \"inner_value1\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthUnauthorized\",\n      \"message\": \"Unauthorized\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c887f303-3245-430d-9ab4-26346f3c997a",
+              "name": "Authorization insufficient for requested action.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_id",
+                      "description": "(Required) The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key1\": \"value1\",\n  \"key2\": {\n    \"inner_key1\": \"inner_value1\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthForbidden\",\n      \"message\": \"Forbidden\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03ed4bab-c5bf-4085-a812-68f844572cd5",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_id",
+                      "description": "(Required) The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key1\": \"value1\",\n  \"key2\": {\n    \"inner_key1\": \"inner_value1\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"EntityNotFound\",\n      \"message\": \"Resource not found\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e0f3d97-2068-411c-8f24-2c4c5388c02c",
+              "name": "Unexpected error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_id",
+                      "description": "(Required) The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key1\": \"value1\",\n  \"key2\": {\n    \"inner_key1\": \"inner_value1\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"Internal Server Error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "096bc370-c338-4db0-932c-b7b84e06b1dd",
+          "name": "Capture payin",
+          "request": {
+            "name": "Capture payin",
+            "description": {
+              "content": "Capture an authorized payin. The payin status must be Authorized to capture.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payins",
+                ":payin_id",
+                "capture"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "payin_id",
+                  "description": "(Required) The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Rainforest-Api-Version",
+                "value": "2024-10-16",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<integer>\",\n  \"amount_splits\": {\n    \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/amount_splits not found in the OpenAPI spec\"\n  },\n  \"metadata\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d972042d-fdb0-4a45-b681-67d7a18fb7cb",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "capture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_id",
+                      "description": "(Required) The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 100,\n  \"amount_splits\": {\n    \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/amount_splits not found in the OpenAPI spec\"\n  },\n  \"metadata\": {\n    \"key1\": \"value1\",\n    \"key2\": {\n      \"inner_key1\": \"inner_value1\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {\n    \"payin_id\": \"pyi_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n    \"payin_config_id\": \"cfg_2DrDPKzdQypRudLd8DhQKZX27dA\",\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"payment_method_id\": \"mtd_2DrDRpyAdp5MPUJnrJmoZcMmtfF\",\n    \"payment_method_config_id\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/payment_method_config_id not found in the OpenAPI spec\"\n    },\n    \"device_registration_id\": \"dvc_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n    \"threeds_attempt_id\": \"tds_2DrDFJPutxE5AIbJSopAnqniEbr\",\n    \"idempotency_key\": {\n      \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D~1void/post/requestBody/content/application~1json/schema/properties/idempotency_key not found in the OpenAPI spec\"\n    },\n    \"billing_type\": \"GROSS\",\n    \"amount\": 100,\n    \"currency_code\": \"USD\",\n    \"is_partially_authorized\": false,\n    \"authorized_amount\": 100,\n    \"captured_amount\": 100,\n    \"refundable_amount\": 100,\n    \"non_refundable_reason_code\": \"HAS_ACH_RETURN\",\n    \"status\": \"PROCESSING\",\n    \"refusal_code\": \"RETRY\",\n    \"refusal_desc\": \"Incorrect payment information\",\n    \"detailed_refusal_code\": \"AUTHORIZATION_EXPIRED\",\n    \"detailed_refusal_desc\": \"Invalid expiration date\",\n    \"auth_code\": \"12345\",\n    \"avs_result_code\": \"Y\",\n    \"cvc_result_code\": \"M\",\n    \"amount_splits\": [\n      {\n        \"amount\": 3,\n        \"currency_code\": \"USD\",\n        \"type\": \"PLATFORM\"\n      }\n    ],\n    \"merchant_fees\": {\n      \"total_amount\": {\n        \"amount\": 2,\n        \"currency_code\": \"USD\"\n      }\n    },\n    \"method_type\": \"PLAID_ACH\",\n    \"card\": {\n      \"type\": \"CREDIT\",\n      \"brand\": {\n        \"value\": \"reference #/paths/~1v1~1bin_lookup/post/responses/200/content/application~1json/schema/properties/data/properties/brand not found in the OpenAPI spec\"\n      },\n      \"brand_desc\": \"Mastercard\",\n      \"last_4\": \"4444\",\n      \"exp_month\": 12,\n      \"exp_year\": 2027\n    },\n    \"apple_pay\": {\n      \"type\": \"CREDIT\",\n      \"brand\": {\n        \"value\": \"reference #/paths/~1v1~1bin_lookup/post/responses/200/content/application~1json/schema/properties/data/properties/brand not found in the OpenAPI spec\"\n      },\n      \"brand_desc\": \"Mastercard\",\n      \"description\": \"Visa 1234\"\n    },\n    \"ach\": {\n      \"account_number_last_4\": \"5678\",\n      \"routing_number\": \"<string>\",\n      \"bank_name\": \"Wells Fargo Bank\",\n      \"account_type\": \"CHECKING\",\n      \"account_holder_type\": \"PERSONAL\"\n    },\n    \"plaid_ach\": {\n      \"value\": \"reference #/paths/~1v1~1payment_methods/post/responses/200/content/application~1json/schema/properties/data/properties/plaid_ach not found in the OpenAPI spec\"\n    },\n    \"paypal_wallet\": {\n      \"email\": \"janesmith@example.com\"\n    },\n    \"venmo\": {\n      \"email\": \"janesmith@example.com\"\n    },\n    \"paypal_paylater\": {\n      \"email\": \"janesmith@example.com\"\n    },\n    \"billing_contact\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/billing_contact not found in the OpenAPI spec\"\n    },\n    \"device_data\": {\n      \"application_identifier\": \"A0000000031010\",\n      \"application_label\": \"VISA CREDIT\",\n      \"application_preferred_name\": \"VISA CREDIT\",\n      \"transaction_status_information\": \"E800\",\n      \"application_pan_sequence_number\": \"string\",\n      \"entry_type\": \"TAPPED\",\n      \"verification_type\": \"OFFLINE_PIN_SIGNATURE\",\n      \"signature\": \"string\"\n    },\n    \"method_metadata\": {\n      \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/method_metadata not found in the OpenAPI spec\"\n    },\n    \"metadata\": {\n      \"key1\": \"value1\",\n      \"key2\": {\n        \"inner_key1\": \"inner_value1\"\n      }\n    },\n    \"refunds\": [\n      {\n        \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n      },\n      {\n        \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n      }\n    ],\n    \"has_refunds\": true,\n    \"chargebacks\": [\n      {\n        \"value\": \"reference #/paths/~1v1~1chargebacks~1%7Bchargeback_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n      },\n      {\n        \"value\": \"reference #/paths/~1v1~1chargebacks~1%7Bchargeback_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n      }\n    ],\n    \"has_chargebacks\": false,\n    \"ach_return\": {\n      \"value\": \"reference #/paths/~1v1~1ach_returns~1%7Bach_return_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n    },\n    \"has_ach_return\": false,\n    \"payin_config\": {\n      \"payin_config_id\": \"cfg_2DrDPKzdQypRudLd8DhQKZX27dA\",\n      \"processing_mode\": {\n        \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/processing_mode not found in the OpenAPI spec\"\n      },\n      \"amount\": 100,\n      \"currency_code\": \"USD\",\n      \"amount_splits\": {\n        \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/amount_splits not found in the OpenAPI spec\"\n      }\n    },\n    \"threeds_attempt\": {\n      \"threeds_attempt_id\": \"tds_2DrDFJPutxE5AIbJSopAnqniEbr\",\n      \"merchant_id\": {\n        \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n      },\n      \"payin_config_id\": \"cfg_2DrDPKzdQypRudLd8DhQKZX27dA\",\n      \"status\": \"CREATED\",\n      \"failed_reason_code\": \"CHALLENGE_FAILED\",\n      \"failed_reason_desc\": \"string\",\n      \"created_at\": {\n        \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n      },\n      \"updated_at\": {\n        \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n      },\n      \"fingerprinted_at\": {\n        \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n      },\n      \"challenged_at\": {\n        \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n      },\n      \"succeeded_at\": {\n        \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n      },\n      \"failed_at\": {\n        \"value\": \"reference #/paths/~1v1~1payment_method_domains/post/requestBody/content/application~1json/schema/properties/created_at not found in the OpenAPI spec\"\n      }\n    },\n    \"expected_deposit_date\": \"2022-01-01\",\n    \"source\": \"<string>\",\n    \"source_desc\": \"string\",\n    \"created_at\": \"2022-01-01T12:00:00Z\",\n    \"updated_at\": \"2022-01-01T12:00:00Z\"\n  },\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dc4a9462-1d5a-4e1e-9876-eeff39346f21",
+              "name": "Bad request, check for validation errors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "capture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_id",
+                      "description": "(Required) The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 100,\n  \"amount_splits\": {\n    \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/amount_splits not found in the OpenAPI spec\"\n  },\n  \"metadata\": {\n    \"key1\": \"value1\",\n    \"key2\": {\n      \"inner_key1\": \"inner_value1\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"RequestBody\",\n      \"message\": \"Invalid request payload\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c37181eb-21fb-4a2a-8c15-6652cad9252d",
+              "name": "Authorization missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "capture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_id",
+                      "description": "(Required) The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 100,\n  \"amount_splits\": {\n    \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/amount_splits not found in the OpenAPI spec\"\n  },\n  \"metadata\": {\n    \"key1\": \"value1\",\n    \"key2\": {\n      \"inner_key1\": \"inner_value1\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthUnauthorized\",\n      \"message\": \"Unauthorized\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4f9eae8-62ac-4bb7-b85d-b4727da32416",
+              "name": "Authorization insufficient for requested action.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "capture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_id",
+                      "description": "(Required) The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 100,\n  \"amount_splits\": {\n    \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/amount_splits not found in the OpenAPI spec\"\n  },\n  \"metadata\": {\n    \"key1\": \"value1\",\n    \"key2\": {\n      \"inner_key1\": \"inner_value1\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthForbidden\",\n      \"message\": \"Forbidden\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3f586360-d329-44d4-bae9-27d4b7812518",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "capture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_id",
+                      "description": "(Required) The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 100,\n  \"amount_splits\": {\n    \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/amount_splits not found in the OpenAPI spec\"\n  },\n  \"metadata\": {\n    \"key1\": \"value1\",\n    \"key2\": {\n      \"inner_key1\": \"inner_value1\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"EntityNotFound\",\n      \"message\": \"Resource not found\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f6a69bf3-7bc2-4284-bd99-b28c92243dfa",
+              "name": "Unexpected error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "capture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_id",
+                      "description": "(Required) The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 100,\n  \"amount_splits\": {\n    \"value\": \"reference #/paths/~1v1~1payin_configs/post/requestBody/content/application~1json/schema/properties/amount_splits not found in the OpenAPI spec\"\n  },\n  \"metadata\": {\n    \"key1\": \"value1\",\n    \"key2\": {\n      \"inner_key1\": \"inner_value1\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"Internal Server Error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e3160b96-bced-4ebb-a8fd-c64641b73a93",
+          "name": "Void or refund payin",
+          "request": {
+            "name": "Void or refund payin",
+            "description": {
+              "content": "Void or refund a payin by the payin ID.\n\nIf the payin status is `Processing`, then the full payin amount can be voided. A payin cannot be partially voided. If the payin status is `Succeeded`, then the payin can be fully or partially refunded. See the payin `refundable_amount` and `non_refundable_reason_code` for details on if the payin is eligible for a void or refund.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payins",
+                ":payin_id",
+                "void_or_refund"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "payin_id",
+                  "description": "(Required) The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Rainforest-Api-Version",
+                "value": "2024-10-16",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"<string>\",\n  \"idempotency_key\": {\n    \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D~1void/post/requestBody/content/application~1json/schema/properties/idempotency_key not found in the OpenAPI spec\"\n  },\n  \"amount\": \"<integer>\",\n  \"merchant_billing\": {\n    \"rate\": \"<integer>\",\n    \"rate_cap\": \"<integer>\",\n    \"fee\": \"<integer>\",\n    \"currency_code\": \"<string>\"\n  },\n  \"metadata\": \"<object>\",\n  \"amount_splits\": [\n    {\n      \"amount\": \"<integer>\",\n      \"currency_code\": \"<string>\",\n      \"type\": \"<string>\",\n      \"rate\": \"<integer>\",\n      \"rate_cap\": \"<integer>\",\n      \"merchant_id\": \"<string>\"\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"currency_code\": \"<string>\",\n      \"type\": \"<string>\",\n      \"rate\": \"<integer>\",\n      \"rate_cap\": \"<integer>\",\n      \"merchant_id\": \"<string>\"\n    }\n  ],\n  \"payin_billing_fees_reversal_config\": {\n    \"on_full_refund\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e752c280-bf5e-4689-9c65-ab07f103294d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "void_or_refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_id",
+                      "description": "(Required) The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\",\n  \"idempotency_key\": {\n    \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D~1void/post/requestBody/content/application~1json/schema/properties/idempotency_key not found in the OpenAPI spec\"\n  },\n  \"amount\": 100,\n  \"merchant_billing\": {\n    \"rate\": \"<integer>\",\n    \"rate_cap\": \"<integer>\",\n    \"fee\": \"<integer>\",\n    \"currency_code\": \"USD\"\n  },\n  \"metadata\": {\n    \"key1\": \"value1\",\n    \"key2\": {\n      \"inner_key1\": \"inner_value1\"\n    }\n  },\n  \"amount_splits\": [\n    {\n      \"amount\": 100,\n      \"currency_code\": \"USD\",\n      \"type\": \"<string>\",\n      \"rate\": 3000,\n      \"rate_cap\": 1000,\n      \"merchant_id\": \"mid_abc123\"\n    },\n    {\n      \"amount\": 100,\n      \"currency_code\": \"USD\",\n      \"type\": \"<string>\",\n      \"rate\": 3000,\n      \"rate_cap\": 1000,\n      \"merchant_id\": \"mid_abc123\"\n    }\n  ],\n  \"payin_billing_fees_reversal_config\": {\n    \"on_full_refund\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"SUCCESS\",\n  \"data\": {\n    \"type\": \"VOID\",\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"refund_id\": {\n      \"value\": \"reference #/paths/~1v1~1ach_returns~1%7Bach_return_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/refund_id not found in the OpenAPI spec\"\n    },\n    \"refund_status\": \"IN_REVIEW\",\n    \"payin_id\": \"pyi_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n    \"payin_status\": \"SUCCEEDED\",\n    \"amount\": 100,\n    \"currency_code\": \"USD\",\n    \"merchant_billing\": {\n      \"rate\": \"<integer>\",\n      \"rate_cap\": \"<integer>\",\n      \"fee\": \"<integer>\",\n      \"currency_code\": \"USD\"\n    },\n    \"amount_splits\": {\n      \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/amount_splits not found in the OpenAPI spec\"\n    },\n    \"payin_billing_fees_reversal_config\": {\n      \"on_full_refund\": true\n    },\n    \"reason\": \"DUPLICATE\",\n    \"refusal_code\": \"INVALID_PIN\",\n    \"refusal_desc\": \"Lost card\",\n    \"auth_code\": \"12345\",\n    \"metadata\": {\n      \"key1\": \"value1\",\n      \"key2\": {\n        \"inner_key1\": \"inner_value1\"\n      }\n    },\n    \"source\": \"API_DIRECT\",\n    \"created_at\": \"2022-01-01T12:00:00Z\"\n  },\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "682aa378-1489-449c-a6a8-aca2b7fe63f0",
+              "name": "Bad request, check for validation errors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "void_or_refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_id",
+                      "description": "(Required) The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\",\n  \"idempotency_key\": {\n    \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D~1void/post/requestBody/content/application~1json/schema/properties/idempotency_key not found in the OpenAPI spec\"\n  },\n  \"amount\": 100,\n  \"merchant_billing\": {\n    \"rate\": \"<integer>\",\n    \"rate_cap\": \"<integer>\",\n    \"fee\": \"<integer>\",\n    \"currency_code\": \"USD\"\n  },\n  \"metadata\": {\n    \"key1\": \"value1\",\n    \"key2\": {\n      \"inner_key1\": \"inner_value1\"\n    }\n  },\n  \"amount_splits\": [\n    {\n      \"amount\": 100,\n      \"currency_code\": \"USD\",\n      \"type\": \"<string>\",\n      \"rate\": 3000,\n      \"rate_cap\": 1000,\n      \"merchant_id\": \"mid_abc123\"\n    },\n    {\n      \"amount\": 100,\n      \"currency_code\": \"USD\",\n      \"type\": \"<string>\",\n      \"rate\": 3000,\n      \"rate_cap\": 1000,\n      \"merchant_id\": \"mid_abc123\"\n    }\n  ],\n  \"payin_billing_fees_reversal_config\": {\n    \"on_full_refund\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"RequestBody\",\n      \"message\": \"Invalid request payload\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e87cfd1b-e872-4c05-9396-b2989841a748",
+              "name": "Authorization missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "void_or_refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_id",
+                      "description": "(Required) The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\",\n  \"idempotency_key\": {\n    \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D~1void/post/requestBody/content/application~1json/schema/properties/idempotency_key not found in the OpenAPI spec\"\n  },\n  \"amount\": 100,\n  \"merchant_billing\": {\n    \"rate\": \"<integer>\",\n    \"rate_cap\": \"<integer>\",\n    \"fee\": \"<integer>\",\n    \"currency_code\": \"USD\"\n  },\n  \"metadata\": {\n    \"key1\": \"value1\",\n    \"key2\": {\n      \"inner_key1\": \"inner_value1\"\n    }\n  },\n  \"amount_splits\": [\n    {\n      \"amount\": 100,\n      \"currency_code\": \"USD\",\n      \"type\": \"<string>\",\n      \"rate\": 3000,\n      \"rate_cap\": 1000,\n      \"merchant_id\": \"mid_abc123\"\n    },\n    {\n      \"amount\": 100,\n      \"currency_code\": \"USD\",\n      \"type\": \"<string>\",\n      \"rate\": 3000,\n      \"rate_cap\": 1000,\n      \"merchant_id\": \"mid_abc123\"\n    }\n  ],\n  \"payin_billing_fees_reversal_config\": {\n    \"on_full_refund\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthUnauthorized\",\n      \"message\": \"Unauthorized\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0a44702a-e509-47e2-8b29-dfad19ddc046",
+              "name": "Authorization insufficient for requested action.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "void_or_refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_id",
+                      "description": "(Required) The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\",\n  \"idempotency_key\": {\n    \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D~1void/post/requestBody/content/application~1json/schema/properties/idempotency_key not found in the OpenAPI spec\"\n  },\n  \"amount\": 100,\n  \"merchant_billing\": {\n    \"rate\": \"<integer>\",\n    \"rate_cap\": \"<integer>\",\n    \"fee\": \"<integer>\",\n    \"currency_code\": \"USD\"\n  },\n  \"metadata\": {\n    \"key1\": \"value1\",\n    \"key2\": {\n      \"inner_key1\": \"inner_value1\"\n    }\n  },\n  \"amount_splits\": [\n    {\n      \"amount\": 100,\n      \"currency_code\": \"USD\",\n      \"type\": \"<string>\",\n      \"rate\": 3000,\n      \"rate_cap\": 1000,\n      \"merchant_id\": \"mid_abc123\"\n    },\n    {\n      \"amount\": 100,\n      \"currency_code\": \"USD\",\n      \"type\": \"<string>\",\n      \"rate\": 3000,\n      \"rate_cap\": 1000,\n      \"merchant_id\": \"mid_abc123\"\n    }\n  ],\n  \"payin_billing_fees_reversal_config\": {\n    \"on_full_refund\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"AuthForbidden\",\n      \"message\": \"Forbidden\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fde5c7d5-0496-4d26-9639-ecbd00c91e3a",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "void_or_refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_id",
+                      "description": "(Required) The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\",\n  \"idempotency_key\": {\n    \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D~1void/post/requestBody/content/application~1json/schema/properties/idempotency_key not found in the OpenAPI spec\"\n  },\n  \"amount\": 100,\n  \"merchant_billing\": {\n    \"rate\": \"<integer>\",\n    \"rate_cap\": \"<integer>\",\n    \"fee\": \"<integer>\",\n    \"currency_code\": \"USD\"\n  },\n  \"metadata\": {\n    \"key1\": \"value1\",\n    \"key2\": {\n      \"inner_key1\": \"inner_value1\"\n    }\n  },\n  \"amount_splits\": [\n    {\n      \"amount\": 100,\n      \"currency_code\": \"USD\",\n      \"type\": \"<string>\",\n      \"rate\": 3000,\n      \"rate_cap\": 1000,\n      \"merchant_id\": \"mid_abc123\"\n    },\n    {\n      \"amount\": 100,\n      \"currency_code\": \"USD\",\n      \"type\": \"<string>\",\n      \"rate\": 3000,\n      \"rate_cap\": 1000,\n      \"merchant_id\": \"mid_abc123\"\n    }\n  ],\n  \"payin_billing_fees_reversal_config\": {\n    \"on_full_refund\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"EntityNotFound\",\n      \"message\": \"Resource not found\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d278aee7-486d-4ed6-a26c-7d18143cceb2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "void_or_refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_id",
+                      "description": "(Required) The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\",\n  \"idempotency_key\": {\n    \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D~1void/post/requestBody/content/application~1json/schema/properties/idempotency_key not found in the OpenAPI spec\"\n  },\n  \"amount\": 100,\n  \"merchant_billing\": {\n    \"rate\": \"<integer>\",\n    \"rate_cap\": \"<integer>\",\n    \"fee\": \"<integer>\",\n    \"currency_code\": \"USD\"\n  },\n  \"metadata\": {\n    \"key1\": \"value1\",\n    \"key2\": {\n      \"inner_key1\": \"inner_value1\"\n    }\n  },\n  \"amount_splits\": [\n    {\n      \"amount\": 100,\n      \"currency_code\": \"USD\",\n      \"type\": \"<string>\",\n      \"rate\": 3000,\n      \"rate_cap\": 1000,\n      \"merchant_id\": \"mid_abc123\"\n    },\n    {\n      \"amount\": 100,\n      \"currency_code\": \"USD\",\n      \"type\": \"<string>\",\n      \"rate\": 3000,\n      \"rate_cap\": 1000,\n      \"merchant_id\": \"mid_abc123\"\n    }\n  ],\n  \"payin_billing_fees_reversal_config\": {\n    \"on_full_refund\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2751c8e8-1df3-45d0-91c0-557ca09b4645",
+              "name": "Unexpected error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "void_or_refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payin_id",
+                      "description": "(Required) The unique payin identifier. \n\nPrefix is \"pyi\" in production and \"sbx_pyi\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Rainforest-Api-Version",
+                    "value": "2024-10-16",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\",\n  \"idempotency_key\": {\n    \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D~1void/post/requestBody/content/application~1json/schema/properties/idempotency_key not found in the OpenAPI spec\"\n  },\n  \"amount\": 100,\n  \"merchant_billing\": {\n    \"rate\": \"<integer>\",\n    \"rate_cap\": \"<integer>\",\n    \"fee\": \"<integer>\",\n    \"currency_code\": \"USD\"\n  },\n  \"metadata\": {\n    \"key1\": \"value1\",\n    \"key2\": {\n      \"inner_key1\": \"inner_value1\"\n    }\n  },\n  \"amount_splits\": [\n    {\n      \"amount\": 100,\n      \"currency_code\": \"USD\",\n      \"type\": \"<string>\",\n      \"rate\": 3000,\n      \"rate_cap\": 1000,\n      \"merchant_id\": \"mid_abc123\"\n    },\n    {\n      \"amount\": 100,\n      \"currency_code\": \"USD\",\n      \"type\": \"<string>\",\n      \"rate\": 3000,\n      \"rate_cap\": 1000,\n      \"merchant_id\": \"mid_abc123\"\n    }\n  ],\n  \"payin_billing_fees_reversal_config\": {\n    \"on_full_refund\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"Internal Server Error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.rainforestpay.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4aa81e9f-52fc-406f-a290-8599ee1e6af5",
+    "name": "Authentication ACH Returns Payins API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This resource is used for authentication actions\n\nContact Support:\n Name: Rainforest\n Email: support@rainforestpay.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Authentication ACH Returns Devices API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List device registrations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.rainforestpay.com/v1/device_registrations",
+            "params": [
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Optional value by which to sort the result set. Default sort by is created_at."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The offset of the first result to return; zero-based."
+              }
+            ]
+          },
+          "docs": "Query a list of registered devices given optional search criteria."
+        },
+        {
+          "info": {
+            "name": "Create device registration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/device_registrations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a device registration for payment processing on a specific merchant. When a device is registered, the device receives a new device_registration_id for payment processing. The merchant status must be `ACTIVE` to register a device."
+        },
+        {
+          "info": {
+            "name": "Get device registration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.rainforestpay.com/v1/device_registrations/:device_registration_id",
+            "params": [
+              {
+                "name": "device_registration_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique device registration identifier.\n\nPrefix is \"dvc\" in production and \"sbx_dvc\" in sandbox."
+              }
+            ]
+          },
+          "docs": "Get registered device details by the device registration ID."
+        },
+        {
+          "info": {
+            "name": "Delete device registration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.sandbox.rainforestpay.com/v1/device_registrations/:device_registration_id"
+          },
+          "docs": "Delete a device registration. The device will be able to be re-registered."
+        },
+        {
+          "info": {
+            "name": "Present payin on a registered device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/device_registrations/:device_registration_id/payin",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Present a payin for processing on a registered device using a payin configuration. The merchant status must be `ACTIVE` to process a payin.\n\n> 📘 Note\n>\n> A payment method created on a registered device may only be used for payins within the same merchant for which it was collected."
+        },
+        {
+          "info": {
+            "name": "Present payment method on a registered device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/device_registrations/:device_registration_id/payment_method",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a payment method on a registered device using a payment method configuration. The merchant status must be `ACTIVE` to create a payment method.\n\n> 📘 Note\n>\n> A payment method created on a registered device may only be used for payins within the same merchant for which it was collected."
+        },
+        {
+          "info": {
+            "name": "Cancel presented entity on device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/device_registrations/:device_registration_id/cancel"
+          },
+          "docs": "Best effort attempt to cancel currently presented payin or payment method on device. This does not guarantee the presented entity can be canceled on the device. If the payin begins processing before it can be canceled, then you will need to void the payin if it processes. A corresponding webhook will trigger if the presented payin or payment method is canceled or processes.\n\nIf no payin or payment method is being presented at the time of the request, a `202 Accepted` response will be returned."
+        },
+        {
+          "info": {
+            "name": "Simulate device interaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/device_registrations/:device_registration_id/simulate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Only available in the Rainforest sandbox environment.\n\nAfter presenting a payin or payment method on a virtual device this endpoint is available to move on from the `PRESENTING` status to a desired subsequent status.\n\nThe expected webhook will be sent for the payin or payment method on status change."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

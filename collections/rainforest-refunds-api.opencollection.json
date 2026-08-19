@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Authentication ACH Returns Refunds API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Refunds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get refund",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.rainforestpay.com/v1/refunds/:refund_id",
+            "params": [
+              {
+                "name": "refund_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique refund identifier. \n\nPrefix is \"rfd\" in production and \"sbx_rfd\" in sandbox."
+              }
+            ]
+          },
+          "docs": "Get refund details by the refund ID."
+        },
+        {
+          "info": {
+            "name": "Update refund metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.sandbox.rainforestpay.com/v1/refunds/:refund_id/metadata",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The body of the request is the JSON key-value metadata to patch to the payin. Do not use the metadata field to store sensitive or confidential data. \n\nUpdating metadata will merge with the existing metadata stored on the refund by the top-level key. If the same top-level key is passed in this request, it will overwrite the value stored on the refund. Only keys included in the payload will be updated. To remove a key, set the key's value to null. To remove all metadata pass null for the metadata "
+        },
+        {
+          "info": {
+            "name": "Void refund",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/refunds/:refund_id/void",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Void a refund by the refund ID.\n\nSee the refund `non_voidable_reason_code` for details on if the refund is eligible for a void."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

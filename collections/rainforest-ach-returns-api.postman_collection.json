@@ -1,0 +1,1074 @@
+{
+  "item": [
+    {
+      "id": "cce7378b-04ec-4481-99ce-e9d3e486913d",
+      "name": "ACH Returns",
+      "description": {
+        "content": "Resources for ACH return functions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4367042c-6625-473c-8a27-6b89a9c986ce",
+          "name": "Get ACH return",
+          "request": {
+            "name": "Get ACH return",
+            "description": {
+              "content": "Get ACH return details by the ach return ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "ach_returns",
+                ":ach_return_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ach_return_id",
+                  "description": "(Required) The unique ACH return identifier. \n\nPrefix is \"ret\" in production and \"sbx_ret\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aa9b4831-809c-4a9e-8973-28c345fa71e6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ach_returns",
+                    ":ach_return_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ach_return_id",
+                      "description": "(Required) The unique ACH return identifier. \n\nPrefix is \"ret\" in production and \"sbx_ret\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"ach_return_id\": \"ret_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"payin_id\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payin_id not found in the OpenAPI spec\"\n    },\n    \"refund_id\": \"rfd_2DrDU206kzAhclm1WrZbuwDERRk\",\n    \"status\": \"SUCCEEDED\",\n    \"return_code\": \"R84\",\n    \"return_desc\": \"string\",\n    \"amount\": 100,\n    \"currency_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n    },\n    \"amount_splits\": {\n      \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/amount_splits not found in the OpenAPI spec\"\n    },\n    \"merchant_fees\": {\n      \"total_amount\": {\n        \"amount\": 2,\n        \"currency_code\": \"USD\"\n      }\n    },\n    \"metadata\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    \"expected_deposit_date\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date not found in the OpenAPI spec\"\n    },\n    \"source\": \"SYSTEM\",\n    \"source_desc\": \"string\",\n    \"created_at\": \"2022-01-01T12:00:00Z\",\n    \"updated_at\": \"2022-01-01T12:00:00Z\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5aea6f3b-104e-418b-8137-d704c5992b76",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ach_returns",
+                    ":ach_return_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ach_return_id",
+                      "description": "(Required) The unique ACH return identifier. \n\nPrefix is \"ret\" in production and \"sbx_ret\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "94476ce2-22e3-4a20-945a-253aad42ed22",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ach_returns",
+                    ":ach_return_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ach_return_id",
+                      "description": "(Required) The unique ACH return identifier. \n\nPrefix is \"ret\" in production and \"sbx_ret\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b882a088-d082-4995-bdad-66fac4992e72",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ach_returns",
+                    ":ach_return_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ach_return_id",
+                      "description": "(Required) The unique ACH return identifier. \n\nPrefix is \"ret\" in production and \"sbx_ret\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3c12d9ff-527f-4b17-bf88-36e8eb414b9f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ach_returns",
+                    ":ach_return_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ach_return_id",
+                      "description": "(Required) The unique ACH return identifier. \n\nPrefix is \"ret\" in production and \"sbx_ret\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d0f523d0-b451-44f9-b78e-0023419a170d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ach_returns",
+                    ":ach_return_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ach_return_id",
+                      "description": "(Required) The unique ACH return identifier. \n\nPrefix is \"ret\" in production and \"sbx_ret\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "90f68f3d-6af8-46b4-8671-ca7e338a6994",
+          "name": "Update ACH return metadata",
+          "request": {
+            "name": "Update ACH return metadata",
+            "description": {
+              "content": "The body of the request is the JSON key-value metadata to patch to the ACH return. Do not use the metadata field to store sensitive or confidential data. \n\nUpdating metadata will merge with the existing metadata stored on the ACH return by the top-level key. If the same top-level key is passed in this request, it will overwrite the value stored on the ACH return. Only keys included in the payload will be updated. To remove a key, set the key's value to null. To remove all metadata pass null for the metadata value.\n\nACH return Metadata must be less than 8 KB in size.\n\nACH return metadata can only be updated using an API key. This request should not be made by your frontend and should only be done by backend logic that only the platform can complete.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "ach_returns",
+                ":ach_return_id",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ach_return_id",
+                  "description": "(Required) The unique ACH return identifier. \n\nPrefix is \"ret\" in production and \"sbx_ret\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3f43f3ff-fd99-4372-b429-c07e8fa09e82",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ach_returns",
+                    ":ach_return_id",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ach_return_id",
+                      "description": "(Required) The unique ACH return identifier. \n\nPrefix is \"ret\" in production and \"sbx_ret\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"ach_return_id\": \"ret_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"payin_id\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/payin_id not found in the OpenAPI spec\"\n    },\n    \"refund_id\": \"rfd_2DrDU206kzAhclm1WrZbuwDERRk\",\n    \"status\": \"SUCCEEDED\",\n    \"return_code\": \"R84\",\n    \"return_desc\": \"string\",\n    \"amount\": 100,\n    \"currency_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n    },\n    \"amount_splits\": {\n      \"value\": \"reference #/paths/~1v1~1refunds~1%7Brefund_id%7D/get/responses/200/content/application~1json/schema/properties/data/properties/amount_splits not found in the OpenAPI spec\"\n    },\n    \"merchant_fees\": {\n      \"total_amount\": {\n        \"amount\": 2,\n        \"currency_code\": \"USD\"\n      }\n    },\n    \"metadata\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    \"expected_deposit_date\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date not found in the OpenAPI spec\"\n    },\n    \"source\": \"SYSTEM\",\n    \"source_desc\": \"string\",\n    \"created_at\": \"2022-01-01T12:00:00Z\",\n    \"updated_at\": \"2022-01-01T12:00:00Z\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3c6ce224-40bc-401d-9577-dd4480f65085",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ach_returns",
+                    ":ach_return_id",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ach_return_id",
+                      "description": "(Required) The unique ACH return identifier. \n\nPrefix is \"ret\" in production and \"sbx_ret\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "da29c41b-2317-4131-bad0-86f943e8929d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ach_returns",
+                    ":ach_return_id",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ach_return_id",
+                      "description": "(Required) The unique ACH return identifier. \n\nPrefix is \"ret\" in production and \"sbx_ret\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "85c79f36-3ddd-4795-a66d-9cf64725f095",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ach_returns",
+                    ":ach_return_id",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ach_return_id",
+                      "description": "(Required) The unique ACH return identifier. \n\nPrefix is \"ret\" in production and \"sbx_ret\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a52229eb-34ca-4933-93f7-24b8f848ef1b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ach_returns",
+                    ":ach_return_id",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ach_return_id",
+                      "description": "(Required) The unique ACH return identifier. \n\nPrefix is \"ret\" in production and \"sbx_ret\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6a13e499-bf14-48bb-9ece-b5396b22ebfe",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ach_returns",
+                    ":ach_return_id",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ach_return_id",
+                      "description": "(Required) The unique ACH return identifier. \n\nPrefix is \"ret\" in production and \"sbx_ret\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "859c0b1a-5530-4aea-9741-5df736f6bfb4",
+          "name": "Simulate payin ACH return",
+          "request": {
+            "name": "Simulate payin ACH return",
+            "description": {
+              "content": "Only available in the Rainforest sandbox environment.\n\nMay only be called on an ACH payin in `PROCESSING` or `SUCCEEDED` statuses. An ACH return must not have already been created for the payin.\n\nThe expected webhooks will be sent as the payin's status is advanced and when the ACH return is created.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payins",
+                ":payin_id",
+                "simulate_ach_return"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "69697ce5-0005-471f-b78b-a9607869c0eb",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "simulate_ach_return"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "79502469-d57a-4e71-ae71-80cdab59ecf3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "simulate_ach_return"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1ce25eb2-a51e-4fa0-b83f-ba2a66f0e636",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "simulate_ach_return"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7c5a3523-1bc3-4692-9224-a47a2eed636c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "simulate_ach_return"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "55246bd8-e005-4e08-80c3-bf0eb79f4d9e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "simulate_ach_return"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d88791e5-37cb-44bb-b0fe-7b03c5b3a9bc",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payins",
+                    ":payin_id",
+                    "simulate_ach_return"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.rainforestpay.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f58dcd52-d683-4a9b-99bc-95c15f96ca38",
+    "name": "Authentication ACH Returns API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This resource is used for authentication actions\n\nContact Support:\n Name: Rainforest\n Email: support@rainforestpay.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Authentication ACH Returns Deposit Methods API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Deposit Methods",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get deposit method",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.rainforestpay.com/v1/deposit_methods/:deposit_method_id",
+            "params": [
+              {
+                "name": "deposit_method_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique deposit method identifier. \n\nPrefix is \"dmt\" in production and \"sbx_dmt\" in sandbox."
+              }
+            ]
+          },
+          "docs": "Get deposit method details by the deposit method ID."
+        },
+        {
+          "info": {
+            "name": "Create payin from deposit method",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/deposit_methods/:deposit_method_id/payin",
+            "headers": [
+              {
+                "name": "Rainforest-Api-Version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create and process a payin using a payin configuration and a deposit method. The merchant status must be ACTIVE to create a payin.\n\nThe deposit method details (i.e bank account number and billing contact) will be duplicated to a payment method and a payin will process against the newly created payment method. Metadata, method metadata, and new billing contact details can be defined on the [Payin Config](ref:create_payin_config).\n\nThis endpoint requires Rainforest approval."
+        },
+        {
+          "info": {
+            "name": "Create deposit method",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.rainforestpay.com/v1/deposit_methods",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a deposit method. A deposit method is assigned to a merchant and is where the merchant's funds for their payment activity will be deposited to.\n\nThis endpoint requires Rainforest approval. Platforms that meet all [requirements](doc:send-sensitive-data-via-api#requirements) and are approved by Rainforest can send the full bank account numbers to Rainforest via a direct API integration."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

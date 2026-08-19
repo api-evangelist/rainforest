@@ -1,0 +1,1253 @@
+{
+  "item": [
+    {
+      "id": "cc3cc7f4-0b27-463f-a450-2c58a0508124",
+      "name": "Refunds",
+      "description": {
+        "content": "Resources for refund functions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5c8eb7fd-8234-4e54-9166-81825e219d4f",
+          "name": "Get refund",
+          "request": {
+            "name": "Get refund",
+            "description": {
+              "content": "Get refund details by the refund ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "refunds",
+                ":refund_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "refund_id",
+                  "description": "(Required) The unique refund identifier. \n\nPrefix is \"rfd\" in production and \"sbx_rfd\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f5f2e1e7-cad7-4aad-b823-315414ec89c1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "refunds",
+                    ":refund_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "refund_id",
+                      "description": "(Required) The unique refund identifier. \n\nPrefix is \"rfd\" in production and \"sbx_rfd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"refund_id\": \"rfd_2DrDU206kzAhclm1WrZbuwDERRk\",\n    \"payin_id\": \"pyi_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"billing_type\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/billing_type not found in the OpenAPI spec\"\n    },\n    \"amount\": 100,\n    \"currency_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n    },\n    \"merchant_fees\": {\n      \"total_amount\": {\n        \"amount\": 150,\n        \"currency_code\": \"USD\"\n      }\n    },\n    \"reason\": \"Requested by customer\",\n    \"status\": \"FAILED\",\n    \"refusal_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/refusal_code not found in the OpenAPI spec\"\n    },\n    \"refusal_desc\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/refusal_desc not found in the OpenAPI spec\"\n    },\n    \"detailed_refusal_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/detailed_refusal_code not found in the OpenAPI spec\"\n    },\n    \"detailed_refusal_desc\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/detailed_refusal_desc not found in the OpenAPI spec\"\n    },\n    \"non_voidable_reason_code\": \"VOIDED\",\n    \"auth_code\": \"12345\",\n    \"metadata\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    \"amount_splits\": [\n      {\n        \"amount\": 3,\n        \"currency_code\": \"USD\",\n        \"type\": \"PLATFORM\"\n      }\n    ],\n    \"payin_billing_fees_reversal_config\": {\n      \"on_full_refund\": false\n    },\n    \"expected_deposit_date\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date not found in the OpenAPI spec\"\n    },\n    \"ach_return\": {\n      \"value\": \"reference #/paths/~1v1~1ach_returns~1%7Bach_return_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n    },\n    \"has_ach_return\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/has_ach_return not found in the OpenAPI spec\"\n    },\n    \"source\": \"COMPONENT\",\n    \"source_desc\": \"string\",\n    \"created_at\": \"2022-01-01T12:00:00Z\",\n    \"updated_at\": \"2022-01-01T12:00:00Z\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62ef882e-0646-4e33-aaed-95ba611f2a0f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "refunds",
+                    ":refund_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "refund_id",
+                      "description": "(Required) The unique refund identifier. \n\nPrefix is \"rfd\" in production and \"sbx_rfd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "da11609b-4f72-4277-b0bd-b2ccf1a736f5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "refunds",
+                    ":refund_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "refund_id",
+                      "description": "(Required) The unique refund identifier. \n\nPrefix is \"rfd\" in production and \"sbx_rfd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "80a7b47a-6c9e-499a-9963-b4dd1aece52f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "refunds",
+                    ":refund_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "refund_id",
+                      "description": "(Required) The unique refund identifier. \n\nPrefix is \"rfd\" in production and \"sbx_rfd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7f75484c-e4f4-47f4-98f5-5cee6c1e884e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "refunds",
+                    ":refund_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "refund_id",
+                      "description": "(Required) The unique refund identifier. \n\nPrefix is \"rfd\" in production and \"sbx_rfd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d762fd7f-bcf6-4c87-8b55-92c8bbc6a366",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "refunds",
+                    ":refund_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "refund_id",
+                      "description": "(Required) The unique refund identifier. \n\nPrefix is \"rfd\" in production and \"sbx_rfd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "01330ece-a4ab-460a-8966-f784af5d2d9a",
+          "name": "Update refund metadata",
+          "request": {
+            "name": "Update refund metadata",
+            "description": {
+              "content": "The body of the request is the JSON key-value metadata to patch to the payin. Do not use the metadata field to store sensitive or confidential data. \n\nUpdating metadata will merge with the existing metadata stored on the refund by the top-level key. If the same top-level key is passed in this request, it will overwrite the value stored on the refund. Only keys included in the payload will be updated. To remove a key, set the key's value to null. To remove all metadata pass null for the metadata value.\n\nRefund metadata must be less than 8 KB in size.\n\nRefund metadata can only be updated using an API key. This request should not be made by your frontend and should only be done by backend logic that only the platform can complete.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "refunds",
+                ":refund_id",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "refund_id",
+                  "description": "(Required) The unique refund identifier. \n\nPrefix is \"rfd\" in production and \"sbx_rfd\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4df0b21b-751e-47ec-9a5b-455bb6976792",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "refunds",
+                    ":refund_id",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "refund_id",
+                      "description": "(Required) The unique refund identifier. \n\nPrefix is \"rfd\" in production and \"sbx_rfd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"refund_id\": \"rfd_2DrDU206kzAhclm1WrZbuwDERRk\",\n    \"payin_id\": \"pyi_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"billing_type\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/billing_type not found in the OpenAPI spec\"\n    },\n    \"amount\": 100,\n    \"currency_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n    },\n    \"merchant_fees\": {\n      \"total_amount\": {\n        \"amount\": 150,\n        \"currency_code\": \"USD\"\n      }\n    },\n    \"reason\": \"Requested by customer\",\n    \"status\": \"CANCELED\",\n    \"refusal_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/refusal_code not found in the OpenAPI spec\"\n    },\n    \"refusal_desc\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/refusal_desc not found in the OpenAPI spec\"\n    },\n    \"detailed_refusal_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/detailed_refusal_code not found in the OpenAPI spec\"\n    },\n    \"detailed_refusal_desc\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/detailed_refusal_desc not found in the OpenAPI spec\"\n    },\n    \"non_voidable_reason_code\": \"VOIDED\",\n    \"auth_code\": \"12345\",\n    \"metadata\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    \"amount_splits\": [\n      {\n        \"amount\": 3,\n        \"currency_code\": \"USD\",\n        \"type\": \"PLATFORM\"\n      }\n    ],\n    \"payin_billing_fees_reversal_config\": {\n      \"on_full_refund\": true\n    },\n    \"expected_deposit_date\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date not found in the OpenAPI spec\"\n    },\n    \"ach_return\": {\n      \"value\": \"reference #/paths/~1v1~1ach_returns~1%7Bach_return_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n    },\n    \"has_ach_return\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/has_ach_return not found in the OpenAPI spec\"\n    },\n    \"source\": \"COMPONENT\",\n    \"source_desc\": \"string\",\n    \"created_at\": \"2022-01-01T12:00:00Z\",\n    \"updated_at\": \"2022-01-01T12:00:00Z\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e79848de-2dd0-4420-aafb-48b60d0009f7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "refunds",
+                    ":refund_id",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "refund_id",
+                      "description": "(Required) The unique refund identifier. \n\nPrefix is \"rfd\" in production and \"sbx_rfd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8568b3d3-d573-4543-9f09-210a5d0e2504",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "refunds",
+                    ":refund_id",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "refund_id",
+                      "description": "(Required) The unique refund identifier. \n\nPrefix is \"rfd\" in production and \"sbx_rfd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fae6beea-6620-4622-b2f2-84afcd58ea24",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "refunds",
+                    ":refund_id",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "refund_id",
+                      "description": "(Required) The unique refund identifier. \n\nPrefix is \"rfd\" in production and \"sbx_rfd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5e0c3661-bf8b-40b8-8a49-8abc921a0e92",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "refunds",
+                    ":refund_id",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "refund_id",
+                      "description": "(Required) The unique refund identifier. \n\nPrefix is \"rfd\" in production and \"sbx_rfd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "790475b6-469d-46a4-bc58-fc641b7e7eed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "refunds",
+                    ":refund_id",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "refund_id",
+                      "description": "(Required) The unique refund identifier. \n\nPrefix is \"rfd\" in production and \"sbx_rfd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7bc6f9bc-9d40-4aa9-91b4-66ab592d8a23",
+          "name": "Void refund",
+          "request": {
+            "name": "Void refund",
+            "description": {
+              "content": "Void a refund by the refund ID.\n\nSee the refund `non_voidable_reason_code` for details on if the refund is eligible for a void.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "refunds",
+                ":refund_id",
+                "void"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "refund_id",
+                  "description": "(Required) The unique refund identifier. \n\nPrefix is \"rfd\" in production and \"sbx_rfd\" in sandbox."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"<string>\",\n  \"idempotency_key\": \"<string>\",\n  \"metadata\": {\n    \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "61b47004-f81a-4e24-8ca2-cb3892c81444",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "refunds",
+                    ":refund_id",
+                    "void"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "refund_id",
+                      "description": "(Required) The unique refund identifier. \n\nPrefix is \"rfd\" in production and \"sbx_rfd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\",\n  \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\",\n  \"metadata\": {\n    \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/status not found in the OpenAPI spec\"\n  },\n  \"data\": {\n    \"refund_id\": \"rfd_2DrDU206kzAhclm1WrZbuwDERRk\",\n    \"payin_id\": \"pyi_2DrDKk5NIMbpuNGqm109SkpGDHh\",\n    \"merchant_id\": {\n      \"value\": \"reference #/paths/~1v1~1device_registrations/post/requestBody/content/application~1json/schema/properties/merchant_id not found in the OpenAPI spec\"\n    },\n    \"billing_type\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/billing_type not found in the OpenAPI spec\"\n    },\n    \"amount\": 100,\n    \"currency_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1void_or_refund/post/requestBody/content/application~1json/schema/properties/amount_splits/items/properties/currency_code not found in the OpenAPI spec\"\n    },\n    \"merchant_fees\": {\n      \"total_amount\": {\n        \"amount\": 150,\n        \"currency_code\": \"USD\"\n      }\n    },\n    \"reason\": \"Requested by customer\",\n    \"status\": \"CANCELED\",\n    \"refusal_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/refusal_code not found in the OpenAPI spec\"\n    },\n    \"refusal_desc\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/refusal_desc not found in the OpenAPI spec\"\n    },\n    \"detailed_refusal_code\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/detailed_refusal_code not found in the OpenAPI spec\"\n    },\n    \"detailed_refusal_desc\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/detailed_refusal_desc not found in the OpenAPI spec\"\n    },\n    \"non_voidable_reason_code\": \"VOIDED\",\n    \"auth_code\": \"12345\",\n    \"metadata\": {\n      \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n    },\n    \"amount_splits\": [\n      {\n        \"amount\": 3,\n        \"currency_code\": \"USD\",\n        \"type\": \"PLATFORM\"\n      }\n    ],\n    \"payin_billing_fees_reversal_config\": {\n      \"on_full_refund\": true\n    },\n    \"expected_deposit_date\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/expected_deposit_date not found in the OpenAPI spec\"\n    },\n    \"ach_return\": {\n      \"value\": \"reference #/paths/~1v1~1ach_returns~1%7Bach_return_id%7D/get/responses/200/content/application~1json/schema/properties/data not found in the OpenAPI spec\"\n    },\n    \"has_ach_return\": {\n      \"value\": \"reference #/paths/~1v1~1payins/post/responses/200/content/application~1json/schema/properties/data/properties/has_ach_return not found in the OpenAPI spec\"\n    },\n    \"source\": \"COMPONENT\",\n    \"source_desc\": \"string\",\n    \"created_at\": \"2022-01-01T12:00:00Z\",\n    \"updated_at\": \"2022-01-01T12:00:00Z\"\n  },\n  \"errors\": {\n    \"value\": \"reference #/paths/~1v1~1payins/get/responses/200/content/application~1json/schema/properties/errors not found in the OpenAPI spec\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e23de27-56c3-4a54-8edb-4e3164122063",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "refunds",
+                    ":refund_id",
+                    "void"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "refund_id",
+                      "description": "(Required) The unique refund identifier. \n\nPrefix is \"rfd\" in production and \"sbx_rfd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\",\n  \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\",\n  \"metadata\": {\n    \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9af174d0-baea-48f4-a8fc-98ef67db8f48",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "refunds",
+                    ":refund_id",
+                    "void"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "refund_id",
+                      "description": "(Required) The unique refund identifier. \n\nPrefix is \"rfd\" in production and \"sbx_rfd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\",\n  \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\",\n  \"metadata\": {\n    \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e65b847b-d89d-4426-a019-eacea07b9695",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "refunds",
+                    ":refund_id",
+                    "void"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "refund_id",
+                      "description": "(Required) The unique refund identifier. \n\nPrefix is \"rfd\" in production and \"sbx_rfd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\",\n  \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\",\n  \"metadata\": {\n    \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "709009ac-5c68-4752-bc04-dbe84eb24bf3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "refunds",
+                    ":refund_id",
+                    "void"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "refund_id",
+                      "description": "(Required) The unique refund identifier. \n\nPrefix is \"rfd\" in production and \"sbx_rfd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\",\n  \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\",\n  \"metadata\": {\n    \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bc81a19d-e975-4828-a766-0ac01ebb7490",
+              "name": "Conflict on the requested resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "refunds",
+                    ":refund_id",
+                    "void"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "refund_id",
+                      "description": "(Required) The unique refund identifier. \n\nPrefix is \"rfd\" in production and \"sbx_rfd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\",\n  \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\",\n  \"metadata\": {\n    \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"data\": null,\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"code\": \"string\",\n      \"message\": \"Conflict\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bc1a3bfd-09c3-497c-9b62-46a2b1d28fe8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "refunds",
+                    ":refund_id",
+                    "void"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "refund_id",
+                      "description": "(Required) The unique refund identifier. \n\nPrefix is \"rfd\" in production and \"sbx_rfd\" in sandbox."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\",\n  \"idempotency_key\": \"e7d57c41-7626-4644-b777-9451ab3ddea9\",\n  \"metadata\": {\n    \"value\": \"reference #/paths/~1v1~1payins~1%7Bpayin_id%7D~1metadata/patch/requestBody/content/application~1json/schema not found in the OpenAPI spec\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.rainforestpay.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2d075bd2-9e2a-4881-9533-6b981fb4762f",
+    "name": "Authentication ACH Returns Refunds API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This resource is used for authentication actions\n\nContact Support:\n Name: Rainforest\n Email: support@rainforestpay.com",
+      "type": "text/plain"
+    }
+  }
+}

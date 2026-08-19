@@ -1,0 +1,90 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Authentication ACH Returns Payments API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List payments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.rainforestpay.com/v1/payments",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "deposit_id",
+                "value": "",
+                "type": "query",
+                "description": "The unique deposit identifier. \n\nPrefix is \"dep\" in production and \"sbx_dep\" in sandbox."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "One or more payment statuses to filter by. Provide parameter multiple times to filter by multiple payment status types. Some statuses are only valid for certain payment activity types.\n\nACH returns: `CREATED`\n\nchargebacks: `INQUIRY_ACTION_REQUIRED` `INQUIRY_PROCESSING` `DISPUTE_ACTION_REQUIRED` `CHARGEBACK_PROCESSING`\n  `PROVISIONAL_WIN` `WON` `LOST` `PRE_ARBITRATION_PROCESSING` `ARBITRATION`\n\npayins: `CANCELED` `CREATED` `FAILED` `IN_REVIEW` `PRESENTING` `PROCESSING` `SUCCEEDED`\n\nrefunds: `CANCELED` `CREATED` `FAILED` `IN_REVIEW` `PROCESSING` `SUCCEEDED`"
+              },
+              {
+                "name": "payment_type",
+                "value": "",
+                "type": "query",
+                "description": "One or more payment types to filter by. Provide parameter multiples times to filter by multiple payment types. \n\n`ACH_RETURN` `CHARGEBACK` `PAYIN` `REFUND`"
+              },
+              {
+                "name": "source",
+                "value": "",
+                "type": "query",
+                "description": "One or more payment sources to filter by. Provide parameter multiple times to filter by multiple payment sources. Some sources are only valid for certain payment activity types.\n\nACH returns and chargebacks: `SYSTEM`\n\npayins: `API_DIRECT` `API_STORED_PAYMENT_METHOD` `COMPONENT` `DEVICE` `EXTERNAL` `IVR` `TAP_TO_PHONE`\n\nrefunds: `API_DIRECT` `COMPONENT` `EXTERNAL`"
+              },
+              {
+                "name": "due_date.start",
+                "value": "2022-01-01T12:00:00Z",
+                "type": "query",
+                "description": "Due on or after in UTC RFC 3339 format."
+              },
+              {
+                "name": "due_date.end",
+                "value": "2022-01-01T12:00:00Z",
+                "type": "query",
+                "description": "Due on or before in UTC RFC 3339 format."
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Optional value by which to sort the result set. Default sort by is created_at."
+              },
+              {
+                "name": "omit_total_results",
+                "value": "",
+                "type": "query",
+                "description": "The `total_results` field in the response will be set to -1. Allows for faster query results."
+              }
+            ]
+          },
+          "docs": "Query a list of payments, which includes payins, refunds, chargebacks, and ACH returns, given optional search criteria."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
