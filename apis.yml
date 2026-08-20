@@ -71,6 +71,8 @@ apis:
   humanURL: https://docs.rainforestpay.com/
   baseURL: https://api.rainforestpay.com
   tags:
+  - APIKeys
+  tags_raw:
   - API Keys
   properties:
   - type: OpenAPI
