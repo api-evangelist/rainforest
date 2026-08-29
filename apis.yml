@@ -12,6 +12,18 @@ description: >-
   and secured with HTTP Bearer API keys plus short-lived Component session tokens. Rainforest is
   PCI DSS Level 1 certified and hosted on AWS. Backed by Accel, Matrix Partners, and Y Combinator.
 url: https://raw.githubusercontent.com/api-evangelist/rainforest/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
