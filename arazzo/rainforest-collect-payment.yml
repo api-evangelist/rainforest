@@ -4,8 +4,11 @@ info:
   version: 1.0.0
   summary: Create a payin config with an idempotency key, process the payin, and confirm its status.
 sourceDescriptions:
-- name: payments
-  url: ../openapi/rainforest-payments-openapi.yaml
+- name: payinConfigsApi
+  url: ../openapi/rainforest-payin-configs-api-openapi.yml
+  type: openapi
+- name: payinsApi
+  url: ../openapi/rainforest-payins-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: collect-payment
@@ -13,10 +16,10 @@ workflows:
   inputs:
     type: object
     properties:
-      merchant_id: { type: string }
-      amount: { type: integer }
-      currency: { type: string, default: USD }
-      idempotency_key: { type: string }
+      merchant_id: {type: string}
+      amount: {type: integer}
+      currency: {type: string, default: USD}
+      idempotency_key: {type: string}
   steps:
   - stepId: createPayinConfig
     description: Create the payin configuration (carries the idempotency key).

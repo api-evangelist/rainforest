@@ -4,8 +4,11 @@ info:
   version: 1.0.0
   summary: Create a merchant, submit its application, and confirm it reaches ACTIVE.
 sourceDescriptions:
-- name: merchants
-  url: ../openapi/rainforest-merchants-openapi.yaml
+- name: merchantApplicationsApi
+  url: ../openapi/rainforest-merchant-applications-api-openapi.yml
+  type: openapi
+- name: merchantsApi
+  url: ../openapi/rainforest-merchants-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: onboard-merchant
@@ -13,8 +16,8 @@ workflows:
   inputs:
     type: object
     properties:
-      name: { type: string }
-      merchant_application_id: { type: string }
+      name: {type: string}
+      merchant_application_id: {type: string}
   steps:
   - stepId: createMerchant
     description: Create the merchant (a pending application is created with it).
