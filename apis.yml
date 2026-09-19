@@ -297,6 +297,8 @@ apis:
   humanURL: https://docs.rainforestpay.com/
   baseURL: https://api.rainforestpay.com
   tags:
+  - Pay-In
+  tags_raw:
   - Payins
   properties:
   - type: OpenAPI
