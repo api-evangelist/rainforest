@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Authentication ACH Returns Billing Profiles API
+  title: Merchants Billing Profiles API
   version: 1.0.0
-  description: This resource is used for authentication actions
+  description: This resource is used for merchant actions
   contact:
     name: Rainforest
     email: support@rainforestpay.com

@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Authentication ACH Returns Payment Methods API
+  title: Payments Payment Methods API
   version: 1.0.0
-  description: This resource is used for authentication actions
+  description: This resource is used for payment actions
   contact:
     name: Rainforest
     email: support@rainforestpay.com
@@ -174,10 +174,10 @@ paths:
       description: 'Create a saved payment method.
 
 
-        To duplicate a saved payment method, set the payment_method_id of the payment method to be duplicated. Billing contact and metadata is not persisted from the duplicated payment method and must be defined on the [Payment Method Config](ref:create_payment_method_config) or on the request. Only the stored sensitive payment method details (i.e full card or bank account number) will persist to the duplicated payment method.
+        To duplicate a saved payment method, set the payment_method_id of the payment method to be duplicated. Billing contact and metadata is not persisted from the duplicated payment method and must be defined on the Payment Method Config or on the request. Only the stored sensitive payment method details (i.e full card or bank account number) will persist to the duplicated payment method.
 
 
-        If the method_type is set, then this endpoint requires Rainforest approval. Platforms that meet all [requirements](doc:send-sensitive-data-via-api#requirements) and are approved by Rainforest can send the full card and bank account numbers to Rainforest via a server-to-serve direct API integration.'
+        If the method_type is set, then this endpoint requires Rainforest approval. Platforms that meet all requirements and are approved by Rainforest can send the full card and bank account numbers to Rainforest via a server-to-serve direct API integration.'
       parameters:
       - $ref: '#/paths/~1v1~1payins/get/parameters/0'
       requestBody:

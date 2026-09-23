@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Authentication ACH Returns Deposits API
+  title: Deposits API
   version: 1.0.0
-  description: This resource is used for authentication actions
+  description: This resource is used for merchant actions
   contact:
     name: Rainforest
     email: support@rainforestpay.com
@@ -820,7 +820,26 @@ paths:
     post:
       operationId: simulate_merchant_deposit
       summary: Simulate merchant deposit creation
-      description: "Only available in the Rainforest sandbox environment.\n\nSimulate processing a deposit on a merchant. Any payins or refunds with the status of `PROCESSING` will be transitioned to the status of `SUCCEEDED`.\n\nThe expected webhooks will be sent for all payins and refunds while the deposit is processing. The `deposit.processing` webhook will be sent when the deposit has been processed and the deposit status is `PROCESSING`.\n\nOn a merchant with a Daily Net billing configuration, a deposit will be processed with an amount that corresponds to the payment activity, less any applicable fees.\n\nOn a merchant with a Daily Gross billing configuration, two deposits will be processed:\n  1. A funding deposit with an amount that corresponds to the gross amount of the payment activity.\n  2. A billing deposit with an amount that corresponds to the applicable billing fees of the payment activity.\n\nOn a merchant with a Monthly Gross billing configuration, only the funding deposit will be processed with an amount that corresponds to the gross amount of the payment activity."
+      description: 'Only available in the Rainforest sandbox environment.
+
+
+        Simulate processing a deposit on a merchant. Any payins or refunds with the status of `PROCESSING` will be transitioned to the status of `SUCCEEDED`.
+
+
+        The expected webhooks will be sent for all payins and refunds while the deposit is processing. The `deposit.processing` webhook will be sent when the deposit has been processed and the deposit status is `PROCESSING`.
+
+
+        On a merchant with a Daily Net billing configuration, a deposit will be processed with an amount that corresponds to the payment activity, less any applicable fees.
+
+
+        On a merchant with a Daily Gross billing configuration, two deposits will be processed:
+
+        1. A funding deposit with an amount that corresponds to the gross amount of the payment activity.
+
+        2. A billing deposit with an amount that corresponds to the applicable billing fees of the payment activity.
+
+
+        On a merchant with a Monthly Gross billing configuration, only the funding deposit will be processed with an amount that corresponds to the gross amount of the payment activity.'
       parameters:
       - $ref: '#/paths/~1v1~1deposits/get/parameters/0'
       - in: path

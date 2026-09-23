@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Authentication ACH Returns BIN Lookups API
+  title: Payments BIN Lookups API
   version: 1.0.0
-  description: This resource is used for authentication actions
+  description: This resource is used for payment actions
   contact:
     name: Rainforest
     email: support@rainforestpay.com
@@ -25,7 +25,7 @@ paths:
       description: 'Retrieve information from the card''s BIN, such as the card brand, card type, country, and other details.
 
 
-        This endpoint requires Rainforest approval. Platforms that meet all [requirements](doc:send-sensitive-data-via-api#requirements) and are approved by Rainforest can send the full card numbers to Rainforest via a server-to-serve direct API integration.'
+        This endpoint requires Rainforest approval. Platforms that meet all requirements and are approved by Rainforest can send the full card numbers to Rainforest via a server-to-serve direct API integration.'
       requestBody:
         content:
           application/json:

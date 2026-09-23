@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Authentication ACH Returns API
+  title: Payments ACH Returns API
   version: 1.0.0
-  description: This resource is used for authentication actions
+  description: This resource is used for payment actions
   contact:
     name: Rainforest
     email: support@rainforestpay.com
@@ -238,7 +238,16 @@ paths:
     patch:
       operationId: update_ach_return_metadata
       summary: Update ACH return metadata
-      description: "The body of the request is the JSON key-value metadata to patch to the ACH return. Do not use the metadata field to store sensitive or confidential data. \n\nUpdating metadata will merge with the existing metadata stored on the ACH return by the top-level key. If the same top-level key is passed in this request, it will overwrite the value stored on the ACH return. Only keys included in the payload will be updated. To remove a key, set the key's value to null. To remove all metadata pass null for the metadata value.\n\nACH return Metadata must be less than 8 KB in size.\n\nACH return metadata can only be updated using an API key. This request should not be made by your frontend and should only be done by backend logic that only the platform can complete."
+      description: 'The body of the request is the JSON key-value metadata to patch to the ACH return. Do not use the metadata field to store sensitive or confidential data.
+
+
+        Updating metadata will merge with the existing metadata stored on the ACH return by the top-level key. If the same top-level key is passed in this request, it will overwrite the value stored on the ACH return. Only keys included in the payload will be updated. To remove a key, set the key''s value to null. To remove all metadata pass null for the metadata value.
+
+
+        ACH return Metadata must be less than 8 KB in size.
+
+
+        ACH return metadata can only be updated using an API key. This request should not be made by your frontend and should only be done by backend logic that only the platform can complete.'
       parameters:
       - $ref: '#/paths/~1v1~1payins/get/parameters/0'
       - $ref: '#/paths/~1v1~1ach_returns~1%7Bach_return_id%7D/get/parameters/1'

@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Authentication ACH Returns Payment Method Domains API
+  title: Payments Payment Method Domains API
   version: 1.0.0
-  description: This resource is used for authentication actions
+  description: This resource is used for payment actions
   contact:
     name: Rainforest
     email: support@rainforestpay.com
@@ -22,7 +22,6 @@ paths:
     get:
       operationId: list_payment_method_domains
       summary: List payment method domains
-      description: List payment method domains
       parameters:
       - $ref: '#/paths/~1v1~1payins/get/parameters/0'
       responses:
@@ -145,7 +144,6 @@ paths:
     get:
       operationId: get_payment_method_domain
       summary: Get payment method domain
-      description: Get payment method domain
       parameters:
       - $ref: '#/paths/~1v1~1payins/get/parameters/0'
       - required: true
@@ -185,7 +183,6 @@ paths:
     delete:
       operationId: delete_payment_method_domain
       summary: Delete payment method domain
-      description: Delete payment method domain
       parameters:
       - $ref: '#/paths/~1v1~1payins/get/parameters/0'
       - $ref: '#/paths/~1v1~1payment_method_domains~1%7Bpayment_method_domain_id%7D/get/parameters/1'
@@ -208,7 +205,6 @@ paths:
     post:
       operationId: verify_payment_method_domain
       summary: Verify payment method domain
-      description: Verify payment method domain
       parameters:
       - $ref: '#/paths/~1v1~1payins/get/parameters/0'
       - $ref: '#/paths/~1v1~1payment_method_domains~1%7Bpayment_method_domain_id%7D/get/parameters/1'

@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Authentication ACH Returns File Uploads API
+  title: File Uploads API
   version: 1.0.0
-  description: This resource is used for authentication actions
+  description: This resource is used for file upload actions
   contact:
     name: Rainforest
     email: support@rainforestpay.com

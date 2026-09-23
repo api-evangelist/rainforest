@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Authentication ACH Returns Sessions API
+  title: Authentication Sessions API
   version: 1.0.0
   description: This resource is used for authentication actions
   contact:

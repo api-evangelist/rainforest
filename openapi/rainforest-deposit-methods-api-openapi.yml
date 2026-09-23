@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Authentication ACH Returns Deposit Methods API
+  title: Deposits Deposit Methods API
   version: 1.0.0
-  description: This resource is used for authentication actions
+  description: This resource is used for merchant actions
   contact:
     name: Rainforest
     email: support@rainforestpay.com
@@ -68,7 +68,7 @@ paths:
       description: 'Create and process a payin using a payin configuration and a deposit method. The merchant status must be ACTIVE to create a payin.
 
 
-        The deposit method details (i.e bank account number and billing contact) will be duplicated to a payment method and a payin will process against the newly created payment method. Metadata, method metadata, and new billing contact details can be defined on the [Payin Config](ref:create_payin_config).
+        The deposit method details (i.e bank account number and billing contact) will be duplicated to a payment method and a payin will process against the newly created payment method. Metadata, method metadata, and new billing contact details can be defined on the Payin Config.
 
 
         This endpoint requires Rainforest approval.'
@@ -1466,7 +1466,7 @@ paths:
       description: 'Create a deposit method. A deposit method is assigned to a merchant and is where the merchant''s funds for their payment activity will be deposited to.
 
 
-        This endpoint requires Rainforest approval. Platforms that meet all [requirements](doc:send-sensitive-data-via-api#requirements) and are approved by Rainforest can send the full bank account numbers to Rainforest via a direct API integration.'
+        This endpoint requires Rainforest approval. Platforms that meet all requirements and are approved by Rainforest can send the full bank account numbers to Rainforest via a direct API integration.'
       parameters:
       - $ref: '#/paths/~1v1~1deposits/get/parameters/0'
       requestBody:

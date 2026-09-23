@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Authentication ACH Returns Merchant Applications API
+  title: Merchants Merchant Applications API
   version: 1.0.0
-  description: This resource is used for authentication actions
+  description: This resource is used for merchant actions
   contact:
     name: Rainforest
     email: support@rainforestpay.com
@@ -1170,7 +1170,7 @@ paths:
     post:
       operationId: verify_merchant_application
       summary: Verify merchant application
-      description: Run [real-time underwriting verifications](doc:real-time-underwriting-verifications#direct-api-integration) on a merchant application.
+      description: Run real-time underwriting verifications on a merchant application.
       parameters:
       - $ref: '#/paths/~1v1~1merchants~1%7Bmerchant_id%7D/get/parameters/1'
         in: path

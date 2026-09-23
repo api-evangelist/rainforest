@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Authentication ACH Returns API Keys API
+  title: Authentication API Keys API
   version: 1.0.0
   description: This resource is used for authentication actions
   contact:
