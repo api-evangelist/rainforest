@@ -1,0 +1,35 @@
+slug: rainforest
+provider: Rainforest
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Payins
+  spec_file: rainforest-payins-api-openapi.yml
+  capability_id: BC-4250.40
+  capability_id_l1: BC-4250
+  capability_name: Payment Collection & Dunning
+  confidence: 0.8
+  evidence: POST /v1/payins/{payin_id}/capture  capture_payin  Capture payin; POST /v1/payins/{payin_id}/void_or_refund
+  reason: Create/capture/void-or-refund of payins is payment authorisation and collection — the core of
+    Payment Collection & Dunning. Some ambiguity because the vendor is a payfac serving merchants rather
+    than running its own subscription billing, so the sub-capability fit is good but not exact.
+- tag: Payment Methods
+  spec_file: rainforest-payment-methods-api-openapi.yml
+  capability_id: BC-4250.40
+  capability_id_l1: BC-4250
+  capability_name: Payment Collection & Dunning
+  confidence: 0.8
+  evidence: POST /v1/payment_methods  create_payment_method; POST /v1/payment_methods/{payment_method_id}/payin  Create
+    payin from stored payment method
+  reason: Stored payment-method lifecycle (create, update, deactivate) plus charging a stored method maps
+    directly onto 'Payment-method management, payment authorisation' in Payment Collection & Dunning.

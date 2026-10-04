@@ -392,6 +392,9 @@ apis:
   - type: Documentation
     url: https://docs.rainforestpay.com/docs/overview
 common:
+- type: CapabilityMap
+  url: capabilities/rainforest-capability-edges.yml
+  name: Rainforest Business Capability Map
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/rainforest/overview
 # --- identity / link properties ---
