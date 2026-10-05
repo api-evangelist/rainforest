@@ -1,0 +1,12 @@
+{
+ "url": "https://docs.rainforestpay.com/openapi/forward_requests.yaml",
+ "requested_url": "https://docs.rainforestpay.com/openapi/forward_requests.yaml",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 7055,
+ "sha256": "4fa7d8969482b6a1a4d45f560405c75919f6906cc816a8689d099535376fc5c4",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
