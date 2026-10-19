@@ -1,0 +1,12 @@
+{
+ "url": "https://docs.rainforestpay.com/openapi/health.yaml",
+ "requested_url": "https://docs.rainforestpay.com/openapi/health.yaml",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 946,
+ "sha256": "50b96d031e8dfecb3260a5ca173416f455a338d82b0ffb6e3657dd9ca2fd6560",
+ "fetched_at": "2026-10-19",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}

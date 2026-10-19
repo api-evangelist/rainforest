@@ -1,0 +1,12 @@
+{
+ "url": "https://docs.rainforestpay.com/openapi/payments.yaml",
+ "requested_url": "https://docs.rainforestpay.com/openapi/payments.yaml",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 195715,
+ "sha256": "9d7d0b1553a8612b0a5a285e1b64fa135ba4fa231b5c1215789ddfd8c0ab5839",
+ "fetched_at": "2026-10-19",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
