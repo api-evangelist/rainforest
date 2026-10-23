@@ -1581,3 +1581,9 @@ components:
       type: http
       scheme: bearer
       bearerFormat: APIKey
+x-provenance:
+  method: harvested
+  publisher: Rainforest
+  source: https://docs.rainforestpay.com/openapi/payments.yaml
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
